@@ -1,0 +1,22 @@
+<%= provide :title, "Forside" %>
+<%= image_tag "http://placehold.it/1300x450" %>
+
+
+<%= form_tag(works_path, method: :get, id: "frontpage-searchform") do %>
+	<label>
+		<%= text_field_tag :search, params[:search], placeholder: "Søg her.." %>
+	</label>
+<% end %> 
+
+
+<div class="large-10 large-offset-1 column">
+	<% @works.each do |work| %>
+		<%= link_to work do %> 
+			<div class="large-5 column float-left">
+				<h6 class="text-center"><%= work.title %></h6>
+				<p><%= truncate work.body, length: 150 %></p>
+			</div>
+		<% end %>
+	<% end %>
+
+</div>
