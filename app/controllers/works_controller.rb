@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-	layout :false, only: :show 
+	layout "reader", only: :show 
 
 	def index
 		@works = Work.all
