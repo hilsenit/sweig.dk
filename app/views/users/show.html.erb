@@ -3,8 +3,6 @@
 <h2>Her er mit arbejde</h2>
 
 <% @works.each do |work| %>
-<%= link_to user_work_path(work) do %>
-<h5><%= work.title %></h5>
-<h6><%= work.body %></h6>
-<% end %>
+	<h5><%= work.title %></h5>
+	<h6><%= work.body %></h6>
 <% end %>

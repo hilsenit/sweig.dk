@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+	before_action :find_user, only: [ :show ]
 	def show
-		@user = User.find(params[:id])
 		@works = @user.works
+	end
+
+	private
+
+	def find_user 
+		@user = User.friendly.find(params[:id])
 	end
 end

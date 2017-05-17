@@ -8,7 +8,7 @@
 <div class="large-10 large-offset-1 column">
 	<% @works.each do |work| %>
 		<!-- På denne måde kan man passe to parameters til et link -->
-		<%= link_to user_work_path(work.user_id, work) do %>
+		<%= link_to user_work_path(User.find(work.user_id), work) do %>
 			<div class="large-5 column float-left">
 				<h6 class="text-center"><%= work.title %></h6>
 				<p><%= truncate work.body, length: 150 %></p>

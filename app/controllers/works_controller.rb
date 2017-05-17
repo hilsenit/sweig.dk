@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 	layout "reader", only: :show 
-
+	before_action :find_work, only: [:show]
 	def index
 		@works = Work.all
 		if params[:search] #This is what the user is searching for
@@ -10,7 +10,13 @@ class WorksController < ApplicationController
 	end
 
 	def show 
-		@work = Work.find(params[:id])
 		@user = User.find(@work.user_id)
+	end
+
+
+	private
+
+	def find_work
+		@work = Work.friendly.find(params[:id])
 	end
 end

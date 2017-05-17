@@ -1,6 +1,6 @@
 <% provide :title, truncate(@work.title, length: 30) %>
 <div class="large-12 column">
-	<%= link_to "Gå til #{@user.name}", user_path(@work.user_id), class: "button secondary" %>
+	<%= link_to "Gå til #{@user.name}", user_path(User.find(@work.user_id)), class: "button secondary" %>
 	<h1 class="text-center"><%= @work.title %></h1>
 	<p><%= @work.body %></p>
 </div>
