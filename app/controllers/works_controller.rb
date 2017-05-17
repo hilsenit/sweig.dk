@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
 	layout "reader", only: :show 
-	before_action :find_work, only: [:show]
+
+
 	def index
 		@works = Work.all
 		if params[:search] #This is what the user is searching for
@@ -9,14 +10,31 @@ class WorksController < ApplicationController
 		
 	end
 
+	def new
+		@user = User.friendly.find(params[:user_id])
+		@work = @user.works.build
+	end
+
+	def create
+		@work = Work.friendly.find(params[:id])		
+		if @work.save
+			redirect_to user_path(@work.user_id), notice: "#{@work.title} er blevet gemt"
+		else	
+			render "new", notice: "Det lykkedes desværre ikke. Prøv igen."
+		end
+	end
+
 	def show 
-		@user = User.find(@work.user_id)
+		@user = @work.user
 	end
 
 
 	private
 
-	def find_work
-		@work = Work.friendly.find(params[:id])
+
+
+	def work_params
+		params.require(:works).permit(:title, :body)
 	end
+
 end

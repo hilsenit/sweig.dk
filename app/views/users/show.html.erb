@@ -1,8 +1,10 @@
 <h1 class="text-center">Jeg er <%= @user.name %></h1>
 
 <h2>Her er mit arbejde</h2>
-
+<%= link_to "Opret værk", new_user_work_path(@user), class: "button secondary" %>
 <% @works.each do |work| %>
+	<%= link_to user_work_path(work) do %>
 	<h5><%= work.title %></h5>
 	<h6><%= work.body %></h6>
+	<% end %>
 <% end %>
