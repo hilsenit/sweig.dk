@@ -25,6 +25,7 @@ class WorksController < ApplicationController
 	end
 
 	def show 
+		@work = Work.friendly.find(params[:id])		
 		@user = @work.user
 	end
 

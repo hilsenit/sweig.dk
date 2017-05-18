@@ -1,7 +1,8 @@
 <%= link_to "Gå tilbage til profil", class: "button secondary" %>
 
 <%= form_for [@user, @work] do |f| %>
-
+	<%= hidden_field_tag :id, @work.id %>
+	
 		<%= f.label "Overskrift" %>
 		<%= f.text_field :title %>
 
