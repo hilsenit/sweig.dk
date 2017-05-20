@@ -1,8 +1,7 @@
 <%= link_to "Gå tilbage til profil", class: "button secondary" %>
 
 <%= form_for [@user, @work] do |f| %>
-	<%= hidden_field_tag :id, @work.id %>
-	
+
 		<%= f.label "Overskrift" %>
 		<%= f.text_field :title %>
 
@@ -10,7 +9,6 @@
 		<%= f.text_area :body %>
 
 		<%= f.submit "Gem værk", class: "button primary" %>
-
 <% end %>
   
 <!--<%= render partial: "work-form", locals: {work: @work} %>-->

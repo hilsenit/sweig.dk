@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 	before_action :find_user, only: [ :show ]
 	def show
 		@works = @user.works
-		
 	end
 
 	private

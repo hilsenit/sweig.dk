@@ -12,13 +12,16 @@ class WorksController < ApplicationController
 
 	def new
 		@user = User.friendly.find(params[:user_id])
-		@work = @user.works.build
+		@work = @user.works.build(user_id: @user.id)
 	end
 
 	def create
-		@work = Work.friendly.find(params[:id])		
+		@work = Work.new(work_params)
+		@user = User.friendly.find(params[:user_id])
+		@work.user_id = @user.id
+
 		if @work.save
-			redirect_to user_path(@work.user_id), notice: "#{@work.title} er blevet gemt"
+			redirect_to user_path(@user), notice: "#{@work.title} er blevet gemt"
 		else	
 			render "new", notice: "Det lykkedes desværre ikke. Prøv igen."
 		end
@@ -35,7 +38,7 @@ class WorksController < ApplicationController
 
 
 	def work_params
-		params.require(:works).permit(:title, :body)
+		params.require(:work).permit(:title, :body )
 	end
 
 end
