@@ -8,7 +8,9 @@
 		<%= f.label "Tekst" %>
 		<%= f.text_area :body %>
 
-		<%= f.submit "Gem værk", class: "button primary" %>
+		<%= f.submit "Gem som kladde", class: "button secondary" %>
+		<%= f.submit "published", name: "status", class: "button primary" %>
+
 <% end %>
   
 <!--<%= render partial: "work-form", locals: {work: @work} %>-->

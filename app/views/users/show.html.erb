@@ -2,11 +2,25 @@
 <h1 class="text-center">Jeg er <%= @user.name %></h1>
 
 <h2>Her er mit arbejde</h2>
+
+
 <%= link_to "Opret værk", new_user_work_path(@user), class: "button secondary" %>
-<% @works.each do |work| %>
-	<%= link_to user_work_path(@user.friendly_id, work) do %>
-	<h5><%= work.title %></h5>
-	<h6><%= work.body %></h6>
-	<%= link_to work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, work) %>
+<h2 class="text-center">Udgivet</h2>
+<% @published_works.each do |published_work| %>
+	<%= link_to user_work_path(@user.friendly_id, published_work) do %>
+	<h5><%= published_work.title %></h5>
+	<h6><%= published_work.body %></h6>
+	<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work) %>
+	<% end %>
+<% end %>
+
+<hr>
+<h2 class="text-center">Kladde</h2>
+
+<% @draft_works.each do |draft_work| %>
+	<%= link_to user_work_path(@user.friendly_id, draft_work) do %>
+	<h5><%= draft_work.title %></h5>
+	<h6><%= draft_work.body %></h6>
+	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work) %>
 	<% end %>
 <% end %>

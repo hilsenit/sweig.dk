@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [ :show ]
 	def show
-		@works = @user.works
+		@published_works = @user.works.published
+		@draft_works = @user.works.draft
 	end
 
 

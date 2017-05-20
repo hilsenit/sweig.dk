@@ -1,15 +1,11 @@
 <%= provide :title, "Forside" %>
 <%= image_tag "http://placehold.it/1300x450" %>
 
-<div class="large-12 column">
- <h3 class="text-center">Vores brugere</h3>
-	<% @users.each do |user| %>
-		<%= link_to user_path(user) do %>
-			<h5><%= user.name %></h5>
-			<p>Udgivet værker: <%= user.works.length %></p>
-		<% end %>
-	<% end %>
-</div>
+
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+	<%= text_field_tag :search, params[:search], placeholder: "Søg efter værk" %>
+	<%= submit_tag "Søg" %>
+<% end %>
 
 <div class="large-10 large-offset-1 column">
 	<% @works.each do |work| %>
