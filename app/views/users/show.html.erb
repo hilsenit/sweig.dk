@@ -3,8 +3,9 @@
 <h2>Her er mit arbejde</h2>
 <%= link_to "Opret værk", new_user_work_path(@user), class: "button secondary" %>
 <% @works.each do |work| %>
-	<%= link_to user_work_path(User.find(work.user_id), work) do %>
+	<%= link_to user_work_path(@user.friendly_id, work) do %>
 	<h5><%= work.title %></h5>
 	<h6><%= work.body %></h6>
+	<%= link_to work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, work) %>
 	<% end %>
 <% end %>
