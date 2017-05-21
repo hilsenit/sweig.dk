@@ -6,21 +6,28 @@
 
 <%= link_to "Opret værk", new_user_work_path(@user), class: "button secondary" %>
 <h2 class="text-center">Udgivet</h2>
+<div class="row">
 <% @published_works.each do |published_work| %>
-	<%= link_to user_work_path(@user.friendly_id, published_work) do %>
-	<h5><%= published_work.title %></h5>
-	<h6><%= published_work.body %></h6>
-	<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work) %>
-	<% end %>
+	<div class="large-3 column float-left">
+		<%= link_to user_work_path(@user.friendly_id, published_work) do %>
+		<h5><%= published_work.title %></h5>
+		<h6><%= published_work.body %></h6>
+		<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button succes" %>
+		<% end %>
+	</div>
 <% end %>
+</div>
 
 <hr>
 <h2 class="text-center">Kladde</h2>
-
+<div class="row">
 <% @draft_works.each do |draft_work| %>
 	<%= link_to user_work_path(@user.friendly_id, draft_work) do %>
+	<div class="large-3 column float-left">
 	<h5><%= draft_work.title %></h5>
 	<h6><%= draft_work.body %></h6>
-	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work) %>
+	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work), class: "button succes" %>
 	<% end %>
+	</div>
 <% end %>
+</div>

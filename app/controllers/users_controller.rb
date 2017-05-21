@@ -5,7 +5,9 @@ class UsersController < ApplicationController
 		@draft_works = @user.works.draft
 	end
 
-
+	def new
+		@user = User.new
+	end
 
 	def toggle_status
 		# work_id as a params is only used on this route (se routes.rb)

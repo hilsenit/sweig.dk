@@ -1,5 +1,12 @@
-<%= link_to "Gå tilbage til profil", class: "button secondary" %>
-
+<%= link_to "Gå tilbage til profil", @user,  class: "button primary" %>
+<% if @work.errors.any? %>
+<div data-alert class="alert-box secondary">
+<a href="#" class="close">&times;</a>
+	<% @work.errors.full_messages.each do |error| %>
+		<p class="text-center"><%= error %></p>
+	<% end %>
+</div>
+<% end %>
 <%= form_for [@user, @work] do |f| %>
 
 		<%= f.label "Overskrift" %>

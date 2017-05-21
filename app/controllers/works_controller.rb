@@ -19,13 +19,14 @@ class WorksController < ApplicationController
 		@work = Work.new(work_params)
 		@user = User.friendly.find(params[:user_id])
 		@work.user_id = @user.id
-		@work.published! if params[:status] == "published" 
-		byebug
+		
 		if @work.save
+			@work.published! if params[:status] == "published" 
 			redirect_to user_path(@user), notice: "#{@work.title} er blevet gemt"
 		else	
 			render "new", notice: "Det lykkedes desværre ikke. Prøv igen."
 		end
+		
 	end
 
 	def show 
