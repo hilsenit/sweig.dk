@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 root "static_pages#index"
+get "hvorfor" => "static_pages#why", as: "why"
 
 resources :users do
 	resources :works do

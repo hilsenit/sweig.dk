@@ -12,8 +12,9 @@
 		<%= link_to user_work_path(@user.friendly_id, published_work) do %>
 		<h5><%= published_work.title %></h5>
 		<h6><%= published_work.body %></h6>
-		<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button succes" %>
+		<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button secondary" %>
 		<% end %>
+		<%= link_to "Slet værk", user_work_path(@user, published_work), method: "delete", class: "button alert" %>
 	</div>
 <% end %>
 </div>
@@ -26,8 +27,10 @@
 	<div class="large-3 column float-left">
 	<h5><%= draft_work.title %></h5>
 	<h6><%= draft_work.body %></h6>
-	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work), class: "button succes" %>
+	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work), class: "button secondary" %>
 	<% end %>
+	<%= link_to "Slet værk", user_work_path(@user, draft_work), method: "delete", class: "button alert" %>
+
 	</div>
 <% end %>
 </div>

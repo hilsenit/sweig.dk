@@ -1,6 +1,9 @@
 <%= form_for :user do |f| %>
-	<%= f.label :name %>
+	<%= f.label "Navn" %>
 	<%= f.text_field :name %>
 
-	<%= f.submit "Opret dig", class: "button primary" %>
+	<%= f.label "Email-adresse " %>
+	<%= f.text_field :email %>
+
+	<%= f.submit "Opret nu", class: "button primary" %>
 <% end %>

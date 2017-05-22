@@ -1,6 +1,18 @@
 <div class="large-8 large-offset-2 column">
-	<%= render partial: "user-form", locals: {:user => @user} %>
+<% if @user.errors.any? %>
+	<% @user.errors.full_messages.each do |message| %>
+	<p><%= message %></p>
+	<% end %>
+<% end %>
+<%= form_for @user do |f| %>
+	<%= f.label "Navn" %>
+	<%= f.text_field :name %>
 
+	<%= f.label "Email-adresse " %>
+	<%= f.text_field :email %>
 
+	<%= f.submit "Opret nu", class: "button primary" %>
+
+<% end %>
 
 </div>

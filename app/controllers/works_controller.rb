@@ -34,7 +34,14 @@ class WorksController < ApplicationController
 		@user = @work.user
 	end
 
-
+	def destroy
+		@work = Work.friendly.find(params[:id])
+		if @work.destroy
+			redirect_to user_path @work.user_id, notice: "Dit værk er blevet slettet"
+		else
+			redirect_to @user, notice: "Det lykkedes ikke at slette dit værk."
+		end
+	end
 	private
 
 

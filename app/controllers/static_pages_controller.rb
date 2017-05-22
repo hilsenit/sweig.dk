@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
 			@works = Work.search(params[:search]).order(created_at: :desc)		
 		end
 	end
+
+	def why
+		
+	end
 end
