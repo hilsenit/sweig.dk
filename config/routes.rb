@@ -5,7 +5,8 @@ get "hvorfor" => "static_pages#why", as: "why"
 
 resources :users do
 	resources :works do
-	get "toggle_status" => "users#toggle_status", as: "toggle-status"
+	get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
+	get "gem-vaerk" => "users#save_work", as: "save_work"
 	end
 end
 

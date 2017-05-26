@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Marie Skovgaard Larsen")
+User.create!(name: "Marie Skovgaard Larsen", email: "example@7861234678.com")
 
 
 5.times do |work_num|
@@ -14,12 +14,14 @@ User.create!(name: "Marie Skovgaard Larsen")
 	)
 end
 
-User.create!(name: "Peter Højlund Andersen")
+User.create!(name: "Peter Højlund Andersen", email: "evample@jkasdkjldasl.dk")
 
 
 5.times do |work_num|
 	Work.create!(title: "Der var engang en gård #{work_num}", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", user_id: User.last.id
 	)
 end
+
+
 
 puts "Created #{Work.all.length} works"

@@ -17,7 +17,6 @@ class WorksController < ApplicationController
 
 	def update
 		@work = Work.friendly.find(params[:id])
-		byebug
 		if @work.update(work_params)
 			redirect_to User.find(@work.user_id), notice: "#{@work.title} er blevet gemt."
 		end

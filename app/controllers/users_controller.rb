@@ -37,6 +37,18 @@ class UsersController < ApplicationController
 	end
 
 
+	def save_work
+		@work = Work.friendly.find(params[:work_id])
+		# Et eller andet med at cookies finder den besøgende bruger
+		# Prøver nu, hvor Peter gemmer Maries
+		@user = User.find(2)
+		@user.saved_work = SavedWork.new if @user.saved_work.nil?
+		@user.saved_work.works << @work
+
+		redirect_back(fallback_location: user_path(@work.user))
+	end
+
+
 
 	private
 

@@ -1,24 +1,42 @@
 <%= link_to "Tilbage til forsiden", root_path, class: "button succes" %>
 <h1 class="text-center">Jeg er <%= @user.name %></h1>
 
-<h2>Her er mit arbejde</h2>
+<% unless @user.saved_work.nil? %>
+
+			<h3>Mine gemte værker</h3>
+	<% @user.saved_work.works.each do |saved_work| %>
+			<% saved_works_writer = User.find(saved_work.user_id).name %>
+			<div class="callout succes">
+			<%= link_to "Skrevet af #{saved_works_writer}", user_path(saved_works_writer) %>
+			<%= link_to user_work_path(saved_works_writer, saved_work) do %>
+			<h4><%= saved_work.title %></h4>
+			<p><%= saved_work.body %></p>
+			<% end %> <!-- link_to show -->
+			</div>
+	<% end %>
+<% end %>
 
 
 <%= link_to "Opret værk", new_user_work_path(@user), class: "button secondary" %>
-<h2 class="text-center">Udgivet</h2>
-<div class="row">
-<% @published_works.each do |published_work| %>
-	<div class="large-3 column float-left">
-		<%= link_to user_work_path(@user.friendly_id, published_work) do %>
-		<h5><%= published_work.title %></h5>
-		<h6><%= published_work.body %></h6>
-		<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button secondary" %>
-		<% end %>
-		<%= link_to "Slet værk", user_work_path(@user, published_work), method: "delete", class: "button alert" %>
-		<%= link_to "Rediger", edit_user_work_path(@user, published_work.id), class: "button" %>
+
+
+<% unless @published_works.empty? %>
+	<h2 class="text-center">Udgivet</h2>
+	<div class="row">
+	<% @published_works.each do |published_work| %>
+		<div class="large-3 column float-left">
+			<%= link_to user_work_path(@user.friendly_id, published_work) do %>
+			<h5><%= published_work.title %></h5>
+			<h6><%= published_work.body %></h6>
+			<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button secondary" %>
+			<% end %>
+			<%= link_to "Slet værk", user_work_path(@user, published_work), method: "delete", class: "button alert" %>
+			<%= link_to "Rediger", edit_user_work_path(@user, published_work.id), class: "button" %>
+			<%= link_to "Gem værk", user_work_save_work_path(@user, published_work.id), class: "button" %>
+		</div>
+	<% end %>
 	</div>
 <% end %>
-</div>
 
 <hr>
 <h2 class="text-center">Kladde</h2>
