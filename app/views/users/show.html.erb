@@ -15,6 +15,7 @@
 		<%= link_to published_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, published_work), class: "button secondary" %>
 		<% end %>
 		<%= link_to "Slet værk", user_work_path(@user, published_work), method: "delete", class: "button alert" %>
+		<%= link_to "Rediger", edit_user_work_path(@user, published_work.id), class: "button" %>
 	</div>
 <% end %>
 </div>
@@ -30,6 +31,7 @@
 	<%= link_to draft_work.published? ? "Gør til kladde" : "Udgiv?", user_work_toggle_status_path(@user.friendly_id, draft_work), class: "button secondary" %>
 	<% end %>
 	<%= link_to "Slet værk", user_work_path(@user, draft_work), method: "delete", class: "button alert" %>
+	<%= link_to "Rediger", edit_user_work_path(@user, draft_work.id), class: "button" %>
 
 	</div>
 <% end %>

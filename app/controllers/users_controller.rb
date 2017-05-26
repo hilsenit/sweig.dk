@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 		end
 		
 	end
+
 	def toggle_status
 		# work_id as a params is only used on this route (se routes.rb)
 		@work = Work.friendly.find(params[:work_id])
@@ -33,7 +34,8 @@ class UsersController < ApplicationController
 		# respond_to do |format|
 		#   format.js {render inline: "location.reload();" }
 		# end
-end
+	end
+
 
 
 	private

@@ -10,6 +10,19 @@ class WorksController < ApplicationController
 		
 	end
 
+	def edit
+		@user = User.friendly.find(params[:user_id])
+		@work = Work.friendly.find(params[:id])
+	end
+
+	def update
+		@work = Work.friendly.find(params[:id])
+		byebug
+		if @work.update(work_params)
+			redirect_to User.find(@work.user_id), notice: "#{@work.title} er blevet gemt."
+		end
+	end
+	
 	def new
 		@user = User.friendly.find(params[:user_id])
 		@work = @user.works.build(user_id: @user.id)
@@ -37,11 +50,12 @@ class WorksController < ApplicationController
 	def destroy
 		@work = Work.friendly.find(params[:id])
 		if @work.destroy
-			redirect_to user_path @work.user_id, notice: "Dit værk er blevet slettet"
+			redirect_to user_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
 		else
 			redirect_to @user, notice: "Det lykkedes ikke at slette dit værk."
 		end
 	end
+
 	private
 
 

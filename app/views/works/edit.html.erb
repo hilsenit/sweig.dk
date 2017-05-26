@@ -1,0 +1,11 @@
+<%= form_for [@user, @work] do |f| %>
+
+		<%= f.label "Overskrift" %>
+		<%= f.text_field :title %>
+
+		<%= f.label "Tekst" %>
+		<%= f.text_area :body %>
+
+		<%= f.submit "Rediger", name: "status", class: "button primary" %>
+
+<% end %>
