@@ -1,0 +1,55 @@
+
+@import "bootstrap";
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+.form-outer {
+	height: 100%;
+	position: relative;
+}
+
+
+.title  {
+	text-align: center; 
+	margin-top: 10vh;
+	input, .show-title {
+	    width: 40%;
+	    min-width: 400px;
+	    height: 40px;
+	    margin: auto;
+	    font-size: 30px;
+	    border: none;
+	}
+	input {
+	    border-bottom: 1px solid #424242;
+	}
+}
+
+.body {
+	margin-top: 6vh;
+	text-align: center;
+	textarea, .show-body {
+		margin: auto;
+	    border: none;
+	    width: 60%;
+	    height: 40vh;
+	    font-size: 1.2em;
+	    p {
+	    	text-align: left;
+	    }
+	}
+}
+
+.form-save {
+	margin-top: 2vh;
+	text-align: center;
+}
+textarea:focus, input:focus{
+    outline: none;
+}

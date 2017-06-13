@@ -1,5 +1,5 @@
 module ApplicationHelper
-	def set_title
+	def set_title_helper
 		default = "Sweig"
 		if @page_title
 			default + " | " + @page_title

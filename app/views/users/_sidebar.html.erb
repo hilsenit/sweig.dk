@@ -1,0 +1,9 @@
+<div class="col-sm-3 col-md-2 sidebar">
+  <%= "|" + user.name.parameterize %>
+  <ul class="nav nav-sidebar">
+    <li class="user-nav-items">
+      <%= link_to "Opret værk", new_user_work_path(@user) %>
+    </li>
+
+  </ul>
+</div>

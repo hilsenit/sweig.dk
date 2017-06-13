@@ -6,14 +6,18 @@
 
     <title><%= set_title_helper %></title>
     <%= favicon_link_tag %>
-    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag    "simple_view" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-  
-     <%= yield %>
+    <div class="container-fluid form-outer">
+      <div class="row">
 
+     <%= yield %>
+     </div>
+     </div>
   </body>
+
 </html>

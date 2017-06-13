@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
 	layout "reader", only: :show 
+	layout "simple_view", only: [:new, :edit, :show]
 
 
 	def index
@@ -33,7 +34,7 @@ class WorksController < ApplicationController
 		@work.user_id = @user.id
 		
 		if @work.save
-			@work.published! if params[:status] == "published" 
+			@work.published! if params[:status] == "Udgiv" 
 			redirect_to user_path(@user), notice: "#{@work.title} er blevet gemt"
 		else	
 			render "new", notice: "Det lykkedes desværre ikke. Prøv igen."
