@@ -2,6 +2,12 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.hide-it {
+	display: none;
+}
+a {
+	color: black;
+}
 html {
 	height: 100%;
 }
@@ -57,5 +63,42 @@ textarea:focus, input:focus{
 
 
 .show-navbar {
+	overflow: hidden;
+	height: 40px;
 	border-bottom: 1px solid black; 
+	.show-navbar-inner {
+		margin-right: 35px;
+	}
+}
+
+#NavbarToggle {
+	position: absolute;
+	z-index: 99999;
+	right: 10px; 
+	top: -4px;
+	font-size: 40px;
+	cursor: pointer; 
+}
+
+.social-icons {
+    margin-top: 9px;
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.rotatedefault {
+	transition: transform 0.4s linear;
+	transition: -webkit-transform 0.4s linear;
+	transition: -ms-transform 0.4s linear;
+	-ms-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.rotate180deg {
+	transition: transform 0.4s linear;
+	transition: -webkit-transform 0.4s linear;
+	transition: -ms-transform 0.4s linear;
+	-ms-transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
 }

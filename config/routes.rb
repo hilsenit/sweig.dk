@@ -7,7 +7,7 @@ resources :users do
 	resources :works do
 	put :sort, on: :collection
 	get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
-	get "show-navbar-cookie" => "works#navbar_cookie", as: "navbar-cookie"
+	# get "show-navbar-cookie" => "works#navbar_cookie", as: "navbar-cookie"
 
 	end
 end
