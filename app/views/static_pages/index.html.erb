@@ -1,5 +1,6 @@
-<%= provide :title, "Forside" %>
+<%= session_helper_social %>
 <%= image_tag "http://placehold.it/1300x450" %>
+
 
 
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
@@ -8,14 +9,15 @@
 <% end %>
 
 <div class="large-10 large-offset-1 column">
-	<% @works.each do |work| %>
-		<!-- På denne måde kan man passe to parameters til et link -->
-		<%= link_to user_work_path(User.find(work.user_id), work) do %>
-			<div class="large-5 column float-left">
-				<h6 class="text-center"><%= work.title %></h6>
-				<p><%= truncate work.body, length: 150 %></p>
-			</div>
-		<% end %>
-	<% end %>
+	<%= render @works %>
+</div>
+
+</div><!-- row finished -->
+<div class="row">
+	<h5>Vores nyeste brugere</h5>		
+
+	<%= render partial: "user_overview", 
+				collection: @users_for_overview, 
+				spacer_template: "shared/spacer" %>
 
 </div>

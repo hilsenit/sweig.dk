@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	layout "user"
 	before_action :find_user, only: [ :show ]
 	def show
 		@published_works = @user.works.published
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
 	def toggle_status
 		# work_id as a params is only used on this route (se routes.rb)
 		@work = Work.friendly.find(params[:work_id])
+		
 		if @work.published?
 			@work.draft!
 		else
@@ -42,10 +44,19 @@ class UsersController < ApplicationController
 		# Et eller andet med at cookies finder den besøgende bruger
 		# Prøver nu, hvor Peter gemmer Maries
 		@user = User.find(2)
-		@user.saved_work = SavedWork.new if @user.saved_work.nil?
-		@user.saved_work.works << @work
+		new_saved_work = SavedWork.new
+		new_saved_work.work = @work
+		# Jeg elsker has_many og belongs_to
+		@user.saved_works << new_saved_work
 
 		redirect_back(fallback_location: user_path(@work.user))
+	end
+
+	def remove_saved_work
+		@work = Work.friendly.find(params[:work_id])
+
+
+		
 	end
 
 

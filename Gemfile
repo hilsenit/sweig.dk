@@ -51,10 +51,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
-
-# Disse har jeg selv tilføjet
-gem 'foundation-rails'
 # Til at få navnet op i URL'en
 gem 'friendly_id', '~> 5.1.0'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'font-awesome-rails'

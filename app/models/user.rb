@@ -1,8 +1,13 @@
 class User < ApplicationRecord
 	has_many :works
-	has_one :saved_work
+	has_many :saved_works
 	extend FriendlyId
 	friendly_id :name, use: :slugged
 	accepts_nested_attributes_for :works
 	validates :name, :email, presence: true
+
+
+	def self.sort_users
+		order(created_at: :desc).limit(5)
+	end
 end

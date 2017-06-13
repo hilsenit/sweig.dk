@@ -1,0 +1,16 @@
+<div class="row placeholders">
+	<% works.each do |work| %>
+	<div class="col-xs-6 col-sm-3 col-md-3 placeholder">
+
+		<h4 class="text-left"><%= work.title %></h4>
+		<span class="text-left">
+			<%= simple_format( truncate(work.body, length: 80) ) %>
+		</span>
+	</div>
+	<%= link_to (fa_icon "angle-#{arrow}"), user_work_toggle_status_path(@user.friendly_id, work) %>
+	<%= link_to (fa_icon "minus-square-o"), user_work_path(@user, work), method: "delete" %>
+
+
+	<% end %>
+</div>
+

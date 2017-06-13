@@ -22,6 +22,11 @@ User.create!(name: "Peter Højlund Andersen", email: "evample@jkasdkjldasl.dk")
 	)
 end
 
+names = %w(Henning Henrik Bobby Ole Anna Henriette)
+names.length.times do |index|
+	User.create!(name: names[index], email: "test@teeest#{index}.dk")
+	puts 
+end
 
 
 puts "Created #{Work.all.length} works"

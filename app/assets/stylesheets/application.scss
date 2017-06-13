@@ -12,6 +12,17 @@
  *
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
+
 
  */
+
+@import "bootstrap";
+@import "font-awesome";
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
