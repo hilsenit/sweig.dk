@@ -5,11 +5,10 @@ get "hvorfor" => "static_pages#why", as: "why"
 
 resources :users do
 	resources :works do
-
+	put :sort, on: :collection
 	get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
-	get "gem-vaerk" => "users#save_work", as: "save_work"
-	delete "fjern-gemt-vaerk" => "users#remove_saved_work", as: "remove_saved_work" 
-	
+	get "show-navbar-cookie" => "works#navbar_cookie", as: "navbar-cookie"
+
 	end
 end
 

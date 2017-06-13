@@ -1,5 +1,6 @@
 
 @import "bootstrap";
+@import "font-awesome";
 
 html {
 	height: 100%;
@@ -52,4 +53,9 @@ body {
 }
 textarea:focus, input:focus{
     outline: none;
+}
+
+
+.show-navbar {
+	border-bottom: 1px solid black; 
 }

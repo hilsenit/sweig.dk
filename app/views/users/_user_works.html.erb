@@ -1,6 +1,6 @@
-<div class="row placeholders">
+<div class="row placeholders sortable">
 	<% works.each do |work| %>
-		<div class="col-xs-6 col-sm-3 col-md-3 placeholder">
+		<div class="col-xs-6 col-sm-3 col-md-3 placeholder sortable-item" data-id="<%= work.id %>">
 		<%= link_to user_work_path(user, work) do %>
 
 			<h4 class="text-left"><%= work.title %></h4>
