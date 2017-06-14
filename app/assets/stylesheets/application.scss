@@ -65,6 +65,21 @@ body {
 		color: black;
 	}
 }
+#WhatIsSweig {
+	position: absolute;
+	left: 20px;
+	top: 8px;
+	font-size: 38px;
+	color: lighten(black, 40%);
+	z-index: 999999;
+	cursor: pointer;
+	&:hover {
+		transition: color .4s ease-in-out;
+		-ms-transition: color .4s ease-in-out;
+		-webkit-transition: color .4s ease-in-out;
+		color: black;
+	}
+}
 
 #LogoBackground {
 	position: relative;

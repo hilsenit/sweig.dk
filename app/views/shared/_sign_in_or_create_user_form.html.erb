@@ -19,8 +19,13 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
+        <%= f.label :name, "Brugernavn:" %><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :email, "Email-adresse:" %><br />
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
 
       <div class="form-group">
@@ -68,7 +73,7 @@
 
       <div class="form-group">
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me, "Husk mig", class: "form-control" %>
+        <%= f.label :remember_me, "Husk mig", class: "form-control", id: "RememberMeLog" %>
       </div>
 
       <%= render "devise/shared/links" %>
@@ -82,6 +87,5 @@
     </div><!-- #SignIn -->
 
   </div><!-- tab-content -->
-
 
 </div><!-- model-content -->
