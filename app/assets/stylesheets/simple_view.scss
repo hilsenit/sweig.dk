@@ -70,7 +70,8 @@ textarea:focus, input:focus{
 		margin-left: 15px;
 		.social-icons {
 		    margin-top: 9px;
-		    margin-right: 10px;
+		    margin-right: 5px;
+		    margin-left: 5px;
 		    font-size: 24px!important;
 		}
 
@@ -83,6 +84,7 @@ textarea:focus, input:focus{
 	right: 10px; 
 	font-size: 40px;
 	cursor: pointer; 
+
 }
 
 .rotatedefault {
@@ -134,4 +136,15 @@ textarea:focus, input:focus{
 .nav-tabs> li > .active{
     font-weight: 800;
     cursor: default;
+}
+
+.frontpage-nav {
+    width: 75%;
+    position: relative;
+    margin: 0 auto;
+}
+
+span.divider {
+    float: right;
+    padding: 8px 10px;
 }

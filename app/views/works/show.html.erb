@@ -4,9 +4,14 @@
 	<div class="show-navbar <%= "hide-it" if cookies[:navbar_work] == "up" %>">
 		<div class="show-navbar-inner">
 		<%= link_to (fa_icon "times"), user_path(@user), class: "float-left social-icons" %>
+		<span class="divider">|</span>
 		<%= fa_icon "twitter", class: "float-right social-icons" %>
 		<%= fa_icon "facebook", class: "float-right social-icons" %>
 		<%= fa_icon "instagram", class: "float-right social-icons" %>
+		<span class="divider">|</span>
+		<% if current_user %>
+			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons" %>
+		<% end %>
 		</div>
 	</div>
 	<div class="title">

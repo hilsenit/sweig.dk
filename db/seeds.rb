@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Marie Skovgaard Larsen", email: "example@7861234678.com")
+User.create!(password: "jegvarenganglækker", username: "Marie Skovgaard Larsen", email: "example@7861234678.com")
 
 
 5.times do |work_num|
@@ -14,7 +14,7 @@ User.create!(name: "Marie Skovgaard Larsen", email: "example@7861234678.com")
 	)
 end
 
-User.create!(name: "Peter Højlund Andersen", email: "evample@jkasdkjldasl.dk")
+User.create!(password: "jegvarenganglækker", username: "Peter Højlund Andersen", email: "evample@jkasdkjldasl.dk")
 
 
 5.times do |work_num|
@@ -24,7 +24,7 @@ end
 
 names = %w(Henning Henrik Bobby Ole Anna Henriette)
 names.length.times do |index|
-	User.create!(name: names[index], email: "test@teeest#{index}.dk")
+	User.create!(password: "jegvarenganglækker", username: names[index], email: "test@teeest#{index}.dk")
 	puts 
 end
 

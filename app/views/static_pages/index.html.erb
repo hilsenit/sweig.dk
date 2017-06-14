@@ -1,13 +1,24 @@
 
+
 <%= render partial: "shared/what_is_sweig" %>
 <%= render partial: "shared/sign_in_button" %>
 
 <div class="logo-wrapper">
+	<div class="frontpage-nav">
+		<div class="" data-toggle="modal" data-target="#myModal">
+			<%= fa_icon "user-o", id: "FrontpageUserButton"%>	
+		</div>
+		<div class="" data-toggle="why" data-target="#whatIsSweigModal">
+			<%= fa_icon "question", id: "WhatIsSweig"%>	
+		</div>
+	</div>
 	<div class="logo-text">
-	<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground" %>
-	<h1>sweig</h1>
-	<p class="roboto-mono">Til dig der elsker<br> det skrevne ord</p>
-<%= fa_icon "search" %>
+		<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground" %>
+		<h1>sweig</h1>
+		<p class="roboto-mono"> elsker det skrevne ord</p>
+		<%= fa_icon "search" %>
 	</div>
 </div>
 
+
+<%= link_to "Hey!", user_path(@users.first) %>

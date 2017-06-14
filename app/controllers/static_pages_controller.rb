@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
 	def index
 	@page_title = "This is it!"	
+	@users = User.all
 	@users_for_overview = User.sort_users	
 	@works = Work.all
 		if params[:search] # that's what the user is searching for

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	layout "user"
-	before_action :find_user, only: [ :show ]
 	def show
+		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published
 		@draft_works = @user.works.draft
 	end
@@ -39,15 +39,20 @@ class UsersController < ApplicationController
 	end
 
 
-	def save_work
-		@work = Work.friendly.find(params[:work_id])
+	def save_work_for_current_user
+		work = Work.friendly.find(params[:work_id])
+		current_user = User.friendly.find(params[:current_user])
+		new_saved_work = SavedWork.new
+		new_saved_work.work = work
+		current_user.saved_works << new_saved_work
+		binding.pry
 		# Et eller andet med at cookies finder den besøgende bruger
 		# Prøver nu, hvor Peter gemmer Maries
-		@user = User.find(2)
-		new_saved_work = SavedWork.new
-		new_saved_work.work = @work
-		# Jeg elsker has_many og belongs_to
-		@user.saved_works << new_saved_work
+		# @user = User.find(2)
+		# new_saved_work = SavedWork.new
+		# new_saved_work.work = @work
+		# # Jeg elsker has_many og belongs_to
+		# @user.saved_works << new_saved_work
 
 		redirect_back(fallback_location: user_path(@work.user))
 	end
@@ -63,11 +68,7 @@ class UsersController < ApplicationController
 
 	private
 
-	def find_user 
-		@user = User.friendly.find(params[:id])
-	end
-
 	def user_params
-		params.require(:user).permit(:name, :email)
+		params.require(:user).permit(:username, :email)
 	end
 end
