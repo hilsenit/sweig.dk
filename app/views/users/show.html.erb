@@ -1,14 +1,17 @@
 <%= render partial: "sidebar", locals: {user: @user} %>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<%= alert_notice_helper %>
 	<% if !@published_works.empty? %>
 		<h2>Udgivet</h2>
+		<hr>
 		<%= render partial: "user_works", 
 		locals: {works: @published_works, arrow: "down", user: @user} %>
 	<% end %>
 
 	<% if !@draft_works.empty? %>
 		<h2>Kladder</h2>
+		<hr>
 		<%= render partial: "user_works", 
 		locals: {works: @draft_works, arrow: "up", user: @user} %>
 	<% end %>

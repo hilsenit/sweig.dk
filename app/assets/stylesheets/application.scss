@@ -26,3 +26,52 @@ html {
 body {
 	min-height: 100%;
 }
+
+.roboto-mono {
+	font-family: "Roboto Mono";
+}
+.logo-wrapper {
+	position: relative;
+	width: 100%;
+	
+	.logo-text {
+		width: 400px;
+		margin: auto;
+		text-align: center;
+		height: auto;
+		position: relative;
+		h1 {
+			position: relative;
+			font-size: 4rem;
+			font-family: "Roboto Mono";
+			z-index: 999;
+
+		}	
+	}
+}
+
+#FrontpageUserButton {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	font-size: 34px;
+	color: lighten(black, 40%);
+	z-index: 999999;
+	cursor: pointer;
+	&:hover {
+		transition: color .4s ease-in-out;
+		-ms-transition: color .4s ease-in-out;
+		-webkit-transition: color .4s ease-in-out;
+		color: black;
+	}
+}
+
+#LogoBackground {
+	position: relative;
+	margin-top: 10vh;
+}
+
+
+.new-user-modal {
+	margin-top: 12vh;
+}

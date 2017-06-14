@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 root "static_pages#index"
 get "hvorfor" => "static_pages#why", as: "why"
 

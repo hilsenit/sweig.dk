@@ -2,7 +2,9 @@
   <%= "|" + user.name.parameterize %>
   <ul class="nav nav-sidebar">
     <li class="user-nav-items">
-      <%= link_to "Opret værk", new_user_work_path(@user) %>
+    <%= link_to "Oversigt", user_path(@user), class: "nav-link" %>
+    <%= link_to "Gemte", class: "nav-link" %>
+      <%= link_to "Opret værk", new_user_work_path(@user), class: "nav-link" %>
     </li>
 
   </ul>

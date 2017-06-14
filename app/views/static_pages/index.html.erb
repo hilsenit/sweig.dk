@@ -1,23 +1,14 @@
 <%= session_helper_social %>
-<%= image_tag "http://placehold.it/1300x450" %>
 
 
-
-<%= form_tag(root_path, :method => "get", id: "search-form") do %>
-	<%= text_field_tag :search, params[:search], placeholder: "Søg efter værk" %>
-	<%= submit_tag "Søg" %>
-<% end %>
-
-<div class="large-10 large-offset-1 column">
-	<%= render @works %>
+<div class="logo-wrapper">
+	<div class="logo-text">
+	<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground" %>
+	<h1>sweig</h1>
+	<p class="roboto-mono">Til dig der elsker<br> det skrevne ord</p>
+<%= fa_icon "search" %>
+	</div>
 </div>
 
-</div><!-- row finished -->
-<div class="row">
-	<h5>Vores nyeste brugere</h5>		
+<%= render partial: "shared/sign_in_button" %>
 
-	<%= render partial: "user_overview", 
-				collection: @users_for_overview, 
-				spacer_template: "shared/spacer" %>
-
-</div>

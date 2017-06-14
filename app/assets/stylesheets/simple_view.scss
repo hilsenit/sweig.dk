@@ -65,9 +65,15 @@ textarea:focus, input:focus{
 .show-navbar {
 	overflow: hidden;
 	height: 40px;
-	border-bottom: 1px solid black; 
 	.show-navbar-inner {
 		margin-right: 35px;
+		margin-left: 15px;
+		.social-icons {
+		    margin-top: 9px;
+		    margin-right: 10px;
+		    font-size: 24px!important;
+		}
+
 	}
 }
 
@@ -75,15 +81,8 @@ textarea:focus, input:focus{
 	position: absolute;
 	z-index: 99999;
 	right: 10px; 
-	top: -4px;
 	font-size: 40px;
 	cursor: pointer; 
-}
-
-.social-icons {
-    margin-top: 9px;
-    margin-right: 10px;
-    font-size: 24px;
 }
 
 .rotatedefault {
@@ -101,4 +100,38 @@ textarea:focus, input:focus{
 	-ms-transform: rotate(180deg);
 	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
+}
+
+.placeholder a {
+	color: black;
+	text-decoration: underline;
+}
+
+.work-show-outer {
+	padding: 0;
+}
+
+.modal-body-inner {
+	padding: 30px;
+}
+
+
+.modal-header .nav-tabs {
+	border-bottom: none;
+	.close {
+		cursor: pointer;
+	}
+	li {
+		padding-top: 15px;
+    	margin-left: 10px;
+	    a {
+		    cursor: pointer;
+		    padding: 10px;
+		}
+	}
+}
+
+.nav-tabs> li > .active{
+    font-weight: 800;
+    cursor: default;
 }

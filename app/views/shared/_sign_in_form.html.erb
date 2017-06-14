@@ -1,0 +1,87 @@
+
+<div class="modal-content">
+  <div class="modal-header">
+    <ul class="nav nav-tabs final-login">
+      <li>
+        <a class="active" data-toggle="tab" data-target="#SignUp">Opret</a>
+      </li>
+      <li class="">
+        <a class="" data-toggle="tab" data-target="#SignIn">Log ind</a>
+      </li>
+    </ul>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="modal-body tab-content">
+    <div class="modal-body-inner tab-pane in active" id="SignUp">
+      <h4 class="modal-title">Opret</h4>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :email, "Email-adresse:" %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, "Kodeord:" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> minimum længde af kodeord)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Bekræft dit kodeord:" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <%= render "devise/shared/links" %>
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
+        <%= f.submit "Opret", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+
+    </div><!-- #SignUp -->
+
+
+
+    <div class="modal-body-inner tab-pane fade" id="SignIn">
+      <h4 class="modal-title">Log ind</h4>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "Husk mig", class: "form-control" %>
+      </div>
+
+      <%= render "devise/shared/links" %>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+
+    </div><!-- #SignIn -->
+
+  </div><!-- tab-content -->
+
+
+</div><!-- model-content -->

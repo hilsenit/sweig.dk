@@ -10,9 +10,9 @@ module ApplicationHelper
 
 	def alert_notice_helper
 		if flash[:notice]
-			content_tag :div, flash[:notice], class: ""
+			content_tag :div, flash[:notice], class: "notice"
 		elsif flash[:error]
-			content_tag :div, flash[:error], class: ""
+			content_tag :div, flash[:error], class: "alert"
 		end
 	end
 	def session_helper_social
@@ -21,5 +21,17 @@ module ApplicationHelper
 			content_tag :div, social_message, class: "callout succes text-center"
 		end
 	end
+
+	def resource_name
+	   :user
+	 end
+
+	 def resource
+	   @resource ||= User.new
+	 end
+
+	 def devise_mapping
+	   @devise_mapping ||= Devise.mappings[:user]
+	 end
 
 end
