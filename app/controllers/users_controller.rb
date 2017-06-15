@@ -75,6 +75,14 @@ class UsersController < ApplicationController
 		
 	end
 
+	def saved_works
+		@user = User.friendly.find(params[:user_id])
+		@saved_works = []
+		@user.saved_works.each do |saved_work|
+			@saved_works << Work.find(saved_work.work_id)
+		end
+		
+	end
 
 
 	private

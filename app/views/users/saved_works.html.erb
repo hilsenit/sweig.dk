@@ -1,0 +1,25 @@
+<%= render partial: "sidebar", locals: {user: @user} if current_user == @user%>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<% unless  @user.saved_works.empty? %>
+		<%= alert_notice_helper %>
+		<h2>Gemte værker</h2>
+		<hr>
+		<div class="row placeholders">
+			<% @saved_works.each do |work| %>
+				<div class="col-xs-6 col-sm-3 col-md-3 placeholder">
+				<h6><%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+				<%= link_to user_work_path(work.user, work) do %>
+					<h4 class="text-left"><%= work.title %></h4>
+					<span class="text-left">
+						<%= simple_format( truncate(work.body, length: 80) ) %>
+					</span>
+				<% end %>
+				</div>
+
+			<% end %><!-- works.each -->
+		</div>
+	<% else %>
+		<h2>Du har ingen gemte værker endnu</h2>
+	<% end %>
+</div>

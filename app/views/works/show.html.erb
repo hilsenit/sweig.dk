@@ -1,9 +1,12 @@
-<%= fa_icon "angle-down", id: "NavbarToggle", class: "#{cookies[:navbar_work] == "down" ? "rotate180deg" : "rotatedefault"}" %>
 
 <div class="col-lg-12 work-show-outer">
 	<div class="show-navbar <%= "hide-it" if cookies[:navbar_work] == "up" %>">
+<%= fa_icon "angle-down", id: "NavbarToggle", class: "#{cookies[:navbar_work] == "down" ? "rotate180deg" : "rotatedefault"}" %>
 		<div class="show-navbar-inner">
 		<%= link_to (fa_icon "times"), user_path(@user), class: "float-left social-icons" %>
+		<% if current_user %>
+			<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
+		<% end %>
 		<span class="divider">|</span>
 		<%= fa_icon "facebook", class: "float-right social-icons" %>
 
@@ -21,14 +24,16 @@
 		<% end %>
 		</div>
 	</div>
+
 	<% if notice %>
-		<div class="alert row text-center">
-		<div class="offset-lg-4 col-lg-4">
-		<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
-		<%= notice %>
-		</div>
-		</div>
+	<div class="alert row text-center">
+	<div class="offset-lg-4 col-lg-4">
+	<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
+	<%= notice %>
+	</div>
+	</div>
 	<% end %>
+
 	<div class="title">
 		<h2 class="show-title"><%= @work.title %></h2>
 	</div>
@@ -43,7 +48,7 @@
 		$("#NavbarToggle").click(function() {
 			$(this).toggleClass('rotate180deg');
 			$(this).toggleClass('rotatedefault');
-			$(".show-navbar").slideToggle(300);
+			$(".show-navbar-inner").slideToggle(300);
 		});
 	});
 </script>

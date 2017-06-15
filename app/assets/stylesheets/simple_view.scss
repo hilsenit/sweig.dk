@@ -61,10 +61,11 @@ textarea:focus, input:focus{
     outline: none;
 }
 
-
 .show-navbar {
+    position: fixed;
 	overflow: hidden;
 	height: 40px;
+    width: 98%;
 	.show-navbar-inner {
 		margin-right: 35px;
 		margin-left: 15px;
@@ -162,4 +163,10 @@ span.divider {
 
 .notice-exit {
 	cursor: pointer;
+}
+.mit-sign {
+    margin-left: 37px;
+    margin-top: 12px;
+    font-size: 34px;
+    font-weight: 600;
 }

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 resources :users do
+	get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 	resources :works do
 		get "work/:current_user" => "users#save_work_for_current_user", as: "current_user_save"
 		delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"

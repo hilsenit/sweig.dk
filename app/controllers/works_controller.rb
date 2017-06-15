@@ -60,6 +60,7 @@ class WorksController < ApplicationController
 
 	def destroy
 		@work = Work.friendly.find(params[:id])
+
 		if @work.destroy
 			redirect_to user_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
 		else
