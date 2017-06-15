@@ -15,7 +15,8 @@
 			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon" %>
 		<!-- Hvis du er logget ind, og du har gemt -->
 		<% elsif current_user && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
-			<%= fa_icon "save", class: "float-right social-icons save-icon green-icon" %>	
+			<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon" %>
+
 		<!-- Hvis du ikke er logget ind -->
 		<% elsif !current_user %>
 			Du er ikke logget ind, og kan ikke gemme

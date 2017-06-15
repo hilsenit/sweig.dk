@@ -50,6 +50,19 @@ class UsersController < ApplicationController
 		redirect_to user_work_path(user, work)
 	end
 
+	def delete_saved_work
+		user = User.friendly.find(params[:user_id])
+		work = Work.friendly.find(params[:work_id])
+		current_user = User.friendly.find(params[:current_user])
+		current_user.saved_works.each do |saved_work|
+			if saved_work.work_id = work.id
+				@this_saved_work = saved_work
+			end
+		end
+		@this_saved_work.delete
+		redirect_to user_work_path(user, work)
+	end
+
 	def remove_saved_work
 		@work = Work.friendly.find(params[:work_id])
 

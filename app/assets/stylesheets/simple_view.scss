@@ -145,9 +145,15 @@ textarea:focus, input:focus{
 }
 .green-icon {
 	color: lighten(green, 20%);
+	&:hover {
+		transition: color .5 linear;
+		-ms-transition: color .5 linear;
+		-webkit-transition: color .5 linear;
+		color: lighten(red, 20%);
+	}
 }
-.show-navbar-inner .save-icon + .green-icon {
-	margin-top: 2px!important;
+.save-icon {
+    margin-top: 3px!important;
 }
 span.divider {
     float: right;

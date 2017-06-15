@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 resources :users do
 	resources :works do
 		get ":current_user" => "users#save_work_for_current_user", as: "current_user_save"
+		delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"
 		get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
 	# get "show-navbar-cookie" => "works#navbar_cookie", as: "navbar-cookie"
 
