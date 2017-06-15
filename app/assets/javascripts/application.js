@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require popper
+//= require social-share-button
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require turbolinks
