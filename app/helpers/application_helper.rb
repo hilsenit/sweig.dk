@@ -1,4 +1,8 @@
 module ApplicationHelper
+	def original_url_helper
+	  request.original_url
+	end
+
 	def set_title_helper
 		default = "Sweig"
 		if @page_title

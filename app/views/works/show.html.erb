@@ -15,8 +15,7 @@
 				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
 				<span class="divider">|</span>
-				<%= fa_icon "facebook", class: "float-right social-icons" %>
-
+				<%= social_share_button_tag(@work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
 				<span class="divider">|</span>
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if current_user && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
@@ -48,10 +47,6 @@
 			<div class="show-body"><%= simple_format( @work.body ) %></div>
 		</div>
 
-	</div>
-	<% binding.pry %>
-	<div class="social-share">
-	<%= social_share_button_tag(@work.title) %>
 	</div>
 	 
 
