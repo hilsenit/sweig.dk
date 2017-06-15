@@ -8,9 +8,17 @@
 		<%= fa_icon "twitter", class: "float-right social-icons" %>
 		<%= fa_icon "facebook", class: "float-right social-icons" %>
 		<%= fa_icon "instagram", class: "float-right social-icons" %>
+
 		<span class="divider">|</span>
-		<% if current_user %>
-			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons" %>
+		<!-- Hvis du er logget ind, og du ikke har gemt -->
+		<% if current_user && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
+			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon" %>
+		<!-- Hvis du er logget ind, og du har gemt -->
+		<% elsif current_user && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
+			<%= fa_icon "save", class: "float-right social-icons save-icon green-icon" %>	
+		<!-- Hvis du ikke er logget ind -->
+		<% elsif !current_user %>
+			Du er ikke logget ind, og kan ikke gemme
 		<% end %>
 		</div>
 	</div>
@@ -20,6 +28,7 @@
 	<div class="body">
 		<div class="show-body"><%= simple_format( @work.body ) %></div>
 	</div>
+
 </div>
 
 <script type="text/javascript">

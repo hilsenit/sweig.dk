@@ -41,20 +41,13 @@ class UsersController < ApplicationController
 
 	def save_work_for_current_user
 		work = Work.friendly.find(params[:work_id])
+		user = User.friendly.find(params[:user_id])
 		current_user = User.friendly.find(params[:current_user])
 		new_saved_work = SavedWork.new
+		new_saved_work.user = current_user
 		new_saved_work.work = work
-		current_user.saved_works << new_saved_work
-		binding.pry
-		# Et eller andet med at cookies finder den besøgende bruger
-		# Prøver nu, hvor Peter gemmer Maries
-		# @user = User.find(2)
-		# new_saved_work = SavedWork.new
-		# new_saved_work.work = @work
-		# # Jeg elsker has_many og belongs_to
-		# @user.saved_works << new_saved_work
-
-		redirect_back(fallback_location: user_path(@work.user))
+		new_saved_work.save!
+		redirect_to user_work_path(user, work)
 	end
 
 	def remove_saved_work

@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
 	belongs_to :user
+	has_many :saved_works
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	enum status: { draft: 0, published: 1}

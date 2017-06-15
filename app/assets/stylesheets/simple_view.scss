@@ -143,7 +143,12 @@ textarea:focus, input:focus{
     position: relative;
     margin: 0 auto;
 }
-
+.green-icon {
+	color: lighten(green, 20%);
+}
+.show-navbar-inner .save-icon + .green-icon {
+	margin-top: 2px!important;
+}
 span.divider {
     float: right;
     padding: 8px 10px;

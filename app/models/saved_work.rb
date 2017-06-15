@@ -1,5 +1,5 @@
 class SavedWork < ApplicationRecord
 
 	belongs_to :user
-	has_one :work
+	belongs_to :work
 end
