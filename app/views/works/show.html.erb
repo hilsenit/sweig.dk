@@ -25,12 +25,12 @@
 				<% elsif !current_user %>
 				Du er ikke logget ind, og kan ikke gemme
 				<% end %>
-				<div class="social-share">
-				<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
-				</div>	
+				
 			</div>
 		</div>
-
+		<div class="social-share">
+		<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+		</div>	
 		<% if notice %>
 			<div class="alert row text-center">
 				<div class="offset-lg-4 col-lg-4">
