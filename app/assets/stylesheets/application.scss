@@ -26,7 +26,13 @@ html {
 body {
 	min-height: 100%;
 }
-
+.front-page-background-image {
+	background-image: url(image-path("baggrund-sweig.png"));
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
 .roboto-mono {
 	font-family: "Roboto Mono";
 }
@@ -41,37 +47,21 @@ body {
 		height: auto;
 		position: relative;
 		h1 {
+			margin-top: 4vh;
 			position: relative;
 			font-size: 4rem;
 			font-family: "Roboto Mono";
-			z-index: 999;
+			z-index: 909;
 
 		}	
 	}
 }
 
-#FrontpageUserButton {
-	position: absolute;
-	right: 20px;
-	top: 10px;
+.icon-frontpage {
+	position: relative;
+	width: 33%; 
 	font-size: 34px;
-	color: lighten(black, 40%);
-	z-index: 999999;
-	cursor: pointer;
-	&:hover {
-		transition: color .4s ease-in-out;
-		-ms-transition: color .4s ease-in-out;
-		-webkit-transition: color .4s ease-in-out;
-		color: black;
-	}
-}
-#WhatIsSweig {
-	position: absolute;
-	left: 20px;
-	top: 8px;
-	font-size: 38px;
-	color: lighten(black, 40%);
-	z-index: 999999;
+	z-index: 993;
 	cursor: pointer;
 	&:hover {
 		transition: color .4s ease-in-out;
@@ -81,9 +71,20 @@ body {
 	}
 }
 
+.blue-color {
+	color: #4c7fc3
+}
+
+.orange-color {
+	color: #d86b46;
+}
+
+.green-color {
+	color: #4a5953
+}
 #LogoBackground {
+	margin-top: 40px;
 	position: relative;
-	margin-top: 10vh;
 }
 
 
@@ -97,8 +98,8 @@ body {
 /* gå til MIT på forsiden */
 .user-logged-in-entrance, .sweig-hidden {
     position: absolute;
-    z-index: 994;
-    top: 200px;
+    z-index: 996;
+    top: 180px;
     width: 100%;
     text-align: center;
     h2 {

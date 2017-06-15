@@ -52,7 +52,7 @@ class WorksController < ApplicationController
 
 	def navbar_cookie
 		params[:navbar_cookie] == "down" ? cookies[:navbar_work] = "up" : cookies[:navbar_work] = "down"
-		head :ok
+		head :ok 
 	end
 
 	def destroy

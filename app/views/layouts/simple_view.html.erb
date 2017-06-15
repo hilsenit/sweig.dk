@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= set_title_helper %></title>
-    <%= favicon_link_tag %>
-    <%= stylesheet_link_tag    "simple_view" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <title><%= set_title_helper %></title>
+  <%= favicon_link_tag %>
+  <%= stylesheet_link_tag    "simple_view" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta property="og:url"           content="https://www.sweig.dk" />
+  <meta property="og:type"          content="website" />
+  <% if content_for?(:facebook_title) %>
+  <meta property="og:title"         content="<%= yield :facebook_title %>" />
+  <% else %>
+  <meta property="og:title"         content="sweig" />
+  <% end %>
+  <% if content_for?(:facebook_description) %>
+  <meta property="og:description"   content="<%= yield :facebook_description %>" />
+  <% else %>
+  <meta property="og:description"   content="Det skrevne ord" />
+  <% end %>
+  <meta property="og:image"         content="<%= image_url('logo-facebook') %>" />
 
-  <body>
-    <div class="container-fluid form-outer">
-      <div class="row">
+
+</head>
+
+<body>
+  <div class="container-fluid form-outer">
+    <div class="row">
 
      <%= yield %>
-     </div>
-     </div>
-  </body>
+   </div>
+ </div>
+</body>
 
 </html>

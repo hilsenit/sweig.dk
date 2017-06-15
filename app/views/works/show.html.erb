@@ -1,3 +1,6 @@
+<!-- TIL FACEBOOK --> 
+<% content_for :facebook_title, @work.title %>
+<% content_for :facebook_description, truncate(@work.body, length: 75) %>
 <input type="hidden" id="currentUserId" val="<%= current_user.id %>">
 <div class="col-lg-12 work-show-outer">
 	<div class="show-navbar">
@@ -46,34 +49,54 @@
 		</div>
 
 	</div>
+	<div class="fb-share-button" data-href="http://localhost:3000/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2F&amp;src=sdkpreparse">Del</a></div>
+	  <div id="fb-root"></div>
+	  <script>(function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/da_DK/sdk.js#xfbml=1&version=v2.9";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));</script>
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#NavbarToggle").click(function() {
-				$(this).toggleClass('rotate180deg');
-				$(this).toggleClass('rotatedefault');
-				$(".show-navbar-inner").slideToggle(300);
-			});
-		});
+	  <!-- Your share button code -->
+	  <div class="fb-share-button" 
+	    data-href="http://www.your-domain.com/your-page.html" 
+	    data-layout="button_count">asd
+	  </div>
 
-	</script>
-	<% if user_signed_in? %>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			NavbarCookie = '<%= cookies[:navbar_work] %>';
-	 		CurrentUserId = '<%= current_user.id %>';
-			$("#NavbarToggle").click(function() {
-				$.ajax({
-					url: '/users/' + CurrentUserId + '/works/navbar_cookie',
-					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-					type: 'PUT',
-					data: { navbar_cookie: NavbarCookie, user_id: CurrentUserId }
-				});		
-			});
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#NavbarToggle").click(function() {
+			$(this).toggleClass('rotate180deg');
+			$(this).toggleClass('rotatedefault');
+			$(".show-navbar-inner").slideToggle(300);
 		});
-	</script>
-	<
-	<% end %>
+	});
+
+
+</script>
+<% if user_signed_in? %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		NavbarCookie = '<%= cookies[:navbar_work] %>';
+		CurrentUserId = '<%= current_user.id %>';
+		$("#NavbarToggle").click(function() {
+			$.ajax({
+				url: '/users/' + CurrentUserId + '/works/navbar_cookie',
+				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+				type: 'PUT',
+				data: { navbar_cookie: NavbarCookie, user_id: CurrentUserId }
+			});		
+		});
+	});
+</script>
+<% end %>
+
+
+	
 
 
 
