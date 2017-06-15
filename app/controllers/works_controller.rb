@@ -43,20 +43,17 @@ class WorksController < ApplicationController
 	end
 
 	def show
-		cookies[:navbar_work] = "down" if cookies[:navbar].nil?
+		cookies[:navbar_work] = "down" if cookies[:navbar_work].nil?
 
 		@work = Work.friendly.find(params[:id])		
 		@user = @work.user
 	end
 
-	# def navbar_cookie
-	# 	if cookies[:navbar] == "up"
-	# 		cookies[:navbar] = "down"
-	# 	else
-	# 		cookies[:navbar] = "up"
-	# 	end
-	# 	render nothing: true
-	# end
+
+	def navbar_cookie
+		params[:navbar_cookie] == "down" ? cookies[:navbar_work] = "up" : cookies[:navbar_work] = "down"
+		head :ok
+	end
 
 	def destroy
 		@work = Work.friendly.find(params[:id])

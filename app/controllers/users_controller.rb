@@ -68,12 +68,7 @@ class UsersController < ApplicationController
 		redirect_to user_work_path(user, work)
 	end
 
-	def remove_saved_work
-		@work = Work.friendly.find(params[:work_id])
 
-
-		
-	end
 
 	def saved_works
 		@user = User.friendly.find(params[:user_id])
