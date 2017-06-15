@@ -11,9 +11,7 @@
 			%>
 			<div class="show-navbar-inner <%= "hide-it" if cookies[:navbar_work] == "up" %>">
 				<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
-				<div class="social-share float-right">
-				<%= social_share_button_tag( @work.title, img: image_url("logo-facebook"), desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
-				</div>
+
 				<% if current_user %>
 				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
@@ -54,7 +52,9 @@
 	</div>
 
 	
-	 
+	 <div class="social-share">
+	 <%= social_share_button_tag( @work.title, img: image_url("logo-facebook"), desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+	 </div>
 
 
 <script type="text/javascript">
