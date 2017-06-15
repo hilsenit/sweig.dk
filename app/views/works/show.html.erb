@@ -13,7 +13,7 @@
 				<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
 
 				<% if current_user %>
-				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
+					<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
 
 				<span class="divider">|</span>
@@ -28,6 +28,9 @@
 				<% elsif !current_user %>
 				Du er ikke logget ind, og kan ikke gemme
 				<% end %>
+				<div class="social-share">
+				<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+				</div>
 			</div>
 		</div>
 
@@ -50,9 +53,7 @@
 	</div>
 
 	
-	 <div class="social-share">
-	 <%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
-	 </div>
+	 
 
 
 <script type="text/javascript">
