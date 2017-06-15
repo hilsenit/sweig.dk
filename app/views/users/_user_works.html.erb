@@ -1,16 +1,17 @@
 <div class="row placeholders sortable">
 	<% works.each do |work| %>
-		<div class="col-xs-6 col-sm-3 col-md-3 placeholder sortable-item" data-id="<%= work.id %>">
+		<div class="col-xs-6 col-sm-4 col-md-3 placeholder sortable-item" data-id="<%= work.id %>">
+			<%= work_options_icon_helper @user, work, arrow %>
+
 		<%= link_to user_work_path(user, work) do %>
 
 			<h4 class="text-left"><%= work.title %>
-			<%= work_options_icon_helper @user, work, arrow%>
 			</h4>
 			<span class="text-left">
 				<%= simple_format( truncate(work.body, length: 80) ) %>
 			</span>
 		<% end %><!-- user_work_path_link -->
-		</div>
+		</div><!-- col-xs-6 -->
 
 	<% end %><!-- works.each -->
 </div>

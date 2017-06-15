@@ -90,7 +90,11 @@ body {
 .new-user-modal {
 	margin-top: 6vh;
 }
-
+.what-is-sweig-modal {
+	position: relative;
+    width: auto;
+}
+/* gå til MIT på forsiden */
 .user-logged-in-entrance {
     position: absolute;
     z-index: 9999999;
@@ -108,4 +112,14 @@ body {
     	font-size: 50px; 
     	font-family: "Roboto Mono";
     }
+}
+
+
+@media screen and (min-width: 576px) {
+
+#whatIsSweigModal .what-is-sweig-modal {
+    max-width: 800px;
+    top: 350px;
+}
+
 }

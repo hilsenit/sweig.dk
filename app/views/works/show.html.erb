@@ -3,7 +3,7 @@
 	<div class="show-navbar <%= "hide-it" if cookies[:navbar_work] == "up" %>">
 <%= fa_icon "angle-down", id: "NavbarToggle", class: "#{cookies[:navbar_work] == "down" ? "rotate180deg" : "rotatedefault"}" %>
 		<div class="show-navbar-inner">
-		<%= link_to (fa_icon "times"), user_path(@user), class: "float-left social-icons" %>
+		<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
 		<% if current_user %>
 			<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 		<% end %>

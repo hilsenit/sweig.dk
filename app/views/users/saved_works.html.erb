@@ -1,6 +1,6 @@
 <%= render partial: "sidebar", locals: {user: @user} if current_user == @user%>
 
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<div class="col-sm-9 col-sm-offset-3 main">
 	<% unless  @user.saved_works.empty? %>
 		<%= alert_notice_helper %>
 		<h2>Gemte værker</h2>
