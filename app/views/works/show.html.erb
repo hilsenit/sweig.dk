@@ -15,8 +15,6 @@
 				<% if current_user %>
 				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
-				<span class="divider">|</span>
-				
 
 				<span class="divider">|</span>
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
@@ -53,7 +51,7 @@
 
 	
 	 <div class="social-share">
-	 <%= social_share_button_tag( @work.title, img: image_url("logo-facebook"), desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+	 <%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
 	 </div>
 
 
