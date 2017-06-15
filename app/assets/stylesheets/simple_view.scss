@@ -153,9 +153,13 @@ textarea:focus, input:focus{
 	}
 }
 .save-icon {
-    margin-top: 3px!important;
+    margin-top: 2px!important;
 }
 span.divider {
     float: right;
     padding: 8px 10px;
+}
+
+.notice-exit {
+	cursor: pointer;
 }

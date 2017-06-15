@@ -90,3 +90,22 @@ body {
 .new-user-modal {
 	margin-top: 6vh;
 }
+
+.user-logged-in-entrance {
+    position: absolute;
+    z-index: 9999999;
+    top: 200px;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    border-radius: 100%;
+    color: white;
+    h2 {
+    	font-size: 100px;
+    	font-family: "Roboto Mono";
+    }
+    h5	{
+    	font-size: 50px; 
+    	font-family: "Roboto Mono";
+    }
+}

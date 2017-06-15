@@ -5,9 +5,7 @@
 		<div class="show-navbar-inner">
 		<%= link_to (fa_icon "times"), user_path(@user), class: "float-left social-icons" %>
 		<span class="divider">|</span>
-		<%= fa_icon "twitter", class: "float-right social-icons" %>
 		<%= fa_icon "facebook", class: "float-right social-icons" %>
-		<%= fa_icon "instagram", class: "float-right social-icons" %>
 
 		<span class="divider">|</span>
 		<!-- Hvis du er logget ind, og du ikke har gemt -->
@@ -23,6 +21,14 @@
 		<% end %>
 		</div>
 	</div>
+	<% if notice %>
+		<div class="alert row text-center">
+		<div class="offset-lg-4 col-lg-4">
+		<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
+		<%= notice %>
+		</div>
+		</div>
+	<% end %>
 	<div class="title">
 		<h2 class="show-title"><%= @work.title %></h2>
 	</div>

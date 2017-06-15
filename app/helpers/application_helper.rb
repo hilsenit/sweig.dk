@@ -15,6 +15,7 @@ module ApplicationHelper
 			content_tag :div, flash[:error], class: "alert"
 		end
 	end
+	
 	def session_helper_social
 		if session[:social] 
 			social_message = "Thank you for visiting from #{session[:social]}"
@@ -22,6 +23,7 @@ module ApplicationHelper
 		end
 	end
 
+	# For DEVISE MODAL
 	def resource_name
 	   :user
 	 end

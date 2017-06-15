@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 		new_saved_work.user = current_user
 		new_saved_work.work = work
 		new_saved_work.save!
+		flash[:notice] = "'#{work.title}' er nu gemt under MIT"
 		redirect_to user_work_path(user, work)
 	end
 
@@ -54,12 +55,16 @@ class UsersController < ApplicationController
 		user = User.friendly.find(params[:user_id])
 		work = Work.friendly.find(params[:work_id])
 		current_user = User.friendly.find(params[:current_user])
+		# se hvilket af den besøgendes gemte værker, som er det viste værk
+		# TODO Hvordan laver man den her i én linje?
 		current_user.saved_works.each do |saved_work|
 			if saved_work.work_id = work.id
 				@this_saved_work = saved_work
 			end
+			# Hvordan går man ud af en each
 		end
 		@this_saved_work.delete
+		flash[:notice] = "'#{work.title}' er nu slettet fra dine gemte under MIT"
 		redirect_to user_work_path(user, work)
 	end
 

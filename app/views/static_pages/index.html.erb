@@ -14,6 +14,14 @@
 	</div>
 	<div class="logo-text">
 		<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground" %>
+		<% if current_user %>
+			<%= link_to user_path(current_user) do %>
+				<div class="user-logged-in-entrance">
+					<h5>Gå til</h5>
+					<h2>MIT</h2>
+				</div>
+			<% end %>
+		<% end %>
 		<h1>sweig</h1>
 		<p class="roboto-mono"> elsker det skrevne ord</p>
 		<%= fa_icon "search" %>
