@@ -3,7 +3,8 @@ module WorksHelper
 		(link_to (fa_icon "angle-#{arrow_value}"), 
 			user_work_toggle_status_path(user, work) ) + 
 		(link_to (fa_icon "minus-square-o"), 
-			user_work_path(user, work), method: "delete", data: {confirm: "Er du sikker på at du vil slette \"#{work.title}?\""})
+			user_work_path(user, work), method: "delete", data: {confirm: "Er du sikker på at du vil slette \"#{work.title}?\""}) + 
+		(link_to (fa_icon "pencil"), edit_user_work_path(user, work))
 	end
 
 	def is_work_already_saved_helper? current_user_saved_works, work
