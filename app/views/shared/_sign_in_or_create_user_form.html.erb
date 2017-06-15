@@ -1,14 +1,14 @@
 
 <div class="modal-content">
-  <% if current_user %>
+  <% if user_signed_in? %>
 
     <div class="modal-header">
       <h2>Du er logget ind</h2>
     </div>
     <div class="modal-body">
       <div class="modal-body-inner">
-        <%= link_to "Log ud", destroy_user_session_path(), class: "btn btn-primary" %>
-        <%= link_to "Gå til mit", user_path(current_user), class: "btn btn-secondary" %>
+        <%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "btn btn-primary" %>
+        <%= link_to "Gå til MIT", user_path(current_user), class: "btn btn-secondary" %>
       </div>
     </div>
 
@@ -17,10 +17,13 @@
   <div class="modal-header">
     <ul class="nav nav-pills final-login">
       <li>
-        <a class="active" data-toggle="tab" href="#signUpField">Opret</a>
+        <a class="modal-header-links active" data-toggle="tab" href="#signUpField">Opret</a>
+      </li>
+      <li class="nav-divider">
+        |
       </li>
       <li>
-        <a class="" data-toggle="tab" href="#signInField">Log ind</a>
+        <a class="modal-header-links " data-toggle="tab" href="#signInField">Log ind</a>
       </li>
     </ul>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

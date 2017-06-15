@@ -95,31 +95,40 @@ body {
     width: auto;
 }
 /* gå til MIT på forsiden */
-.user-logged-in-entrance {
+.user-logged-in-entrance, .sweig-hidden {
     position: absolute;
-    z-index: 9999999;
+    z-index: 994;
     top: 200px;
-    left: 50%;
-    width: 200px;
-    margin-left: -100px;
-    border-radius: 100%;
-    color: white;
+    width: 100%;
+    text-align: center;
     h2 {
+    	display: inline-block;
     	font-size: 100px;
     	font-family: "Roboto Mono";
+    	color: white;
     }
     h5	{
+    	color: white;
+    	display: inline-block;
     	font-size: 50px; 
     	font-family: "Roboto Mono";
     }
 }
-
-
-@media screen and (min-width: 576px) {
-
+.nav-pills > li > .active {
+	text-decoration: underline; 
+}
+.modal-header-links {
+    text-transform: uppercase;
+    font-family: "Roboto Mono";
+    color: black;
+    margin: 10px;
+}
 #whatIsSweigModal .what-is-sweig-modal {
     max-width: 800px;
-    top: 350px;
+    top: 180px;
 }
+@media screen and (min-width: 576px) {
+
+
 
 }
