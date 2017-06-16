@@ -3,6 +3,9 @@ module ApplicationHelper
 	  request.original_url
 	end
 
+	def is_current_user?
+		current_user == @user
+	end
 	def set_title_helper
 		default = "Sweig"
 		if @page_title

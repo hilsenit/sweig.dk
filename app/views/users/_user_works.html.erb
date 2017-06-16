@@ -1,8 +1,9 @@
 <div class="row placeholders sortable">
 	<% works.each do |work| %>
 		<div class="col-xs-6 col-sm-4 col-md-3 placeholder sortable-item" data-id="<%= work.id %>">
+		<% if current_user %>
 			<%= work_options_icon_helper @user, work, arrow %>
-
+		<% end %>
 		<%= link_to user_work_path(user, work) do %>
 
 			<h4 class="text-left"><%= work.title %>

@@ -1,12 +1,12 @@
 
 
-<%= render partial: "shared/what_is_sweig" %>
-<%= render partial: "shared/sign_in_button" %>
+
 
 <div class="logo-wrapper">
 <!-- 	<div class="frontpage-nav">
 	</div> -->
 	<div class="logo-text">
+		
 		<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground", class: "float-left" %>
 		<% if user_signed_in? %>
 				<div class="user-logged-in-entrance">
@@ -19,15 +19,6 @@
 		<div class="logo-text-box">
 			<h1>sweig</h1>
 			<p class="roboto-mono">det skrevne ord</p>
-		</div>
-		<div class="icon-frontpage float-left" data-toggle="modal" data-target="#whatIsSweigModal">
-			<%= fa_icon "question", id: "WhatIsSweig"%>	
-		</div>
-		<div class="icon-frontpage float-left" data-toggle="modal" data-target="#whatIsSweigModal">
-			<%= fa_icon "search", id: "FrontPageSearch" %>
-		</div>
-		<div class="icon-frontpage float-left" data-toggle="modal" data-target="#myModal">
-			<%= fa_icon "user-o", id: "FrontpageUserButton"%>	
 		</div>
 		
 	</div>
