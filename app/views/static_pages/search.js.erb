@@ -1,1 +1,1 @@
-$(".search-results").html("<%= @works.inspect %>");
+$(".search-results").html("<%= escape_javascript( render partial: 'search_result', locals: { works: @works }) %>");

@@ -1,9 +1,6 @@
 class StaticPagesController < ApplicationController
 
 	def index
-		@works = Work.all
-
-
 	end
 
 	def search
