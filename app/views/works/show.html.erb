@@ -10,9 +10,14 @@
 				<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
 
 				<% if current_user %>
-					<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
+				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
-
+				<span class="divider">|</span>
+				<div class="social-share float-right">
+					<div class="social-share-button" data-title="<%= @work.title %>" data-img="<%= image_url('logo-facebook') %>" data-url="<%= original_url_helper %>" data-desc="<%= @work.body %>" data-via="">
+						<a rel="nofollow " data-site="facebook" class="social-icons ssb-icon ssb-facebook" onclick="return SocialShareButton.share(this);" title="Del med Facebook" href="#"><%= fa_icon "facebook" %></a>
+					</div>
+				</div>
 				<span class="divider">|</span>
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if current_user && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
@@ -29,15 +34,16 @@
 			</div>
 		</div>
 		<div class="social-share">
-		<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+
 		</div>	
+
 		<% if notice %>
-			<div class="alert row text-center">
-				<div class="offset-lg-4 col-lg-4">
-					<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
-					<%= notice %>
-				</div>
+		<div class="alert row text-center">
+			<div class="offset-lg-4 col-lg-4">
+				<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
+				<%= notice %>
 			</div>
+		</div>
 		<% end %>
 
 		<div class="title">
@@ -51,37 +57,37 @@
 
 	
 	<div class="social-share">
-	<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
+		<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
 	</div>	 
 
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#NavbarToggle").click(function() {
-			$(this).toggleClass('rotate180deg');
-			$(this).toggleClass('rotatedefault');
-			$(".show-navbar-inner").slideToggle(300);
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#NavbarToggle").click(function() {
+				$(this).toggleClass('rotate180deg');
+				$(this).toggleClass('rotatedefault');
+				$(".show-navbar-inner").slideToggle(300);
+			});
 		});
-	});
 
 
-</script>
-<% if user_signed_in? %>
-<script type="text/javascript">
-	$(document).ready(function() {
-		NavbarCookie = '<%= cookies[:navbar_work] %>';
-		CurrentUserId = '<%= current_user.id %>';
-		$("#NavbarToggle").click(function() {
-			$.ajax({
-				url: '/users/' + CurrentUserId + '/works/navbar_cookie',
-				beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-				type: 'PUT',
-				data: { navbar_cookie: NavbarCookie, user_id: CurrentUserId }
-			});		
+	</script>
+	<% if user_signed_in? %>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			NavbarCookie = '<%= cookies[:navbar_work] %>';
+			CurrentUserId = '<%= current_user.id %>';
+			$("#NavbarToggle").click(function() {
+				$.ajax({
+					url: '/users/' + CurrentUserId + '/works/navbar_cookie',
+					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+					type: 'PUT',
+					data: { navbar_cookie: NavbarCookie, user_id: CurrentUserId }
+				});		
+			});
 		});
-	});
-</script>
-<% end %>
+	</script>
+	<% end %>
 
 
 	
