@@ -1,52 +1,45 @@
-<div class="col-sm-4 icon-frontpage text-right" data-toggle="modal" data-target="#whatIsSweigModal">
-  <%= fa_icon "question", id: "WhatIsSweig"%> 
-</div>
-<div class="col-sm-4 icon-frontpage text-center" aria-expanded="false" data-toggle="collapse" data-target="#searchBar">
-  <%= fa_icon "search", id: "FrontPageSearch" %>
-</div>
-<div class="col-sm-4 icon-frontpage text-left" data-toggle="modal" data-target="#myModal">
-  <%= fa_icon "user-o", id: "FrontpageUserButton"%> 
-</div>
-
+<%= render partial: "shared/navbar_buttons" %>
 <%= render partial: "shared/what_is_sweig_modal" %>
 <%= render partial: "shared/sign_in_create_modal" %>
 
 <div class="offset-sm-1 col-sm-10">
-  <div class="collapse search" id="searchBar">
-    <%= form_tag(search_path, method: :get, remote: true) do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Søg", name: nil %>
-    <% end %>
+
+	<div class="collapse search" id="searchBar">
+	<hr>
+		<div class="search-field">
+				<%= form_tag(search_path, method: :get, remote: true) do %>
+				<%= text_field_tag :search, params[:search], class: "form-control" %>
+				<%= submit_tag "Søg", name: nil %>
+				<% end %>
+		</div>		
+	</div>
 
 
-    <div class="search-results">
+	<div class="row search-results">
 
-    </div>
-    <% unless @works.blank? %>
-    <%= @works.inspect %>
-    <% end %>
-  </div>
+	</div>
 
-
+</div>
 
 <div class="logo-wrapper">
 <!-- 	<div class="frontpage-nav">
-	</div> -->
+</div> -->
 	<div class="logo-text">
-		
+
 		<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground", class: "float-left" %>
 		<% if user_signed_in? %>
-				<div class="user-logged-in-entrance">
+		<div class="user-logged-in-entrance">
 			<%= link_to user_path(current_user) do %>
-					<h5>Gå til</h5><br>
-					<h2>MIT</h2>
+			<h5>Gå til</h5><br>
+			<h2>MIT</h2>
 			<% end %>
-				</div>
+		</div>
 		<% end %>
 		<div class="logo-text-box">
 			<h1>sweig</h1>
 			<p class="roboto-mono">det skrevne ord</p>
 		</div>
-		
+
 	</div>
+
 </div>

@@ -1,3 +1,6 @@
 <% works.each do |work| %>
-	<%= work.title %>
+	<div class="col-md-3">
+	<p class="lead"><%= work.title %></p>
+	<p><%= truncate( work.body, length: 100 ) %></p>
+	</div>
 <% end %>
