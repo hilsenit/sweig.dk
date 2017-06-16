@@ -6,30 +6,35 @@
 		class: "rotate180deg" 
 			%>
 			<div class="show-navbar-inner">
-				<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
+
+				<%= link_to "|#{@user.username.parameterize}", user_path(@user), class: "float-left exit-icon" %>
+				<span class="divider float-left">|</span>
 
 				<% if current_user %>
 				<%= link_to "MIT", user_path(current_user), class: "mit-sign" %>
 				<% end %>
+
 				<span class="divider">|</span>
+
 				<div class="social-share float-right">
 					<div class="social-share-button" data-title="<%= @work.title %>" data-img="<%= image_url('logo-facebook') %>" data-url="<%= original_url_helper %>" data-desc="<%= @work.body %>" data-via="">
 						<a rel="nofollow " data-site="facebook" class="social-icons ssb-icon ssb-facebook" onclick="return SocialShareButton.share(this);" title="Del med Facebook" href="#"></a>
 					</div>
 				</div>
+
 				<span class="divider">|</span>
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
-				<% if current_user && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
+				<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
 				<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon", title: "Gem dette værk" %>
 				<!-- Hvis du er logget ind, og du har gemt -->
-				<% elsif current_user && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
+				<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
 				<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon", title: "Fjern dette værk fra dine gemte" %>
 
 				<!-- Hvis du ikke er logget ind -->
-				<% elsif !current_user %>
-				Du er ikke logget ind, og kan ikke gemme
+				<% else %>
+				<p class="lead text-center work-show-not-logged-in-text">Opret dig eller log ind for at gemme værker</p>
 				<% end %>
-				
+
 			</div>
 		</div>
 		<div class="social-share">

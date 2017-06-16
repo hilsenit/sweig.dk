@@ -17,6 +17,10 @@
 		<%= render partial: "user_works", 
 		locals: {works: @draft_works, arrow: "up", user: @user} %>
 	<% end %>
+
+	<% if @draft_works.empty? && @published_works.empty? %>
+	<p class="text-center lead">Du har ingen værker endnu</p>
+	<% end %>
 </div>
 
 

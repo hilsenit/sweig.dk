@@ -1,21 +1,21 @@
 <div class="row">
 	<% works.each do |work| %>
 	<div class="col-xs-6 works-show-wrapper col-sm-4 col-md-3">
-			<%= link_to user_work_path(user, work) do %>
 		<div class="works-show-box">
 			<% if is_current_user? %>
 				<%= content_tag :div, (work_options_icon_helper @user, work, arrow), class: "edit-icons-wrapper" %>
 			<% end %>
 
 
+		<%= link_to user_work_path(user, work) do %>
 			<p class="lead">
 				<%= work.title %>
 			</p>
 			<span class="text-left">
 				<%= simple_format( truncate(work.body, length: 80) ) %>
 			</span>
+		<% end %><!-- user_work_path_link -->
 		</div><!-- works-show-box -->
-			<% end %><!-- user_work_path_link -->
 	</div><!-- col-xs-6 -->
 	<% end %><!-- works.each -->
 </div>

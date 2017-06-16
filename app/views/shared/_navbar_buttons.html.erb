@@ -1,9 +1,22 @@
 <div class="offset-sm-3 col-sm-2 icon-frontpage text-center" data-toggle="modal" data-target="#whatIsSweigModal">
   <%= fa_icon "question", id: "WhatIsSweig"%> 
 </div>
-<div class="col-sm-2 icon-frontpage text-center" aria-expanded="false" data-toggle="collapse" data-target="#searchBar">
+<div class="col-sm-2 icon-frontpage text-center" id="searchButton" aria-expanded="false" data-toggle="collapse" data-target="#searchBar">
   <%= fa_icon "search", id: "FrontPageSearch" %>
 </div>
+<% if user_signed_in? %>
+<div class="col-sm-2 icon-frontpage text-center">
+  <%= link_to (fa_icon "user-o"), user_path(current_user), id: "FrontpageUserButton"%> 
+</div>
+<% else %>
 <div class="col-sm-2 icon-frontpage text-center" data-toggle="modal" data-target="#myModal">
   <%= fa_icon "user-o", id: "FrontpageUserButton"%> 
 </div>
+<% end %>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#searchButton").click(function() {
+			$("#FrontPageSearch").toggleClass('front-page-search-active');
+		});
+	});
+</script>

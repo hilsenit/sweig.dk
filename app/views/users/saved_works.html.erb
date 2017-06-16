@@ -1,27 +1,30 @@
+<h1 class="username"><%= "|" + @user.username.parameterize %></h1>
 <%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
 
-<div class="col-md-12 main">
-	<% unless  @user.saved_works.empty? %>
-		<%= alert_notice_helper %>
-		<h2>Gemte værker</h2>
-		<hr>
-		<div class="row placeholders">
-			<% @saved_works.each do |work| %>
-				<div class="col-xs-6 col-sm-3 col-md-3 placeholder">
-				<h6><%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
-				<%= link_to user_work_path(work.user, work) do %>
-					<h4 class="text-left"><%= work.title %></h4>
-					<span class="text-left">
-						<%= simple_format( truncate(work.body, length: 80) ) %>
-					</span>
-				<% end %>
-				</div>
+<div class="col-lg-12 main">
+	<% if !@saved_works.blank? %>
+	<h2 class="text-center">Gemte værker</h2>
+	<div class="row">
+		<% @saved_works.each do |work| %>
+		<div class="col-xs-6 works-show-wrapper col-sm-4 col-md-3">
+			<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+			<%= link_to user_work_path(work.user_id, work) do %>
+			<div class="works-show-box">
 
-			<% end %><!-- works.each -->
-		</div>
+				<p class="lead">
+					<%= work.title %>
+				</p>
+				<span class="text-left">
+					<%= simple_format( truncate(work.body, length: 80) ) %>
+				</span>
+			</div><!-- works-show-box -->
+			<% end %><!-- user_work_path_link -->
+		</div><!-- col-xs-6 -->
+		<% end %><!-- works.each -->
+	</div>
 	<% else %>
-		<p class="text-center lead">Du har ingen gemte endnu</p class="lead">
-		<p class="text-center">Tryk på <%= fa_icon "save" %> for at gemme. Du finder den i menuen over et værk.</p>
+	<p class="text-center lead">Du har ikke gemt nogle værker endnu</p>
+	<p class="text-center">Brug <%= fa_icon "save" %> under læsning.<p>
+		<% end %><!-- !@saved_works.blank? -->
+	</div>
 
-	<% end %>
-</div>
