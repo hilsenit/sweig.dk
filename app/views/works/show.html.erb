@@ -4,9 +4,9 @@
 		<%= 
 		fa_icon "angle-down", 
 		id: "NavbarToggle", 
-		class: "#{cookies[:navbar_work] == "down" ? "rotate180deg" : "rotatedefault"}" 
+		class: "rotate180deg" 
 			%>
-			<div class="show-navbar-inner <%= "hide-it" if cookies[:navbar_work] == "up" %>">
+			<div class="show-navbar-inner">
 				<%= link_to (fa_icon "times"), user_path(@user), class: "float-left exit-icon" %>
 
 				<% if current_user %>
@@ -21,10 +21,10 @@
 				<span class="divider">|</span>
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if current_user && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
-				<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon" %>
+				<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon", title: "Gem dette værk" %>
 				<!-- Hvis du er logget ind, og du har gemt -->
 				<% elsif current_user && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
-				<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon" %>
+				<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon", title: "Fjern dette værk fra dine gemte" %>
 
 				<!-- Hvis du ikke er logget ind -->
 				<% elsif !current_user %>
@@ -53,12 +53,7 @@
 			<div class="show-body"><%= simple_format( @work.body ) %></div>
 		</div>
 
-	</div>
-
-	
-	<div class="social-share">
-		<%= social_share_button_tag( @work.title, desc: truncate(@work.body, length: 75), url: original_url_helper ) %>
-	</div>	 
+	</div> 
 
 
 	<script type="text/javascript">
@@ -72,22 +67,7 @@
 
 
 	</script>
-	<% if user_signed_in? %>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			NavbarCookie = '<%= cookies[:navbar_work] %>';
-			CurrentUserId = '<%= current_user.id %>';
-			$("#NavbarToggle").click(function() {
-				$.ajax({
-					url: '/users/' + CurrentUserId + '/works/navbar_cookie',
-					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-					type: 'PUT',
-					data: { navbar_cookie: NavbarCookie, user_id: CurrentUserId }
-				});		
-			});
-		});
-	</script>
-	<% end %>
+
 
 
 	

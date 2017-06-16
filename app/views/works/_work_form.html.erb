@@ -10,8 +10,10 @@
 <%= form_for [@user, @work] do |f| %>
 
 	<div class="form-save">
+		<% if draft %>
 		<%= f.submit "Gem som kladde", class: "btn btn-secondary" %>
-		<%= f.submit "Udgiv", name: "status", class: "btn btn-primary" %>
+		<% end %>
+		<%= f.submit button_text, name: "status", class: "btn btn-primary" %>
 	</div>
 	
 	<div class="title">

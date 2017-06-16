@@ -19,7 +19,7 @@ class WorksController < ApplicationController
 	def update
 		@work = Work.friendly.find(params[:id])
 		if @work.update(work_params)
-			redirect_to User.find(@work.user_id), notice: "#{@work.title} er blevet gemt."
+			redirect_to user_path(@work.user_id), notice: "#{@work.title} er blevet gemt."
 		end
 	end
 	
@@ -34,6 +34,7 @@ class WorksController < ApplicationController
 		@work.user_id = @user.id
 		
 		if @work.save
+			binding.pry
 			@work.published! if params[:status] == "Udgiv" 
 			redirect_to user_path(@user), notice: "#{@work.title} er blevet gemt"
 		else	
@@ -47,12 +48,6 @@ class WorksController < ApplicationController
 
 		@work = Work.friendly.find(params[:id])		
 		@user = @work.user
-	end
-
-
-	def navbar_cookie
-		params[:navbar_cookie] == "down" ? cookies[:navbar_work] = "up" : cookies[:navbar_work] = "down"
-		head :ok 
 	end
 
 	def destroy
