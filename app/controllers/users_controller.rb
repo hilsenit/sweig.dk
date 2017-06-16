@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	def show
+		@newest_work = Work.all.order(created_at: :desc).limit(12)
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published
 		@draft_works = @user.works.draft

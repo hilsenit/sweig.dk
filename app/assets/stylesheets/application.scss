@@ -126,12 +126,18 @@ p {
 .nav-pills > li > .active {
 	text-decoration: underline; 
 }
-.modal-header-links {
+.modal-header-links, .search-dropdown-links {
     text-transform: uppercase;
     font-family: "Roboto Mono";
     color: black;
+}
+.modal-header-links {
     margin: 10px;
 }
+.search-dropdown-li {
+	margin-top: 25px;
+}
+
 #whatIsSweigModal .what-is-sweig-modal {
     max-width: 800px;
     top: 180px;

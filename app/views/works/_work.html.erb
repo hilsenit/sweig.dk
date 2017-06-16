@@ -1,6 +1,14 @@
-<%= link_to user_work_path(work.user_id, work) do %>
-<div class="large-5 column float-left">
-	<h6 class="text-center"><%= work.title %></h6>
-	<p><%= truncate work.body, length: 150 %></p>
+<div class="row">
+	<% works.each do |work| %>
+	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
+		<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+		<%= link_to user_work_path(work.user_id, work) do %>
+		<div class="search-result">
+			<p class="lead"><%= work.title %></p>
+			<p><%= truncate( work.body, length: 100 ) %></p>
+		</div>
+		<% end %>
+	</div>
+	<% end %>
 </div>
-<% end %>
+

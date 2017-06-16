@@ -1,20 +1,42 @@
 <div class="offset-sm-1 col-sm-10">
-
 	<div class="collapse search" id="searchBar">
-	<hr>
-		<div class="search-field">
-				<%= form_tag(search_path, method: :get, remote: true) do %>
-				<%= text_field_tag :search, params[:search], class: "form-control" %>
-				<%= submit_tag "Søg", name: nil %>
-				<% end %>
-		</div>		
+		<ul class="row nav nav-pills">
+		<li class="offset-md-3 col-md-2 text-center search-dropdown-li">			
+				<a class="search-dropdown-links text-center active" href="#newest" data-toggle="tab">Nyeste</a>
+			</li>
+			<li class="col-md-2 text-center search-dropdown-li">
+				<a class="search-dropdown-links text-center" href="#reader" data-toggle="tab">Læste</a>
+			</li>
+			<li class="col-md-2 text-center search-dropdown-li">
+				<a class="search-dropdown-links text-center" href="#search" data-toggle="tab">Søg</a>
+			</li>
+		</ul>
+		<hr>
+		<div class="tab-content">
+			<div class="tab-pane active" id="newest">
+				<%= render partial: "works/work", locals: {works: @newest_work} %>
+			</div>
+			<div class="tab-pane" id="reader">
+				<h1>DE MEST LÆSTE</h1>
+
+			</div>
+			<div class="tab-pane" id="search">
+				<div class="search-field">
+					<%= form_tag(search_path, method: :get, remote: true) do %>
+					<%= text_field_tag :search, params[:search], class: "form-control" %>
+					<%= submit_tag "Søg", name: nil %>
+					<% end %>
+				</div>		
 
 
-	<div class="search-results">
+				<div class="search-results">
 
 
-	</div>
-	
-	</div>
+				</div>
 
-</div>
+			</div>
+		</div><!-- tab-content -->
+
+	</div><!-- collapse -->
+
+</div><!-- col-sm-10 -->
