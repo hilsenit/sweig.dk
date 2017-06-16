@@ -1,25 +1,4 @@
-<%= render partial: "shared/navbar_buttons" %>
-<%= render partial: "shared/what_is_sweig_modal" %>
-<%= render partial: "shared/sign_in_create_modal" %>
-
-<div class="offset-sm-1 col-sm-10">
-
-	<div class="collapse search" id="searchBar">
-	<hr>
-		<div class="search-field">
-				<%= form_tag(search_path, method: :get, remote: true) do %>
-				<%= text_field_tag :search, params[:search], class: "form-control" %>
-				<%= submit_tag "Søg", name: nil %>
-				<% end %>
-		</div>		
-	</div>
-
-
-	<div class="row search-results">
-
-	</div>
-
-</div>
+<!-- navbar button -->
 
 <div class="logo-wrapper">
 <!-- 	<div class="frontpage-nav">

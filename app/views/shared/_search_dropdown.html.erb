@@ -1,0 +1,20 @@
+<div class="offset-sm-1 col-sm-10">
+
+	<div class="collapse search" id="searchBar">
+	<hr>
+		<div class="search-field">
+				<%= form_tag(search_path, method: :get, remote: true) do %>
+				<%= text_field_tag :search, params[:search], class: "form-control" %>
+				<%= submit_tag "Søg", name: nil %>
+				<% end %>
+		</div>		
+
+
+	<div class="search-results">
+
+
+	</div>
+	
+	</div>
+
+</div>

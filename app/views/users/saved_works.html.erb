@@ -1,6 +1,6 @@
-<%= render partial: "sidebar", locals: {user: @user} if current_user == @user%>
+<%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
 
-<div class="col-sm-9 col-sm-offset-3 main">
+<div class="col-md-12 main">
 	<% unless  @user.saved_works.empty? %>
 		<%= alert_notice_helper %>
 		<h2>Gemte værker</h2>
@@ -20,6 +20,8 @@
 			<% end %><!-- works.each -->
 		</div>
 	<% else %>
-		<h2>Du har ingen gemte værker endnu</h2>
+		<p class="text-center lead">Du har ingen gemte endnu</p class="lead">
+		<p class="text-center">Tryk på <%= fa_icon "save" %> for at gemme. Du finder den i menuen over et værk.</p>
+
 	<% end %>
 </div>

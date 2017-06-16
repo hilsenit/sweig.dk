@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	layout "user"
+
 	def show
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published

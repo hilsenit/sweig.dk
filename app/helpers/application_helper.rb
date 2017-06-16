@@ -1,11 +1,12 @@
 module ApplicationHelper
-	def original_url_helper
-	  request.original_url
-	end
+
 
 	def is_current_user?
+		if user_signed_in?
 		current_user == @user
+		end
 	end
+
 	def set_title_helper
 		default = "Sweig"
 		if @page_title
@@ -17,9 +18,9 @@ module ApplicationHelper
 
 	def alert_notice_helper
 		if flash[:notice]
-			content_tag :div, flash[:notice], class: "notice"
+			content_tag :div, flash[:notice], class: "notice text-center"
 		elsif flash[:error]
-			content_tag :div, flash[:error], class: "alert"
+			content_tag :div, flash[:error], class: "alert text-center"
 		end
 	end
 	

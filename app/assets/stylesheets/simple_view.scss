@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+h1, h2 {
+	font-family: "Roboto Mono"!important;
+}
+
 .hide-it {
 	display: none;
 }
@@ -184,7 +188,22 @@ span.divider {
     font-size: 26px;
     font-weight: 600;
 }
-.edit-icons {
-    padding: 10px;
-    font-size: 19px;
+.edit-icons-wrapper {
+	text-align: center;
+	.edit-icons {
+	    padding: 10px;
+	    font-size: 19px;
+	}
+}
+.modal-header-links.active {
+	text-decoration: underline;
+}
+
+.user-links-container {
+	padding-top: 40px;
+}
+.username {
+	position: relative;
+	text-align: center;
+	padding-top: 20px;
 }

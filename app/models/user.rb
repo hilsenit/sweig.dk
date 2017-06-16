@@ -13,7 +13,9 @@ class User < ApplicationRecord
 	extend FriendlyId
 	friendly_id :username, use: :slugged
 	
-
+	def self.search(searched_for)
+		where("username ILIKE ?", "%#{searched_for}%")
+	end
 
 	def self.sort_users
 		order(created_at: :desc).limit(5)
