@@ -88,9 +88,7 @@ textarea:focus, input:focus{
 		.exit-icon {
 			margin-top: 2px;
 			font-size: 21px;
-			a {
-				color: black;
-			}
+			color: black;
 		}
 
 	}
@@ -175,7 +173,7 @@ textarea:focus, input:focus{
 }
 span.divider {
     float: right;
-    padding: 8px 10px;
+    padding: 5px 10px;
 }
 
 .notice-exit {
@@ -186,6 +184,7 @@ span.divider {
     margin-top: 12px;
     font-size: 26px;
     font-weight: 600;
+    color: black;
 }
 .edit-icons-wrapper {
 	text-align: center;

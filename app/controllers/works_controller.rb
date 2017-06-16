@@ -43,9 +43,9 @@ class WorksController < ApplicationController
 	end
 
 	def show
-		cookies[:navbar_work] = "down" if cookies[:navbar_work].nil?
 
-		@work = Work.friendly.find(params[:id])		
+		@work = Work.friendly.find(params[:id])	
+		work_views 	
 		@user = @work.user
 	end
 
@@ -61,7 +61,14 @@ class WorksController < ApplicationController
 
 	private
 
-
+	def work_views
+		if @work.views.nil?
+			@work.views = 1
+		else
+			@work.views += 1
+		end
+		@work.save!
+	end
 
 	def work_params
 		params.require(:work).permit(:title, :body )

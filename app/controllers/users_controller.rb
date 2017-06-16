@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-
+	before_action :newest_and_most_read_works, only: [:show, :saved_works]
 	def show
-		@newest_work = Work.all.order(created_at: :desc).limit(12)
-		@most_read_works = Work.all.order(views: :desc).limit(12)
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published
 		@draft_works = @user.works.draft
@@ -83,6 +81,11 @@ class UsersController < ApplicationController
 
 
 	private
+
+	def newest_and_most_read_works
+		@newest_work = Work.all.order(created_at: :desc).limit(12)
+		@most_read_works = Work.all.order(views: :desc).limit(12)		
+	end
 
 	def user_params
 		params.require(:user).permit(:username, :email)
