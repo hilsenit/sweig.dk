@@ -1,3 +1,4 @@
+<%= link_to image_tag("hjoerne-forside", class: "hjoerne-forside"), root_path %>
 <h1 class="username"><%= "|" + @user.username.parameterize %></h1>
 <%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
 

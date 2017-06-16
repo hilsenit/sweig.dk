@@ -164,6 +164,12 @@ p {
 	}
 }
 
+.hjoerne-forside {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
 @media screen and (max-width: 576px) {
 	.icon-frontpage {
 		width: 33%;
