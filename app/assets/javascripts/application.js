@@ -16,5 +16,6 @@
 //= require social-share-button
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require jquery.autosize
 //= require turbolinks
 //= require_tree .

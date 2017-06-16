@@ -45,7 +45,7 @@ body {
 		margin: auto;
 	    border: none;
 	    width: 60%;
-	    margin-bottom: 300px;
+	    height: 600px;
 	    font-size: 1.2em;
 	    p {
 	    	text-align: left;
@@ -54,7 +54,10 @@ body {
 }
 
 .form-save {
-	margin-top: 2vh;
+	input {
+		cursor: pointer;
+	}
+	margin: 4vh;
 	text-align: center;
 }
 textarea:focus, input:focus{
