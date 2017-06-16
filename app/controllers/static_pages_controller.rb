@@ -2,6 +2,7 @@ class StaticPagesController < ApplicationController
 
 	def index
 		@newest_work = Work.all.order(created_at: :desc).limit(12)
+		@most_read_work = Work.all.order(views: :desc).limit(12)
 	end
 
 	def search

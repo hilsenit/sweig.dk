@@ -15,19 +15,20 @@
 		<div class="tab-content">
 			<div class="tab-pane active" id="newest">
 				<%= render partial: "works/work", locals: {works: @newest_work} %>
+				<hr>
 			</div>
 			<div class="tab-pane" id="reader">
-				<h1>DE MEST LÆSTE</h1>
-
+				<%= render partial: "works/work", locals: {works: @most_read_works} %>
+				<hr>
 			</div>
 			<div class="tab-pane" id="search">
 				<div class="search-field">
 					<%= form_tag(search_path, method: :get, remote: true) do %>
 					<%= text_field_tag :search, params[:search], class: "form-control" %>
-					<%= submit_tag "Søg", name: nil %>
+					<%= submit_tag "Søg", style: "display: none", name: nil %>
 					<% end %>
 				</div>		
-
+				<hr>
 
 				<div class="search-results">
 
