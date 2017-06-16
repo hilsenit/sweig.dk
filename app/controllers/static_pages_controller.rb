@@ -1,13 +1,18 @@
 class StaticPagesController < ApplicationController
 
 	def index
-	@page_title = "This is it!"	
-	@users = User.all
-	@users_for_overview = User.sort_users	
-	@works = Work.all
-		if params[:search] # that's what the user is searching for
-			@works = Work.search(params[:search]).order(created_at: :desc)		
-		end
+		@works = Work.all
+
+
+	end
+
+	def search
+
+		@works = Work.search(params[:search]).order(created_at: :desc).limit(12)	
+		respond_to do |format|
+			format.js
+			format.html
+		end		
 	end
 
 	def why

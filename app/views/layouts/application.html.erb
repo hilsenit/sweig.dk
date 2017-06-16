@@ -10,34 +10,18 @@
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <%= csrf_meta_tags %>
- </head>
+</head>
 
 <body>
   <div class="container-fluid">
     <div class="row">  
 
-    <div class="col-sm-4 icon-frontpage text-right" data-toggle="modal" data-target="#whatIsSweigModal">
-      <%= fa_icon "question", id: "WhatIsSweig"%> 
-    </div>
-    <div class="col-sm-4 icon-frontpage text-center" aria-expanded="false" data-toggle="collapse" data-target="#searchBar">
-      <%= fa_icon "search", id: "FrontPageSearch" %>
-    </div>
-    <div class="col-sm-4 icon-frontpage text-left" data-toggle="modal" data-target="#myModal">
-      <%= fa_icon "user-o", id: "FrontpageUserButton"%> 
+        <%= yield %>
+
+      </div>
+      
     </div>
 
-    <%= render partial: "shared/what_is_sweig" %>
-    <%= render partial: "shared/sign_in_button" %>
-    <div class="offset-sm-1 col-sm-10">
-    <div class="collapse search" id="searchBar">
-        <%= search_field_tag(:search, "Søg her") %>
+  </body>
 
-    </div>
-    </div>
-
-     <%= yield %>
-   </div>
- </div>
-
-</body>
-</html>
+  </html>
