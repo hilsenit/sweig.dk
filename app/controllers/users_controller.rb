@@ -83,8 +83,9 @@ class UsersController < ApplicationController
 	private
 
 	def newest_and_most_read_works
-		@newest_works = Work.published.order(created_at: :desc).limit(12)
-		@most_read_works = Work.published.order(views: :desc).limit(12)		
+		published_works = Work.where(status: 1)
+		@newest_works = published_works.order(created_at: :desc).limit(12)
+		@most_read_works = published_works.order(views: :desc).limit(12)		
 	end
 
 	def user_params
