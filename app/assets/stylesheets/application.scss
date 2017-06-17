@@ -45,7 +45,7 @@ p {
 	width: 100%;
 	
 	.logo-text {
-		width: 400px;
+		width: 75%;
 		margin: auto;
 		text-align: center;
 		height: auto;
@@ -91,7 +91,8 @@ p {
 	color: #4a5953
 }
 #LogoBackground {
-	margin-top: 10px;
+	width: auto;
+	margin-top: 50px;
 	position: relative;
 }
 
@@ -107,7 +108,7 @@ p {
 .user-logged-in-entrance, .sweig-hidden {
     position: absolute;
     z-index: 996;
-    top: 130px;
+    top: 160px;
     width: 100%;
     text-align: center;
     h2 {
@@ -174,5 +175,18 @@ p {
 	.icon-frontpage {
 		width: 33%;
 		text-align: center;
+	}
+
+	#LogoBackground {
+		width: 100%;
+	}
+	.user-logged-in-entrance {
+		top: 108px;
+		h5 {
+			font-size: 45px;
+		}
+		h2 {
+			font-size: 89px;
+		}
 	}
 }

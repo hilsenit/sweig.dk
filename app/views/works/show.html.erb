@@ -34,7 +34,7 @@
 
 				<!-- Hvis du ikke er logget ind -->
 				<% else %>
-				<p class="lead text-center work-show-not-logged-in-text">Opret dig eller log ind for at gemme værker</p>
+				<p class="lead text-center work-show-not-logged-in-text">Opret dig <span class="hidden-xs-down">eller log ind for at gemme værker</span></p>
 				<% end %>
 
 			</div>
@@ -64,7 +64,7 @@
 
 	<script type="text/javascript">
 
-	
+
 		$(document).ready(function(){
 			$("#NavbarToggle").click(function() {
 				$(this).toggleClass('rotate180deg');

@@ -32,7 +32,6 @@ body {
 	input, .show-title {
 	    width: 40%;
 	    min-width: 400px;
-	    height: 40px;
 	    margin: auto;
 	    font-size: 30px;
 	    border: none;
@@ -208,4 +207,33 @@ span.divider {
 }
 .work-show-not-logged-in-text {
 	line-height: 40px;
+}
+
+
+@media screen and (max-width: 500px) {
+	#NavbarToggle {
+	    font-size: 50px;
+	    margin-right: 13px;
+	}
+	.show-navbar {
+		height: 80px; 
+		.show-navbar-inner {
+		    margin-right: 60px;
+		}
+	}
+	.work-show-outer .title {
+		margin-top: 18vh;
+
+	}
+	.title {
+		overflow: hidden;	
+			.show-title {
+		    width: 80%;
+		    min-width: 0px;
+		}   
+	} 
+
+	.body .show-body {
+		width: 90%;
+	}
 }
