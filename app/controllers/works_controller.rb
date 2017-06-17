@@ -1,16 +1,11 @@
 class WorksController < ApplicationController
-	layout "reader", only: :show 
-	layout "simple_view", only: [:new, :edit, :show]
-
+	before_action :newest_and_most_read_works, only: [:new]
+	layout "simple_view", only: [:new, :edit, :show, :create]
 
 	def index
-		@works = Work.all
-		if params[:search] #This is what the user is searching for
-			@works = Work.search(params[:search]).order(created_at: :desc)
-		end
-		
+		# UNderligt hack for create action render 'new' problemet med, at den går til index, hvis den ikke gemmer
+		redirect_to new_user_work_path()
 	end
-
 	def edit
 		@user = User.friendly.find(params[:user_id])
 		@work = Work.friendly.find(params[:id])
@@ -37,7 +32,7 @@ class WorksController < ApplicationController
 			@work.published! if params[:status] == "Udgiv" 
 			redirect_to user_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	
-			render "new", notice: "Det lykkedes desværre ikke. Prøv igen."
+			render 'new'
 		end
 		
 	end
@@ -68,6 +63,11 @@ class WorksController < ApplicationController
 			@work.views += 1
 		end
 		@work.save!
+	end
+
+	def newest_and_most_read_works
+		@newest_works = Work.all.order(created_at: :desc).limit(12)
+		@most_read_works = Work.all.order(views: :desc).limit(12)				
 	end
 
 	def work_params
