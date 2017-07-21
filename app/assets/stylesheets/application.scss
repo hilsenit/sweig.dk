@@ -30,6 +30,30 @@ p {
 	word-break: keep-all;
 }
 
+.frontpage-navbar-wrapper {
+	margin-top: 20px;
+	a {
+		font-weight: 1000;
+		font-size: 20px;
+		letter-spacing: 4px;
+		color: black;
+	}
+}
+
+.forside-bil-tekst-wrapper {
+	margin-top: 40px;
+}
+.forside-tekst-overskrift {
+	width: auto!important; 
+	padding-right: 20px;
+	margin-top: 30px; 
+	font-weight: 1000;
+	font-size: 15px;
+	letter-spacing: 4px;
+	color: black;
+}
+
+
 .front-page-background-image {
 	background-image: url(image-path("baggrund-sweig.png"));
 	background-size: cover;
@@ -37,9 +61,7 @@ p {
 	height: 100%;
 	overflow: hidden;
 }
-.roboto-mono {
-	font-family: "Roboto Mono";
-}
+
 .logo-wrapper {
 	position: relative;
 	width: 100%;
@@ -54,7 +76,6 @@ p {
 			margin-top: 4vh;
 			position: relative;
 			font-size: 4rem;
-			font-family: "Roboto Mono";
 			z-index: 909;
 
 		}	
@@ -104,32 +125,11 @@ p {
 	position: relative;
     width: auto;
 }
-/* gå til MIT på forsiden */
-.user-logged-in-entrance, .sweig-hidden {
-    position: absolute;
-    z-index: 996;
-    top: 160px;
-    width: 100%;
-    text-align: center;
-    h2 {
-    	display: inline-block;
-    	font-size: 100px;
-    	font-family: "Roboto Mono";
-    	color: white;
-    }
-    h5	{
-    	color: white;
-    	display: inline-block;
-    	font-size: 50px; 
-    	font-family: "Roboto Mono";
-    }
-}
 .nav-pills > li > .active {
 	text-decoration: underline; 
 }
 .modal-header-links, .search-dropdown-links {
     text-transform: uppercase;
-    font-family: "Roboto Mono";
     color: black;
 }
 .modal-header-links {
@@ -151,7 +151,6 @@ p {
 }
 
 .search-header {
-	font-family: "Roboto Mono";
 }
 
 .search-result-wrapper, .works-show-wrapper {
@@ -179,14 +178,5 @@ p {
 
 	#LogoBackground {
 		width: 100%;
-	}
-	.user-logged-in-entrance {
-		top: 108px;
-		h5 {
-			font-size: 45px;
-		}
-		h2 {
-			font-size: 89px;
-		}
 	}
 }
