@@ -1,26 +1,48 @@
 <!-- navbar button -->
 <div class="row forside-bil-tekst-wrapper">
-	<div class="col-md-6">	
-		<%= image_tag "baggrund-til-sweig-logo", id: "LogoBackground" %>
+	<div class="col-md-6 forside-bil tab-content">	
+		<%= image_tag "baggrund-til-sweig-logo", class: "billeder active logo-background sweig-bil", role: "tabpanel" %>
+		<%= image_tag "laese-app", class: "billeder hide-it logo-background app-bil", role: "tabpanel" %>
+
 	</div>
 	<div class="col-md-6">
 		<div class="row">
-			<div class="forside-tekst-overskrift">sweig</div>
-			<div class="forside-tekst-overskrift">udgivelser</div>
-			<div class="forside-tekst-overskrift">læse-app</div>
-			<div class="forside-tekst-overskrift">biddrag</div>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			<ul class="nav nav-tabs frontpage-navbar-wrapper" role="tablist">
+				<li role="presentation" class="forside-tekst-overskrift">
+					<a href="#sweig" aria-controls="sweig" class="active" id="sweig-bil" role="tab" data-toggle="tab">Sweig</a>
+				</li>
+				<li role="presentation" class="forside-tekst-overskrift">
+					<a href="#udgivelser" aria-controls="udgivelser-bil" id="udgivelser" role="tab" data-toggle="tab">udgivelser</a>
+				</li>
+				<li role="presentation" class="forside-tekst-overskrift">
+					<a href="#app" aria-controls="app" id="app-bil" role="tab" data-toggle="tab">læse-app</a>
+				</li>
+				<li role="presentation" class="forside-tekst-overskrift">
+					<a href="#biddrag" aria-controls="biddrag" id="biddrag-bil" role="tab" data-toggle="tab">biddrag</a>
+				</li>
+			</ul>
 		</div>
+		<div class="row">
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="sweig">Sweig er bygget for at udbrede litteraturen i verden.<br>
+				Som arena, som platform, som hjemsted for det skrevne ord.</div>
+				<div role="tabpanel" class="tab-pane" id="udgivelser">Udgivelser Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam impedit ratione, eaque eum sapiente, at deleniti esse sint minus sed delectus ea ut. Quaerat laudantium similique quod ab. Quos, ipsa.</div>
+				<div role="tabpanel" class="tab-pane" id="app">App Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor repellat reprehenderit repudiandae architecto perferendis dolorem officia provident iure, pariatur, numquam incidunt quidem ex rem deleniti eaque voluptatem ratione necessitatibus aliquam.</div>
+				<div role="tabpanel" class="tab-pane" id="biddrag">Biddrag Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe rem sunt voluptatibus nihil quod inventore. Aliquid, cum, ipsum. Similique, quae quos. Nam provident enim totam mollitia repellat fugiat quam eius?</div>
+			</div>
+		</div>
+
 	</div>
 
-	<div class="col-lg-12 text-center">
+	<script type="text/javascript">
+	// Til billederne
+		jQuery(document).ready(function($) {
+				$(".forside-tekst-overskrift a").click(function(e) {
+				e.preventDefault();
+					id = $(this).attr("id");
+					$("." + id ).show().siblings().hide();
+			});		
+		});
+	</script>
 
-	</div>
-
-</div>
 

@@ -42,7 +42,14 @@ p {
 
 .forside-bil-tekst-wrapper {
 	margin-top: 40px;
+	.forside-bil {
+		text-align: center;
+		img.active {
+			display: inline-block;
+		}
+	}
 }
+
 .forside-tekst-overskrift {
 	width: auto!important; 
 	padding-right: 20px;
@@ -51,6 +58,13 @@ p {
 	font-size: 15px;
 	letter-spacing: 4px;
 	color: black;
+	a {
+		font-family: Roboto;
+	}
+	.active {
+		text-decoration: underline;
+		font-weight: inherit!important;
+	}
 }
 
 
@@ -111,7 +125,7 @@ p {
 .green-color {
 	color: #4a5953
 }
-#LogoBackground {
+.logo-background {
 	width: auto;
 	margin-top: 50px;
 	position: relative;
@@ -176,7 +190,7 @@ p {
 		text-align: center;
 	}
 
-	#LogoBackground {
+	.logo-background {
 		width: 100%;
 	}
 }
