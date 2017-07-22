@@ -1,7 +1,13 @@
 	<div class="container frontpage-navbar-wrapper">
 		<div class="row">
-			<div class="col-md-4 text-center"><%= link_to "NYT", nil %></div>
-			<div class="col-md-4 text-center"><%= link_to "LÆS", nil %></div>
-			<div class="col-md-4 text-center"><%= link_to "BENYT", nil %></div>
+			<div class="col-md-4 text-center">
+				<%= link_to "NYT", nyt_path(), class: "#{if_active_helper(nyt_path())}" %>	
+			</div>
+			<div class="col-md-4 text-center">
+				<%= link_to "LÆS", laes_path(), class: "#{if_active_helper(laes_path())}"%>	
+			</div>
+			<div class="col-md-4 text-center">
+				<%= link_to "BENYT",  opret_path(), class: "#{if_active_helper(opret_path())}"%>
+			</div>
 		</div>	
 	</div>

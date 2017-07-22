@@ -1,9 +1,6 @@
 class StaticPagesController < ApplicationController
 
 	def index
-		published_work = Work.where(status: 1)
-		@newest_works = published_work.order(created_at: :desc).limit(12)
-		@most_read_works = published_work.order(views: :desc).limit(12)
 	end
 
 	def search
@@ -16,7 +13,21 @@ class StaticPagesController < ApplicationController
 		end		
 	end
 
-	def why
-		
+	def nyt; end
+	def opret; end
+	
+	def laes 
+		published_work = Work.where(status: 1)
+		@newest_works = published_work.order(created_at: :desc).limit(12)
+		@most_read_works = published_work.order(views: :desc).limit(12)
+	end
+
+	def kontakt
+
+		binding.pry
+
+		KontaktMailer.kontakt(params[:email], params[:besked], params[:emne])
+
+		head :ok
 	end
 end

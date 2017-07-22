@@ -30,6 +30,35 @@ p {
 	word-break: keep-all;
 }
 
+/* do not group these rules */
+*::-webkit-input-placeholder {
+    color: black;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: black;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: black;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: black;
+}
+.send-mail {
+	width: 100%;
+	input, textarea {
+		opacity: 1;
+		font-family: Roboto; 
+		color: black;
+		border-style: none;
+		border-color: transparent;
+		border-bottom-color: black;
+		border-bottom-width: 1px;
+		overflow: auto;
+	}
+}
 .frontpage-navbar-wrapper {
 	margin-top: 20px;
 	a {
@@ -37,6 +66,10 @@ p {
 		font-size: 20px;
 		letter-spacing: 4px;
 		color: black;
+	}
+
+	.active {
+		text-decoration: underline;
 	}
 }
 
@@ -51,13 +84,14 @@ p {
 }
 
 .forside-tekst-overskrift {
-	width: auto!important; 
-	padding-right: 20px;
-	margin-top: 30px; 
+	color: black;
+	cursor: pointer!important;
 	font-weight: 1000;
 	font-size: 15px;
 	letter-spacing: 4px;
-	color: black;
+	margin-top: 30px; 
+	padding-right: 20px;
+	width: auto!important; 
 	a {
 		font-family: Roboto;
 	}

@@ -1,6 +1,7 @@
 <!-- navbar button -->
 <div class="row forside-bil-tekst-wrapper">
 	<div class="col-md-6 forside-bil tab-content">	
+
 		<%= image_tag "baggrund-til-sweig-logo", class: "billeder active logo-background sweig-bil", role: "tabpanel" %>
 		<%= image_tag "laese-app", class: "billeder hide-it logo-background app-bil", role: "tabpanel" %>
 		<%= image_tag "udgivelser", class: "billeder hide-it logo-background udgivelser-bil", role: "tabpanel" %>
@@ -28,15 +29,12 @@
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane tekst-forside lead active" id="sweig">Sweig er bygget for at udbrede litteraturen i verden.<br>
 				Som arena, som platform, som hjemsted for det skrevne ord.</div>
-				<div role="tabpanel" class="tab-pane tekst-forside lead" id="udgivelser">Hver måned udvælger juryen et antal værker, som bliver mulige at købe i fysisk form eller at downloade her på siden. Man kan også tilmelde sig betalingsservice, så man får tilsendt udgivelsen hver måned. <br><br>
-				Første udgivelse forventes i januar 2018</div>
-				<div role="tabpanel" class="tab-pane tekst-forside lead" id="app">Til december vil det være muligt at tilgå sin profil via en app, der gør det lettere at bruge Sweig på mobile enheder. </div>
-				<div role="tabpanel" class="tab-pane tekst-forside lead" id="biddrag">Har du lyst til at biddrage til udbredelsen og forbedringen af Sweig, så er du meget velkommen til at tage kontakt. <br>
-				<%= link_to "Skriv", nil %> /
-				<%= link_to "Koder", "https://github.com/peterhoejlundandersen/sweig.dk", target: "_blank" %>
-
-				
-				</div>
+				<div role="tabpanel" class="tab-pane tekst-forside lead" id="udgivelser">Hver måned udvælger juryen et antal værker, som bliver mulige at købe i fysisk form eller at downloade her på siden. Man kan også tilmelde sig, så man får tilsendt udgivelsen hver måned. <br><br>
+				Første udgivelse forventes i januar 2018.</div>
+				<div role="tabpanel" class="tab-pane tekst-forside lead" id="app">Til december vil det være muligt at tilgå sin profil via en app, der gør det lettere at bruge Sweig fra mobile enheder. </div>
+				<div role="tabpanel" class="tab-pane tekst-forside lead" id="biddrag">Har du lyst til at biddrage til udbredelsen og forbedringen af Sweig, så er du meget velkommen til at <span class="forside-tekst-skrift" data-toggle="modal" data-target="#myModal">tage kontakt</span> <br><br>
+	 				<%= render partial: "shared/tag_kontakt" %>
+ 				</div>
 			</div>
 		</div>
 

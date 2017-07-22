@@ -1,5 +1,7 @@
 module ApplicationHelper
-
+	def if_active_helper path
+		"active" if current_path == path
+	end
 
 	def is_current_user?
 		if user_signed_in?

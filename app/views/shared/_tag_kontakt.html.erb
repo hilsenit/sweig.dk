@@ -1,0 +1,27 @@
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title forside-tekst-overskrift" id="myModalLabel">Skriv til os</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-xs-8">
+        <%= form_tag :kontakt_os do %>
+			<%= email_field_tag :email, "", placeholder: "email", class: "form-control" %>
+			<%= text_field_tag :emne, "", placeholder: "emne", class: "form-control" %>
+			<%= text_area_tag :besked, "", placeholder: "besked", class: "form-control", rows: 15 %>
+        </div>
+        <div class="kontakt-besked-efter-sendt"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"data-dismiss="modal">Close</button>
+		<%= submit_tag :send %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
