@@ -1,24 +1,40 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Er bygget med bootstrap og Rails 5.
 
-* Ruby version
+Gems der er blevet brugt: 
 
-* System dependencies
+gem 'rails', '~> 5.1.0'
+gem 'pg', '~> 0.18'
+gem 'puma', '~> 3.7'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
 
-* Configuration
+gem 'coffee-rails', '~> 4.2'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.5'
 
-* Database creation
 
-* Database initialization
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara', '~> 2.13.0'
+  gem 'selenium-webdriver'
+end
 
-* How to run the test suite
+group :development do
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
 
-* Services (job queues, cache servers, search engines, etc.)
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'friendly_id', '~> 5.1.0'
+gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'font-awesome-rails'
+gem 'jquery-rails'
+gem 'pry-byebug'
+gem 'devise'
+gem 'social-share-button'
+gem 'autosize-rails'
 
-* Deployment instructions
-
-* ...
