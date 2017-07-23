@@ -1,5 +1,6 @@
 module ApplicationHelper
 	def if_active_helper path
+
 		"active" if current_path == path
 	end
 

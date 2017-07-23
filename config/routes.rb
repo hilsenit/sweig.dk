@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 	get "nyt" => "static_pages#nyt"
 	get "laes" => "static_pages#laes"
-	get "opret" => "static_pages#opret"
+	get "benyt/:show_partial" => "static_pages#opret", as: "benyt"
 
 	post "kontakt-os" => "static_pages#kontakt"	
 	

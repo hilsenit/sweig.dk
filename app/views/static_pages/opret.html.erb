@@ -1,1 +1,58 @@
-<h1>Opret</h1>
+<div class="log-content">
+	<% if user_signed_in? %>
+	<div class="log-header">
+		<div class="log-header-links">
+			Du er logget ind
+		</div>
+	</div>
+	<div class="log-body">
+		<div class="log-body-inner">
+			<%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "btn btn-primary" %>
+			<%= link_to "Gå til MIT", user_path(current_user), class: "btn btn-secondary" %>
+		</div>
+	</div>
+
+	<% else %>
+
+	<div class="log-header">
+		<ul class="row nav nav-pills">
+			<li class="offset-md-4 col-md-2 text-center search-dropdown-li">
+				<a class="search-dropdown-links text-center <%= 'active' unless params[:show_partial] == 'opret' %>" href="#signInField" data-toggle="tab">Log ind</a>
+			</li>
+			<li class="col-md-2 text-center search-dropdown-li">			
+				<a class="search-dropdown-links text-center <%= 'active' if params[:show_partial] == 'opret' %>" href="#signUpField" data-toggle="tab">Opret</a>
+			</li>
+		</ul>
+
+	</div>
+
+
+	<div class="tab-content clearfix">
+	<hr>
+		<div class="log-body-inner tab-pane fade in <%= params[:show_partial] == 'opret' ? 'hide-it' : 'active show' %>" id="signInField">
+			<div class="offset-md-4 col-md-4">
+			<%= render partial: "shared/form/log_ind" %>
+			</div>
+
+		</div><!-- #SignIn -->
+		<div class="log-body-inner tab-pane fade <%= params[:show_partial] == 'opret' ? 'active show' : 'hide-it' %>" id="signUpField">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="lead">Bliv en del af fællesskabet</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus soluta obcaecati aperiam enim, magni nisi eaque quod, cumque itaque odit voluptates eius dolor sint culpa repudiandae quo veritatis, odio tenetur.
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nobis, possimus assumenda debitis veniam labore aliquid illo tenetur nemo quia! Tenetur pariatur esse, minima excepturi doloribus suscipit eos animi laboriosam.</p>
+				</div>
+				<div class="col-md-6">
+					<%= render partial: "shared/form/create_user" %>
+				</div>
+
+			</div>
+
+		</div><!-- #SignUp -->
+	</div>
+
+	<% end %><!-- if current_user -->
+
+</div><!-- modal-content -->
+
+
