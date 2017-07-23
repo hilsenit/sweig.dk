@@ -17,6 +17,10 @@
 <body>
   <%= render partial: "shared/navbar" %>
   <div class="container">
+    <% if flash[:notice] %>
+    <hr>
+      <div class="text-center lead"><%= flash[:notice] %></div>
+    <% end %>
     <%= yield %>    
   </div>
 

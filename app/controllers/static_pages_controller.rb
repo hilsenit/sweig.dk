@@ -24,10 +24,9 @@ class StaticPagesController < ApplicationController
 
 	def kontakt
 
-		binding.pry
+		KontaktMailer.kontakt(params[:email], params[:besked], params[:emne]).deliver
 
-		KontaktMailer.kontakt(params[:email], params[:besked], params[:emne])
-
-		head :ok
+		flash[:notice] = "Din besked '#{params[:emne]}' er blevet sendt"
+		redirect_to root_path
 	end
 end
