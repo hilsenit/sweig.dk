@@ -30,21 +30,22 @@ p {
 	word-break: keep-all;
 }
 
-/* do not group these rules */
-*::-webkit-input-placeholder {
-    color: black;
+.lille-sweig-tilbage {
+	margin-top: -2px;
+	opacity: 0.3;
+	position: absolute;
+	transition: opacity .4s ease-in-out;
+	z-index: 99999;
+	-webkit-transition: opacity .4s ease-in-out;
+	-moz-transition: opacity .4s ease-in-out;
+	-o-transition: opacity .4s ease-in-out;
+	&:hover {
+		opacity: 1;
+	}
 }
-*:-moz-placeholder {
-    /* FF 4-18 */
-    color: black;
-}
-*::-moz-placeholder {
-    /* FF 19+ */
-    color: black;
-}
-*:-ms-input-placeholder {
-    /* IE 10+ */
-    color: black;
+
+.tekst-wrapper-forside {
+	margin-top: calc(100px + 2vh);
 }
 .send-mail {
 	width: 100%;
@@ -71,10 +72,15 @@ p {
 	.active {
 		text-decoration: underline;
 	}
+
+	.navbar-log-ud-link {
+		font-size: 14px;
+		font-family: Roboto;
+	}
 }
 
 .forside-bil-tekst-wrapper {
-	margin-top: 40px;
+	margin-top: 4vh;
 	.forside-bil {
 		text-align: center;
 		img.active {

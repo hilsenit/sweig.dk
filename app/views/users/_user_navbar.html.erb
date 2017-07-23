@@ -1,19 +1,15 @@
 <div class="container-fluid">
 	<div class="row user-links-container">
-		<div class="col-md-3">
+		<div class="col-md-4">
 
 		<%= link_to "Mine", user_path(@user), class: "nav-link text-center modal-header-links #{if_active_helper user_path(@user)}" %>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 		<%= link_to "Gemte", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_helper user_saved_works_path(@user)}" %>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 
 		<%= link_to "Opret værk", new_user_work_path(@user), class: "nav-link text-center modal-header-links #{if_active_helper new_user_work_path(@user)}" %>
-		</div>
-		<div class="col-md-3">
-
-		<%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "nav-link text-center modal-header-links" %>
 		</div>
 
 	</div>

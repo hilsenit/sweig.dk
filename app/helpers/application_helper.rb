@@ -29,7 +29,7 @@ module ApplicationHelper
 	
 	def session_helper_social
 		if session[:social] 
-			social_message = "Thank you for visiting from #{session[:social]}"
+			social_message = "Tak fordi du besøger os fra #{session[:social]}"
 			content_tag :div, social_message, class: "callout succes text-center"
 		end
 	end

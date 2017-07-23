@@ -1,5 +1,4 @@
 <h1 class="username"><%= "|" + @user.username.parameterize %></h1>
-<%= link_to image_tag("hjoerne-forside", class: "hjoerne-forside"), root_path %>
 <%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
 
 <div class="col-lg-12 main">

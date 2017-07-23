@@ -14,7 +14,13 @@ class StaticPagesController < ApplicationController
 	end
 
 	def nyt; end
-	def opret; end
+	
+	def opret 
+		if user_signed_in?
+			flash[:notice] = "Du er logget ind"
+			redirect_to user_path(current_user.id)
+		end
+	end
 	
 	def laes 
 		published_work = Work.where(status: 1)

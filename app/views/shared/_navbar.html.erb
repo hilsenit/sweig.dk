@@ -1,5 +1,10 @@
 	<div class="container frontpage-navbar-wrapper">
 		<div class="row">
+			<% unless current_page?("/") %>
+				<%= link_to root_path do %>
+					<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage" %>
+				<% end %>
+			<% end %>
 			<div class="col-md-4 text-center">
 				<%= link_to "NYT", nyt_path(), class: "#{if_active_helper(nyt_path())}" %>	
 			</div>
@@ -7,7 +12,12 @@
 				<%= link_to "LÆS", laes_path(), class: "#{if_active_helper(laes_path())}"%>	
 			</div>
 			<div class="col-md-4 text-center">
-			<%= link_to "BENYT", benyt_path("log-in"), class: "#{if_active_helper(benyt_path( params[:show_partial].nil? ? "log-in" : params[:show_partial] ))}" %>
+			<% if user_signed_in? %>
+				<%= link_to "MIT", user_path(current_user.id), class: "#{if_active_helper( user_path(current_user.id))}" %> / <%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "navbar-log-ud-link" %>
+
+			<% else %>
+				<%= link_to "BENYT", benyt_path("log-in"), class: "#{if_active_helper(benyt_path( params[:show_partial].nil? ? "log-in" : params[:show_partial] ))}" %>
+			<% end %>
 			</div>
 		</div>	
 	</div>
