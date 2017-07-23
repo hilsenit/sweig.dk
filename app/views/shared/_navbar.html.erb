@@ -16,7 +16,9 @@
 				<%= link_to "MIT", user_path(current_user.id), class: "#{if_active_helper( user_path(current_user.id))}" %> / <%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "navbar-log-ud-link" %>
 
 			<% else %>
-				<%= link_to "BENYT", benyt_path("log-in"), class: "#{if_active_helper(benyt_path( params[:show_partial].nil? ? "log-in" : params[:show_partial] ))}" %>
+				<%= link_to "LOG-IN", benyt_path("log-in"), class: "#{if_active_helper( benyt_path("log-in"))}" %> 
+				<span class="small">eller</span> 
+				<%= link_to "OPRET", benyt_path("opret"), class: "#{if_active_helper( benyt_path("opret"))}" %>
 			<% end %>
 			</div>
 		</div>	

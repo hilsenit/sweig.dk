@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-	devise_for :users
+	devise_for :users, controllers: { confirmations: 'confirmations' }
 
 	resources :users do
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"

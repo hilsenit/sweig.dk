@@ -1,18 +1,18 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
-
+<div class="small text-right">* skal udfyldes</div>
 <div class="form-group">
-  <%= f.label :username, "Brugernavn:" %><br />
+  <%= f.label :username, "Brugernavn:" %>*<br />
   <%= f.text_field :username, autofocus: true, class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :email, "Email-adresse:" %><br />
+  <%= f.label :email, "Email-adresse:" %>*<br />
   <%= f.email_field :email, class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :password, "Kodeord:" %>
+  <%= f.label :password, "Kodeord:" %>*
   <% if @minimum_password_length %>
   <em>(<%= @minimum_password_length %> minimum længde af kodeord)</em>
   <% end %><br />
@@ -20,13 +20,16 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :password_confirmation, "Bekræft dit kodeord:" %><br />
+  <%= f.label :password_confirmation, "Bekræft dit kodeord:" %>*<br />
   <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 </div>
+</div><!--- col-md-6 end -->
+<div class="col-md-12 text-center">
+<hr>
+  <div class="border-image">
+    <%= f.submit "Opret mig nu", class: "btn btn-primary" %>
+  </div>
 
-
-<div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Luk</button>
-  <%= f.submit "Opret", class: "btn btn-primary" %>
 </div>
 <% end %>
+

@@ -19,6 +19,7 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
 html {
 	height: 100%;
 }
@@ -28,6 +29,33 @@ body {
 }
 p {
 	word-break: keep-all;
+}
+
+.btn-primary {
+	text-transform: uppercase;
+	background-color: white!important;
+	color: black;
+	font-family: Roboto;
+	letter-spacing: 2px;
+	border-color: transparent;
+	cursor: pointer;
+
+}
+.btn-primary:hover {
+	border-color: transparent;
+	color: black;
+	text-decoration: underline;
+}
+
+.border-image {
+	margin-top: 10px;
+	display: inline-block;
+	background: url(image-path("knap-baggrund.png"));
+	padding: 6px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
 }
 
 .lille-sweig-tilbage {
@@ -44,22 +72,17 @@ p {
 	}
 }
 
-.tekst-wrapper-forside {
-	margin-top: calc(100px + 2vh);
-}
-.send-mail {
-	width: 100%;
-	input, textarea {
-		opacity: 1;
-		font-family: Roboto; 
-		color: black;
-		border-style: none;
-		border-color: transparent;
-		border-bottom-color: black;
-		border-bottom-width: 1px;
-		overflow: auto;
+
+.opret-log-in-wrapper {
+	margin-top: calc(70px + 2vh);
+	.log-in-body {
+		padding-top: calc(40px + 4vh);
 	}
 }
+.tekst-wrapper-forside {
+	margin-top: calc(70px + 2vh);
+}
+
 .frontpage-navbar-wrapper {
 	margin-top: 20px;
 	a {
