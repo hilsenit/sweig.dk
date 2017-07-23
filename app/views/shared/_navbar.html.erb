@@ -16,7 +16,7 @@
 				<%= link_to "MIT", user_path(current_user.id), class: "#{if_active_helper( user_path(current_user.id))}" %><span class="small">eller</span>< <%= link_to "LOG UD", destroy_user_session_path(), method: :delete %>
 
 			<% else %>
-				<%= link_to "LOG-IN", log_in_path(), class: "#{if_active_helper( log_in_path())}" %> 
+				<%= link_to "LOG-IN", new_user_session_path(), class: "#{if_active_helper( log_in_path())}" %> 
 				<span class="small">eller</span> 
 				<%= link_to "OPRET", oprettelse_path(), class: "#{if_active_helper( oprettelse_path())}" %>
 			<% end %>

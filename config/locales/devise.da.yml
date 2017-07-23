@@ -8,7 +8,7 @@ da:
     failure:
       already_authenticated: "Du er allerede logget ind."
       inactive: "Du har ikke aktiveret via din email-adresse endnu."
-      invalid: "Invalid %{authentication_keys} eller kodeord."
+      invalid: "Mangler %{authentication_keys} eller kodeord."
       locked: "Din bruger er låst."
       last_attempt: "You have one more attempt before your account is locked."
       not_found_in_database: "Forkert %{authentication_keys} eller kodeord."
