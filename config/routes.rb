@@ -17,8 +17,9 @@ Rails.application.routes.draw do
 	get "search/tag" => "static_pages#search", as: "search"
 
 	get "nyt" => "static_pages#nyt"
-	get "laes" => "static_pages#laes"
-	get "benyt/:show_partial" => "static_pages#opret", as: "benyt"
+	get "laes-litteratur" => "static_pages#laes", as: "laes"
+	get "opret-mig-nu" => "static_pages#oprettelse", as: "oprettelse"
+	get "log-in" => "static_pages#log_in"
 
 	post "kontakt-os" => "static_pages#kontakt"	
 	

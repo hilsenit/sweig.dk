@@ -1,5 +1,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
+
 <div class="small text-right">* skal udfyldes</div>
 <div class="form-group">
   <%= f.label :username, "Brugernavn:" %>*<br />
@@ -23,13 +24,12 @@
   <%= f.label :password_confirmation, "Bekræft dit kodeord:" %>*<br />
   <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 </div>
-</div><!--- col-md-6 end -->
 <div class="col-md-12 text-center">
-<hr>
   <div class="border-image">
     <%= f.submit "Opret mig nu", class: "btn btn-primary" %>
   </div>
 
 </div>
+</div><!--- col-md-6 end -->
 <% end %>
 

@@ -13,12 +13,12 @@
 			</div>
 			<div class="col-md-4 text-center">
 			<% if user_signed_in? %>
-				<%= link_to "MIT", user_path(current_user.id), class: "#{if_active_helper( user_path(current_user.id))}" %> / <%= link_to "Log ud", destroy_user_session_path(), method: :delete, class: "navbar-log-ud-link" %>
+				<%= link_to "MIT", user_path(current_user.id), class: "#{if_active_helper( user_path(current_user.id))}" %><span class="small">eller</span>< <%= link_to "LOG UD", destroy_user_session_path(), method: :delete %>
 
 			<% else %>
-				<%= link_to "LOG-IN", benyt_path("log-in"), class: "#{if_active_helper( benyt_path("log-in"))}" %> 
+				<%= link_to "LOG-IN", log_in_path(), class: "#{if_active_helper( log_in_path())}" %> 
 				<span class="small">eller</span> 
-				<%= link_to "OPRET", benyt_path("opret"), class: "#{if_active_helper( benyt_path("opret"))}" %>
+				<%= link_to "OPRET", oprettelse_path(), class: "#{if_active_helper( oprettelse_path())}" %>
 			<% end %>
 			</div>
 		</div>	

@@ -1,6 +1,6 @@
 
 source 'https://rubygems.org'
-ruby '2.3.4'
+ruby '2.4'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -59,5 +59,8 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'devise'
+gem 'devise-i18n'
 gem 'social-share-button'
 gem 'autosize-rails'
+# Oversættelse
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x

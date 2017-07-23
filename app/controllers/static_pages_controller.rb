@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-
+	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
 	end
 
@@ -13,15 +13,11 @@ class StaticPagesController < ApplicationController
 		end		
 	end
 
-	def nyt; end
-	
-	def opret 
-		if user_signed_in?
-			flash[:notice] = "Du er logget ind"
-			redirect_to user_path(current_user.id)
-		end
-	end
-	
+	def log_in;end
+
+	def oprettelse; end
+
+		
 	def laes 
 		published_work = Work.where(status: 1)
 		@newest_works = published_work.order(created_at: :desc).limit(12)
@@ -34,5 +30,15 @@ class StaticPagesController < ApplicationController
 
 		flash[:notice] = "Din besked '#{params[:emne]}' er blevet sendt"
 		redirect_to root_path
+	end
+
+
+	private
+
+	def is_user_signed_in?
+		if user_signed_in?
+			flash[:notice] = "Du er allerede logget ind"
+			redirect_to user_path(current_user.id)
+		end
 	end
 end
