@@ -7,7 +7,7 @@
 				<%= link_to "LÆS", laes_path(), class: "#{if_active_helper(laes_path())}"%>	
 			</div>
 			<div class="col-md-4 text-center">
-			<%= link_to "BENYT", benyt_path("log-in"), class: "#{if_active_helper(benyt_path("log-in"))}" %>
+			<%= link_to "BENYT", benyt_path("log-in"), class: "#{if_active_helper(benyt_path( params[:show_partial].nil? ? "log-in" : params[:show_partial] ))}" %>
 			</div>
 		</div>	
 	</div>
