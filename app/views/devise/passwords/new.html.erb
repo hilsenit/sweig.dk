@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
+<div class="log-content opret-log-in-wrapper">
+	<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, id: "flash_#{name}", class: "text-center lead" %>
+	<% end %>
+	<div class="tab-content clearfix">
+		<div class="log-body-inner log-in-body tab-pane fade in show active" id="signInField">
+	<h1 class="lead text-center">Har du glemt dit kodeord?</h1>
+			<div class="offset-md-4 col-md-4">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+				<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+				<div class="form-group">
+					<%= f.label :email %><br />
+					<%= f.email_field :email, autofocus: true, class: "form-control" %>
+				</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+				<div class="actions">
+					<div class="col-md-12 text-center">
+						<div class="border-image">
+							<%= f.submit "Send mig en email", class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= render "devise/shared/links" %>

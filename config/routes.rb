@@ -2,8 +2,14 @@ Rails.application.routes.draw do
 
 
 
-	devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
-
+	devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
+	# Jeg navngiver mine egne
+	as :user do
+	  get 'log-ind-her', to: 'devise/sessions#new', as: :new_user_session
+	  post 'log-ind', to: 'devise/sessions#create', as: :user_session
+	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
+	end
+	
 	resources :users do
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do
