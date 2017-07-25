@@ -19,7 +19,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
+h1, h2, h3, h4, h5, h6 {
+	font-family: Roboto;
+}
 html {
 	height: 100%;
 }
@@ -31,6 +33,17 @@ p {
 	word-break: keep-all;
 }
 
+div#error_explanation {
+	h2 {
+		text-align: center;
+		font-size: 1.25rem;
+	}
+	ul li {
+		list-style: none;
+		text-align: center;
+		margin-left: 0;
+	}
+}
 .btn-primary {
 	text-transform: uppercase;
 	background-color: white!important;
@@ -85,7 +98,7 @@ p {
 
 .frontpage-navbar-wrapper {
 	margin-top: 20px;
-	a {
+	a {	
 		font-weight: 1000;
 		font-size: 20px;
 		letter-spacing: 4px;
@@ -95,6 +108,22 @@ p {
 	.active {
 		text-decoration: underline;
 	}
+}
+
+.frontpage-menu-wrapper {
+	margin-top: 20px;
+	a {	
+		padding-right: 20px;
+		font-weight: 1000;
+		font-size: 20px;
+		letter-spacing: 4px;
+		color: black;
+	}
+
+	.active {
+		text-decoration: underline;
+	}
+
 }
 
 .forside-bil-tekst-wrapper {
@@ -114,8 +143,6 @@ p {
 	font-size: 15px;
 	letter-spacing: 4px;
 	margin-top: 30px; 
-	padding-right: 20px;
-	width: auto!important; 
 	a {
 		font-family: Roboto;
 	}

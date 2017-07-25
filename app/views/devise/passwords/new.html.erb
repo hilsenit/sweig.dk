@@ -18,11 +18,16 @@
 				<div class="actions">
 					<div class="col-md-12 text-center">
 						<div class="border-image">
-							<%= f.submit "Send mig en email", class: "btn btn-primary" %>
+							<%= f.submit "Send mig en instruks", class: "btn btn-primary" %>
 						</div>
 					</div>
 				</div>
 				<% end %>
+				<hr>
+				<div class="text-center">
+				<%= link_to "Log ind", new_user_session_path(), class: "small forside-tekst-overskrift" %><br />
+				</div>
+
 			</div>
 		</div>
 	</div>

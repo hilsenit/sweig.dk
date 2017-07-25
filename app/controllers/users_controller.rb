@@ -21,6 +21,14 @@ class UsersController < ApplicationController
 		
 	end
 
+	def index 
+		if user_signed_in?
+			flash[:notice] = "Du er allerede logget ind"
+			redirect_to user_path(current_user.id)
+		else
+			render "devise/registrations/new"
+		end
+	end
 	def toggle_status
 		# work_id as a params is only used on this route (se routes.rb)
 		@work = Work.friendly.find(params[:work_id])

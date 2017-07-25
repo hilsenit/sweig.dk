@@ -9,7 +9,14 @@
 				<%= link_to "NYT", nyt_path(), class: "#{if_active_helper(nyt_path())}" %>	
 			</div>
 			<div class="col-md-4 text-center">
-				<%= link_to "LÆS", laes_path(), class: "#{if_active_helper(laes_path())}"%>	
+				<%= link_to laes_path, remote: true do %>
+				<div class="search-field">
+					<%= form_tag(search_path, method: :get, remote: true) do %>
+					<%= text_field_tag :search, params[:search], class: "form-control" %>
+					<%= submit_tag "Søg", style: "display: none", name: nil %>
+					<% end %>
+				</div>		
+				<% end %>
 			</div>
 			<div class="col-md-4 text-center">
 			<% if user_signed_in? %>
@@ -18,7 +25,7 @@
 			<% else %>
 				<%= link_to "LOG-IN", new_user_session_path(), class: "#{if_active_helper( log_in_path())}" %> 
 				<span class="small">eller</span> 
-				<%= link_to "OPRET", oprettelse_path(), class: "#{if_active_helper( oprettelse_path())}" %>
+				<%= link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( oprettelse_path())}" %>
 			<% end %>
 			</div>
 		</div>	

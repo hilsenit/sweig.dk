@@ -3,17 +3,17 @@
 
 <div class="small text-right">* skal udfyldes</div>
 <div class="form-group">
-  <%= f.label :username, "Brugernavn:" %>*<br />
+  <%= f.label :username, "Brugernavn:*" %><br />
   <%= f.text_field :username, autofocus: true, class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :email, "Email-adresse:" %>*<br />
+  <%= f.label :email, "Email-adresse:*" %><br />
   <%= f.email_field :email, class: "form-control" %>
 </div>
 
 <div class="form-group">
-  <%= f.label :password, "Kodeord:" %>*
+  <%= f.label :password, "Kodeord:*" %>
   <% if @minimum_password_length %>
   <em>(<%= @minimum_password_length %> minimum længde af kodeord)</em>
   <% end %><br />
@@ -21,7 +21,7 @@
 </div>
 
 <div class="form-group">
-  <%= f.label :password_confirmation, "Bekræft dit kodeord:" %>*<br />
+  <%= f.label :password_confirmation, "Bekræft dit kodeord:*" %><br />
   <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 </div>
 <div class="col-md-12 text-center">
