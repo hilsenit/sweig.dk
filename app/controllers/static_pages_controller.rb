@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
 		published_work = Work.where(status: 1)
 		@works = published_work.search(params[:search]).order(created_at: :desc).limit(12)	
 		@users = User.search(params[:search]).order(created_at: :desc).limit(12) 
+		$search = params[:search]
 		respond_to do |format|
 			format.js
 			format.html
