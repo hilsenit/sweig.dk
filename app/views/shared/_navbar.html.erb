@@ -12,7 +12,7 @@
 				<%= link_to laes_path, remote: true do %>
 				<div class="search-field">
 					<%= form_tag(search_path, method: :get, remote: true) do %>
-					<%= text_field_tag :search, params[:search], class: "form-control" %>
+					<%= text_field_tag :search, params[:search], placeholder: "søg her..", class: "form-control soege-felt" %>
 					<%= submit_tag "Søg", style: "display: none", name: nil %>
 					<% end %>
 				</div>		

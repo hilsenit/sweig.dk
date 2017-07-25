@@ -33,7 +33,11 @@ p {
 	word-break: keep-all;
 }
 
-div#error_explanation {
+.soege-felt {
+	text-align: center;
+	text-decoration: none;
+}
+#error_explanation {
 	h2 {
 		text-align: center;
 		font-size: 1.25rem;
