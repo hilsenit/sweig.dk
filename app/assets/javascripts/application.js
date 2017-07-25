@@ -20,9 +20,9 @@
 //= require turbolinks
 //= require_tree .
 
-jQuery(document).ready(function($) {
-	$("#soegeFelt").on("change keyup paste", function() {
-		$search_text = $(this).val();
+document.addEventListener("turbolinks:load", function() {
+	jQuery("#soegeFelt").on("keyup paste", function() {
+		$search_text = jQuery(this).val();
 		$.ajax({
 			url: '/soegefelt/resultat',
 			type: 'GET',
