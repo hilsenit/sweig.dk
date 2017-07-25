@@ -9,4 +9,5 @@ class Work < ApplicationRecord
 	def self.search(searched_for)
 		where("title ILIKE ? OR body ILIKE ?", "%#{searched_for}%", "%#{searched_for}%")
 	end
+
 end

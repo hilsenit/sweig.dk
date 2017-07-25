@@ -8,7 +8,11 @@
 		<%= link_to user_work_path(work.user_id, work) do %>
 		<div class="search-result">
 			<p class="lead"><%= work.title %></p>
-			<p><%= truncate( work.body, length: 100 ) %></p>
+			<% if params[:search].nil? %>
+				<%= content_tag :p, truncate(work.body, length: 30) %>
+			<% else %>
+				<%= content_tag :p, excerpt(work.body, params[:search], radius: 30 - params[:search].size ) %>
+			<% end %>
 			<span class="small"><%= ".ord(#{work.body.split(" ").length})" %></span>
 		</div>
 		<% end %>
@@ -27,7 +31,9 @@
 		<%= link_to user_path(user) do %>
 		<div class="search-result">
 			<p class="lead"><%= user.username %></p>
-			<p class="text-muted"><%= user.works.published.length %></p>
+			<p class="text-muted">
+				<%= "værker(#{user.works.published.length})" unless user.works.published.empty? %>
+				</p>
 		</div>
 		<% end %>
 	</div>
