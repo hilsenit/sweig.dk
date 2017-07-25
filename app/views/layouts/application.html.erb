@@ -16,9 +16,8 @@
 
 <body>
   <%= render partial: "shared/navbar" %>
-  <div class="container mb-4">
+  <div class="container mb-4 container-javascript-remote">
     <% if flash[:notice] %>
-    <hr>
       <div class="text-center lead"><%= flash[:notice] %></div>
     <% end %>
     <%= yield %>    

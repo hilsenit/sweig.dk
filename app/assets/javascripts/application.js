@@ -19,3 +19,14 @@
 //= require jquery.autosize
 //= require turbolinks
 //= require_tree .
+
+jQuery(document).ready(function($) {
+	$("#soegeFelt").on("change keyup paste", function() {
+		$search_text = $(this).val();
+		$.ajax({
+			url: '/soegefelt/resultat',
+			type: 'GET',
+			data: {search: $search_text}
+		});	
+	});
+});

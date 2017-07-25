@@ -41,15 +41,12 @@
 
 	</div>
 
-	<script type="text/javascript">
-	// Til billederne
-		jQuery(document).ready(function($) {
-				$(".forside-tekst-overskrift a").click(function(e) {
-				e.preventDefault();
-					id = $(this).attr("id");
-					$("." + id ).show().siblings().hide();
-			});		
-		});
-	</script>
 
-
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+			$(".forside-tekst-overskrift a").click(function(e) {
+			e.preventDefault();
+				id = $(this).attr("id");
+				$("." + id ).show().siblings().hide();
+		});		
+</script>
