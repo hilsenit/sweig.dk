@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 		end
 	end
 
-	get "search/tag" => "static_pages#search", as: "search"
+	get "soegefelt/resultat" => "static_pages#search", as: "search"
 
 	get "nyt" => "static_pages#nyt"
 	get "laes-litteratur" => "static_pages#laes", as: "laes"

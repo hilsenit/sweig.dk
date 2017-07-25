@@ -1,4 +1,4 @@
-<% if !works.blank? %>
+<% unless works.blank? %>
 <h2 class="text-center search-header">værker</h2>
 <hr>
 <div class="row">
@@ -9,14 +9,16 @@
 		<div class="search-result">
 			<p class="lead"><%= work.title %></p>
 			<p><%= truncate( work.body, length: 100 ) %></p>
+			<span class="small"><%= ".ord(#{work.body.split(" ").length})" %></span>
 		</div>
 		<% end %>
+
 	</div>
 	<% end %>
 </div>
 <% end %>
 
-<% if !users.blank? %>
+<% unless users.blank? %>
 <h2 class="text-center search-header">jer</h2>
 <hr>
 <div class="row">
@@ -35,9 +37,7 @@
 
 
 <% if users.blank? && works.blank? %>
-<p class="text-center lead">
-	Vi kunne desværre ikke finde noget under "<%= params[:search] %>"
-</p>
+	<p class="text-center lead search-no-find">
+		Intet var at finde under "<%= params[:search] %>"
+	</p>
 <% end %>
-
-

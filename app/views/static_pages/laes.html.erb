@@ -1,13 +1,26 @@
-<div class="offset-sm-1 col-sm-10">
-	<div class="search" id="searchBar">
-	<h1>hey!</h1>
-				
-				<div class="search-results">
-
-
-				</div>
-
-
+<div class="col-md-12">
+	<div class="search-result-wrapper">
+		<div class="search-results">
+					
+					<%= render partial: 'search_result', locals: { works: @works, users: @users } %>	
+		</div>
 	</div><!-- .search -->
 
 </div><!-- col-sm-10 -->
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#soegeFelt").on("change keyup paste", function() {
+			$search_text = $(this).val();
+			$.ajax({
+				url: 'soegefelt/resultat',
+				type: 'GET',
+				data: {search: $search_text}
+			});	
+			debugger;	
+		});
+	});
+
+</script>
