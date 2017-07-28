@@ -18,6 +18,7 @@
 @import "social-share-button";
 @import "min-bootstrap";
 @import "font-awesome";
+@import "search-placeholder";
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: Roboto;
@@ -28,6 +29,7 @@ html {
 
 body {
 	min-height: 100%;
+	margin-bottom: 50px;
 }
 p {
 	word-break: keep-all;
@@ -39,6 +41,7 @@ p {
 .soege-felt {
 	text-align: center;
 	text-decoration: none;
+	border-width: 0px;
 }
 #error_explanation {
 	h2 {
@@ -118,9 +121,21 @@ p {
 }
 
 .frontpage-menu-wrapper {
+	text-align: left;
 	margin-top: 20px;
+	float: none;
+	display: inherit;
+}
+.forside-tekst-overskrift {
+	display: inline-block;
+	color: black;
+	cursor: pointer!important;
+	font-weight: 1000;
+	font-size: 15px;
+	letter-spacing: 4px;
+	margin-top: 30px; 
 	a {	
-		padding-right: 20px;
+		margin-right: 20px;
 		font-weight: 1000;
 		font-size: 20px;
 		letter-spacing: 4px;
@@ -130,8 +145,11 @@ p {
 	.active {
 		text-decoration: underline;
 	}
-
 }
+.forside-tekst-overskrift a:last-child {
+	padding-right: 0px;
+}
+
 
 .forside-bil-tekst-wrapper {
 	margin-top: 4vh;
@@ -140,22 +158,6 @@ p {
 		img.active {
 			display: inline-block;
 		}
-	}
-}
-
-.forside-tekst-overskrift {
-	color: black;
-	cursor: pointer!important;
-	font-weight: 1000;
-	font-size: 15px;
-	letter-spacing: 4px;
-	margin-top: 30px; 
-	a {
-		font-family: Roboto;
-	}
-	.active {
-		text-decoration: underline;
-		font-weight: inherit!important;
 	}
 }
 
@@ -221,7 +223,8 @@ p {
 	color: #4a5953
 }
 .logo-background {
-	width: auto;
+	width: inherit;
+	max-width: 393px;
 	margin-top: 50px;
 	position: relative;
 }
@@ -243,20 +246,6 @@ p {
 }
 .modal-header-links {
     margin: 10px;
-}
-.search-dropdown-li {
-	margin-top: 25px;
-}
-
-#whatIsSweigModal .what-is-sweig-modal {
-    max-width: 800px;
-    top: 180px;
-}
-
-.search-field {
-    width: 25%;
-    margin: 0 auto;
-    min-width: 400px;
 }
 
 .search-no-find {
@@ -280,13 +269,35 @@ p {
     top: 0;
 }
 
-@media screen and (max-width: 576px) {
-	.icon-frontpage {
-		width: 33%;
+@media (max-width: 763px) {
+	.text-center-md {
 		text-align: center;
+	}	
+	
+	.frontpage-menu-wrapper {
+		text-align: center;
+		display: inherit;
 	}
+	.logo-background {
+		margin-top: 0;
+	}
+
+	.opret-log-in-wrapper {
+		margin-top: 40px;
+		.log-in-body {
+			padding-top: 10px;
+		}
+	}
+
+}
+
+@media screen and (max-width: 576px) {
 
 	.logo-background {
 		width: 100%;
+	}
+
+	.soege-felt {
+		margin-top: 6px;
 	}
 }

@@ -1,0 +1,37 @@
+.search-placeholder::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	text-transform: uppercase;
+	font-weight: 1000;
+	font-size: 20px;
+	letter-spacing: 4px;
+	color: black;	
+}
+.search-placeholder:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	text-transform: uppercase;
+	font-weight: 1000;
+	font-size: 20px;
+	letter-spacing: 4px;
+	color: black;		
+   opacity:  1;
+}
+.search-placeholder::-moz-placeholder { /* Mozilla Firefox 19+ */
+	text-transform: uppercase;
+	font-weight: 1000;
+	font-size: 20px;
+	letter-spacing: 4px;
+	color: black;	
+   opacity:  1;
+}
+.search-placeholder:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	text-transform: uppercase;
+	font-weight: 1000;
+	font-size: 20px;
+	letter-spacing: 4px;
+	color: black;	
+}
+.search-placeholder::-ms-input-placeholder { /* Microsoft Edge */
+	text-transform: uppercase;
+	font-weight: 1000;
+	font-size: 20px;
+	letter-spacing: 4px;
+	color: black;	
+}
