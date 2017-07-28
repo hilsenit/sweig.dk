@@ -2,8 +2,8 @@
 <% if @work.errors.any? %>
 	<div data-alert class="alert-box secondary">
 	<a href="#" class="close">&times;</a>
-		<% @work.errors.full_messages.each do |error| %>
-			<p class="text-center"><%= error %></p>
+		<% @work.errors.each do |attr, msg| %>
+			<p class="text-center lead"><%= msg %></p>
 		<% end %>
 	</div>
 <% end %>

@@ -4,7 +4,8 @@ class Work < ApplicationRecord
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	enum status: { draft: 0, published: 1}
-	validates :title, :body, presence: true
+	validates :title, presence: { message: "Overskrift mangler"}
+	validates :body, presence: { message: "Tekst mangler"}
 
 	def self.search(searched_for)
 		where("title ILIKE ? OR body ILIKE ?", "%#{searched_for}%", "%#{searched_for}%")
