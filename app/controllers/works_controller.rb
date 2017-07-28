@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+	
 	before_action :newest_and_most_read_works, only: [:new]
 	layout "simple_view", only: [:new, :edit, :show, :create]
 

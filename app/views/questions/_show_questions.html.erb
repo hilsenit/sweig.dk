@@ -1,0 +1,14 @@
+<% @questions.each do |question| %>
+	<div class="col-sm-10 pl-4 mt-4	" id="question.id">
+		<h2><%= question.headline %></h2>
+		<p class="lead">
+			<%= truncate(question.text, length: 100) %>
+		</p>
+	</div>
+	<div class="col-sm-1">
+		<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
+		<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
+		<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
+
+	</div>
+<% end %>

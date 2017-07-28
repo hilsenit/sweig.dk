@@ -17,6 +17,10 @@ class StaticPagesController < ApplicationController
 
 	def oprettelse; end
 
+	def nyt
+		@questions = Question.all
+	end
+
 		
 	def laes 
 

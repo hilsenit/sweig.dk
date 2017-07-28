@@ -1,15 +1,26 @@
 Rails.application.routes.draw do
 
 
+	# ADMIN
+  	get 'admin/show'
+  	get 'admin/edit'
+  	get 'admin/vis-spoergsmål' => 'admin#show_questions', as: :show_questions
+  	#SPØRGSMÅL
+  	resources :questions, except: :index do 
 
+  	get 'stem-spoergsmaal/:value' => 'questions#vote', as: :vote
+
+  	end
+	get "nyt" => "questions#index"
+  	# DEVISE
 	devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
-	# Jeg navngiver mine egne
 	as :user do
 	  get 'log-ind-her', to: 'devise/sessions#new', as: :new_user_session
 	  post 'log-ind', to: 'devise/sessions#create', as: :user_session
 	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
 	end
-	
+	# DEVISE END
+
 	resources :users do
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do
@@ -22,7 +33,6 @@ Rails.application.routes.draw do
 
 	get "soegefelt/resultat" => "static_pages#search", as: "search"
 
-	get "nyt" => "static_pages#nyt"
 	get "laes-litteratur" => "static_pages#laes", as: "laes"
 	get "opret-mig-nu" => "static_pages#oprettelse", as: "oprettelse"
 	get "log-in" => "static_pages#log_in"
