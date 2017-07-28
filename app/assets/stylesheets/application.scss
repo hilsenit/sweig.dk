@@ -10,13 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require users
  *= require_self
 
 
  */
 @import "social-share-button";
-@import "bootstrap";
+@import "min-bootstrap";
 @import "font-awesome";
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,6 +33,9 @@ p {
 	word-break: keep-all;
 }
 
+.hide-it {
+	display: none;
+}
 .soege-felt {
 	text-align: center;
 	text-decoration: none;
