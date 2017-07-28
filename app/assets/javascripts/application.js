@@ -15,12 +15,14 @@
 //= require popper
 //= require social-share-button
 //= require bootstrap-sprockets
-//= require bootstrap
 //= require jquery.autosize
 //= require turbolinks
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
+	jQuery("#soegeFelt").on("focus", function() {
+		$(this).removeAttr('placeholder');
+		});
 	jQuery("#soegeFelt").on("keyup paste", function() {
 		$search_text = jQuery(this).val();
 		$.ajax({
