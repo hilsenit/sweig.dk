@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_session_social
 
+  def after_sign_in_path_for(resource)
+      user_path(current_user.friendly_id)
+  end
+
   def set_session_social
   	session[:social] = params[:q] if params[:q]
   end
