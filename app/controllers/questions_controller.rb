@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
 
 
 	def show
-		flash[:notice] = "Her kan du afgive din stemme på spørgsmålet."
 		# Har user stemt på det her før?
 		if vote = current_user.votes.detect{|v| v.question_id == params[:id].to_i}
 			@user_vote = vote
@@ -13,7 +12,7 @@ class QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 		
 	end
-	
+
 	def index
 		@questions = Question.vote_count_sort
 		

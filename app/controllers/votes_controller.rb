@@ -27,12 +27,7 @@ class VotesController < ApplicationController
 	def destroy
 		@question = Question.find(params[:question_id])
 		@vote = Vote.find(params[:vote_id])
-						
-			if @vote.vote_num == 1
-				@question.vote_count -= 1
-			else
-				@question.vote_count += 1
-			end
+		@vote.vote_num == 1 ? @question.vote_count -= 1 : @question.vote_count += 1
 		@question.save!
 		if @vote.destroy
 			@user_vote = nil			
