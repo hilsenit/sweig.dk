@@ -2,8 +2,10 @@ class QuestionsController < ApplicationController
 
 
 	def show
-		if @user_vote = current_user.votes.detect(question_id: params[:id]) 
-			@user_vote
+		flash[:notice] = "Her kan du afgive din stemme på spørgsmålet."
+		# Har user stemt på det her før?
+		if vote = current_user.votes.detect{|v| v.question_id == params[:id].to_i}
+			@user_vote = vote
 		else
 			@user_vote = nil
 		end
@@ -45,32 +47,48 @@ class QuestionsController < ApplicationController
 
 	def destroy
 		@question = Question.find(params[:id])
+
 		if @question.destroy
 			redirect_to show_questions_path(), notive: "\"#{@question.headline}\" er blevet slettet"
 		end
 		
 	end
 
+	def destroy
+		@vote = Vote.find(params[:id])
+		if @vote.destroy
+			@message = "Din stemme er blevet fjernet"
+			respond_to do |format|
+				format.js { render 'message' }
+			end
+		end
+	end
+
 	def vote
 		@question = Question.find(params[:question_id])
-		@user_vote = Vote.create!(question_id: @question.id, user_id: current_user.id)
-		if params[:value] == "up"
-			@user_vote.vote_num = 1
-			@question.vote_count += 1
-		else 
-			@user_vote.vote_num = 0
-			@question.vote_count += -1
-		end 
-		@question.save!
-		@user_vote.save!
-		respond_to do |format|
-			format.js 
+		@user_vote = Vote.new(question_id: @question.id, user_id: current_user.id)
+		if @user_vote.save
+			if params[:value] == "up"
+				@user_vote.vote_num = 1
+				@question.vote_count += 1
+			else 
+				@user_vote.vote_num = 0
+				@question.vote_count += -1
+			end 
+			@question.save!; @user_vote.save!
+
+			respond_to do |format|
+				format.js 
+			end
+		else
+			@message = "Du kan kun stemme én gang på hvert spørgsmål"
+			respond_to do |format|
+				format.js { render 'message' }
+			end
 		end
 	end
 
 	private
-	def set_vote_and_count up_down
-	end
 
 	def question_params
 		params.require(:question).permit(:headline, :text)

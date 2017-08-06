@@ -1,23 +1,11 @@
-<% if user_vote.nil? %>
-
-	<h1>HEY! JEG ER NIL </h1>
-
-<% end %>
-
 <div class="col-lg-10">
 	<h2><%= question.headline %></h2>
 	<p class=""><%= question.text %></p> 
 </div>
 <div class="col-lg-1">
-
-	<% if user_signed_in? %>
-	<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
-	<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
-	<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
-	<% else %>
-	<%= image_tag "arrow-up", class: "question-arrows" %>
-	<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
-	<%= image_tag "arrow-down", class: "question-arrows" %>
-	<% end %>
+		<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
+		<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
+		<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
+		<%= link_to image_tag("delete-cross"), question_path(question), method: :delete %>
 </div>
 
