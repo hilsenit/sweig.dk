@@ -6,6 +6,8 @@
 		<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
 		<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
 		<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
-		<%= link_to image_tag("delete-cross"), question_path(question), method: :delete %>
+		<% unless user_vote.nil? %>
+			<%= link_to image_tag("delete-cross"), question_delete_vote_path(question, user_vote.id), method: :delete, remote: true %>
+		<% end %>
 </div>
 

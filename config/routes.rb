@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   	get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
   	#SPØRGSMÅL
   	resources :questions, except: :index do 
-
-  	get 'stem-spoergsmaal/:value' => 'questions#vote', as: :vote
-
-
+  		#STEMMER
+	  	get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
+	  	delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
   	end
 	get "nyt" => "questions#index"
   	# DEVISE
@@ -20,7 +19,6 @@ Rails.application.routes.draw do
 	  post 'log-ind', to: 'devise/sessions#create', as: :user_session
 	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
 	end
-	# DEVISE END
 
 	resources :users do
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
