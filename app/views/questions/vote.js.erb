@@ -1,1 +1,1 @@
-$(".questions-wrapper").html("<%= escape_javascript( render partial: "show_questions", locals: {questions: @questions} ) %>");
+$(".question-wrapper").html("<%= escape_javascript( render partial: "show_question", locals: {question: @question, user_vote: @user_vote} ) %>");

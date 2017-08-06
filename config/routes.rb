@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 	# ADMIN
   	get 'admin/show'
   	get 'admin/edit'
-  	get 'admin/vis-spoergsmål' => 'admin#show_questions', as: :show_questions
+  	get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
   	#SPØRGSMÅL
   	resources :questions, except: :index do 
 

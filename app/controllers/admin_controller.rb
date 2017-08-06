@@ -7,7 +7,7 @@ layout "admin"
   def edit
   end
 
-  def show_questions
+  def edit_questions
   	@questions = Question.all
   end
 

@@ -1,6 +1,16 @@
 class QuestionsController < ApplicationController
 
 
+	def show
+		if @user_vote = current_user.votes.detect(question_id: params[:id]) 
+			@user_vote
+		else
+			@user_vote = nil
+		end
+
+		@question = Question.find(params[:id])
+		
+	end
 	def index
 		@questions = Question.vote_count_sort
 		
@@ -42,21 +52,19 @@ class QuestionsController < ApplicationController
 	end
 
 	def vote
-		question = Question.find(params[:question_id])
-		vote = Vote.create!(question_id: question.id)
+		@question = Question.find(params[:question_id])
+		@user_vote = Vote.create!(question_id: @question.id, user_id: current_user.id)
 		if params[:value] == "up"
-			vote.vote_num = 1
-			question.vote_count += 1
+			@user_vote.vote_num = 1
+			@question.vote_count += 1
 		else 
-			vote.vote_num = 0
-			question.vote_count += -1
+			@user_vote.vote_num = 0
+			@question.vote_count += -1
 		end 
-		question.save!
-		vote.save!
-		@questions = Question.vote_count_sort
-		message = "Tak for din stemme!"
+		@question.save!
+		@user_vote.save!
 		respond_to do |format|
-			format.js { flash.now[:notice] = message }
+			format.js 
 		end
 	end
 
