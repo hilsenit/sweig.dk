@@ -4,6 +4,7 @@
 .question-wrapper {
 	margin: 20px 0px;
 	background-color: darken(white, 5%);
+	color: black;
 	border: 1px solid black;
 	padding: 10px 20px; 
 	cursor: pointer; 
@@ -13,7 +14,9 @@
 
 }
 
-
+.modal-content {
+	border-radius: 0px!important;
+}
 
 
 

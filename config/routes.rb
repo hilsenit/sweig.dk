@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 	# NOT LOGGED IN MODAL
-	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in
+	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
+		
 
 	# ADMIN
   	get 'admin/show'
