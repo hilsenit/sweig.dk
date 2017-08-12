@@ -1,0 +1,14 @@
+<% @questions.each do |question| %>
+<%= link_to not_logged_in_path("Hey kom ikke her"), remote: true, class: "questions-other question-wrapper row" do %>
+<div class="col-md-10">
+<u><%= question.headline %></u>
+<p class="lead">
+<%= truncate(question.text, length: 100) %>
+</p>
+</div>
+<div class="col-md-2 text-center">
+<span class="display-4"><%= question.votes.length%></span> <span class="small">har stemt</span>
+</div>
+
+<% end %>
+<% end %>

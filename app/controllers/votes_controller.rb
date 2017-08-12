@@ -19,6 +19,7 @@ class VotesController < ApplicationController
 		else
 			@message = "Du kan kun stemme én gang på hvert spørgsmål"
 			respond_to do |format|
+				# Another template is being rendered to change text 
 				format.js { render 'message' }
 			end
 		end

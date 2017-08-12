@@ -1,2 +1,7 @@
+<div id="NotLoggedIn"></div>
 
-	<%= render partial: "show_questions", locals: {question: @questions} %>
+<% if current_user.present? %>
+<%= render partial: "show_question_user", locals: {question: @questions} %>
+<% else %>
+<%= render partial: "show_questions_other", locals: {question: @questions} %>
+<% end %> 

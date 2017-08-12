@@ -7,9 +7,11 @@ class WorksController < ApplicationController
 		# UNderligt hack for create action render 'new' problemet med, at den går til index, hvis den ikke gemmer
 		redirect_to new_user_work_path()
 	end
+
 	def edit
 		@user = User.friendly.find(params[:user_id])
 		@work = Work.friendly.find(params[:id])
+
 	end
 
 	def update
