@@ -1,5 +1,5 @@
 <% @questions.each do |question| %>
-	<%= link_to not_logged_in_path("Hvis du gerne vil se spørgsmålets afstemning og kommentarer skal du enten logge ind eller oprette dig. Det er smertefrit og fedt."), remote: true, class: "questions-other question-wrapper row" do %>
+	<%= link_to not_logged_in_path("Hvis du gerne vil se spørgsmålets afstemning og kommentarer, skal du enten logge ind eller oprette dig.<br> Det er smertefrit og fedt."), remote: true, class: "questions-other question-wrapper row" do %>
 		<div class="col-md-10">
 			<u><%= question.headline %></u>
 			<p class="lead">

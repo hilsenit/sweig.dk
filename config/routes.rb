@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   		#STEMMER
 	  	get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
 	  	delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
+		resources :comments
   	end
 	get "nyt" => "questions#index"
   	# DEVISE
