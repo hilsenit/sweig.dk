@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
 	def new
-		question = Question.find(params[:question_id])
-		@comment = Comment.new(question_id: question.id)
+		@question = Question.find(params[:question_id])
+		@comment = Comment.new(question_id: @question.id)
 		respond_to do |format|
 			format.js
 		end 
