@@ -1,0 +1,7 @@
+<% comments.each do |comment| %>
+	<div class="col-lg-10"> 
+		<%= comment.text %>
+		<div class="small"><%= link_to "|" + comment.user.username, user_path(comment.user) %></div>
+	<hr>
+	</div>
+<% end %>

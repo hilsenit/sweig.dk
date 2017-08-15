@@ -10,6 +10,8 @@ class QuestionsController < ApplicationController
 		end
 
 		@question = Question.find(params[:id])
+		@comments = @question.comments
+		
 		
 	end
 
@@ -23,7 +25,6 @@ class QuestionsController < ApplicationController
 
 	def create
 		@question = Question.new(question_params)
-
 		if @question.save 
 			flash[:notice] = "\"#{@question.headline}\" er blevet gemt."
 			redirect_to show_questions_path()

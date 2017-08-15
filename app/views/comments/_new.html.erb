@@ -1,5 +1,7 @@
-<%= form_for [question, comment] do |f| %>
-	<%= f.hidden_field :hidden_user, value: current_user.id %>
-	<%= f.label :text, "Ny kommentar" %>
-	<%= f.text_area :text, class: "form-control" %>
+<%= form_for [question, comment], remote: true  do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.label :text, "Ny: " %>  <span class="small" id="messageCounter"></span> 
+	<%= f.text_area :text, class: "form-control", id: "messageField" %>
+	<%= f.submit "Tilføj", class: "btn btn-secondary" %>
 <% end %>
+

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   #Relationships
   has_many :works, dependent: :destroy
   accepts_nested_attributes_for :works
+  has_many :comments, dependent: :destroy
   has_many :saved_works, dependent: :destroy
   has_many :votes #only one for each question
 

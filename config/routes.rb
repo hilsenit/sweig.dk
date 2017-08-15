@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   	get 'admin/edit'
   	get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
   	#SPØRGSMÅL
-  	resources :questions, except: :index do 
+  	resources :questions, path: "afstemning", except: :index do 
   		#STEMMER
 	  	get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
 	  	delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote

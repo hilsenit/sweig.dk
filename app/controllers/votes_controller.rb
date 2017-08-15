@@ -3,6 +3,7 @@ class VotesController < ApplicationController
 	def vote
 		@question = Question.find(params[:question_id])
 		@user_vote = Vote.new(question_id: @question.id, user_id: current_user.id)
+		@comments = @question.comments
 		if @user_vote.save
 			if params[:vote_value] == "up"
 				@user_vote.vote_num = 1
@@ -27,6 +28,7 @@ class VotesController < ApplicationController
 
 	def destroy
 		@question = Question.find(params[:question_id])
+		@comments = @question.comments
 		@vote = Vote.find(params[:vote_id])
 		@vote.vote_num == 1 ? @question.vote_count -= 1 : @question.vote_count += 1
 		@question.save!

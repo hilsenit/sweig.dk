@@ -10,21 +10,27 @@ class CommentsController < ApplicationController
 	end
 
 	def create 
-		question_id = Question.find(params[:question_id]).id
+		@question = Question.find(params[:question_id])
 		@comment = Comment.new(comment_params)
+		@comment.user_id = params[:comment][:user_id]
+		@comment.question_id = @question.id
+		@comments = @question.comments
 		if @comment.save
 			respond_to do |format|
 				format.js
 			end
 		else
-			redirect_to questions_path(question_id), notice: "Din kommentar blev ikke gemt. Prøv igen"
+			@error_message = @comment.errors.full_messages.first
+			respond_to do |format|
+				format.js {render "comment_error"}
+			end
 		end 
 	end
 
 	private
 
 	def comment_params
-		params.require(:comment).permit(:text, :question_id)
+		params.require(:comment).permit(:text, :question_id, :user_id)
 	end
 						
 
