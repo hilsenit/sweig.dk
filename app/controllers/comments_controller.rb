@@ -27,6 +27,16 @@ class CommentsController < ApplicationController
 		end 
 	end
 
+	def destroy
+		comment = Comment.find(params[:id])
+		question_id = comment.question.id
+		if comment.destroy
+			redirect_to question_path(question_id)
+		else
+			redirect_to question_path(question_id), notice: "Kommentaren kunne ikke slettes. FIND UD AF DET!"
+		end
+	end
+
 	private
 
 	def comment_params

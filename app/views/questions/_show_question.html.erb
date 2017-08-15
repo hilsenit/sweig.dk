@@ -1,6 +1,6 @@
 <div class="col-lg-10">
 	<h2><%= question.headline %></h2>
-	<p class=""><%= question.text %></p> 
+	<p class=""><%= simple_format(question.text) %></p> 
 </div>
 <div class="col-lg-1">
 		<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>

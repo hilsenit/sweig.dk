@@ -1,3 +1,4 @@
+<%= link_to "Admin", admin_path(), class: "btn btn-secondary" if current_user.admin? %>
 	<div class="container frontpage-navbar-wrapper">
 		<div class="row">
 			<%= link_to root_path do %>

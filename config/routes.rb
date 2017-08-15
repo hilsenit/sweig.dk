@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 		
 
 	# ADMIN
-  	get 'admin/show'
-  	get 'admin/edit'
+  	get 'admin/show', as: "admin"
+  	get 'admin/edit', as: "rediger_admin"
   	get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
   	#SPØRGSMÅL
   	resources :questions, path: "afstemning", except: :index do 

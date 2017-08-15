@@ -1,5 +1,7 @@
 <% comments.each do |comment| %>
 	<div class="col-lg-10"> 
+		<%= link_to "Slet kommentar", question_comment_path(comment.question_id, comment), class: "btn btn-secondary", method: :delete if current_user.admin? %>
+		<br>
 		<%= comment.text %>
 		<div class="small"><%= link_to "|" + comment.user.username, user_path(comment.user) %></div>
 	<hr>
