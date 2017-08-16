@@ -1,9 +1,11 @@
 <% comments.each do |comment| %>
-	<div class="col-lg-10"> 
+	<div class="col-lg-10 comment" id="<%= comment.id %>"> 
 		<%= link_to "Slet kommentar", question_comment_path(comment.question_id, comment), class: "btn btn-secondary", method: :delete if current_user.admin? %>
 		<br>
 		<%= comment.text %>
-		<div class="small"><%= link_to "|" + comment.user.username, user_path(comment.user) %></div>
+		<div class="small"><%= link_to "|" + comment.user.username, user_path(comment.user) %>
+		<%= link_to " / rediger", edit_question_comment_path(comment.question, comment), remote: true if current_user.comments.exists? comment.id %>
+		</div>
 	<hr>
 	</div>
 <% end %>

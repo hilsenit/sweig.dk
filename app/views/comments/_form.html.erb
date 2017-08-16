@@ -1,7 +1,7 @@
 <%= form_for [question, comment], remote: true  do |f| %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
-	<%= f.label :text, "Ny: " %>  <span class="small" id="messageCounter"></span> 
+	<%= f.label :text, form_headline %>  <span class="small" id="messageCounter"></span> 
 	<%= f.text_area :text, class: "form-control", id: "messageField" %>
-	<%= f.submit "Tilføj", class: "btn btn-secondary" %>
+	<%= f.submit "Gem", class: "btn btn-secondary" %>
 <% end %>
 

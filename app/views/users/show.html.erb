@@ -4,23 +4,28 @@
 <div class="col-lg-12 main">
 	<%= alert_notice_helper %>
 
-	<% if !@published_works.empty? %>
+	<% if @published_works.any? %>
 		<h2 class="text-center">Udgivet</h2>
 		<hr>
 		<%= render partial: "user_works", 
 		locals: {works: @published_works, arrow: "down", user: @user} %>
-	<% end %>
+<% else  %>
+	<h2 class="text-center">Udgivelser</div>
+	<hr>
+	<div class="my-4 text-center lead">Dine udgivelser kan findes i søgefeltet af alle.</div>
+<% end %> 
 
-	<% if !@draft_works.empty? && is_current_user? %>
+	<% if @draft_works.any? && is_current_user? %>
 		<h2 class="text-center">Kladder</h2>
 		<hr>
 		<%= render partial: "user_works", 
 		locals: {works: @draft_works, arrow: "up", user: @user} %>
-	<% end %>
+<% else  %>
+	<h2 class="text-center">Kladder</h2>
+	<hr>
+	<p class="my-4 text-center lead">Dine kladder kan kun findes af dig.</div>
 
-	<% if @draft_works.empty? && @published_works.empty? %>
-	<p class="text-center lead">Du har ingen værker endnu</p>
-	<% end %>
+<% end %>
 </div>
 
 

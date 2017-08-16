@@ -14,7 +14,7 @@
 	<div class="comment-wrapper row">
 		<%= render partial: "comments/comment", locals: {comments: comments} %>
 		<%= content_tag :div, (link_to "Tilføj kommentar", new_question_comment_path(question.id), remote: true, class: "btn btn-secondary"), class: "new-comment col-lg-12" %>
-
+	<div class="comment-error"></div>
 	</div>
 </div>
 

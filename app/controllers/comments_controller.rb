@@ -8,6 +8,14 @@ class CommentsController < ApplicationController
 		end 
 
 	end
+	
+	def edit
+		@comment = Comment.find(params[:id])
+		@question = @comment.question 
+		respond_to do |format|
+			format.js
+		end 
+	end
 
 	def create 
 		@question = Question.find(params[:question_id])
@@ -26,6 +34,22 @@ class CommentsController < ApplicationController
 			end
 		end 
 	end
+
+	def update 
+		@comment = Comment.find(params[:id])
+		@question = Question.find(params[:question_id])
+		@comments = @question.comments
+		if @comment.update(comment_params)
+			respond_to do |format|
+				format.js { render "create" }
+			end
+		else
+			@error_message = @comment.errors.full_messages.first
+			respond_to do |format|
+				format.js { render "comment_error_edit" }
+			end
+		end 
+	end 
 
 	def destroy
 		comment = Comment.find(params[:id])
