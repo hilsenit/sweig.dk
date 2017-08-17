@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
 		if comment.destroy
 			redirect_to question_path(question_id)
 		else
-			redirect_to question_path(question_id), notice: "Kommentaren kunne ikke slettes. FIND UD AF DET!"
+			redirect_to question_path(question_id), notice: "Kommentaren kunne ikke slettes. "
 		end
 	end
 

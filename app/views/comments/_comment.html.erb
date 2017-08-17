@@ -4,8 +4,13 @@
 		<br>
 		<%= comment.text %>
 		<div class="small"><%= link_to "|" + comment.user.username, user_path(comment.user) %>
-		<%= link_to " / rediger", edit_question_comment_path(comment.question, comment), remote: true if current_user.comments.exists? comment.id %>
+		<% if current_user.comments.exists? comment.id %>
+			<%= link_to " / rediger", edit_question_comment_path(comment.question, comment), remote: true %>
+			<%= link_to "/ slet", question_comment_path(comment.question_id, comment),
+				method: :delete, data: {confirm: "Er du sikker på, at du vil slette din kommentar?" } %>
+		<% end %> 
 		</div>
-	<hr>
+
+		<hr>
 	</div>
 <% end %>

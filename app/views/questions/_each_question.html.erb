@@ -1,0 +1,19 @@
+<div class="col-lg-12">
+	<h2 class="text-center"><%= question.headline %></h2>
+</div>
+<div class="col-md-10">
+	<p class="lead">
+		<%= truncate(question.text, length: 100) %>
+	</p>
+</div>
+<% if current_user %>
+	<div class="col-md-2 display-4 text-center">
+		<%= question.vote_count.to_s %>
+	</div>
+<% else %>
+	<div class="col-md-2 text-center">
+		<span class="display-4"><%= question.votes.length%></span> <span class="small">har stemt</span>
+	</div>
+<% end %>
+<hr>
+

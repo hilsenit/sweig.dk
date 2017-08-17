@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "minitest", "5.10.1"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
@@ -64,3 +65,4 @@ gem 'social-share-button'
 gem 'autosize-rails'
 # Oversættelse
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
+#Testing

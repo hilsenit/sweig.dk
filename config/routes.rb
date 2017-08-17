@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 	  	delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
 		resources :comments
   	end
-	get "nyt" => "questions#index"
+	get "stem" => "questions#index"
   	# DEVISE
 	devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
 	as :user do
