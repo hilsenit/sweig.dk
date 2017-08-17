@@ -7,7 +7,7 @@ module WorksHelper
 	def work_options_icon_helper user, work, arrow_value
 	
 		(link_to (fa_icon "angle-#{arrow_value}"), 
-			user_work_toggle_status_path(user, work), class: "edit-icons", titel: arrow_value == "up" ? "Udgiv" : "Gør til kladde" ) + 
+			user_work_toggle_status_path(user, work), class: "edit-icons", titel: arrow_value == "up" ? "Udgiv" : "Gør til klade" ) + 
 		(link_to (fa_icon "trash-o"), 
 			user_work_path(user, work), class: "edit-icons", titel: "Slet værk", method: "delete", data: {confirm: "Er du sikker på at du vil slette \"#{work.title}?\""}) + 
 		(link_to (fa_icon "pencil"), edit_user_work_path(user, work), class: "edit-icons", titel: "Rediger værk")

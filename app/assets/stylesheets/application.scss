@@ -234,6 +234,14 @@ p {
 	position: relative;
 }
 
+.edit-icons-wrapper {
+	text-align: center;
+	.edit-icons {
+	    padding: 10px;
+	    font-size: 19px;
+	}
+}
+
 
 .new-user-modal {
 	margin-top: 6vh;

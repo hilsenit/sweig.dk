@@ -1,5 +1,5 @@
 <h1 class="username"><%= "|" + @user.username.parameterize %></h1>
-<%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
+<%= render partial: "user_navbar", locals: {user: @user} %>
 
 <div class="col-lg-12 main">
 	
@@ -12,19 +12,27 @@
 	<h2 class="text-center">Udgivelser</div>
 		<hr>
 		<div class="my-4 text-center lead">Dine udgivelser kan findes i søgefeltet af alle.</div>
-		<% end %> 
+		<% if @draft_works.any? %>
+		<p class="text-center">Brug <%= fa_icon("angle-up") %> for at udgive en kladde.</p>
+		<% end %>
 
-		<% if @draft_works.any? && is_current_user? %>
+	<% end %> 
+
+
+	<% if @draft_works.any? %>
 		<h2 class="text-center">Kladder</h2>
 		<hr>
 		<%= render partial: "user_works", 
 		locals: {works: @draft_works, arrow: "up", user: @user} %>
-		<% else  %>
+	<% else  %>
 		<h2 class="text-center">Kladder</h2>
 		<hr>
 		<p class="my-4 text-center lead">Dine kladder kan kun findes af dig.</div>
+		<% if @published_works.any? %>
+		<p class="text-center">Brug <%= fa_icon("angle-down") %> for at gøre et udgivet værk til en kladde.</p>
+		<% end %>
 
-			<% end %>
-		</div>
+	<% end %>
+</div>
 
 

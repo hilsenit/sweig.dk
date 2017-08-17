@@ -1,0 +1,18 @@
+<h1 class="text-center username"><%= "|" + @user.username.parameterize %></h1>
+<h2 class="mt-4 text-center">Udgivelser:</h2>
+<hr>
+<% if @published_works.empty? %>
+<p class="lead text-center">Har ikke udgivet nogle værker endnu.</p>
+<% else %>
+<%= render partial: "user_works", 
+locals: {works: @published_works, arrow: "down", user: @user} %>
+<% end %>
+
+	<h2 class="mt-4 text-center">Gemte værker:</h2>
+	<hr>
+<% if @saved_works.empty? %>
+	<p class="lead text-center">Har ikke gemt nogle værker endnu.</p>
+<% else %>
+	<%= render partial: "user_works", locals: {works: @saved_works, user: @user} %>
+<% end %>
+

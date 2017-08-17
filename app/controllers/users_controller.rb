@@ -3,7 +3,17 @@ class UsersController < ApplicationController
 	def show
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published
-		@draft_works = @user.works.draft
+		if @user.id == current_user.id
+			@draft_works = @user.works.draft
+			render 'show'
+		else
+			@saved_works = []
+			@user.saved_works.each do |saved_work|
+				@saved_works << Work.find(saved_work.work_id)
+			end
+
+			render 'show_another_user'
+		end
 	end
 
 	def new
