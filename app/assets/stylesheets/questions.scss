@@ -7,7 +7,7 @@
 	cursor: pointer; 
 	color: black;
 	&:hover {
-	border: 1px solid black;
+		color: black;
 	}
 
 }
@@ -19,7 +19,10 @@
 	border-radius: 0px!important;
 }
 
-
+.question-text-area {
+	height: 5vh;
+	min-height: 300px;
+}
 
 
 
