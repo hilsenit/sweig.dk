@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
+		@newest_works = Work.published_works.limit(8)		
 	end
 
 	def search

@@ -11,4 +11,7 @@ class Work < ApplicationRecord
 		where("title ILIKE ? OR body ILIKE ?", "%#{searched_for}%", "%#{searched_for}%")
 	end
 
+	def self.published_works
+		where(status: 1)
+	end
 end

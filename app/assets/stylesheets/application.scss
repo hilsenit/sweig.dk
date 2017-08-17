@@ -33,9 +33,24 @@ body {
 	margin-bottom: 50px;
 }
 p {
-	word-break: keep-all;
+	word-break: break-all;
+	white-space: normal;
+
 }
 
+a { 
+color: black;
+}
+
+.newest-works {
+	.newest-work {
+		display: inline-block;
+		width: 24%;
+		padding: 10px 20px;
+		word-break: break-all;
+		white-space: normal;
+	}
+}
 .question-arrows img {
 	max-width: 100px;
 
