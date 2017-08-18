@@ -23,10 +23,8 @@
 					
 				<% else %>
 				<!-- Hvis du ikke er logget ind -->
-				<span class="divider">|</span>
 
 					<p class="d-inline-block center-block lead text-center work-show-not-logged-in-text"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
-					<span class="divider">|</span>
 
 				<% end %>
 				

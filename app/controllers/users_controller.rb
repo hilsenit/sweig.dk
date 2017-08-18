@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			redirect_to @user, notice: "Din profil er nu blevet oprettet"
+			redirect_to user_path(@user.friendly_id), notice: "Din profil er nu blevet oprettet"
 		else
 			render "new", notice: "Det lykkedes desværre ikke."
 		end
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 	def index 
 		if user_signed_in?
 			flash[:notice] = "Du er allerede logget ind"
-			redirect_to user_path(current_user.id)
+			redirect_to user_path(current_user.friendly_id)
 		else
 			render "devise/registrations/new"
 		end

@@ -4,7 +4,7 @@
 	<%= link_to "| " + work.user.username, user_path(work.user.id), class: "small" %><br>
 	<hr>
 		<%= link_to user_work_path(work.user.id, work) do %>
-			<%= truncate(work.body, length: 30) %>
+			<%= truncate(work.body, length: 100) %>
 		<% end %>
 	</div>		
 
