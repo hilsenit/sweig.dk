@@ -16,13 +16,6 @@
 				<% end %>
 
 				<span class="divider">|</span>
-
-				<div class="social-share float-right">
-					<div class="social-share-button" data-title="<%= @work.title %>" data-img="<%= image_url('logo-facebook') %>" data-url="<%= original_url_helper %>" data-desc="<%= @work.body %>" data-via="">
-						<a rel="nofollow " data-site="facebook" class="social-icons ssb-icon ssb-facebook" onclick="return SocialShareButton.share(this);" title="Del med Facebook" href="#"></a>
-					</div>
-				</div>
-
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
 				<span class="divider">|</span>

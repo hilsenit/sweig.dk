@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def show
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published
-		if @user.id == current_user.id
+		if current_user.nil? || @user.id == current_user.id
 			@draft_works = @user.works.draft
 			render 'show'
 		else
