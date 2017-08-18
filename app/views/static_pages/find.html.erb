@@ -1,0 +1,41 @@
+<div class="col-lg-12 main">
+	<div class="search-field text-center">
+		<h1 class="text-center">SØG:</h1><div class="d-inline-block small mb-4">Søg i skrivere, mærker, overskrifter og tekst.</div><br> <%= text_field_tag :search, params[:search], class: "soege-felt", id: "soegeFelt", autofocus: true %>                            
+	</div>
+	<div class="row search-results mb-4">
+		
+	</div>
+	<h2 class="mt-4 user-work-header black">
+	<span class="number-works-find">
+	<% @numbers.each_with_index do |n, i| %>
+		<%= link_to n, number_of_works_path(n, "newest_works"), remote: true, class: "#{"active-number" if i == 0}" %><%= "," unless i == @numbers.length - 1 %>
+	<% end %>
+	</span>
+	 Nyeste:
+	</h2>
+	<span class="newest-works-find">
+	<%= render partial: "users/user_works", 
+	locals: {works: @newest_works, arrow: "down", extra_class: "user-work-wrapper"} %>
+	</span>
+	<br>
+	<h2 class="mt-4 user-work-header black">Mest sete:
+	<span class="number-works-find">
+	<% @numbers.each_with_index do |n, i| %>
+		<%= link_to n, number_of_works_path(n, "most_read_works"), remote: true, class: "#{"active-number" if i == 0}" %><%= "," unless i == @numbers.length - 1 %>
+	<% end %>
+	</span>
+	</h2>
+	<span class="most-read-works-find">
+	<%= render partial: "users/user_works", 
+	locals: {works: @most_read_works, arrow: "down", extra_class: "user-work-wrapper"} %>
+	</span>
+
+</div>
+
+
+<script type="text/javascript">
+	
+	$(".number-works-find a").click(function() {
+		$(this).addClass('active-number').siblings().removeClass('active-number');
+	});
+</script>

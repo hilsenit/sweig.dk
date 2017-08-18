@@ -1,2 +1,1 @@
-$(".container-javascript-remote").html("<%= escape_javascript( render partial: 'search_result', locals: { works: @works, users: @users }) %>");
-$(".lille-sweig-tilbage").show();
+$(".search-results").html("<%= escape_javascript( render partial: 'search_result', locals: { works: @works, users: @users }) %>");

@@ -19,9 +19,6 @@
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
-	jQuery("#soegeFelt").on("focus", function() {
-		$(this).removeAttr('placeholder');
-		});
 	jQuery("#soegeFelt").on("keyup paste", function() {
 		$search_text = jQuery(this).val();
 		$.ajax({

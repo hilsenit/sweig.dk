@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
 	# NOT LOGGED IN MODAL
 	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
-			
+				
+	get 'find' => 'static_pages#find'
+	get 'find/:number_of_newest/:method_name' => 'static_pages#number_of_works', as: :number_of_works
+
 
 	# ADMIN
   	get 'admin' => 'admin#show', as: "admin"

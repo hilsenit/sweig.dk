@@ -7,7 +7,7 @@
 			<% else %>
 			<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
 			<% end %>
-		<%= link_to user_work_path(user, work) do %>
+		<%= link_to user_work_path(work.user.id, work) do %>
 			<p class="lead">
 				<%= work.title %>
 			</p>

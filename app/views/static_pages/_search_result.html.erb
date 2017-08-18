@@ -19,6 +19,8 @@
 				<%= content_tag :p, excerpt(work.body, params[:search], radius: 30 - params[:search].size ) %>
 			<% end %>
 			<span class="small"><%= ".ord(#{work.body.split(" ").length})" %></span>
+			<span class="small"><%= ".gemt(#{work_saved = work.saved_works.length}-#{work_saved > 1 ? "gange" : "gang"})" if work.saved_works.any? %></span>
+
 		</div>
 		<% end %>
 
@@ -27,7 +29,7 @@
 </div>
 <% end %>
 <% unless users.blank? %>
-<h2 class="text-center search-header">andre</h2>
+<h2 class="text-center search-header">skrivere</h2>
 <hr>
 <div class="row">
 	<% users.each do |user| %>

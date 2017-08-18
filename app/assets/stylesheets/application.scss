@@ -41,6 +41,11 @@ a {
 color: black;
 }
 
+.active-number {
+	background-color: white;
+	text-decoration: underline; 
+	color: #014c8c;
+}
 .newest-works {
 	.newest-work {
 		display: inline-block;
@@ -70,11 +75,6 @@ color: black;
 }
 .hide-it {
 	display: none;
-}
-.soege-felt {
-	text-align: center;
-	text-decoration: none;
-	border-width: 0px;
 }
 #error_explanation {
 	h2 {
@@ -350,7 +350,4 @@ color: black;
 		width: 100%;
 	}
 
-	.soege-felt {
-		margin-top: 6px;
-	}
 }
