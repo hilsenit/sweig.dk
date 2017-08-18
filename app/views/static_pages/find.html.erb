@@ -18,7 +18,7 @@
 	locals: {works: @newest_works, arrow: "down", extra_class: "user-work-wrapper"} %>
 	</span>
 	<br>
-	<h2 class="mt-4 user-work-header black">Mest sete:
+	<h2 class="mt-4 user-work-header black">Tilfældige:
 	<span class="number-works-find">
 	<% @numbers.each_with_index do |n, i| %>
 		<%= link_to n, number_of_works_path(n, "most_read_works"), remote: true, class: "#{"active-number" if i == 0}" %><%= "," unless i == @numbers.length - 1 %>
@@ -27,7 +27,7 @@
 	</h2>
 	<span class="most-read-works-find">
 	<%= render partial: "users/user_works", 
-	locals: {works: @most_read_works, arrow: "down", extra_class: "user-work-wrapper"} %>
+	locals: {works: @random_works, arrow: "down", extra_class: "user-work-wrapper"} %>
 	</span>
 
 </div>

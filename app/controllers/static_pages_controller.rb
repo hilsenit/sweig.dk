@@ -6,7 +6,8 @@ class StaticPagesController < ApplicationController
 
 	def find
 		@newest_works = Work.limit(8)
-		@most_read_works = Work.limit(8).order(:views.length)
+		@random_works = []
+		@random_works << Work.last
 		@numbers = numbers
 	end
 
