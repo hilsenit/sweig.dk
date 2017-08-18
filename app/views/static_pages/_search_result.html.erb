@@ -12,6 +12,7 @@
 		<%= link_to user_work_path(work.user_id, work) do %>
 		<div class="search-result">
 			<p class="lead"><%= work.title %></p>
+
 			<% if params[:search].nil? %>
 				<%= content_tag :p, truncate(work.body, length: 30) %>
 			<% else %>
@@ -26,7 +27,7 @@
 </div>
 <% end %>
 <% unless users.blank? %>
-<h2 class="text-center search-header">jer</h2>
+<h2 class="text-center search-header">andre</h2>
 <hr>
 <div class="row">
 	<% users.each do |user| %>

@@ -17,6 +17,18 @@ body {
 	min-height: 100%;
 }
 
+.border-image {
+	margin-top: 10px;
+	display: inline-block;
+	background: url(image-path("knap-baggrund.png"));
+	padding: 6px;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-o-border-radius: 2px;
+}
+
+
 .form-outer {
 	height: 100%;
 	position: relative;

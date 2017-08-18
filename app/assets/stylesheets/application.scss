@@ -16,7 +16,6 @@
 
 
  */
-@import "social-share-button";
 @import "min-bootstrap";
 @import "font-awesome";
 @import "search-placeholder";
@@ -50,6 +49,20 @@ color: black;
 		word-break: break-all;
 		white-space: normal;
 	}
+}
+
+.user-work-header {
+	color: lighten(gray, 30%);
+	text-transform: uppercase;
+}
+
+.black {
+	color: black!important;
+}
+.user-work-wrapper {
+	border: 1px solid lighten(gray, 20%);
+	margin-top: -14px;
+	color: gray;
 }
 .question-arrows img {
 	max-width: 100px;
@@ -130,6 +143,7 @@ color: black;
 	margin-top: calc(70px + 2vh);
 }
 
+
 .frontpage-navbar-wrapper {
 	margin-top: 20px;
 	a {	
@@ -142,6 +156,10 @@ color: black;
 	.active {
 		text-decoration: underline;
 	}
+}
+
+.active-link {
+	text-decoration: underline;
 }
 
 .frontpage-menu-wrapper {

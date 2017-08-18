@@ -17,7 +17,14 @@ class WorksController < ApplicationController
 	def update
 		@work = Work.friendly.find(params[:id])
 		if @work.update(work_params)
-			redirect_to user_path(@work.user_id), notice: "'#{@work.title}'' er blevet gemt."
+			if params[:status] == "Udgiv" 
+				@work.published!
+			else
+				@work.draft!
+			end
+			redirect_to user_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
+		else
+			redirect_to user_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
 		end
 	end
 	

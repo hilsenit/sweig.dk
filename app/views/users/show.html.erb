@@ -4,33 +4,30 @@
 <div class="col-lg-12 main">
 	
 	<% if @published_works.any?  %>
-	<h2 class="text-center">Udgivet</h2>
-	<hr>
+	<h2 class="mt-4 user-work-header black">Udgivet</h2>
 	<%= render partial: "user_works", 
-	locals: {works: @published_works, arrow: "down", user: @user} %>
+	locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper"} %>
 	<% else  %>
-	<h2 class="text-center">Udgivelser</div>
-		<hr>
-		<div class="my-4 text-center lead">Dine udgivelser kan findes i søgefeltet af alle.</div>
+	<h2 class="mt-4 user-work-header">Udgivelser</h2>
+		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine udgivelser kan findes i søgefeltet af alle.
 		<% if @draft_works.any? %>
 		<p class="text-center">Brug <%= fa_icon("angle-up") %> for at udgive en kladde.</p>
 		<% end %>
-
+		</div><!-- text-center lead -->
 	<% end %> 
 
 
 	<% if @draft_works.any? %>
-		<h2 class="text-center">Kladder</h2>
-		<hr>
+		<h2 class="mt-4 user-work-header black">Kladder</h2>
 		<%= render partial: "user_works", 
-		locals: {works: @draft_works, arrow: "up", user: @user} %>
+		locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper"} %>
 	<% else  %>
-		<h2 class="text-center">Kladder</h2>
-		<hr>
-		<p class="my-4 text-center lead">Dine kladder kan kun findes af dig.</div>
+		<h2 class="mt-4 user-work-header">Kladder</h2>
+		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine kladder kan kun findes af dig.
 		<% if @published_works.any? %>
-		<p class="text-center">Brug <%= fa_icon("angle-down") %> for at gøre et udgivet værk til en kladde.</p>
+		<br>Brug <%= fa_icon("angle-down") %> for at gøre et udgivet værk til en kladde.
 		<% end %>
+		</div><!-- text-center lead -->
 
 	<% end %>
 </div>

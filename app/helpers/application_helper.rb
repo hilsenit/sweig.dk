@@ -1,8 +1,13 @@
 module ApplicationHelper
 	def if_active_helper path
-
 		"active" if current_path == path
 	end
+
+	def if_active_link_helper path
+		"active-link" if current_page?(path)
+	end
+
+
 
 	def is_current_user?
 		if user_signed_in?
