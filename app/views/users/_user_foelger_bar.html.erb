@@ -1,0 +1,20 @@
+<div class="col-lg-8 foelger">
+	<div class="col-lg-12 text-right">
+		<%= @user.followers.count %> FOELGER <span class="small"><%= @user.username.parameterize %></span>
+	</div>
+	<div class="col-lg-12 text-right"> 
+		<span class="small">
+			<%= @user.username.parameterize %>
+				
+			</span> 
+		FOELGER 
+		<span class="small">selv</span> 
+		<%= @user.following.count %>
+	</div>
+</div>
+<% unless current_user.id == user.id %>
+	
+	<div class="border-image float-left foelger-img col-lg-4">
+		<%= image_tag "sweig-plus", class: "foelger-img pt-1" %>
+	</div>
+<% end %>

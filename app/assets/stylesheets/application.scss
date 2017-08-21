@@ -41,6 +41,26 @@ a {
 color: black;
 }
 
+
+.foelger {
+	font-weight: 500;
+	padding-top: 3px;
+    margin-top: 17px;
+    height: 54px;
+    padding-bottom: 0px;
+    background-color: ghostwhite;
+    color: lavender;
+    	
+    &:hover {
+    	background-color: white;
+    	cursor: pointer;
+    	color: darken(lavender, 20%);
+    }
+}
+
+.foelger-img {
+	background-color: white;
+}
 .active-number {
 	background-color: white;
 	text-decoration: underline; 

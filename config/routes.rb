@@ -29,6 +29,9 @@ Rails.application.routes.draw do
 	end
 
 	resources :users, except: :show do
+		member do 
+			get :followers, :following
+		end
 		get 'biblo' => 'users#show', as: :biblo
 		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
@@ -36,7 +39,6 @@ Rails.application.routes.draw do
 			get "work/:current_user" => "users#save_work_for_current_user", as: "current_user_save"
 			delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"
 			get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
-
 		end
 	end
 

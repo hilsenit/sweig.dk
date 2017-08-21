@@ -1,10 +1,6 @@
-<div class="row">
-	<h1 class="col-lg-8 username"><%= "|" + @user.username.parameterize %></h1>
-	<div class="col-lg-4"><%= image_tag "sweig-plus", class: "float-right" %>
-	</div>
-</div>
-<div class="container-fluid">
 
+<div class="container-fluid">
+	<% if current_user %>
 	<div class="row user-links-container">
 
 		<div class="col-md-4">
@@ -17,6 +13,6 @@
 		<%= link_to "Mine tekster", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
 		</div>
 
-
 	</div>
+	<% end %>
 </div>

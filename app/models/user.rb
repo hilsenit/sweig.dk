@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :confirmable, :registerable,
-		:recoverable, :rememberable, :trackable, :validatable
+	:recoverable, :rememberable, :trackable, :validatable
 
 	#Relationships
 	has_many :works, dependent: :destroy
@@ -13,23 +13,44 @@ class User < ApplicationRecord
 	has_many :saved_works, dependent: :destroy
 	has_many :votes, dependent: :destroy
 
+	#foelger.rb har followed_id og follower_id i sig (aktivt og passivt)
 	has_many :active_relationships, class_name: "Foelger", 
-						foreign_key: "follower_id", 
-						dependent: :destroy
-	#Vi vil gerne bruge '.following' på users istedet for '.followeds'
+									foreign_key: "follower_id", 
+									dependent: :destroy
+
+	has_many :passive_relationships, class_name: "Foelger",
+									foreign_key: "followed_id",
+									dependent: :destroy
+
 	has_many :following, through: :active_relationships, source: :followed #
+	has_many :followers, through: :passive_relationships, source: :follower
 
 	#Validation
-	validates :username, presence: true
-	validates :email, presence: true
-	validates :password, presence: true
-
-
-		def self.search(searched_for)
-			where("username ILIKE ?", "%#{searched_for}%")
-		end
-
-		def self.sort_users
-			order(created_at: :desc).limit(8)
-		end
+	validates_presence_of :username, :email, :password
+	def following? other_user
+		following.include?(other_user)
 	end
+
+	def follow other_user
+		following << other_user
+	end
+
+	def unfollow other_user
+		following.delete(other_user)
+	end
+
+	def followers? other_user
+		followers.include?(other_user)
+		
+	end
+	def self.search(searched_for)
+		where("username ILIKE ?", "%#{searched_for}%")
+	end
+
+	def self.sort_users
+		order(created_at: :desc).limit(8)
+	end
+
+
+
+end
