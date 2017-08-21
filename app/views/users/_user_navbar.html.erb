@@ -1,16 +1,22 @@
+<div class="row">
+	<h1 class="col-lg-8 username"><%= "|" + @user.username.parameterize %></h1>
+	<div class="col-lg-4"><%= image_tag "sweig-plus", class: "float-right" %>
+	</div>
+</div>
 <div class="container-fluid">
+
 	<div class="row user-links-container">
+
 		<div class="col-md-4">
-		<%= link_to "Mine tekster", user_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
+		<%= link_to "Biblo", user_biblo_path(current_user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
 		</div>
 		<div class="col-md-4">
-
 		<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
 		</div>
 		<div class="col-md-4">
-
-		<%= link_to "Opret værk", new_user_work_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper new_user_work_path(@user)}" %>
+		<%= link_to "Mine tekster", user_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
 		</div>
+
 
 	</div>
 </div>

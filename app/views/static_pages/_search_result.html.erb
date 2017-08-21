@@ -3,9 +3,8 @@
 
 
 <% unless works.blank? %>
-<h2 class="text-center search-header">værker</h2>
-<hr>
-<div class="row">
+<h2 class="user-work-header black">værker under '<%= params[:search] %>':</h2>
+<div class="row user-work-wrapper">
 	<% works.each do |work| %>
 	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
 		<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
@@ -29,9 +28,8 @@
 </div>
 <% end %>
 <% unless users.blank? %>
-<h2 class="text-center search-header">skrivere</h2>
-<hr>
-<div class="row">
+<h2 class="user-work-header black">skrivere <span class="small">under '<%= params[:search] %>':</span></h2>
+<div class="row user-work-wrapper">
 	<% users.each do |user| %>
 	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
 		<%= link_to user_path(user) do %>

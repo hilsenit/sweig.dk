@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 	before_action :newest_and_most_read_works, only: [:show, :saved_works]
+
+	def biblo
+		@user = User.friendly.find(params[:user_id])
+		
+	end
+
 	def show
 		@user = User.friendly.find(params[:id])
 		@published_works = @user.works.published

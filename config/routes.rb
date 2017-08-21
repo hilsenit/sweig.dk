@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	get 'find/:number_of_newest/:method_name' => 'static_pages#number_of_works', as: :number_of_works
 
 
+
 	# ADMIN
   	get 'admin' => 'admin#show', as: "admin"
   	get 'admin/edit', as: "rediger_admin"
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
 	end
 
 	resources :users do
+		get 'biblo/:user_id' => 'users#biblo', as: :biblo
+
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do
 			get "work/:current_user" => "users#save_work_for_current_user", as: "current_user_save"

@@ -11,7 +11,7 @@
 			</div>
 			<div class="col-md-4 text-center">
 				<% if user_signed_in? %>
-				<%= link_to "MIT", user_path(current_user.friendly_id), class: "#{if_active_helper( user_path(current_user.id))}" %><span class="small">eller</span> <%= link_to "LOG UD", destroy_user_session_path(), method: :delete %>
+				<%= link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}" %><span class="small">eller</span> <%= link_to "LOG UD", destroy_user_session_path(), method: :delete %>
 				<% else %>
 				<%= link_to "LOG-IN", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}" %> 
 				<span class="small">eller</span> 
