@@ -8,7 +8,7 @@
 		</div>
 	<% end %>
 	<%= form_for [@user, @work] do |f| %>
-
+		<%= f.hidden_field :username, value: @user.username %>
 		<div class="form-save">
 				<span class="border-image">
 					<%= f.submit "Gem som kladde", class: "btn btn-secondary" %>

@@ -16,12 +16,13 @@
 
 <body>
   <%= render partial: "shared/navbar" %>
-  <div class="container mb-4 container-javascript-remote">
-    <% if flash[:notice] %>
-      <div class="text-center lead">
-        <%= flash[:notice] %>
+  <div class="container mb-4 container-javascript-remote notices">
+      <div class="text-center lead" id="Notices">
+        <% flash.each do |type, message| %>
+          <%= message %>
+          <br>
+        <% end %>
       </div>
-    <% end %>
     <%= yield %>    
   </div>
 

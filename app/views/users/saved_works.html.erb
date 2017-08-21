@@ -1,3 +1,5 @@
+<%= render partial: "foelger_bar", locals: {user: @user} %>
+
 <%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
 
 <div class="col-lg-12 main">

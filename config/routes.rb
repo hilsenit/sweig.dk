@@ -30,8 +30,9 @@ Rails.application.routes.draw do
 
 	resources :users, except: :show do
 		member do 
-			get :followers, :following
+			get :followers, :following, :follow, :unfollow
 		end
+
 		get 'biblo' => 'users#show', as: :biblo
 		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"

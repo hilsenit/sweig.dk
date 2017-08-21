@@ -22,9 +22,9 @@ class WorksController < ApplicationController
 			else
 				@work.draft!
 			end
-			redirect_to user_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
+			redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
 		else
-			redirect_to user_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
+			redirect_to user_my_works_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
 		end
 	end
 	
@@ -40,7 +40,7 @@ class WorksController < ApplicationController
 		
 		if @work.save
 			@work.published! if params[:status] == "Udgiv" 
-			redirect_to user_path(@user), notice: "'#{@work.title}' er blevet gemt"
+			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	
 			render 'new'
 		end
@@ -58,9 +58,9 @@ class WorksController < ApplicationController
 		@work = Work.friendly.find(params[:id])
 
 		if @work.destroy
-			redirect_to user_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
+			redirect_to user_my_works_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
 		else
-			redirect_to @user, notice: "Det lykkedes ikke at slette dit værk."
+			redirect_to user_my_works_path(@user), notice: "Det lykkedes ikke at slette dit værk."
 		end
 	end
 
@@ -82,7 +82,7 @@ class WorksController < ApplicationController
 	end
 
 	def work_params
-		params.require(:work).permit(:title, :body )
+		params.require(:work).permit(:title, :body, :username)
 	end
 
 end

@@ -12,9 +12,15 @@
 		<%= @user.following.count %>
 	</div>
 </div>
+
 <% unless current_user.id == user.id %>
-	
-	<div class="border-image float-left foelger-img col-lg-4">
+	<% if user.followers? current_user %>
+		<%= link_to unfollow_user_path(user), remote: true, class: "border-image float-left foelger-img col-lg-4" do %>	
+		<%= image_tag "sweig-minus", class: "foelger-img py-1 px-1", height: "55px" %>
+		<% end %>
+	<% else %>
+		<%= link_to follow_user_path(user), remote: true, class: "border-image float-left foelger-img col-lg-4" do %>	
 		<%= image_tag "sweig-plus", class: "foelger-img pt-1" %>
-	</div>
+		<% end %>
+	<% end %>
 <% end %>
