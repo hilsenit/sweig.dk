@@ -13,9 +13,11 @@ class User < ApplicationRecord
 	has_many :saved_works, dependent: :destroy
 	has_many :votes, dependent: :destroy
 
-	has_many :followers, class_name: "Foelger", 
+	has_many :active_relationships, class_name: "Foelger", 
 						foreign_key: "follower_id", 
 						dependent: :destroy
+	#Vi vil gerne bruge '.following' på users istedet for '.followeds'
+	has_many :following, through: :active_relationships, source: :followed #
 
 	#Validation
 	validates :username, presence: true
