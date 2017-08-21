@@ -4,9 +4,9 @@
 
 			<div class="show-navbar-inner">
 
-				<%= link_to "|#{@user.username.parameterize}", user_path(@user), class: "float-left exit-icon" %>
+				<%= link_to "|#{@user.username.parameterize}", user_biblo_path(@user), class: "float-left exit-icon" %>
 				<span class="divider float-left">|</span>
-					<%= link_to "MIT", user_path(current_user), class: "mit-sign" if current_user %>
+					<%= link_to "MIT", user_biblo_path(current_user), class: "mit-sign" if current_user %>
 				<span class="divider">|</span>
 
 				<!-- Hvis du er logget ind, og du ikke har gemt -->

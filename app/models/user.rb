@@ -1,7 +1,6 @@
 class User < ApplicationRecord
 	extend FriendlyId
 	friendly_id :username, use: :slugged
-
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :confirmable, :registerable,
@@ -12,7 +11,11 @@ class User < ApplicationRecord
 	accepts_nested_attributes_for :works
 	has_many :comments, dependent: :destroy
 	has_many :saved_works, dependent: :destroy
-	has_many :votes #only one for each question
+	has_many :votes, dependent: :destroy
+
+	has_many :followers, class_name: "Foelger", 
+						foreign_key: "follower_id", 
+						dependent: :destroy
 
 	#Validation
 	validates :username, presence: true

@@ -5,7 +5,7 @@
 			<% if is_current_user? %>
 				<%= content_tag :div, (work_options_icon_helper @user, work, arrow), class: "edit-icons-wrapper" %>
 			<% else %>
-			<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+			<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_biblo_path(work.user) %></h6>
 			<% end %>
 		<%= link_to user_work_path(work.user.id, work) do %>
 			<p class="lead">

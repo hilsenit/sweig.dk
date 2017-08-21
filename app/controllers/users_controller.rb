@@ -4,17 +4,10 @@ class UsersController < ApplicationController
 	def show
 		#Biblo
 		@user = User.friendly.find(params[:user_id])
-		
-	end
-
-	def my_works
-		@user = User.friendly.find(params[:user_id])
 		@published_works = @user.works.published
 
 		if current_user && @user.id == current_user.id
-			# hvis det er ejerens profil
-			@draft_works = @user.works.draft
-			render 'my_works'
+			render 'show'
 		else
 			@saved_works = []
 			@user.saved_works.each do |saved_work|
@@ -23,6 +16,14 @@ class UsersController < ApplicationController
 
 			render 'show_another_user'
 		end
+
+
+	end
+
+	def my_works
+		@user = User.friendly.find(params[:user_id])
+		@published_works = @user.works.published
+		@draft_works = @user.works.draft
 	end
 
 	def new

@@ -8,7 +8,7 @@
 	<div class="row user-links-container">
 
 		<div class="col-md-4">
-		<%= link_to "Biblo", user_biblo_path(current_user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
+		<%= link_to "Biblo", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
 		</div>
 		<div class="col-md-4">
 		<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
