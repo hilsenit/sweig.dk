@@ -28,9 +28,9 @@ Rails.application.routes.draw do
 	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
 	end
 
-	resources :users do
-		get 'biblo/:user_id' => 'users#biblo', as: :biblo
-
+	resources :users, except: :show do
+		get 'biblo' => 'users#show', as: :biblo
+		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do
 			get "work/:current_user" => "users#save_work_for_current_user", as: "current_user_save"

@@ -1,19 +1,20 @@
 class UsersController < ApplicationController
 	before_action :newest_and_most_read_works, only: [:show, :saved_works]
 
-	def biblo
+	def show
+		#Biblo
 		@user = User.friendly.find(params[:user_id])
 		
 	end
 
-	def show
-		@user = User.friendly.find(params[:id])
+	def my_works
+		@user = User.friendly.find(params[:user_id])
 		@published_works = @user.works.published
 
 		if current_user && @user.id == current_user.id
 			# hvis det er ejerens profil
 			@draft_works = @user.works.draft
-			render 'show'
+			render 'my_works'
 		else
 			@saved_works = []
 			@user.saved_works.each do |saved_work|

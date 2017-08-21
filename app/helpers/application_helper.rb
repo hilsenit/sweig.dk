@@ -4,7 +4,9 @@ module ApplicationHelper
 	end
 
 	def if_active_link_helper path
-		"active-link" if current_page?(path)
+		if current_page?(path)
+			"active-link" 
+		end
 	end
 
 

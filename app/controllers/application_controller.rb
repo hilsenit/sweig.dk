@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_session_social
 
   def after_sign_in_path_for(resource)
-      user_path(current_user.friendly_id)
+    user_biblo_path(current_user.friendly_id)
   end
 
   def set_session_social
