@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
 	def biblo
 			following_ids = self.following_ids
-			Work.select{|w| following_ids.include? w.user_id } 
+			Work.where(status: 1).select{|w| following_ids.include? w.user_id } 
 	end
 
 	def following? other_user

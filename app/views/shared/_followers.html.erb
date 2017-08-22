@@ -1,0 +1,32 @@
+<!-- Husk en div med id: "Followers" i det vindue, som skal have funktionen -->
+<div class="modal fade" id="Followers" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <% if following %>
+          <h4 class="modal-title border-image" id="FollowersOverskrift">
+            <%= @user.username %> FOELGER <%= followers.length %>
+          </h4>
+        <% else %>
+          <h4 class="modal-title border-image" id="FollowersOverskrift">
+            <%= followers.length %> FOELGER <%= @user.username %>
+          </h4>
+        <% end %>
+      </div>
+      <div class="modal-body">
+        <% followers.each do |follower| %>
+          <%= link_to user_biblo_path(follower.id) do %>
+            <p class="lead"><%= follower.username %> / <%= follower.works.published.length %> værker </p>
+          <% end %>          
+        <% end %>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

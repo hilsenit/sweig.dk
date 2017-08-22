@@ -101,6 +101,24 @@ class UsersController < ApplicationController
 
 	end
 
+	def followers
+		@user = User.friendly.find(params[:id])
+		@followers = @user.followers
+		@following = false
+		respond_to do |format|
+			format.js {render 'users/js/followers' }
+		end
+	end
+
+	def following
+		@user = User.friendly.find(params[:id])
+		@followers = @user.following
+		@following = true
+		respond_to do |format|
+			format.js {render 'users/js/followers' }
+		end		
+	end
+
 	def saved_works
 		@user = User.friendly.find(params[:user_id])
 		@saved_works = []

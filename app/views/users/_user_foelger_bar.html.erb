@@ -1,8 +1,12 @@
+<!-- TIL REMOTE FOLLOWERS PATH -->
+<div id="FollowersModal"></div>
 <div class="col-lg-8 foelger">
-	<div class="col-lg-12 text-right">
-		<%= @user.followers.count %> FOELGER <span class="small"><%= @user.username.parameterize %></span>
-	</div>
-	<div class="col-lg-12 text-right"> 
+	<%= link_to followers_user_path(@user), remote: true, class: "col-lg-12 text-right" do %>
+			<%= @user.followers.count %> FOELGER <span class="small"><%= @user.username.parameterize %></span>
+	<% end %>
+	<br>
+	<%= link_to following_user_path(@user), remote: true, class: "col-lg-12 text-right" do %>
+
 		<span class="small">
 			<%= @user.username.parameterize %>
 				
@@ -10,7 +14,8 @@
 		FOELGER 
 		<span class="small">selv</span> 
 		<%= @user.following.count %>
-	</div>
+
+	<% end %>
 </div>
 
 <% unless current_user.id == user.id %>
