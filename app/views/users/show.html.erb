@@ -1,5 +1,6 @@
-
+<h1 class="text-center"><%= link_to "|#{@user.username.parameterize}", user_path(@user) %></h1>
 <%= render partial: "foelger_bar", locals: {user: @user} %>
+<hr>
 <%= render partial: "user_navbar", locals: {user: @user} %>
 
 

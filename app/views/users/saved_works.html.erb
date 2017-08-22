@@ -1,6 +1,7 @@
+<h1 class="text-center"><%= link_to "|#{@user.username.parameterize}", user_path(@user) %></h1>
 <%= render partial: "foelger_bar", locals: {user: @user} %>
-
-<%= render partial: "user_navbar", locals: {user: @user} if is_current_user? %>
+<hr>
+<%= render partial: "user_navbar", locals: {user: @user} %>
 
 <div class="col-lg-12 main">
 	<% if @saved_works.any? %>
@@ -10,6 +11,7 @@
 		<% @saved_works.each do |work| %>
 		<div class="col-xs-6 works-show-wrapper col-sm-4 col-md-3">
 			<div class="works-show-box">
+			
 				<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
 			<%= link_to user_work_path(work.user, work) do %>
 				<p class="lead">

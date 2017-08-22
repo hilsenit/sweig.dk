@@ -1,14 +1,9 @@
 <div id="NotLoggedIn"></div>
 
-<div class="row mt-4">
-	<h1 class="col-lg-4 username">
-		<%= "|" + @user.username.parameterize %>	
-	</h1>
-	<div class="offset-lg-4 col-lg-4 row foelger-bar"> 
-		<% if current_user %>
-			<%= render partial: "user_foelger_bar", locals: {user: user} %>
-		<% else %>
-			<%= render partial: "foelger_not_logged_in", locals: {user: user} %>
-		<% end %>
-	</div><!-- col-lg-4 row -->
-</div>
+<% if current_user %>
+<span class="foelger-bar-render">
+	<%= render partial: "user_foelger_bar", locals: {user: user} %>
+</span>
+<% else %>
+	<%= render partial: "foelger_not_logged_in", locals: {user: user} %>
+<% end %>

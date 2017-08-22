@@ -40,6 +40,11 @@ p {
 a { 
 color: black;
 }
+
+#Notices {
+	margin-top: 20px;
+	background-color: #fff6ff;
+}
 #FollowersOverskrift {
 	color: white;
 }
@@ -321,7 +326,7 @@ color: black;
 }
 
 .search-no-find {
-	margin-top: 26%;
+	margin: 13%;
 }
 .search-result-wrapper, .works-show-wrapper {
 	padding: 5px 10px;

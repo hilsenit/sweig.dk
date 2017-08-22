@@ -60,7 +60,7 @@ class WorksController < ApplicationController
 		if @work.destroy
 			redirect_to user_my_works_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
 		else
-			redirect_to user_my_works_path(@user), notice: "Det lykkedes ikke at slette dit værk."
+			redirect_to user_my_works_path(@user), notice: "Det lykkedes ikke at slette dit værk. Prøv igen."
 		end
 	end
 

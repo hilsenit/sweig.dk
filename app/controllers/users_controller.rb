@@ -104,7 +104,7 @@ class UsersController < ApplicationController
 	def followers
 		@user = User.friendly.find(params[:id])
 		@followers = @user.followers
-		@following = false
+		@following = false 
 		respond_to do |format|
 			format.js {render 'users/js/followers' }
 		end

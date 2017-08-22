@@ -19,7 +19,7 @@
       <div class="modal-body">
         <% followers.each do |follower| %>
           <%= link_to user_biblo_path(follower.id) do %>
-            <p class="lead"><%= follower.username %> / <%= follower.works.published.length %> værker </p>
+            <p class="lead"><%= follower.username %> / <%= fol = follower.works.published.length %> <%= fol > 1 ? "værker" : "værk" %></p>
           <% end %>          
         <% end %>
       </div>
