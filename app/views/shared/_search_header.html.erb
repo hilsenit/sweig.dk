@@ -1,0 +1,4 @@
+<div class="search-field text-center">
+	<h1 class="text-center"><%= link_to "SØG", find_path(), class: "#{'underline' if site == "SØG"}" %></h1>
+	<br> <%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", autofocus: true, placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span><%= link_to "se nyeste", nyeste_path(), class: "#{'underline' if site == 'NYESTE'}" %> / <%= link_to "se alle mærker", alle_maerker_path(), class: "#{'underline' if site == "MAERKER"}" %>
+</div>

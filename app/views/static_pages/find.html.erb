@@ -1,26 +1,7 @@
 <div class="col-lg-12 main">
-	<div class="search-field text-center">
-		<h1 class="text-center">SØG</h1>
-		<br> <%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", autofocus: true, placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span>se nyeste / se alle mærker
-	</div>
+<%= render partial: "shared/search_header", locals: {site: "SØG", autofocus: true} %>
 	<div class="row search-results mb-4">
-		
+		<!-- TIL SØGERESULTATERNE -->
 	</div>
-	<h2 class="mt-4 user-work-header black">
-		 Nyeste:
-	</h2>
-	<span class="newest-works-find">
-	<%= render partial: "users/user_works", 
-	locals: {works: @newest_works, arrow: "down", extra_class: "user-work-wrapper"} %>
-	</span>
-	<br>
-	<h2 class="mt-4 user-work-header black">Tilfældige:
-	</span>
-	</h2>
-	<span class="most-read-works-find">
-	<%= render partial: "users/user_works", 
-	locals: {works: @random_works, arrow: "down", extra_class: "user-work-wrapper"} %>
-	</span>
-
 </div>
 

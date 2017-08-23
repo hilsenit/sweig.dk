@@ -6,18 +6,22 @@ class StaticPagesController < ApplicationController
 
 	def find
 		@newest_works = Work.limit(8)
-		@random_works = []
-		@random_works << Work.last
-		@numbers = numbers
 	end
 
-	def number_of_works
-		# the second param decide what the name of the variable is
-		instance_variable_set("@#{params[:method_name]}", Work.limit(params[:number_of_newest].to_i))
-		@most_read_works = @most_read_works.order(:views.length) if @most_read_works 
+	def nyeste 
+		@newest_works = Work.limit(24)
+		
+	end
+
+	def alle_maerker 
+		@maerker = Mark.all
+	end
+
+	def show_maeker_works
+		@works = Mark.find(params[:maerker_id]).works
 		respond_to do |format|
-			format.js {render params[:method_name]}
-		end
+			format.js
+		end 
 	end
 	def search
 		published_work = Work.where(status: 1)
@@ -28,15 +32,6 @@ class StaticPagesController < ApplicationController
 			format.html
 		end		
 	end
-
-	def log_in;end
-
-	def oprettelse; end
-
-	def nyt
-		@questions = Question.all
-	end
-
 		
 	def laes 
 
@@ -56,10 +51,6 @@ class StaticPagesController < ApplicationController
 
 		flash[:notice] = "Din besked '#{params[:emne]}' er blevet sendt"
 		redirect_to root_path
-	end
-
-	def numbers
-		%w(8 16 32 64)
 	end
 
 	private

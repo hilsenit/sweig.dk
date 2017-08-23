@@ -15,7 +15,6 @@ class WorksController < ApplicationController
 
 	def update
 		@work = Work.friendly.find(params[:id])
-		binding.pry
 		update_marks @work.all_tags_in_s.split(","), params[:work][:all_tags_in_s].split(","), @work
 		if @work.update(work_params)
 			if params[:status] == "Udgiv" 

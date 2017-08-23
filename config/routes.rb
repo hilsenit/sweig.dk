@@ -3,9 +3,10 @@ Rails.application.routes.draw do
 	# NOT LOGGED IN MODAL
 	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
 				
-	get 'find' => 'static_pages#find' do
-		get 'nyeste' => 'static_pages#nyeste', as: :nyeste
-	end
+	get 'find' => 'static_pages#find'
+	get 'find/nyeste' => 'static_pages#nyeste', as: :nyeste
+	get 'find/alle-maerker' => 'static_pages#alle_maerker', as: :alle_maerker
+	get 'find/alle-maerker/:maerker_id' => 'static_pages#show_maeker_works', as: :show_maerke_works
 
 	# ADMIN
   	get 'admin' => 'admin#show', as: "admin"
@@ -43,10 +44,6 @@ Rails.application.routes.draw do
 	end
 
 	get "soegefelt/resultat" => "static_pages#search", as: "search"
-
-	get "laes-litteratur" => "static_pages#laes", as: "laes"
-	get "opret-mig-nu" => "static_pages#oprettelse", as: "oprettelse"
-	get "log-in" => "static_pages#log_in"
 
 	post "kontakt-os" => "static_pages#kontakt"	
 	

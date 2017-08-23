@@ -1,0 +1,15 @@
+<div class="col-lg-12 main">
+	<%= render partial: "shared/search_header", locals: {site: "NYESTE"} %>
+	<div class="row search-results mb-4">
+		
+	</div>
+	<h2 class="mt-4 user-work-header black">
+		 Nyeste:
+	</h2>
+	<span class="newest-works-find">
+	<%= render partial: "users/user_works", 
+	locals: {works: @newest_works, arrow: "down", extra_class: "user-work-wrapper"} %>
+	</span>
+	<br>
+
+</div>

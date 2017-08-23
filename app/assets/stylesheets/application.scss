@@ -41,6 +41,9 @@ a {
 color: black;
 }
 
+.underline {
+	text-decoration: underline;
+}
 #Notices {
 	margin-top: 20px;
 	background-color: #fff6ff;
@@ -49,6 +52,21 @@ color: black;
 	color: white;
 }
 
+.label-info {
+    display: inline-block;
+    width: auto;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 2px;
+    &:hover {
+    	background-color: gray;
+    	color: white;
+    }
+}
+
+.tag-count {
+	color: gray;
+}
 .foelger {
 	font-weight: 500;
 	padding-top: 3px;

@@ -15,8 +15,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery.autosize
-//= require turbolinks
 //= require bootstrap-tagsinput
+//= require turbolinks
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
