@@ -9,6 +9,10 @@
 	<% end %>
 	<%= form_for [@user, @work] do |f| %>
 		<%= f.hidden_field :username, value: @user.username %>
+		<div class="col-lg-12 text-center">
+
+			<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv dine mærker, så dit værk er muligt at finde under disse. Seperer med komma." %>
+		</div>
 		<div class="form-save">
 				<span class="border-image">
 					<%= f.submit "Gem som kladde", class: "btn btn-secondary" %>

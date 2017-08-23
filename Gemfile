@@ -65,3 +65,4 @@ gem 'autosize-rails'
 # Oversættelse
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 #Testing
+gem 'bootstrap-tagsinput-rails'

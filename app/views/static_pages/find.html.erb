@@ -7,12 +7,7 @@
 		
 	</div>
 	<h2 class="mt-4 user-work-header black">
-	<span class="number-works-find">
-	<% @numbers.each_with_index do |n, i| %>
-		<%= link_to n, number_of_works_path(n, "newest_works"), remote: true, class: "#{"active-number" if i == 0}" %><%= "," unless i == @numbers.length - 1 %>
-	<% end %>
-	</span>
-	 Nyeste:
+		 Nyeste:
 	</h2>
 	<span class="newest-works-find">
 	<%= render partial: "users/user_works", 
@@ -20,10 +15,6 @@
 	</span>
 	<br>
 	<h2 class="mt-4 user-work-header black">Tilfældige:
-	<span class="number-works-find">
-	<% @numbers.each_with_index do |n, i| %>
-		<%= link_to n, number_of_works_path(n, "most_read_works"), remote: true, class: "#{"active-number" if i == 0}" %><%= "," unless i == @numbers.length - 1 %>
-	<% end %>
 	</span>
 	</h2>
 	<span class="most-read-works-find">
@@ -33,10 +24,3 @@
 
 </div>
 
-
-<script type="text/javascript">
-	
-	$(".number-works-find a").click(function() {
-		$(this).addClass('active-number').siblings().removeClass('active-number');
-	});
-</script>

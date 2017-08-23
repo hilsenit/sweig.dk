@@ -2,7 +2,6 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
 .hide-it {
 	display: none;
 }
@@ -15,6 +14,38 @@ html {
 
 body {
 	min-height: 100%;
+}
+
+.bootstrap-tagsinput {
+	margin: 0 auto;
+	width: 81em;
+	input {
+		text-align: center;
+		outline: none;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		font-size: 16px;
+		line-height: 10px;
+		padding: 10px 12px;
+	}
+}
+
+.label-info {
+	display: inline-block;
+	width: auto;
+    border: 1px solid black;
+    padding: 10px;
+    span {
+    	display: inline-block;
+        cursor: pointer;
+        &:before {
+        	content: "x";
+        	font-size: 15px;
+        	padding: 2px 3px;
+        	color: red;
+        }
+    }
 }
 
 .border-image {

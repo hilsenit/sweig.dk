@@ -18,7 +18,7 @@
 		<% @biblo.each do |work| %>
 		<div class="col-lg-12 biblo">
 			<p class="text-center">
-				<%= work.username %> har oprettet et nyt værk: <%= link_to "\"" + work.title + "\"", user_work_path(work.user_id, work.friendly_id) %>		
+				<%= link_to work.username, user_path(work.user) %> har oprettet et nyt værk: <%= link_to "\"" + work.title + "\"", user_work_path(work.user_id, work.friendly_id) %>		
 			</p>
 			<p class="small text-center">
 				<%= distance_of_time_in_words(Time.now, work.created_at) %> siden	

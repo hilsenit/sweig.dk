@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823135932) do
+ActiveRecord::Schema.define(version: 20170823174420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,20 @@ ActiveRecord::Schema.define(version: 20170823135932) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "markings", force: :cascade do |t|
+    t.bigint "work_id"
+    t.bigint "mark_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mark_id"], name: "index_markings_on_mark_id"
+    t.index ["work_id"], name: "index_markings_on_work_id"
+  end
+
   create_table "marks", force: :cascade do |t|
     t.string "title"
-    t.bigint "work_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_marks_on_title", unique: true
-    t.index ["work_id"], name: "index_marks_on_work_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -120,16 +127,13 @@ ActiveRecord::Schema.define(version: 20170823135932) do
     t.integer "position"
     t.integer "views"
     t.string "username"
-    t.bigint "mark_id"
-    t.index ["mark_id"], name: "index_works_on_mark_id"
+    t.string "all_tags_in_s", default: ""
     t.index ["slug"], name: "index_works_on_slug", unique: true
   end
 
   add_foreign_key "comments", "questions"
   add_foreign_key "comments", "users"
-  add_foreign_key "marks", "works"
   add_foreign_key "saved_works", "works"
   add_foreign_key "votes", "questions"
   add_foreign_key "votes", "users"
-  add_foreign_key "works", "marks"
 end

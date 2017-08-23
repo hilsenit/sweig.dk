@@ -7,8 +7,8 @@ class Work < ApplicationRecord
 
 	has_many :saved_works, dependent: :destroy
 
-	has_many :marks
-	belongs_to :mark
+	has_many :markings
+	has_many :marks, through: :markings
 
 
 	validates :title, presence: { message: "Overskrift mangler"}

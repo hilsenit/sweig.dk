@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
 	
-	before_action :newest_and_most_read_works, only: [:new]
 	layout "simple_view", only: [:new, :edit, :show, :create]
 
 	def index
@@ -16,6 +15,8 @@ class WorksController < ApplicationController
 
 	def update
 		@work = Work.friendly.find(params[:id])
+		binding.pry
+		update_marks @work.all_tags_in_s.split(","), params[:work][:all_tags_in_s].split(","), @work
 		if @work.update(work_params)
 			if params[:status] == "Udgiv" 
 				@work.published!
@@ -37,7 +38,9 @@ class WorksController < ApplicationController
 		@work = Work.new(work_params)
 		@user = User.friendly.find(params[:user_id])
 		@work.user_id = @user.id
-		
+		@work.all_tags_in_s = params[:work][:all_tags_in_s]
+		array = params[:work][:all_tags_in_s].split(",")
+		create_marks array, @work
 		if @work.save
 			@work.published! if params[:status] == "Udgiv" 
 			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
@@ -58,9 +61,9 @@ class WorksController < ApplicationController
 		@work = Work.friendly.find(params[:id])
 
 		if @work.destroy
-			redirect_to user_my_works_path User.friendly.find(@work.user_id), notice: "Dit værk er blevet slettet"
+			redirect_to user_my_works_path User.friendly.find(@work.user_id), notice: "'#{@work.title}' er blevet slettet"
 		else
-			redirect_to user_my_works_path(@user), notice: "Det lykkedes ikke at slette dit værk. Prøv igen."
+			redirect_to user_my_works_path(@user), notice: "Det lykkedes ikke at slette '#{@work.title}'. Prøv igen."
 		end
 	end
 
@@ -75,14 +78,28 @@ class WorksController < ApplicationController
 		@work.save!
 	end
 
-	def newest_and_most_read_works
-		published_works = Work.where(status: 1)
-		@newest_works = published_works.order(created_at: :desc).limit(12)
-		@most_read_works = published_works.order(views: :desc).limit(12)				
+	def create_marks array, obj
+		array.each do |t|
+			if Mark.new(title: t).valid? # Hvis det mærke med titel ikke allerede eksisterer i databasen?
+				obj.marks << Mark.create(title: t)
+			else
+				Mark.find_by_title(t).works << obj
+			end 
+		end 
+	end
+
+	def update_marks old_array, new_array, obj
+		old_array.each do |o_a| # Delete mark if mark_title is not in new_array 
+			obj.marks.delete(Mark.find_by_title(o_a)) unless new_array.include? o_a || obj.marks.empty?
+		end
+		#Hvis tags var i den gamle, så lad være med at tage dem med
+		new_arr_without_old = new_array.delete_if {|a| old_array.include? a} 
+		create_marks new_arr_without_old, obj
+		obj.all_tags_in_s = new_array.join(", ")
 	end
 
 	def work_params
-		params.require(:work).permit(:title, :body, :username)
+		params.require(:work).permit(:title, :body, :username, :all_tags_in_s)
 	end
 
 end
