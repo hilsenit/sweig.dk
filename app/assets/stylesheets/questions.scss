@@ -7,15 +7,17 @@
 	cursor: pointer; 
 	color: black;
 	box-sizing: border-box;
-	border: 1px solid black;
 	&:hover {
 		color: black;
 	}
 
 }
 
-.question-wrapper {
-
+.stem-forklaring {
+	border: 1px solid gray;
+}
+.without-border {
+	border: none!important;
 }
 .modal-content {
 	border-radius: 0px!important;
@@ -27,7 +29,7 @@
 }
 
 .question-headline {
-	font-size: calc(15px + 1vw);
+	font-size: calc(10px + 1vw);
 	font-weight: 200;
 	letter-spacing: 2px;
 }
