@@ -1,6 +1,8 @@
 
 @import "bootstrap";
 @import "font-awesome";
+@import "search-placeholder";
+
 
 .hide-it {
 	display: none;
@@ -20,6 +22,7 @@ body {
 	margin: 0 auto!important;
 	width: 81em!important;
 	input {
+		width: 100%;
 		text-align: center!important;
 		outline: none!important;
 		border-top: none!important;

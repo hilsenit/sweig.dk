@@ -37,10 +37,11 @@ class WorksController < ApplicationController
 		@work = Work.new(work_params)
 		@user = User.friendly.find(params[:user_id])
 		@work.user_id = @user.id
-		@work.all_tags_in_s = params[:work][:all_tags_in_s]
-		array = params[:work][:all_tags_in_s].split(",")
-		create_marks array, @work
+		
 		if @work.save
+			@work.all_tags_in_s = params[:work][:all_tags_in_s]
+			array = params[:work][:all_tags_in_s].split(",")
+			create_marks array, @work
 			@work.published! if params[:status] == "Udgiv" 
 			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	
