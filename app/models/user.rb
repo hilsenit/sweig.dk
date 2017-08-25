@@ -28,6 +28,8 @@ class User < ApplicationRecord
 	#Validation
 	validates_presence_of :username, :email, :password
 
+
+	
 	def biblo
 			following_ids = self.following_ids
 			Work.where(status: 1).select{|w| following_ids.include? w.user_id } 
