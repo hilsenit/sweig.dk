@@ -28,12 +28,12 @@ Rails.application.routes.draw do
 	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
 	end
 
-	resources :users, except: :show do
+	resources :users do
 		member do 
 			get :followers, :following, :follow, :unfollow
 		end
 
-		get 'biblo' => 'users#show', as: :biblo
+		get 'din-biblo/:user_id' => 'users#biblo', as: :biblo
 		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do

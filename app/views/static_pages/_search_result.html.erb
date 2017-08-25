@@ -1,56 +1,70 @@
 <div class="search-result-wrapper">
 	<div class="search-results">
 
+		<% unless works.blank? %>
+		<div class="row user-work-wrapper">
+			<% works.each do |work| %>
+			<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
+				<% if current_user && current_user.id == work.user_id %>
+					<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_biblo_path(work.user) %></h6>
+				<% else %>
+					<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+				<% end %>
+				<%= link_to user_work_path(work.user_id, work) do %>
+				<div class="search-result">
+					<p class="lead"><%= work.title %></p>
 
-<% unless works.blank? %>
-<h2 class="user-work-header black">værker under '<%= params[:search] %>':</h2>
-<div class="row user-work-wrapper">
-	<% works.each do |work| %>
-	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
-		<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_biblo_path(work.user) %></h6>
-		<%= link_to user_work_path(work.user_id, work) do %>
-		<div class="search-result">
-			<p class="lead"><%= work.title %></p>
+					<% if params[:search].nil? %>
+						<%= content_tag :p, truncate(work.body, length: 30) %>
+					<% else %>
+						<%= content_tag :p, excerpt(work.body, params[:search], radius: 30 - params[:search].size ) %>
+					<% end %>
+					<span class="small"><%= ".ord(#{work.body.split(" ").length})" %></span>
+					<span class="small"><%= ".gemt(#{work_saved = work.saved_works.length}-#{work_saved > 1 ? "gange" : "gang"})" if work.saved_works.any? %></span>
 
-			<% if params[:search].nil? %>
-				<%= content_tag :p, truncate(work.body, length: 30) %>
-			<% else %>
-				<%= content_tag :p, excerpt(work.body, params[:search], radius: 30 - params[:search].size ) %>
+				</div>
+				<% end %>
+
+			</div>
 			<% end %>
-			<span class="small"><%= ".ord(#{work.body.split(" ").length})" %></span>
-			<span class="small"><%= ".gemt(#{work_saved = work.saved_works.length}-#{work_saved > 1 ? "gange" : "gang"})" if work.saved_works.any? %></span>
+		</div>
+		<% end %>
+		<% unless users.blank? %>
+		<h2 class="user-work-header black">skrivere <span class="small">under '<%= params[:search] %>':</span></h2>
+		<div class="row user-work-wrapper">
+			<% users.each do |user| %>
+			<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
+				<% if current_user && current_user.id == user.id %>
+					<%= link_to user_biblo_path(user) do %>
+					<div class="search-result">
+						<p class="lead"><%= user.username %></p>
+						<p class="text-muted">
+							<%= "værker(#{user.works.published.length})" unless user.works.published.empty? %>
+						</p>
+					</div>
+					<% end %>
 
+				<% else %>
+					<%= link_to user_path(user) do %>
+					<div class="search-result">
+						<p class="lead"><%= user.username %></p>
+						<p class="text-muted">
+							<%= "værker(#{user.works.published.length})" unless user.works.published.empty? %>
+						</p>
+					</div>
+					<% end %>
+				<% end %>
+			</div>
+			<% end %>
 		</div>
 		<% end %>
 
-	</div>
-	<% end %>
-</div>
-<% end %>
-<% unless users.blank? %>
-<h2 class="user-work-header black">skrivere <span class="small">under '<%= params[:search] %>':</span></h2>
-<div class="row user-work-wrapper">
-	<% users.each do |user| %>
-	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
-		<%= link_to user_biblo_path(user) do %>
-		<div class="search-result">
-			<p class="lead"><%= user.username %></p>
-			<p class="text-muted">
-				<%= "værker(#{user.works.published.length})" unless user.works.published.empty? %>
-				</p>
-		</div>
+
+		<% if users.blank? && works.blank? %>
+		<p class="text-center lead search-no-find">
+			Intet var at finde under "<%= params[:search] %>"
+		</p>
 		<% end %>
+
 	</div>
-	<% end %>
-</div>
-<% end %>
-
-
-<% if users.blank? && works.blank? %>
-	<p class="text-center lead search-no-find">
-		Intet var at finde under "<%= params[:search] %>"
-	</p>
-<% end %>
-
-</div>
 </div>
