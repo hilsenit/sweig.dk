@@ -15,16 +15,22 @@ class WorksController < ApplicationController
 
 	def update
 		@work = Work.friendly.find(params[:id])
-		update_marks @work.all_tags_in_s.split(","), params[:work][:all_tags_in_s].split(","), @work
-		if @work.update(work_params)
-			if params[:status] == "Udgiv" 
-				@work.published!
+		tags = params[:work][:all_tags_in_s].split(",")
+		unless tags.size > 5
+			update_marks @work.all_tags_in_s.split(","), tags, @work
+			if @work.update(work_params)
+				if params[:status] == "Udgiv" 
+					@work.published!
+				else
+					@work.draft!
+				end
+				redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
 			else
-				@work.draft!
+				redirect_to user_my_works_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
 			end
-			redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
 		else
-			redirect_to user_my_works_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
+			@user = @work.user
+			redirect_to edit_user_work_path(@user.id, @work.id), flash: { error: "Max 5 mærker per værk"}
 		end
 	end
 	

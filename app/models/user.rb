@@ -12,7 +12,8 @@ class User < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :saved_works, dependent: :destroy
 	has_many :votes, dependent: :destroy
-
+	has_one :biblo
+	has_many :stories, through: :biblo
 	#foelger.rb har followed_id og follower_id i sig (aktivt og passivt)
 	has_many :active_relationships, class_name: "Foelger", 
 									foreign_key: "follower_id", 
@@ -29,7 +30,7 @@ class User < ApplicationRecord
 	validates_presence_of :username, :email, :password
 
 
-	
+
 	def biblo
 			following_ids = self.following_ids
 			Work.where(status: 1).select{|w| following_ids.include? w.user_id } 
