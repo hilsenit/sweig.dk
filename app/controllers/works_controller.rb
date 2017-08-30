@@ -49,6 +49,8 @@ class WorksController < ApplicationController
 			array = params[:work][:all_tags_in_s].split(",")
 			create_marks array, @work
 			@work.published! if params[:status] == "Udgiv" 
+			generate_biblo_site_for_followers @user, @work, "work"
+
 			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	
 			render 'new'
@@ -103,7 +105,7 @@ class WorksController < ApplicationController
 		create_marks new_arr_without_old, obj
 		obj.all_tags_in_s = new_array.join(", ")
 	end
-
+	
 	def work_params
 		params.require(:work).permit(:title, :body, :username, :all_tags_in_s)
 	end

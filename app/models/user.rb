@@ -12,8 +12,7 @@ class User < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	has_many :saved_works, dependent: :destroy
 	has_many :votes, dependent: :destroy
-	has_one :biblo
-	has_many :stories, through: :biblo
+	has_many :stories, dependent: :destroy
 	#foelger.rb har followed_id og follower_id i sig (aktivt og passivt)
 	has_many :active_relationships, class_name: "Foelger", 
 									foreign_key: "follower_id", 

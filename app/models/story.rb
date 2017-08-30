@@ -1,3 +1,4 @@
 class Story < ApplicationRecord
-	belongs_to :biblo
+	belongs_to :user
+
 end

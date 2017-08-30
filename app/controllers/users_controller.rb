@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	def biblo
 		@user = User.friendly.find(params[:user_id])
-		@biblo = @user.biblo
+		@stories = @user.stories
 	end
 
 	def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825173419) do
+ActiveRecord::Schema.define(version: 20170830131344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,12 +87,15 @@ ActiveRecord::Schema.define(version: 20170825173419) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string "text"
-    t.bigint "biblo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "story_type"
-    t.index ["biblo_id"], name: "index_stories_on_biblo_id"
+    t.integer "user_id"
+    t.string "user_username"
+    t.integer "work_id"
+    t.string "work_title"
+    t.integer "fol_id"
+    t.string "fol_username"
   end
 
   create_table "users", force: :cascade do |t|
