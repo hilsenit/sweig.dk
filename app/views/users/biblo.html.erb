@@ -17,14 +17,16 @@
 	<div class="row user-work-wrapper pt-4">
 		<div class="col-lg-12 biblo">
 		<% @stories.each do |story| %>
+			<% if story.story_type == "work" %>
 			<p class="text-center">
 		
-				<%= link_to story.fol_username, user_path(story.fol_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.fol_id, story.work_id) %>		
+				<%= link_to story.fol_username, user_path(story.fol_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.fol_friendly_id, story.work_friendly_id) %>		
 			</p>
 			<p class="small text-center">
 				<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
-			</p>
-		<% end %>
+			</p>				
+			<% end %>
 		</div>
+		<% end %>
 	<% end %>
 	</div>

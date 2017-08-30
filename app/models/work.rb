@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+	after_destroy { |work| Story.where(work_friendly_id: work.slug).destroy_all } # Destroys the work stories
+	before_update { :all_tags_in_s_size }
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	enum status: { draft: 0, published: 1}
@@ -17,7 +19,9 @@ class Work < ApplicationRecord
 	validate :all_tags_in_s_size
 
 	def all_tags_in_s_size
-		errors.add(:tags, "Max 5 mærker pr. værk") if self.all_tags_in_s.split(",").size > 5 
+		tag_array = self.all_tags_in_s.split(",")
+		errors.add(:tags, "Max 5 mærker pr. værk") if tag_array.size > 5 
+		errors.add(:tags, "Mærker kan max være 30 tegn") if tag_array.any? {|t| t.size > 30}
 	end
 
 	def self.search(searched_for)

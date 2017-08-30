@@ -1,39 +1,44 @@
 <div class="col-lg-12">
-		<% if @work.errors.any? || flash[:error].present? %> 
-			<div class="alert-box secondary">
-			<% if @work.errors.any? %>
-					<% @work.errors.each do |attr, msg| %>
-						<p class="text-center lead"><%= msg %></p>
-					<% end %>
-			<% elsif flash[:error].present? %>
-					<%= content_tag :p, flash[:error], class: "text-center lead" %>
-			<% end %>
-			</div>
+	<% if @work.errors.any? %> 
+	<div class="alert-box secondary">
+		<% @work.errors.each do |attr, msg| %>
+			<p class="text-center lead"><%= msg %></p>
 		<% end %>
+	</div>
+	<% end %>
+	<% unless flash[:errors].nil? %> 
+		<div class="alert-box secondary">
+			<% flash[:errors].each do |attr, error| %>
+				<%= content_tag :p, error.first, class: "text-center lead" %>
+			<% end %>
+		</div>
+	<% end %>
+
+
+
 	<%= form_for [@user, @work] do |f| %>
-		<%= f.hidden_field :username, value: @user.username %>
-		<div class="col-lg-12 text-center bootstrap-tagsinput">
+	<%= f.hidden_field :username, value: @user.username %>
+	<div class="col-lg-12 text-center bootstrap-tagsinput">
+		<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv dine mærker, så dit værk er muligt at finde under disse. Separer med komma. Max 5 mærker per værk." %>
+	</div>
+	<div class="form-save">
+		<span class="border-image">
+			<%= f.submit "Gem som kladde", class: "btn btn-secondary" %>
+		</span>
+		<span class="border-image">		
+			<%= f.submit "Udgiv", name: "status", class: "btn btn-secondary" %>
+		</span>
+	</div>
 
-			<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv dine mærker, så dit værk er muligt at finde under disse. Separer med komma. Max 5 mærker per værk." %>
-		</div>
-		<div class="form-save">
-				<span class="border-image">
-					<%= f.submit "Gem som kladde", class: "btn btn-secondary" %>
-				</span>
-			<span class="border-image">		
-				<%= f.submit "Udgiv", name: "status", class: "btn btn-secondary" %>
-			</span>
-		</div>
+	<div class="title">
+		<%= f.text_field :title %>
+	</div>
 
-		<div class="title">
-			<%= f.text_field :title %>
+	<div class="row body">
+		<div class="offset-md-1 col-md-10">
+			<%= f.text_area :body %>
 		</div>
-
-		<div class="row body">
-			<div class="offset-md-1 col-md-10">
-				<%= f.text_area :body %>
-			</div>
-		</div>
+	</div>
 
 
 	<% end %>
@@ -42,7 +47,7 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-	$(".body textarea").autosize();
-});
+	$(document).ready(function() {
+		$(".body textarea").autosize();
+	});
 </script>

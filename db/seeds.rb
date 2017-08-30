@@ -25,7 +25,6 @@ end
 names = %w(Henning Henrik Bobby Ole Anna Henriette)
 names.length.times do |index|
 	User.create!(password: "jegvarenganglækker", username: names[index], email: "test@teeest#{index}.dk")
-	puts 
 end
 
 

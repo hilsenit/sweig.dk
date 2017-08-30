@@ -15,10 +15,15 @@ class ApplicationController < ActionController::Base
   protected
 
 
-  def generate_biblo_site_for_followers followed, work, type
+  def generate_biblo_story_work_publish followed, work, type
     followed.followers.each do |user|
-      user.stories << Story.create(story_type: type, fol_id: followed.id, fol_username: followed.username, work_id: work.id, work_title: work.title)
+      user.stories << Story.create(story_type: type, fol_friendly_id: followed.slug, fol_username: followed.username, work_friendly_id: work.slug, work_title: work.title)
     end 
+  end
+
+  def generate_biblo_story_follow_user followed_user, followed_user_type, user, user_type 
+    # user.stories << Story.create(story_type: user_type, fol_friendly_id: followed_user.slug, fol_username: followed_user.username,)
+    
   end
 
 

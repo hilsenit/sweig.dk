@@ -10,27 +10,24 @@ class WorksController < ApplicationController
 	def edit
 		@user = User.friendly.find(params[:user_id])
 		@work = Work.friendly.find(params[:id])
-
 	end
 
 	def update
 		@work = Work.friendly.find(params[:id])
-		tags = params[:work][:all_tags_in_s].split(",")
-		unless tags.size > 5
-			update_marks @work.all_tags_in_s.split(","), tags, @work
-			if @work.update(work_params)
-				if params[:status] == "Udgiv" 
-					@work.published!
-				else
-					@work.draft!
-				end
-				redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
+		@user = @work.user
+		old_tags = @work.all_tags_in_s
+		new_tags = params[:work][:all_tags_in_s].split(",")
+		if @work.update(work_params)
+			update_marks old_tags.split(","), new_tags, @work
+
+			if params[:status] == "Udgiv" 
+				@work.published!
 			else
-				redirect_to user_my_works_path(@work.user_id), error: "'#{@work.title}' blev ikke gemt. Prøv igen. " 
+				@work.draft!
 			end
+			redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
 		else
-			@user = @work.user
-			redirect_to edit_user_work_path(@user.id, @work.id), flash: { error: "Max 5 mærker per værk"}
+			redirect_to edit_user_work_path(@user.id, @work.id), flash: {errors: @work.errors}
 		end
 	end
 	
@@ -49,7 +46,8 @@ class WorksController < ApplicationController
 			array = params[:work][:all_tags_in_s].split(",")
 			create_marks array, @work
 			@work.published! if params[:status] == "Udgiv" 
-			generate_biblo_site_for_followers @user, @work, "work"
+
+			generate_biblo_story_work_publish @user, @work, "work" # Application controller method
 
 			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	
@@ -86,11 +84,11 @@ class WorksController < ApplicationController
 		@work.save!
 	end
 
-	def create_marks array, obj
-		array.each do |t|
+	def create_marks array_of_marks, obj
+		array_of_marks.each do |t|
 			if Mark.new(title: t).valid? # Hvis det mærke med titel ikke allerede eksisterer i databasen?
 				obj.marks << Mark.create(title: t)
-			else
+			else #Læg værket ind i det allerede eksisterende mærke
 				Mark.find_by_title(t).works << obj
 			end 
 		end 
@@ -101,9 +99,8 @@ class WorksController < ApplicationController
 			obj.marks.delete(Mark.find_by_title(o_a)) unless new_array.include? o_a || obj.marks.empty?
 		end
 		#Hvis tags var i den gamle, så lad være med at tage dem med
-		new_arr_without_old = new_array.delete_if {|a| old_array.include? a} 
-		create_marks new_arr_without_old, obj
-		obj.all_tags_in_s = new_array.join(", ")
+		new_array.delete_if {|a| old_array.include? a} 
+		create_marks new_array, obj
 	end
 	
 	def work_params
