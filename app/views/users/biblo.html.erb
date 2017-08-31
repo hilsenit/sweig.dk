@@ -16,32 +16,21 @@
 	<div class="row user-work-wrapper pt-4">
 		<% @stories.each do |story| %>
 		<div class="col-lg-12 biblo">
-			<% if story.story_type == "work" %>
+			<hr>
+			<%= link_to fa_icon("times"), user_story_path(@user.id, story.id), method: :delete, data: {confirm: "Er du sikker på, at du vil slette dette?"}, class: "pl-2" %>
 			<p class="text-center">
-		
+			<% if story.story_type == "work" %>				
 				<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>		
+			<% elsif story.story_type == "followed" %>
+					<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> følger dig nu 		
+			<% elsif story.story_type == "following" %>
+					Du følger nu <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> 		
+			<% end %>
 			</p>
 			<p class="small text-center">
 				<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
 			</p>				
 			<hr>
-			<% elsif story.story_type == "followed" %>
-				<p class="text-center">
-					<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> følger dig nu 		
-				</p>
-				<p class="small text-center">
-					<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
-				</p>				
-
-			<% elsif story.story_type == "following" %>
-				<p class="text-center">
-					Du følger nu <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> 		
-				</p>
-				<p class="small text-center">
-					<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
-				</p>				
-			<hr>
-			<% end %>
 
 		</div>
 		<% end %>

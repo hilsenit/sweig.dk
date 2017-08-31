@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 			delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"
 			get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
 		end
+		resources :stories
 	end
 
 	get "soegefelt/resultat" => "static_pages#search", as: "search"
