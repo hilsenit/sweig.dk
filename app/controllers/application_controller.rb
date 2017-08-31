@@ -17,12 +17,14 @@ class ApplicationController < ActionController::Base
 
   def generate_biblo_story_work_publish followed, work, type
     followed.followers.each do |user|
-      user.stories << Story.create(story_type: type, fol_friendly_id: followed.slug, fol_username: followed.username, work_friendly_id: work.slug, work_title: work.title)
+      user.stories << Story.create(story_type: type, t_other_friendly_id: followed.slug, t_other_username: followed.username, work_friendly_id: work.slug, work_title: work.title)
     end 
   end
 
-  def generate_biblo_story_follow_user followed_user, followed_user_type, user, user_type 
-    # user.stories << Story.create(story_type: user_type, fol_friendly_id: followed_user.slug, fol_username: followed_user.username,)
+  def generate_biblo_story_follow_user action_user, action_user_type, t_other_user, t_other_user_type
+    binding.pry
+    action_user.stories << Story.create(story_type: action_user_type, t_other_friendly_id: t_other_user.slug, t_other_username: t_other_user.username) # Du følger nu t_other_user.username
+    t_other_user.stories << Story.create(story_type: t_other_user_type, t_other_friendly_id: action_user.slug, t_other_username: action_user.username) # Se du følges nu af user.username
     
   end
 

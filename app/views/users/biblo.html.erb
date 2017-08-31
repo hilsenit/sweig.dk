@@ -3,7 +3,6 @@
 <hr>
 <%= render partial: "user_navbar", locals: {user: @user} %>
 
-
 	<% if @stories.empty? %>
 	<h2 class="mt-4 user-work-header">Biblo</h2>
 		<div class="row user-work-wrapper pt-4">
@@ -15,17 +14,35 @@
 	<% else %>
 	<h2 class="mt-4 user-work-header black">Biblo</h2>
 	<div class="row user-work-wrapper pt-4">
-		<div class="col-lg-12 biblo">
 		<% @stories.each do |story| %>
+		<div class="col-lg-12 biblo">
 			<% if story.story_type == "work" %>
 			<p class="text-center">
 		
-				<%= link_to story.fol_username, user_path(story.fol_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.fol_friendly_id, story.work_friendly_id) %>		
+				<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>		
 			</p>
 			<p class="small text-center">
 				<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
 			</p>				
+			<hr>
+			<% elsif story.story_type == "followed" %>
+				<p class="text-center">
+					<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> følger dig nu 		
+				</p>
+				<p class="small text-center">
+					<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
+				</p>				
+
+			<% elsif story.story_type == "following" %>
+				<p class="text-center">
+					Du følger nu <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> 		
+				</p>
+				<p class="small text-center">
+					<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
+				</p>				
+			<hr>
 			<% end %>
+
 		</div>
 		<% end %>
 	<% end %>

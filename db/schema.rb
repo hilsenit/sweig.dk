@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830170247) do
+ActiveRecord::Schema.define(version: 20170831105016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,10 +91,10 @@ ActiveRecord::Schema.define(version: 20170830170247) do
     t.datetime "updated_at", null: false
     t.string "story_type"
     t.integer "user_id"
-    t.string "user_username"
+    t.string "action_username"
     t.string "work_title"
-    t.string "fol_username"
-    t.string "fol_friendly_id"
+    t.string "t_other_username"
+    t.string "t_other_friendly_id"
     t.string "work_friendly_id"
   end
 

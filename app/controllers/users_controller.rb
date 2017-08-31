@@ -80,7 +80,8 @@ class UsersController < ApplicationController
 	def follow 
 		@user = User.friendly.find(params[:id])
 		current_user.follow @user 
-		generate_biblo_site_for_followers @user, nil, "follow"
+		generate_biblo_story_follow_user current_user, "following", @user, "followed"
+		binding.pry
 		@message = "Du FOELGER nu #{@user.username.parameterize}" 
 		respond_to do |format| 
 			format.js { render 'users/js/follow' }
