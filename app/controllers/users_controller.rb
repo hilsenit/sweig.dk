@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
 	def biblo
 		@user = User.friendly.find(params[:user_id])
-		@stories = @user.stories
+		@stories = @user.stories.limit(10)
+		@stories_length = @user.stories.size
 	end
 
 	def show
@@ -61,9 +62,8 @@ class UsersController < ApplicationController
 	def save_work_for_current_user
 		work = Work.friendly.find(params[:work_id])
 		user = User.friendly.find(params[:user_id])
-		new_saved_work = SavedWork.new
-		new_saved_work.user = current_user
-		new_saved_work.work = work
+		generate_biblo_save current_user, user, work.slug, work.title
+		new_saved_work = SavedWork.new(user_id: current_user.id, work_id: work.id)
 		new_saved_work.save!
 		flash[:notice] = "'#{work.title}' er nu gemt under MIT"
 		redirect_to user_work_path(user, work)
@@ -80,9 +80,8 @@ class UsersController < ApplicationController
 	def follow 
 		@user = User.friendly.find(params[:id])
 		current_user.follow @user 
-		generate_biblo_story_follow_user current_user, "following", @user, "followed"
-		binding.pry
-		@message = "Du FOELGER nu #{@user.username.parameterize}" 
+		generate_biblo_follow current_user, @user
+		@message = "Du FØLGER nu #{@user.username.parameterize}" 
 		respond_to do |format| 
 			format.js { render 'users/js/follow' }
 		end
@@ -91,7 +90,7 @@ class UsersController < ApplicationController
 	def unfollow 
 		@user = User.friendly.find(params[:id])
 		current_user.unfollow @user
-		@message = "Du FOELGER ikke længere #{@user.username.parameterize}" 
+		@message = "Du FØLGER ikke længere #{@user.username.parameterize}" 
 		respond_to do |format| 
 			format.js { render 'users/js/unfollow' }
 		end

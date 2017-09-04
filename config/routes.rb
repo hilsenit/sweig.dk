@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 			get :followers, :following, :follow, :unfollow
 		end
 
-		get 'din-biblo/:user_id' => 'users#biblo', as: :biblo
+		get 'din-biblo' => 'users#biblo', as: :biblo
+		get 'din-biblo/:story_count' => 'stories#load_more', as: :load_stories
+		
 		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
 		resources :works do
@@ -41,7 +43,8 @@ Rails.application.routes.draw do
 			delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"
 			get "skift-vaerks-status" => "users#toggle_status", as: "toggle-status"
 		end
-		resources :stories
+		resources :stories, only: :destroy
+
 	end
 
 	get "soegefelt/resultat" => "static_pages#search", as: "search"

@@ -47,7 +47,7 @@ class WorksController < ApplicationController
 			create_marks array, @work
 			@work.published! if params[:status] == "Udgiv" 
 
-			generate_biblo_story_work_publish @user, @work, "work" # Application controller method
+			generate_biblo_story_work_publish @user, @work # Application controller method
 
 			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
 		else	

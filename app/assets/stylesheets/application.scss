@@ -25,6 +25,11 @@ html {
 	height: 100%;
 }
 
+.container.work-wrapper {
+    padding: 0;
+    min-width: 100%!important;
+}
+
 body {
 	min-height: 100%;
 	margin-bottom: 50px;

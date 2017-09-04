@@ -3,36 +3,17 @@
 <hr>
 <%= render partial: "user_navbar", locals: {user: @user} %>
 
-	<% if @stories.empty? %>
+<% if @stories.empty? %>
 	<h2 class="mt-4 user-work-header">Biblo</h2>
-		<div class="row user-work-wrapper pt-4">
-		<p class="lead offset-lg-2 col-lg-8 text-center">
-		<strong>BIBLO</strong> er siden, hvor du bliver underettet om de skrivere, som du FOELGER.
-		<br>Tryk på <%= image_tag "sweig-plus", height: "20px", width: "20px" %> på en skrivers profil for at FOELGE.
-		</p>
-		</div>
-	<% else %>
-	<h2 class="mt-4 user-work-header black">Biblo</h2>
 	<div class="row user-work-wrapper pt-4">
-		<% @stories.each do |story| %>
-		<div class="col-lg-12 biblo">
-			<hr>
-			<%= link_to fa_icon("times"), user_story_path(@user.id, story.id), method: :delete, data: {confirm: "Er du sikker på, at du vil slette dette?"}, class: "pl-2" %>
-			<p class="text-center">
-			<% if story.story_type == "work" %>				
-				<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>		
-			<% elsif story.story_type == "followed" %>
-					<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> følger dig nu 		
-			<% elsif story.story_type == "following" %>
-					Du følger nu <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> 		
-			<% end %>
-			</p>
-			<p class="small text-center">
-				<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
-			</p>				
-			<hr>
-
-		</div>
-		<% end %>
-	<% end %>
+		<p class="lead offset-lg-2 col-lg-8 text-center">
+			<strong>BIBLO</strong> er siden, hvor du bliver underettet om de skrivere, som du FØLGER.
+			<br>Tryk på <%= image_tag "sweig-plus", height: "20px", width: "20px" %> på en skrivers profil for at FOELGE.
+		</p>
 	</div>
+<% else %>
+	<h2 class="mt-4 user-work-header black">Biblo</h2>
+	<div class="biblo-wrapper">
+		<%= render partial: "stories", locals: {stories: @stories, stories_length: @stories_length} %>
+	</div>
+<% end %>

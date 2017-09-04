@@ -1,12 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(password: "jegvarenganglækker", username: "Marie Skovgaard Larsen", email: "example@7861234678.com")
+
+marie = User.new(password: "Figoer4nice", password_confirmation: "Figoer4nice", username: "mariemus", email: "okayda@marie.dk")
+marie.skip_confirmation!
+marie.save!
 		
 
 5.times do |work_num|
@@ -14,7 +10,9 @@ User.create!(password: "jegvarenganglækker", username: "Marie Skovgaard Larsen"
 	)
 end
 
-User.create!(password: "jegvarenganglækker", username: "Peter Højlund Andersen", email: "evample@jkasdkjldasl.dk")
+peter = User.new(password: "Figoer4nice", password_confirmation: "Figoer4nice", username: "petermus", email: "okay@peter.dk")
+peter.skip_confirmation!
+peter.save!
 
 
 5.times do |work_num|
@@ -22,10 +20,16 @@ User.create!(password: "jegvarenganglækker", username: "Peter Højlund Andersen
 	)
 end
 
-names = %w(Henning Henrik Bobby Ole Anna Henriette)
-names.length.times do |index|
-	User.create!(password: "jegvarenganglækker", username: names[index], email: "test@teeest#{index}.dk")
+20.times do |i| 
+	User.last.stories << Story.create(story_type: "following", action_username: User.last.username,  t_other_username: User.first.username, t_other_friendly_id: User.last.slug)
+end
+20.times do |i| 
+	User.last.stories << Story.create(story_type: "followed",  t_other_username: User.first.username, t_other_friendly_id: User.last.slug)
 end
 
+20.times do |i| 
+	User.last.stories << Story.create(story_type: "work",  t_other_username: User.first.username, t_other_friendly_id: User.last.slug, work_friendly_id: User.last.works.last.slug, work_title: User.last.works.last.title)
+end
 
 puts "Created #{Work.all.length} works"
+puts "Created #{Story.all.length} stories"

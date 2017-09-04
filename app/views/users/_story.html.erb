@@ -1,0 +1,19 @@
+<div class="col-lg-12 biblo" id="<%= story.id %>">
+<%= link_to fa_icon("times"), user_story_path(@user.id, story.id), method: :delete, data: {confirm: "Er du sikker på, at du vil slette dette?"}, class: "", remote: true %>
+<p class="text-center">
+<% if story.story_type == "work" %>				
+	<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har oprettet et nyt værk: <%= link_to "\"" + story.work_title + "\"", user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>		
+<% elsif story.story_type == "followed" %>
+		<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> følger dig nu 		
+<% elsif story.story_type == "following" %>
+		Du følger nu <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> 		
+<% elsif story.story_type == "saved_work" %>
+	Du har gemt <%= link_to story.work_title, user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>. Skrevet af <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %>
+<% elsif story.story_type == "work_saved" %>
+	<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har gemt dit værk: <%= link_to story.work_title, user_work_path(@user.slug, story.work_friendly_id) %>
+<% end %>
+</p>
+<p class="small text-center">
+	<%= distance_of_time_in_words(Time.now, story.created_at) %> siden	
+</p>				
+</div>
