@@ -349,13 +349,36 @@ color: black;
 .search-no-find {
 	margin: 13%;
 }
+
+.search-results-load {
+	z-index: 99999;
+	background-color: white;
+	position: absolute;
+	min-height: 100%;
+	width: 100%;
+	img.loading-icon{
+		position: absolute;
+		left: 50%;
+		margin-left: -25px;
+		top: 100px;
+		background-image: url(image-path("sweig-logo-load"));
+		background-repeat: no-repeat;
+		-webkit-animation:spin 4s linear infinite;
+	    -moz-animation:spin 4s linear infinite;
+	    animation:spin 4s linear infinite;
+	}
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .search-result-wrapper, .works-show-wrapper {
 	margin-top: 25px;
 	padding: 5px 10px;
 	width: 100%;
 	.search-result, .works-show-box {
+		background-color: darken(white, 2%);
 	    padding: 10px;
-	    border: 1px solid #e8e8e8;
 	    p {
 	    	color: black;
 	    }

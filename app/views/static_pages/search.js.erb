@@ -1,1 +1,2 @@
-$(".search-results").html("<%= escape_javascript( render partial: 'search_result', locals: { works: @works, users: @users }) %>");
+$(".search-results").delay(200).html("<%= escape_javascript( render partial: 'search_result', locals: { works: @works, users: @users }) %>");
+

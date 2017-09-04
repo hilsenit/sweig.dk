@@ -18,13 +18,3 @@
 // require turbolinks
 //= require_tree .
 
-$(document).ready(function($) {
-	$("#soegeFelt").on("keyup paste", function() {
-		$search_text = $(this).val();
-		$.ajax({
-			url: '/soegefelt/resultat',
-			type: 'GET',
-			data: {search: $search_text}
-		});	
-	});
-});
