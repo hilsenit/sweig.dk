@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
-	before_action :newest_and_most_read_works, only: [:show, :saved_works]
+	before_action :authenticate_user!, except: [:show]
 
 	def biblo
 		@user = User.friendly.find(params[:user_id])
-		@stories = @user.stories.limit(10)
-		@stories_length = @user.stories.size
+		unless @user.id == current_user.id 
+			redirect_to user_path(@user.id)
+		else
+			@stories = @user.stories.limit(10)
+			@stories_length = @user.stories.size
+		end
 	end
 
 	def show
@@ -28,7 +32,6 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-
 		if @user.save
 			redirect_to user_path(@user.friendly_id), notice: "Din profil er nu blevet oprettet"
 		else
@@ -120,20 +123,12 @@ class UsersController < ApplicationController
 		@saved_works = []
 		@user.saved_works.each do |saved_work|
 			@saved_works << Work.find(saved_work.work_id)
-		end
-		
+		end		
 	end
-
 
 	private
 
-	def newest_and_most_read_works
-		published_works = Work.where(status: 1)
-		@newest_works = published_works.order(created_at: :desc).limit(12)
-		@most_read_works = published_works.order(views: :desc).limit(12)		
-	end
-
 	def user_params
-		params.require(:user).permit(:username, :email)
+		params.require(:user).permit(:username, :email, :remember_me)
 	end
 end

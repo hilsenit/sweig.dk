@@ -1,18 +1,14 @@
 class QuestionsController < ApplicationController
-
+	before_action :authenticate_user!, except: [:index]
 
 	def show
-		# Har user stemt på det her før?
-		if vote = current_user.votes.detect{|v| v.question_id == params[:id].to_i}
+		if vote = current_user.votes.detect{|v| v.question_id == params[:id].to_i}# Har user stemt på det her før?
 			@user_vote = vote
 		else
 			@user_vote = nil
 		end
-
 		@question = Question.find(params[:id])
-		@comments = @question.comments
-		
-		
+		@comments = @question.comments		
 	end
 
 	def index
