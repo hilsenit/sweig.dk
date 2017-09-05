@@ -1,6 +1,6 @@
 <%= javascript_include_tag "search_ajax" %>
 <div class="col-lg-12 main">
-<%= render partial: "shared/search_header", locals: {site: "SØG"} %>
+<%= render partial: "shared/search_header", locals: {site: "SØG", autofocus: true} %>
 	<div class="row search-results-load hide-it">
 		<%= image_tag "sweig-logo-load", class: "loading-icon" %>
 	</div>

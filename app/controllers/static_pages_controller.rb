@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+	layout "countdown", only: [:redirect]
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
 	end
@@ -7,9 +8,7 @@ class StaticPagesController < ApplicationController
 		if current_user
 			flash[:notice] = "Velkommen tilbage #{current_user.username}"
 			redirect_to user_biblo_path(current_user.id)
-		else 
-			redirect_to forside_path()
-		end
+		end 
 	end
 
 	def find

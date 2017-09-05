@@ -1,6 +1,6 @@
 <%= javascript_include_tag "search_ajax" %>
 <div class="col-lg-12 main">
-	<%= render partial: "shared/search_header", locals: {site: "MAERKER"} %>
+	<%= render partial: "shared/search_header", locals: {site: "MAERKER", autofocus: false} %>
 	<div class="row search-results-load hide-it">
 		<%= image_tag "sweig-logo-load", class: "loading-icon" %>
 	</div>
@@ -8,15 +8,22 @@
 	<div class="row search-results mb-4">
 		
 	<div class="row my-4 py-4">
-	<% @maerker.each do |m| %>
-		<% next if count = m.works.count == 0 %>
-		<%= link_to show_maerke_works_path(m.id), remote: true, class: "label-info float-left" do %>
-	 		<span class="small tag-count"><%= m.works.count %></span> <%= m.title %>
-		<% end %>
-	 <% end %>
+		<% @maerker.each do |m| %>
+			<% next if count = m.works.count == 0 %>
+			<%= link_to show_maerke_works_path(m.id), remote: true, class: "label-info float-left" do %>
+		 		<span class="small tag-count"><%= m.works.count %></span> <%= m.title %>
+			<% end %>
+		 <% end %>
 	 </div>
-	 <div class="row"></div>
+</div><!-- search-result -->	
+
 		 <div class="row mt-4 maerker-result">
-		 </div>
-	</div>
+		</div>
 </div>
+
+
+<script type="text/javascript">
+	$(".label-info").click(function() {
+		$(this).addClass('label-active').siblings().removeClass('label-active');
+	});
+</script>
