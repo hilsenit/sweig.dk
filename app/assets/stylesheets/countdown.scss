@@ -13,14 +13,24 @@
 		width: 393px;
 		height: 389px;
 		#countDown {
+			min-width: 340px;
+			background-color: transparent; 
+			opacity: 0.5;
 		    position: absolute;
 		    top: 147px;
-		    left: 30px;
-		    background: transparent;
-		    color: white;
+		    left: 25px;
+		    color: black;
 		    font-size: 31px;
 		    border: 0px;
 		    font-family: Roboto;
+		    transition: all 1s linear;
+		    -webkit-transition: all 1s linear;
+		    -moz-transition: all 1s linear;
+		    -o-transition: all 1s linear;
+		    &:hover {
+		    	background: white;
+				opacity: 0.8; 
+		    }
 		}
 		.countdown-period {
 			font-size: 15px;
