@@ -1,7 +1,15 @@
 class StaticPagesController < ApplicationController
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
-		@newest_works = Work.published_works.limit(8)		
+	end
+
+	def redirect
+		if current_user
+			flash[:notice] = "Velkommen tilbage #{current_user.username}"
+			redirect_to user_biblo_path(current_user.id)
+		else 
+			redirect_to forside_path()
+		end
 	end
 
 	def find

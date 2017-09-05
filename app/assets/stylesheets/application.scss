@@ -17,9 +17,11 @@
 @import "min-bootstrap";
 @import "font-awesome";
 @import "search-placeholder";
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: Roboto;
+	// font-family: Roboto;
 }
 html {
 	height: 100%;
@@ -34,10 +36,16 @@ body {
 	min-height: 100%;
 	margin-bottom: 50px;
 }
-p {
+
+.lead, p {
+	color: rgba(0,0,0,0.87);
+	font-family: 'Libre Baskerville', serif;
 	word-break: break-word;
 	white-space: normal;
+}
 
+.lead {
+	font-size: 18px;
 }
 
 a { 
@@ -143,7 +151,7 @@ color: black;
 	text-transform: uppercase;
 	background-color: white!important;
 	color: black;
-	font-family: Roboto;
+	// font-family: Roboto;
 	letter-spacing: 2px;
 	border-color: transparent;
 	cursor: pointer;
@@ -221,14 +229,11 @@ color: black;
 	color: black;
 	cursor: pointer!important;
 	font-weight: 1000;
-	font-size: 15px;
-	letter-spacing: 4px;
 	margin-top: 30px; 
 	a {	
 		margin-right: 20px;
-		font-weight: 1000;
-		font-size: 20px;
-		letter-spacing: 4px;
+		text-transform: uppercase;
+		font-size: 16px;
 		color: black;
 	}
 
@@ -386,7 +391,7 @@ color: black;
 }
 
 .soege-felt {
-	text-align: center;
+ 	text-align: center;
 	outline: none;
 	border-top: none;
 	border-left: none;

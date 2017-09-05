@@ -51,6 +51,7 @@ Rails.application.routes.draw do
 
 	post "kontakt-os" => "static_pages#kontakt"	
 	
-	root "static_pages#index"
+	get "velkommen" => "static_pages#index", as: :forside
+	root "static_pages#redirect"
 
 end

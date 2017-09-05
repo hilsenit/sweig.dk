@@ -5,27 +5,28 @@ da:
       confirmed: "Velkommen til Sweig"
       send_instructions: "Vi har sendt dig en email, så du kan aktivere."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
+      send_paranoid_instructions: "Hvis din mail findes i vores vilde system, så vil du modtage en mail med instruktioner snart."
     failure:
       already_authenticated: "Du er allerede logget ind."
       inactive: "Du har ikke aktiveret via din email-adresse endnu."
       invalid: "Mangler %{authentication_keys} eller kodeord."
       locked: "Din bruger er låst."
-      last_attempt: "You have one more attempt before your account is locked."
+      last_attempt: "Du har ét mere forsøg, før din konto bliver lukket."
       not_found_in_database: "Forkert %{authentication_keys} eller kodeord."
-      timeout: "Your session expired. Please sign in again to continue."
+      timeout: "Dit log-ind er udløbet. Prøv igen."
       unauthenticated: "Du bliver nødt til at logge ind eller at oprette dig, før du kan fortsætte."
       unconfirmed: "Du bliver nødt til at aktivere via din mail, før du kan fortsætte."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Konfirmations instruktioner"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Instruktioner til hvordan du ændrer dit kodeord."
       unlock_instructions:
         subject: "Unlock instructions"
       email_changed:
-        subject: "Email Changed"
+        subject: "Email er ændret"
       password_change:
-        subject: "Password Changed"
+        subject: "Ændring af kodeord "
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
@@ -33,7 +34,7 @@ da:
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Din adgangskode er nu er ændret. Du er nu logget ind."
+      updated: "Din adgangskode er nu er ændret. Du er sej!"
       updated_not_active: "Your password has been changed successfully."
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
@@ -44,9 +45,9 @@ da:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
-      signed_in: "Du er logget ind."
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_in: "Velkommen tilbage"
+      signed_out: "Logget ud, ja det er du."
+      already_signed_out: "Du er det der logget ud."
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
@@ -55,9 +56,9 @@ da:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      not_locked: "was not locked"
+      expired: "er udløbet, prøv at be om en ny."
+      not_found: "ikke fundet"
+      not_locked: "var ikke låst"
       not_saved:
         one: "1 fejl gjorde at din %{resource} ikke kunne oprettes: "
         other: "%{count} fejl gjorde at din %{resource} ikke kunne oprettes:"
