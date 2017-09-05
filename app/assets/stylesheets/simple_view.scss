@@ -3,8 +3,13 @@
 @import "font-awesome";
 @import "search-placeholder";
 @import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
+
+.lead {
+	font-family: Roboto;
+}
 .hide-it {
 	display: none;
 }
@@ -18,7 +23,10 @@ html {
 body {
 	min-height: 100%;
 }
+p {
 
+	font-family: Lora;
+}
 .bootstrap-tagsinput {
 	margin: 0 auto!important;
 	width: 81em!important;
@@ -74,6 +82,7 @@ body {
 	text-align: center; 
 	margin-top: 10vh;
 	input, .show-title {
+		font-family: Lora;
 	    width: 40%;
 	    min-width: 400px;
 	    margin: auto;
