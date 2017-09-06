@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 	get 'find' => 'static_pages#find'
 	get 'find/nyeste' => 'static_pages#nyeste', as: :nyeste
 	get 'find/alle-maerker' => 'static_pages#alle_maerker', as: :alle_maerker
-	get 'find/alle-maerker/:maerker_id' => 'static_pages#show_maeker_works', as: :show_maerke_works
+	get 'find/alle-maerker/:maerker_id' => 'static_pages#show_maerke_works', as: :show_maerke_works
+	get 'find/alle-maerker-vis/:maerker_id' => 'static_pages#show_maerke_works_link', as: :show_this_maerker
 
 	# ADMIN
   	get 'admin' => 'admin#show', as: "admin"

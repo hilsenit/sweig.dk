@@ -12,11 +12,11 @@ class StaticPagesController < ApplicationController
 	end
 
 	def find
-		@newest_works = Work.limit(8)
+		@newest_works = Work.published.limit(8)
 	end
 
 	def nyeste 
-		@newest_works = Work.limit(24)
+		@newest_works = Work.published.limit(24)
 		
 	end
 
@@ -24,12 +24,21 @@ class StaticPagesController < ApplicationController
 		@maerker = Mark.all
 	end
 
-	def show_maeker_works
-		@works = Mark.find(params[:maerker_id]).works
+	def show_maerke_works
+		@maerke = Mark.find(params[:maerker_id])
+		@works = @maerke.works
 		respond_to do |format|
 			format.js
 		end 
 	end
+
+	def show_maerke_works_link
+		@maerker = Mark.all
+		@maerke = Mark.friendly.find(params[:maerker_id])
+		@works = @maerke.works
+		render "alle_maerker"
+	end
+
 	def search
 		published_work = Work.where(status: 1)
 		@users = User.search(params[:search]).order(created_at: :desc).limit(12) 

@@ -1,7 +1,10 @@
 <div class="row">
 	<% works.each do |work| %>
 	<div class="col-sm-6 col-md-4 col-lg-3 search-result-wrapper">
-		<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+		<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>	
+			<% work.all_tags_to_s.split(",").each do |tag| %>
+				<small><%= tag %></small>
+			<% end %>
 		<%= link_to user_work_path(work.user_id, work) do %>
 		<div class="search-result">
 			<p class="lead"><%= work.title %></p>
