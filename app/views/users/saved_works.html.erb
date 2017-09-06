@@ -1,7 +1,7 @@
-<h1 class="text-center"><%= link_to "|#{@user.username.parameterize}", user_path(@user) %></h1>
+<%= render partial: "user_navbar", locals: {user: @user} %>
+<h1 class="text-center"><%= link_to_user_helper(@user, "|" + @user.username) %></h1>
 <%= render partial: "foelger_bar", locals: {user: @user} %>
 <hr>
-<%= render partial: "user_navbar", locals: {user: @user} %>
 
 <div class="col-lg-12 main">
 	<% if @saved_works.any? %>

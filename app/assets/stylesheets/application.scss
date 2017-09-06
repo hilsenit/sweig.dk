@@ -48,8 +48,17 @@ body {
 
 .lead {
 	font-size: 18px;
+
 }
 
+.works-show-box .lead {
+	margin-top: 10px;
+}
+
+.small-marks {
+	padding: 2px;
+	border: 1px solid black;
+}
 a { 
 color: black;
 }
@@ -388,6 +397,13 @@ color: black;
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+.round-border-thin {
+	border: 1px solid black;
+	font-size: 0.7rem;
+	padding: 0 2px;
+	color: black;
+	background: white;
+}
 .search-result-wrapper, .works-show-wrapper {
 	margin-top: 25px;
 	padding: 5px 10px;

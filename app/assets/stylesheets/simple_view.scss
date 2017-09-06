@@ -27,9 +27,26 @@ p {
 
 	font-family: Lora;
 }
+
+#markInfo {
+	opacity: 0.3;
+	cursor: pointer;
+	font-size: 1.4rem;
+	float: left;
+	width: 10%;
+	height: 25px;
+	transition: opacity .4s linear;
+	-o-transition: opacity .4s linear;
+	-moz-transition: opacity .4s linear;
+	-webkit-transition: opacity .4s linear;
+	&:hover {
+		opacity: 1;
+	}
+}
 .bootstrap-tagsinput {
 	margin: 0 auto!important;
-	width: 81em!important;
+	width: 90%;
+	float: left;
 	input {
 		width: 100%;
 		text-align: center!important;
@@ -119,13 +136,15 @@ p {
 textarea:focus, input:focus{
     outline: none;
 }
-
+.border-bottom {
+    border-bottom: 1px solid black;
+}
 .show-navbar {
 	background-color: white;
     position: fixed;
 	overflow: hidden;
-	height: 40px;
-    width: 98%;
+	height: inherit;
+    width: 100%;
 	.show-navbar-inner {
 		margin-right: 35px;
 		margin-left: 15px;
@@ -233,11 +252,14 @@ span.divider {
 	cursor: pointer;
 }
 .mit-sign {
-    margin-left: 37px;
-    margin-top: 12px;
     font-size: 26px;
     font-weight: 600;
     color: black;
+}
+.min-alert p {
+	margin: 0;
+    line-height: 39px;
+    font-family: Roboto;
 }
 .modal-header-links.active {
 	text-decoration: underline;

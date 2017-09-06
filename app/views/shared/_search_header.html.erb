@@ -2,9 +2,8 @@
 	<h1 class="text-center find-headline"><%= site %></h1>
 	<br>
 	<% if autofocus %>
-	 <%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", autofocus: true, placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span><%= link_to "se nyeste", nyeste_path(), class: "#{'underline' if site == 'NYESTE'}" %> / <%= link_to "se alle mærker", alle_maerker_path(), class: "#{'underline' if site == "MAERKER"}" %>
+	 <%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", autofocus: true, placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span><%= link_to "se nyeste", nyeste_path(), class: "#{'underline' if site == 'NYESTE'}" %> / <%= link_to "mærker", alle_maerker_path(), class: "#{'underline' if site == "MAERKER"}" %>
 	<% else %>
-	<%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span><%= link_to "se nyeste", nyeste_path(), class: "#{'underline' if site == 'NYESTE'}" %> / <%= link_to "se alle mærker", alle_maerker_path(), class: "#{'underline' if site == "MAERKER"}" %>
+	<%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", placeholder: "Søg i skrivere, mærker, overskrifter og tekst." %> <br> <span class="small">eller: </span><%= link_to "se nyeste", nyeste_path(), class: "#{'underline' if site == 'NYESTE'}" %> / <%= link_to "mærker", alle_maerker_path(), class: "#{'underline' if site == "MAERKER" || params[:maerker_id].present? }" %>
 	<% end %>
-
 </div>

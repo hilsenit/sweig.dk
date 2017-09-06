@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	def biblo
 		@user = User.friendly.find(params[:user_id])
 		unless @user.id == current_user.id 
-			redirect_to user_path(@user.id)
+			redirect_to user_path(@user.friendly_id)
 		else
 			@stories = @user.stories.limit(10)
 			@stories_length = @user.stories.size

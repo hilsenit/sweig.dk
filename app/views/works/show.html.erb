@@ -1,14 +1,13 @@
 <div class="col-lg-12 work-show-outer">
 
-	<div class="show-navbar">
 			<%= fa_icon "angle-down", id: "NavbarToggle", class: "rotate180deg" %>
+	<div class="show-navbar border-bottom">
 
-			<div class="show-navbar-inner">
-
-				<%= link_to "|#{@user.username.parameterize}", user_biblo_path(@user), class: "float-left exit-icon" %>
+			<div class="row show-navbar-inner">
+				<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") %>
 				<span class="divider float-left">|</span>
 					<%= link_to "MIT", user_biblo_path(current_user), class: "mit-sign" if current_user %>
-				<span class="divider">|</span>
+				<span class="divider float-left">|</span>
 
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
@@ -28,6 +27,11 @@
 					<p class="d-inline-block center-block lead text-center work-show-not-logged-in-text"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
 
 				<% end %>
+				<% if notice %>
+				<div class="min-alert text-center">
+						<p class="d-inline-block"><%= notice %></p>
+				</div>
+				<% end %>
 				
 
 			</div>
@@ -36,14 +40,7 @@
 
 		</div>	
 
-		<% if notice %>
-		<div class="alert row text-center">
-			<div class="offset-lg-4 col-lg-4">
-				<div data-dismiss="alert" class="notice-exit float-right"><%= fa_icon "times" %></div>
-				<%= notice %>
-			</div>
-		</div>
-		<% end %>
+		
 
 		<div class="title">
 			<h2 class="show-title"><%= @work.title %></h2>
@@ -62,7 +59,8 @@
 			$("#NavbarToggle").click(function() {
 				$(this).toggleClass('rotate180deg');
 				$(this).toggleClass('rotatedefault');
-				$(".show-navbar-inner").slideToggle(300);
+				$(".show-navbar-inner").toggle();
+				$(".show-navbar").toggleClass('border-bottom');
 			});
 		});
 

@@ -11,8 +11,8 @@
 	<div class="row my-4 py-4">
 		<% @maerker.each do |m| %>
 			<% next if count = m.works.count == 0 %>
-			<%= link_to show_maerke_works_path(m.id), remote: true, class: "label-info float-left #{'label-active' if params[:maerker_id] == m.slug}" do %>
-		 		<span class="small tag-count"><%= m.works.count %></span> <%= m.title %>
+			<%= link_to show_maerke_works_path(m.id, nil), remote: true, class: "label-info float-left #{'label-active' if params[:maerker_id] == m.slug}" do %>
+		 		<span class="round-border-thin"><%= m.works.count %></span> <%= m.title %>
 			<% end %>
 		 <% end %>
 	 </div>

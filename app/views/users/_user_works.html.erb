@@ -9,10 +9,10 @@
 			<% end %>
 			<% unless work.all_tags_in_s.blank? %>
 				<% work.all_tags_in_s.split(",").each do |tag| %>
-					<small><%= link_to tag, show_this_maerker_path(tag.parameterize) %></small>
+					<small class="small-marks"><%= link_to tag, show_this_maerker_path(tag.parameterize, work.id) %></small>
 				<% end %>
 			<% end %>
-		<%= link_to user_work_path(work.user.id, work) do %>
+		<%= link_to user_work_path(work.user.id, work), class: "work-text" do %>
 			<p class="lead">
 				<%= work.title %>
 			</p>
