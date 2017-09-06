@@ -1,19 +1,17 @@
 @import "jquery.countdown";
 
 
-html{
+body, html{
 	width: 100%;
 	height: 100%;
+	margin: 0;
 }
 
-body {
-	border-box: box-sizing;
-	border: 10px solid white;
-}
+
 .row {
 	position: relative;
 	width: 100%;
-	height: 95vh;
+	height: 100vh;
 	.image {
 		position: absolute;
 		left: 50%;
