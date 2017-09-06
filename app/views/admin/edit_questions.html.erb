@@ -9,7 +9,7 @@
 
 	<div class="col-md-12">
 	<h2><%= question.headline %></h2>
-	<p><%= question.text %></p>
+	<p><%= truncate(question.text, :length => 130, :omission => "..." , :escape => false) %></p>
 
 	<%= link_to "Slet", question_path(question), method: :delete, data: {confirm: "Er du sikker på, at du vil slette?"}, class: "btn btn-warning" %>
 		

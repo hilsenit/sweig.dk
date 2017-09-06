@@ -1,13 +1,18 @@
+<% unless @user_vote.nil? %>
+	<% binding.pry %>
+	<%= link_to "SLET STEMME", question_delete_vote_path(question, user_vote.id), method: :delete, remote: true %>
+<% end %>
 <div class="col-lg-10">
 	<h2><%= question.headline %></h2>
-	<p class=""><%= simple_format(question.text) %></p> 
+	<p class=""><%= question.text.html_safe %></p> 
 </div>
 <div class="col-lg-1">
-		<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
+		<% if @user_vote.nil? %>
+			<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
+		<% end %>
 		<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
-		<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
-		<% unless user_vote.nil? %>
-			<%= link_to image_tag("delete-cross"), question_delete_vote_path(question, user_vote.id), method: :delete, remote: true %>
+		<% if @user_vote.nil? %>
+			<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
 		<% end %>
 </div>
 <div class="col-lg-10">

@@ -7,7 +7,7 @@
 				<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") %>
 				<span class="divider float-left">|</span>
 					<%= link_to "MIT", user_biblo_path(current_user), class: "mit-sign" if current_user %>
-				<span class="divider float-left">|</span>
+				<%= content_tag :span, "|", class: "divider float-left" if current_user %>
 
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
 				<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>

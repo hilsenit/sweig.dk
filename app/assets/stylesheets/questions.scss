@@ -13,7 +13,15 @@
 
 }
 
+
+.question-wrapper {
+	.col-lg-10 h2 {
+		font-family: Roboto; 
+		text-transform: uppercase;
+	}
+}
 .stem-forklaring {
+	font-family: 'Libre Baskeville';
 	border: 1px solid gray;
 }
 .without-border {
@@ -29,6 +37,8 @@
 }
 
 .question-headline {
+	font-family: Roboto;
+	text-transform: uppercase;
 	font-size: calc(10px + 1vw);
 	font-weight: 200;
 	letter-spacing: 2px;

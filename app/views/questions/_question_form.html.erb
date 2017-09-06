@@ -1,3 +1,8 @@
+<%= tinymce_assets %>
+<%= tinymce %>
+
+
+
 <%= form_for question do |f| %>
 
 <div class="form-group">
@@ -6,7 +11,7 @@
 </div>
 <div class="form-group">
 	<%= f.label :text, "Teksten til:" %>
-	<%= f.text_area :text, placeholder: "Indtast teksten her", class: "form-control question-text-area" %>
+	<%= f.text_area :text, placeholder: "Indtast teksten her", class: "form-control question-text-area tinymce" %>
 </div>
 <hr>
 <div class="border-image">

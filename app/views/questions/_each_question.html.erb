@@ -2,7 +2,8 @@
 	<div class="text-center question-headline underline"><%= question.headline %></div>
 
 	<p class="small">
-		<%= truncate(question.text, length: 100) %>
+		<%= truncate(question.text, :length => 100, :omission => "..." , :escape => false) %>
+
 	</p>
 		<span class="display-4"><%= question.votes.length%></span> <span class="small">har stemt</span>
 </div>

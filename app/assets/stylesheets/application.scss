@@ -29,6 +29,18 @@ html {
 	height: 100%;
 }
 
+.tooltip-inner {
+    background-color: white;
+    color: black; 
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    font-family: 'Libre Baskeville';
+    box-shadow: 1px 1px 1px #888888;
+}
 .container.work-wrapper {
     padding: 0;
     min-width: 100%!important;
@@ -167,10 +179,11 @@ color: black;
 	color: black!important;
 }
 .btn-primary {
+	padding-top: 10px;
 	text-transform: uppercase;
 	background-color: white!important;
 	color: black;
-	// font-family: Roboto;
+	font-family: Roboto;
 	letter-spacing: 2px;
 	border-color: transparent;
 	cursor: pointer;
@@ -362,6 +375,13 @@ color: black;
 }
 .nav-pills > li > .active {
 	text-decoration: underline; 
+}
+.modal-title {
+	font-family: Roboto;
+}
+
+.modal-body {
+	font-family: 'Libre Baskerville';
 }
 .modal-header-links, .search-dropdown-links {
     text-transform: uppercase;

@@ -7,6 +7,19 @@
 
  @import "font-awesome";
 
+.tooltip-inner {
+    border: 1px solid #424242;
+    background-color: white;
+    color: black; 
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    font-family: 'Libre Baskeville';
+}
+
 .biblo-inner-wrapper { 
     
     .biblo {
