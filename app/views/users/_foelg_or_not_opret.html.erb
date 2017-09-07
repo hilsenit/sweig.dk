@@ -1,5 +1,5 @@
 <% if current_user.id == user.id %>
-	<%= link_to "Opret værk", new_user_work_path(@user), class: "btn btn-secondary" %>
+	<%= link_to "Opret værk", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
 <% else %>
 	<% if user.followers? current_user %>
 		<%= link_to "FOELG IKKE", unfollow_user_path(user), remote: true, class: "btn btn-secondary" %>	

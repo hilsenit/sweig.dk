@@ -2,13 +2,13 @@ module ApplicationHelper
 
 	def link_to_user_helper user, string, classes=""
 		if current_user != nil && current_user.id == user.id
-			link_to string, user_biblo_path(user.id), class: classes 
+			link_to string, user_biblo_path(user.friendly_id), class: classes 
 		else
-			link_to string, user_path(user.id), class: classes
+			link_to string, user_path(user.friendly_id), class: classes
 		end
 	end
 	def if_active_helper path
-		"active" if current_path == path
+		"active" if current_path == path 
 	end
 
 	def if_active_link_helper path

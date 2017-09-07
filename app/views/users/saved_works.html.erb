@@ -1,6 +1,6 @@
-<%= render partial: "user_navbar", locals: {user: @user} %>
 <h1 class="text-center"><%= link_to_user_helper(@user, "|" + @user.username) %></h1>
-<%= render partial: "foelger_bar", locals: {user: @user} %>
+<%= render partial: "user_navbar", locals: {user: @user} %>
+<%# render partial: "foelger_bar", locals: {user: @user} %>
 <hr>
 
 <div class="col-lg-12 main">

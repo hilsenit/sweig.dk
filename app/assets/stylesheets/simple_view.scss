@@ -35,6 +35,10 @@ html {
 body {
 	min-height: 100%;
 }
+
+.body textarea {
+	overflow: scroll!important;
+}
 p {
 
 	font-family: 'Libre Baskeville';

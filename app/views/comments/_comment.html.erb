@@ -9,8 +9,12 @@
 			<%= link_to "/ slet", question_comment_path(comment.question_id, comment),
 				method: :delete, data: {confirm: "Er du sikker på, at du vil slette din kommentar?" } %>
 		<% end %> 
+		/ Oprettet for <%= distance_of_time_in_words(Time.now, comment.created_at) %> siden.
+
 		</div>
 
 		<hr>
+	</div><!-- col-lg-10 -->
+	<div class="col-lg-2 small">
 	</div>
 <% end %>

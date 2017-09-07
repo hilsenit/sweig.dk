@@ -17,8 +17,8 @@
 		 <% end %>
 	 </div>
 </div><!-- search-result -->	
-	 <div class="row mt-4 maerker-result">
-	 	<%= render partial: "shared/show_works", locals: {works: @works} unless @works.blank? %>
+	 <div class="mt-4 maerker-result">
+	 	<%= render partial: "users/user_works", locals: {works: @works, edit: nil, extra_class: nil} unless @works.blank? %>
 	</div>
 </div>
 

@@ -1,12 +1,12 @@
-<%= render partial: "user_navbar", locals: {user: @user} %>
 <h1 class="text-center"><%= link_to_user_helper(@user, "|" + @user.username) %></h1>
-<%= render partial: "foelger_bar", locals: {user: @user} %>
+<%= render partial: "user_navbar", locals: {user: @user} %>
+<%# render partial: "foelger_bar", locals: {user: @user} %>
 <div class="col-lg-12 main">
 		
 	<% if @published_works.any?  %>
 	<h2 class="mt-4 user-work-header black">Udgivet</h2>
 	<%= render partial: "user_works", 
-	locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper"} %>
+	locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper", edit: true} %>
 	<% else  %>
 	<h2 class="mt-4 user-work-header">Udgivelser</h2>
 		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine udgivelser kan findes i søgefeltet af alle.
@@ -20,7 +20,7 @@
 	<% if @draft_works.any? %>
 		<h2 class="mt-4 user-work-header black">Kladder</h2>
 		<%= render partial: "user_works", 
-		locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper"} %>
+		locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper", edit: true} %>
 	<% else  %>
 		<h2 class="mt-4 user-work-header">Kladder</h2>
 		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine kladder kan kun findes af dig.

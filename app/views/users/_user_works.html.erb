@@ -1,11 +1,11 @@
-<div class="row <%= extra_class if extra_class.present? %>">
+<div class="row <%= extra_class unless extra_class.nil? %>">
 	<% works.each do |work| %>
 	<div class="col-xs-6 works-show-wrapper col-sm-4 col-md-3">
 		<div class="works-show-box">
-			<% if is_current_user? %>
+			<% if edit %>
 				<%= content_tag :div, (work_options_icon_helper @user, work, arrow), class: "edit-icons-wrapper" %>
 			<% else %>
-			<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
+				<h6><%= link_to_user_helper work.user, "| #{work.user.username.parameterize}" %></h6>
 			<% end %>
 			<% unless work.all_tags_in_s.blank? %>
 				<% work.all_tags_in_s.split(",").each do |tag| %>

@@ -390,10 +390,30 @@ color: black;
     text-transform: uppercase;
     color: black;
 }
+.opret-wrapper {
+	.opret-vaerk {
+		border-color: transparent;
+		padding: .5em 1em;
+		background-image: url(image-path("knap-baggrund.png"));
+		color: white;
+	    display: block;
+	    text-align: center;
+	    font-family: Roboto;
+	    text-transform: uppercase;
+		
+	}
+}
 .modal-header-links {
+	border: 1px solid black;
     margin: 10px;
 }
 
+.user-links-container a.active-link {
+	background-color: grey;
+	color: white;
+	text-decoration: none;
+	border-color: transparent;
+}
 .search-no-find {
 	margin: 13%;
 }

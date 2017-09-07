@@ -1,19 +1,18 @@
 <% unless user_vote.nil? %>
 	<div class="col-lg-12 pink text-center">
 		<p class="already-voted">Du har allerede stemt på dette spørgsmål. Du stemte <%= user_vote.vote_num == 0 ? "NED" : "OP"%> | <%= link_to "SLET STEMME", question_delete_vote_path(question, user_vote.id), class: "border-thin", method: :delete, remote: true %>
-</p>
-		
+		</p>
 	</div>
 <% end %>
 <div class="col-lg-10">
 	<h2><%= question.headline %></h2>
 	<p class=""><%= question.text.html_safe %></p> 
 </div>
-<div class="col-lg-1">
+<div class="float-left user-votes">
 		<% if user_vote.nil? %>
 			<%= link_to image_tag("arrow-up"), question_vote_path(question, "up"), remote: true, class: "question-arrows" %>
 		<% end %>
-		<h4 class="text-center"><%= question.vote_count.to_s %></h4>		
+		<h4 class="text-center vote-result" data-toggle="tooltip" title="Resultatet af afstemningen"><%= question.vote_count.to_s %></h4>		
 		<% if user_vote.nil? %>
 			<%= link_to image_tag("arrow-down"), question_vote_path(question, "down"), remote: true, class: "question-arrows" %>
 		<% end %>
@@ -27,8 +26,9 @@
 </div>
 
 <script type="text/javascript"> 
-$(".question-wrapper").on("keyup paste", "#messageField", function() {
-	var $length = $("#messageField").val().length;
-	$("#messageCounter").text( (300 - $length) + " karakterer tilbage" );
-});
+	$(".question-wrapper").on("keyup paste", "#messageField", function() {
+		var $length = $("#messageField").val().length;
+		$("#messageCounter").text( (300 - $length) + " karakterer tilbage" );
+	});
+	$(".vote-result").tooltip();
 </script>
