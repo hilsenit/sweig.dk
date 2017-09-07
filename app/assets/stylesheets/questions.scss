@@ -12,8 +12,20 @@
 	}
 
 }
+.already-voted {
+	padding: 10px 10px;
+	padding-top: 20px;
+}
+.pink {
+	background-color: #fff6ff;
+	padding: 3px;
+	font-family: 'Libre Baskeville';
+	margin-bottom: 10px;
 
-
+}
+.border-thin {
+	border: 1px solid black;
+}
 .question-wrapper {
 	.col-lg-10 h2 {
 		font-family: Roboto; 
