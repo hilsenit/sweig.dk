@@ -5,6 +5,33 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+.btn-secondary {
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+	color: black!important;
+	border: 1px solid black;
+	text-transform: uppercase;
+}
+
+.btn-primary {
+	padding-top: 10px;
+	text-transform: uppercase;
+	background-color: white!important;
+	color: black;
+	font-family: Roboto;
+	letter-spacing: 2px;
+	border-color: transparent;
+	cursor: pointer;
+
+}
+.btn-primary:hover {
+	border-color: transparent;
+	color: black;
+	text-decoration: underline;
+}
+
 .tooltip-inner {
 	border: 1px solid #424242;
 	background-color: white;

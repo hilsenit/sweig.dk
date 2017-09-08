@@ -3,7 +3,10 @@ class StaticPagesController < ApplicationController
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
 	end
-
+	def fremtidsvision; end
+	def info; end
+	def cookies; end
+	
 	def redirect
 		if current_user
 			flash[:notice] = "Velkommen tilbage #{current_user.username}"

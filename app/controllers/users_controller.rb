@@ -68,7 +68,7 @@ class UsersController < ApplicationController
 		generate_biblo_save current_user, user, work.slug, work.title
 		new_saved_work = SavedWork.new(user_id: current_user.id, work_id: work.id)
 		new_saved_work.save!
-		flash[:notice] = "'#{work.title}' er nu gemt under MIT"
+		flash[:notice] = "'#{work.title}' er nu gemt under SAMLING"
 		redirect_to user_work_path(user, work)
 	end
 
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 		user = User.friendly.find(params[:user_id])
 		work = Work.friendly.find(params[:work_id])
 		current_user.saved_works.each {|s_w| s_w.delete if s_w.work_id == work.id }
-		flash[:notice] = "'#{work.title}' er nu slettet fra dine gemte under MIT"
+		flash[:notice] = "'#{work.title}' er nu slettet fra dine gemte under SAMLING"
 		redirect_to user_work_path(user, work)
 	end
 

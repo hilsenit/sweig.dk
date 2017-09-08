@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-4 text-center footer-text">FREMTIDSVISION</div>
-	<div class="col-md-4 text-center footer-text">COOKIES</div>
-	<div class="col-md-4 text-center footer-text">CVR NR: 12387917293</div>
+	<%= link_to "FREMTIDSVISION", fremtidsvision_path(), class: "#{'active-footer' if current_page?(fremtidsvision_path())} col-md-4 text-center footer-text" %>
+	<%= link_to "COOKIES", cookies_path(), class: "#{'active-footer' if current_page?(cookies_path())} col-md-4 text-center footer-text" %>
+	<%= link_to "OPLYSNINGER", info_path(), class: "#{'active-footer' if current_page?(info_path())} col-md-4 text-center footer-text" %>
 </div>

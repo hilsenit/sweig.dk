@@ -25,6 +25,9 @@
 h1, h2, h3, h4, h5, h6 {
 	// font-family: Roboto;
 }
+a {
+	font-family: Roboto;
+}
 html, body {
 	height: 100%;
 }
@@ -51,6 +54,10 @@ body {
 	  	&:hover {
 	  		color: black;
 	  	}
+	  }
+	  .active-footer {
+	  	border: 1px solid black;
+	  	color: black;
 	  }
 }
 .newest-works-find {
@@ -197,6 +204,10 @@ color: black;
 }
 
 .btn-secondary {
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
 	color: black!important;
 }
 .btn-primary {

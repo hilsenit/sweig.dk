@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+	get 'cookies-politik' => 'static_pages#cookies', as: :cookies
+	get 'fremtidsvision' => 'static_pages#fremtidsvision'
+	get 'info' => 'static_pages#info'
 	# NOT LOGGED IN MODAL
 	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
 				
