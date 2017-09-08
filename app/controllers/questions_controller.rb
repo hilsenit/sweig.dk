@@ -12,8 +12,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.vote_count_sort
-		
+		@questions = Question.vote_count_sort		
 	end
 	def new
 		@question = Question.new()

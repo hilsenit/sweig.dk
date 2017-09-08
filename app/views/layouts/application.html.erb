@@ -15,8 +15,8 @@
 </head>
 
 <body>
+  <div class="layout-container container container-javascript-remote notices">
   <%= render partial: "shared/navbar" %>
-  <div class="container mb-4 container-javascript-remote notices">
       <div class="text-center lead" id="Notices">
         <% flash.each do |type, message| %>
           <%= message %>
@@ -25,6 +25,10 @@
         <%= params[:notice] %>
       </div>
     <%= yield %>    
+  </div>
+  <!-- footer -->
+  <div class="container footer">
+    <%= render partial: "shared/footer" %>
   </div>
 
   </body>
