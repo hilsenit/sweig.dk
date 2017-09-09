@@ -7,6 +7,10 @@ module ApplicationHelper
 			link_to string, user_path(user.friendly_id), class: classes
 		end
 	end
+
+	def footer_size_helper
+		current_user ? "col-md-3" : "col-md-4"
+	end
 	def if_active_helper path
 		"active" if current_path == path 
 	end

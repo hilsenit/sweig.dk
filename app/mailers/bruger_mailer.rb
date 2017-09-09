@@ -5,19 +5,19 @@ class BrugerMailer < Devise::Mailer
 	def confirmation_instructions(record, token, opts={})
 	  headers["Custom-header"] = "Aktiver din bruger"
 	  opts[:from] = 'kontakt@sweig.dk'
-	  opts[:reply_to] = 'kontatk@sweig.dk'
+	  opts[:reply_to] = 'kontakt@sweig.dk'
 	  super	
 	end
 	def reset_password_instructions(record, token, opts={})
 	  headers["Custom-header"] = "Nulstil dit kodeord"
 	  opts[:from] = 'kontakt@sweig.dk'
-	  opts[:reply_to] = 'kontatk@sweig.dk'
+	  opts[:reply_to] = 'kontakt@sweig.dk'
 	  super	
 	end
 	def unlock_instructions(record, token, opts={})
 	  headers["Custom-header"] = "Lås din bruger op"
 	  opts[:from] = 'kontakt@sweig.dk'
-	  opts[:reply_to] = 'kontatk@sweig.dk'
+	  opts[:reply_to] = 'kontakt@sweig.dk'
 	  super	
 	end
 end

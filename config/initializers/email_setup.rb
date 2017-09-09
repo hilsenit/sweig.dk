@@ -4,7 +4,7 @@ if Rails.env.development?
 	ActionMailer::Base.smtp_settings = {
 	  address:              'smtp.gmail.com',
 	  port:                 587,
-	  domain:               'https://sweig.herokuapp.com/',
+	  domain:               'http://www.sweig.dk',
 	  user_name:            ENV["SWEIG_GMAIL_USERNAME"],
 	  password:             ENV["SWEIG_GMAIL_PASSWORD"],
 	  authentication:       'plain',

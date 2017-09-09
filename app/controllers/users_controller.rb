@@ -6,17 +6,22 @@ class UsersController < ApplicationController
 		unless @user.id == current_user.id 
 			redirect_to user_path(@user.friendly_id)
 		else
+			flash.now[:notice] = "Det du har prøvet at finde er enten slettet eller kladdet, desværre." if params[:not_found]
 			@stories = @user.stories.limit(10)
 			@stories_length = @user.stories.size
 		end
 	end
 
 	def show
-		@user = User.friendly.find(params[:id])
-		@published_works = @user.works.published_works
-		@saved_works = []
-		@user.saved_works.each do |saved_work|
-			@saved_works << Work.find(saved_work.work_id)
+		begin 
+			@user = User.friendly.find(params[:id])
+			@published_works = @user.works.published_works
+			@saved_works = []
+			@user.saved_works.each do |saved_work|
+				@saved_works << Work.find(saved_work.work_id)
+			end
+		rescue
+			redirect_to user_biblo_path(current_user.friendly_id, not_found: true)
 		end
 	end
 

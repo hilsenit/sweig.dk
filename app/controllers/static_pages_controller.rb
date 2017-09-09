@@ -3,13 +3,10 @@ class StaticPagesController < ApplicationController
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
 	end
-	def fremtidsvision; end
-	def info; end
-	def cookies; end
 	
 	def redirect
 		if current_user
-			flash[:notice] = "Velkommen tilbage #{current_user.username}"
+			flash[:notice] = "Velkommen"
 			redirect_to user_biblo_path(current_user.id)
 		end 
 	end
@@ -17,6 +14,9 @@ class StaticPagesController < ApplicationController
 	def find
 		@newest_works = Work.published.limit(8)
 	end
+	def fremtidsvision; end
+	def info; end
+	def cookies; end
 
 	def nyeste 
 		@newest_works = Work.published.limit(24)
