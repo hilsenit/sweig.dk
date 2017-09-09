@@ -3,7 +3,6 @@ class WorksController < ApplicationController
 	layout "simple_view", only: [:new, :edit, :show, :create]
 
 	def index
-		# UNderligt hack for create action render 'new' problemet med, at den går til index, hvis den ikke gemmer
 		redirect_to new_user_work_path()
 	end
 
@@ -57,10 +56,14 @@ class WorksController < ApplicationController
 	end
 
 	def show
+		begin		
+			@work = Work.friendly.find(params[:id])	
+			work_views 	
+			@user = @work.user
+		rescue
+			not_found
+		end
 
-		@work = Work.friendly.find(params[:id])	
-		work_views 	
-		@user = @work.user
 	end
 
 	def destroy

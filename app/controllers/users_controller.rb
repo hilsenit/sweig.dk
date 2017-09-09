@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, except: [:show]
-
 	def biblo
 		@user = User.friendly.find(params[:user_id])
 		unless @user.id == current_user.id 
@@ -21,7 +20,7 @@ class UsersController < ApplicationController
 				@saved_works << Work.find(saved_work.work_id)
 			end
 		rescue
-			redirect_to user_biblo_path(current_user.friendly_id, not_found: true)
+			not_found
 		end
 	end
 

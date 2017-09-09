@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+	get 'not_found' => 'application#not_found' 
 	get 'cookies-politik' => 'static_pages#cookies', as: :cookies
 	get 'fremtidsvision' => 'static_pages#fremtidsvision'
 	get 'info' => 'static_pages#info'

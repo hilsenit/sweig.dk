@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_session_social
 
+
+
+  def not_found 
+    if current_user
+      redirect_to user_biblo_path(current_user.friendly_id, not_found: true)
+    else 
+      redirect_to velkommen_path(), notice: "Det du har prøvet at finde er enten slettet eller kladdet, desværre." 
+    end
+  end
+
   def after_sign_in_path_for(resource)
     user_biblo_path(current_user.friendly_id)
   end
