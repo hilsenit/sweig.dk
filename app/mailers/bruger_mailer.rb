@@ -3,9 +3,21 @@ class BrugerMailer < Devise::Mailer
 	include Devise::Controllers::UrlHelpers # Optional. eg. `confirmation_url`
 	default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
 	def confirmation_instructions(record, token, opts={})
-	  headers["Custom-header"] = "Mail fra Sweig"
+	  headers["Custom-header"] = "Aktiver din bruger"
 	  opts[:from] = 'kontakt@sweig.dk'
 	  opts[:reply_to] = 'kontatk@sweig.dk'
-	  super
+	  super	
+	end
+	def reset_password_instructions(record, token, opts={})
+	  headers["Custom-header"] = "Nulstil dit kodeord"
+	  opts[:from] = 'kontakt@sweig.dk'
+	  opts[:reply_to] = 'kontatk@sweig.dk'
+	  super	
+	end
+	def unlock_instructions(record, token, opts={})
+	  headers["Custom-header"] = "Lås din bruger op"
+	  opts[:from] = 'kontakt@sweig.dk'
+	  opts[:reply_to] = 'kontatk@sweig.dk'
+	  super	
 	end
 end

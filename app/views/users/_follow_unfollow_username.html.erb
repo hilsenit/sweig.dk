@@ -1,0 +1,11 @@
+<div class="row">	
+	<div class="col-md-4 text-right">
+		<%= content_tag :span, user.followers.size, class: "triangle followers" %>
+	</div>
+	<div class="col-md-4 text-center h1">
+		<%= link_to_user_helper(user, "|" + user.username) %>		
+	</div>
+	<div class="col-md-4 text-left">		
+		<%= content_tag :span, user.following.size, class: "triangle following" %>
+	</div>
+</div>

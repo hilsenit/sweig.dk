@@ -1,19 +1,17 @@
-
 <div class="container-fluid">
-
 	<div class="row user-links-container">
 		<div class="col-md-3">
-		<%= link_to "Biblo", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
+			<%= link_to "Biblo", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
 		</div>
 		<div class="col-md-3">
-		<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
+			<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
 		</div>
 		<div class="col-md-3">
-		<%= link_to "Dine tekster", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
+			<%= link_to "Dine tekster", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
 		</div>
 
 		<div class="col-md-3 opret-wrapper">
-			<%= render partial: "foelg_or_not_opret", locals: {user: @user} %>
+			<%= link_to "Opret værk", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
 		</div>
 	</div>
 </div>

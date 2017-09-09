@@ -1,14 +1,12 @@
-<h1 class="text-center"><%= link_to_user_helper(@user, "|" + @user.username) %></h1>
+<%= render partial: "follow_unfollow_username", locals: {user: @user} %> 
 <%= render partial: "user_navbar", locals: {user: @user} %>
 <%# render partial: "foelger_bar", locals: {user: @user} %>
 <hr>
-
 <% if @stories.empty? %>
 	<h2 class="mt-4 user-work-header">Biblo</h2>
 	<div class="row user-work-wrapper pt-4">
 		<p class="lead offset-lg-2 col-lg-8 text-center">
-			<strong>BIBLO</strong> er siden, hvor du bliver underettet om de skrivere, som du FØLGER.
-			<br>Tryk på <%= image_tag "sweig-plus", height: "20px", width: "20px" %> på en skrivers profil for at FØLGE.
+			<strong>BIBLO</strong> er siden, hvor du bliver underrettet om dem du følgers udgivelser og andres aktiviteter, der vedrører dig.<br> 
 		</p>
 	</div>
 <% else %>

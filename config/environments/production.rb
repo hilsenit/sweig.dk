@@ -5,7 +5,8 @@ Rails.application.configure do
   config.cache_classes = true
 
   # MAIL SAT OPTION! TIL HEROKU
-  config.action_mailer.default_url_options = { :host => 'www.sweig.dk' }
+  config.action_mailer.default_url_options = { host: 'https://sweig.herokuapp.com/' }
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -31,6 +32,9 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+
+
+  # Mail 
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 

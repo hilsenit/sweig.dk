@@ -1,5 +1,5 @@
-<h1 class="text-center"><%= link_to_user_helper(@user, "|" + @user.username) %></h1>
-<%= render partial: "foelger_bar", locals: {user: @user} %>
+<%= render partial: "follow_unfollow_username", locals: {user: @user} %> 
+<%# render partial: "foelger_bar", locals: {user: @user} %>
 <div class="col-lg-12 main">
 		
 	<% if @published_works.any?  %>

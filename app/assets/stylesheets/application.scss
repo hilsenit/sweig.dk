@@ -60,6 +60,7 @@ body {
 	  	color: black;
 	  }
 }
+
 .newest-works-find {
 	width: 100%;
 }
@@ -445,6 +446,14 @@ color: black;
     margin: 10px;
 }
 
+.triangle {
+	background-color: transparent;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+}
 .user-links-container a.active-link {
 	background-color: grey;
 	color: white;
