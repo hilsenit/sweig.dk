@@ -4,6 +4,7 @@ class BrugerMailer < Devise::Mailer
 	default template_path: 'devise/mailer' # to make sure that your mailer uses the devise views
 	def confirmation_instructions(record, token, opts={})
 	  headers["Custom-header"] = "Aktiver din bruger"
+	  @username = record.username
 	  opts[:from] = 'kontakt@sweig.dk'
 	  opts[:reply_to] = 'kontakt@sweig.dk'
 	  super	
@@ -12,12 +13,14 @@ class BrugerMailer < Devise::Mailer
 	  headers["Custom-header"] = "Nulstil dit kodeord"
 	  opts[:from] = 'kontakt@sweig.dk'
 	  opts[:reply_to] = 'kontakt@sweig.dk'
+	  @username = record.username
 	  super	
 	end
 	def unlock_instructions(record, token, opts={})
 	  headers["Custom-header"] = "Lås din bruger op"
 	  opts[:from] = 'kontakt@sweig.dk'
 	  opts[:reply_to] = 'kontakt@sweig.dk'
+	  @username = record.username
 	  super	
 	end
 end
