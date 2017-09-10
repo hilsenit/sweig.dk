@@ -6,7 +6,7 @@
     <div class="log-body-inner log-in-body tab-pane fade in show active" id="signInField">
       <div class="offset-md-4 col-md-4">
 
-        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= form_for(resource, as: resource_name, user_password_path(resource_name), html: { method: :put }) do |f| %>
 
         <%= f.hidden_field :reset_password_token %>
 

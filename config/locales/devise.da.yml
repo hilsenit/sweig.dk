@@ -20,7 +20,7 @@ da:
       confirmation_instructions:
         subject: "Aktiver din bruger på Sweig!"
       reset_password_instructions:
-        subject: "Instruktioner til hvordan du ændrer dit kodeord."
+        subject: "Dit kodeord kan nu ændres"
       unlock_instructions:
         subject: "Lås op"
       email_changed:
@@ -32,9 +32,9 @@ da:
       success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: "Du kan ikke besøge denne side uden at komme fra en nulstil-di-kodeord-email-link. Hvis du kommer fra sådan et link, så husk at brug hele linket."
-      send_instructions: "Du vil modtage en email med instruktioner til, hvordan du nulstiller dit kodeord."
+      send_instructions: "Du vil modtage en email med instruktioner."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: "Din adgangskode er nu er ændret. Du er sej!"
+      updated: "Din adgangskode er nu er ændret."
       updated_not_active: "Det lykkedes at ændre dit kodeord."
     registrations:
       destroyed: "Din bruger er blevet slettet."

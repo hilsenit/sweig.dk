@@ -2,13 +2,22 @@
 
 
 peter: 
-  id: 1
-  username: Peter
-  email: test@test.dk
+  username: $LABEL
+  email: $LABEL@test.dk
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 frederik: 
-  id: 2
-  username: Frederik
-  email: test2@test.dk
+  username: $LABEL
+  email: $LABEL@test.dk
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-
+borge: 
+  username: $LABEL
+  email: $LABEL@test.dk
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+henrik: 
+  username: $LABEL
+  email: $LABEL@test.dk
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+anna: 
+  username: $LABEL
+  email: $LABEL@test.dk
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
