@@ -3,38 +3,36 @@
 	<div class="col-md-6 forside-bil tab-content">	
 	
 		<%= image_tag "baggrund-til-sweig-logo-skarpt", class: "billeder active logo-background sweig-bil", role: "tabpanel" %>
-		<%= image_tag "laese-app", class: "billeder hide-it logo-background app-bil", role: "tabpanel" %>
-		<%= image_tag "udgivelser", class: "billeder hide-it logo-background udgivelser-bil", role: "tabpanel" %>
-		<%= image_tag "biddrag", class: "billeder hide-it logo-background biddrag-bil", role: "tabpanel" %>
+		<%= image_tag "bruger", class: "billeder hide-it logo-background app-bil", role: "tabpanel" %>
+		<%= image_tag "udgivelser", class: "billeder hide-it logo-background hvordan-bil", role: "tabpanel" %>
 
 	</div>
 	<div class="col-md-6 mt-4">
 
 			<div class="row mt-4 nav nav-tabs frontpage-menu-wrapper" role="tablist">
-				<div role="presentation" class="forside-tekst-overskrift">
+				<div role="presentation" class="forside-tekst-overskrift lead">
 					<a href="#sweig" aria-controls="sweig" class="active" id="sweig-bil" role="tab" data-toggle="tab">Sweig</a>
 				</div>
-				<div role="presentation" class="forside-tekst-overskrift">
-					<a href="#udgivelser" aria-controls="udgivelser" id="udgivelser-bil" role="tab" data-toggle="tab">fælles<span class="hidden-md-down">skab</span></a>
+				<div role="presentation" class="forside-tekst-overskrift lead">
+					<a href="#hvordan" aria-controls="hvordan" id="hvordan-bil" role="tab" data-toggle="tab">læs</a>
 				</div>
-				<div role="presentation" class="forside-tekst-overskrift">
-					<a href="#app" aria-controls="app" id="app-bil" role="tab" data-toggle="tab"><span class="hidden-lg-down">læse-</span>app</a>
+				<div role="presentation" class="forside-tekst-overskrift lead">
+					<a href="#app" aria-controls="app" id="app-bil" role="tab" data-toggle="tab">bruger</a>
 				</div>
-				<div role="presentation" class="forside-tekst-overskrift">
-					<a href="#biddrag" aria-controls="biddrag" id="biddrag-bil" role="tab" data-toggle="tab">kontakt</a>
-				</div>
+			
  			</div><!-- frontpage-menu-wrapper -->
 
 		<div class="row">
 			<div class="tab-content">
-				<div role="tabpanel" class="text-center-md tab-pane tekst-forside lead active" id="sweig">Sweig er bygget for at udbrede litteraturen i Danmark. <br>
-				Som arena, som platform, som hjemsted for dine værker, bestræber vi os på at skabe det bedste rum for det skrevne ord. <br>
-				</div>
-				<div role="tabpanel" class="text-center-md tab-pane tekst-forside lead" id="udgivelser">Sweig er tænkt som et fælleskab, hvor vi stemmer og diskuterer om, hvor vi skal hen, så du har indflydelse på dit medie. <br> Gå til <%= link_to "STEM", stem_path() %> for at læse mere. </div>
-				<div role="tabpanel" class="text-center-md tab-pane tekst-forside lead" id="app">Til december vil det være muligt at tilgå sin profil via en app, der gør det lettere at bruge Sweig fra mobile enheder. </div>
-				<div role="tabpanel" class="text-center-md tab-pane tekst-forside lead" id="biddrag">Har du lyst til at biddrage til udbredelsen og forbedringen af Sweig, så er du meget velkommen til at <span class="forside-tekst-skrift" data-toggle="modal" data-target="#myModal"><u>tage kontakt</u></span> <br><br>
-	 				<%= render partial: "shared/tag_kontakt" %>
- 				</div>
+				<p role="tabpanel" class="text-center-md tab-pane tekst-forside active" id="sweig">Sweig er bygget for at udbrede litteraturen i Danmark. <br>
+				Som arena, som platform, som hjemsted for dine værker, bestræber vi os på at skabe det bedste rum for det skrevne ord. <br><br>
+				Har du lyst til at biddrage til udbredelsen og forbedringen af Sweig, så er du meget velkommen til at <span class="forside-tekst-skrift" data-toggle="modal" data-target="#myModal"><u>tage kontakt</u></span>
+					 				<%= render partial: "shared/tag_kontakt" %>
+				</p>
+				<p role="tabpanel" class="text-center-md tab-pane tekst-forside" id="hvordan">Under LÆS kan du både søge, se nyeste og bruge mærker til at finde værker. Hvert værk har sit eget læse-vindue.
+				<p role="tabpanel" class="text-center-md tab-pane tekst-forside" id="app">Hvis du ønsker at gemme værker, følge andre brugere eller selv at kunne udgive værker på Sweig skal du oprette en bruger. <br><%= link_to "Gå til opret", new_user_registration_path(), class: "active" %>
+			
+
 			</div>
 		</div>
 

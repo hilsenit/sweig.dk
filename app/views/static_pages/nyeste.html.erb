@@ -5,11 +5,7 @@
 		<%= image_tag "sweig-logo-load", class: "loading-icon" %>
 	</div>
 
-	<div class="row search-results mb-4">
-			
-		<h2 class="mt-4 user-work-header black">
-			 Nyeste:
-		</h2>
+	<div class="row search-results mb-4 mt-4">
 		<span class="newest-works-find">
 		<%= render partial: "users/user_works", 
 		locals: {works: @newest_works, extra_class: "user-work-wrapper", edit: nil} %>

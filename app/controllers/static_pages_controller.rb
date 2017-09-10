@@ -7,16 +7,16 @@ class StaticPagesController < ApplicationController
 	def redirect
 		if current_user
 			flash[:notice] = "Velkommen"
-			redirect_to user_biblo_path(current_user.id)
+			redirect_to user_biblo_path(current_user.friendly_id)
 		end 
 	end
 
-	def find
+	def laes
 		@newest_works = Work.published.limit(8)
 	end
 	def fremtidsvision; end
 	def info; end
-	def cookies; end
+	def kontakt_vindue; end
 
 	def nyeste 
 		@newest_works = Work.published.limit(24)

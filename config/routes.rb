@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 	get 'not_found' => 'application#not_found' 
-	get 'cookies-politik' => 'static_pages#cookies', as: :cookies
+	get 'kontakt-vindue' => 'static_pages#kontakt_vindue'
 	get 'fremtidsvision' => 'static_pages#fremtidsvision'
 	get 'info' => 'static_pages#info'
 	# NOT LOGGED IN MODAL
 	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
 				
-	get 'find' => 'static_pages#find'
+	get 'laes' => 'static_pages#laes'
 	get 'find/nyeste' => 'static_pages#nyeste', as: :nyeste
 	get 'find/alle-maerker' => 'static_pages#alle_maerker', as: :alle_maerker
 	get 'find/alle-maerker/:maerker_id' => 'static_pages#show_maerke_works', as: :show_maerke_works

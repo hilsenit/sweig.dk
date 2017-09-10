@@ -1,21 +1,24 @@
-		<div class="row frontpage-navbar-wrapper">
-			<%= link_to forside_path do %>
-			<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
-			<% end %>
-			<div class="col-md-4 text-center">
-				<%= link_to "STEM", stem_path(), class: "#{if_active_helper(stem_path())}" %>	
-			</div>
-			<div class="col-md-4 text-center">
-				<%= link_to "FIND", find_path(), class: "#{if_active_helper( find_path() )}" %>
-			</div>
-			<div class="col-md-4 text-center">
-				<% if user_signed_in? %>
-				<%= link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}" %><span class="small">eller</span> <%= link_to "LOG UD", destroy_user_session_path(), method: :delete %>
-				<% else %>
-				<%= link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}" %> 
-				<span class="small">eller</span> 
-				<%= link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( new_user_registration_path())}" %>
-				<% end %>
-			</div>
-		</div>	
+<div class="row frontpage-navbar-wrapper">
+	<%= link_to forside_path do %>
+	<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
+	<% end %>
+	<div class="col-md-4 text-center">
+		<%= link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}" %>
+	</div>
+	<div class="col-md-4 text-center">
+		<% if user_signed_in? %>
+		<%= link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}" %>
+	</div>
+	<div class="col-md-4 text-center">
+		<%= link_to "LOG UD", destroy_user_session_path(), method: :delete %> 
+	</div>
+		<% else %>
+		<%= link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}" %> 
+	</div>
+	<div class="col-md-4 text-center">
+		<%= link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( new_user_registration_path())}" %>
+	</div>
+	<% end %><!-- user_signed_in? -->
+	
+</div>	
 

@@ -284,10 +284,10 @@ color: black;
 }
 
 .frontpage-menu-wrapper {
+	display: table;
 	text-align: left;
 	margin-top: 20px;
 	float: none;
-	display: inherit;
 }
 .footer {
 	height: 50px;
