@@ -2,25 +2,26 @@
 	<% if @work.errors.any? %> 
 	<div class="alert-box secondary">
 		<% @work.errors.each do |attr, msg| %>
-			<p class="text-center lead"><%= msg %></p>
+		<p class="text-center lead"><%= msg %></p>
 		<% end %>
 	</div>
 	<% end %>
 	<% unless flash[:errors].nil? %> 
-		<div class="alert-box secondary">
-			<% flash[:errors].each do |attr, error| %>
-				<%= content_tag :p, error.first, class: "text-center lead" %>
-			<% end %>
-		</div>
+	<div class="alert-box secondary">
+		<% flash[:errors].each do |attr, error| %>
+		<%= content_tag :p, error.first, class: "text-center lead" %>
+		<% end %>
+	</div>
 	<% end %>
 
 
-
+	
 	<%= form_for [@user, @work] do |f| %>
 	<%= f.hidden_field :username, value: @user.username %>
 	<div class="col-lg-12 text-center bootstrap-tagsinput">
-		<%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Skriv dine mærker, så dit værk er muligt at finde under disse. Maksimal længde er 30 tegn inklusiv mellemrum. Separer med komma. Højest 5 mærker per værk.", id: "markInfo" %>
-		<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv mærke" %>
+		<div class="text-center tag-info">Mærker er automatisk med store bogstaver. Lær mere: <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Mærker er en måde, hvorpå du kan tildele dine værker en kategori. Maksimalt 5 mærker per værk og et værk må højest være 30 tegn langt.", id: "markInfo" %>
+		</div>
+		<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv et mærke" %>
 	</div>
 	<div class="form-save">
 		<span class="border-image">

@@ -3,7 +3,7 @@
 	<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
 	<% end %>
 	<div class="col-md-4 text-center">
-		<%= link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}" %>
+		<%= link_to "LÆS", nyeste_path(), class: "#{if_active_helper( laes_path() )}" %>
 	</div>
 	<div class="col-md-4 text-center">
 		<% if user_signed_in? %>

@@ -1,6 +1,8 @@
 class Work < ApplicationRecord
 	after_destroy { |work| Story.where(work_friendly_id: work.slug).destroy_all } # Destroys the work stories
+	before_save {|work| work.all_tags_in_s = work.all_tags_in_s.split(",").map(&:upcase).join(",") }
 	before_update { :all_tags_in_s_size }
+
 	extend FriendlyId
 	friendly_id :title, use: :slugged
 	enum status: { draft: 0, published: 1}
@@ -18,6 +20,18 @@ class Work < ApplicationRecord
 
 	validate :all_tags_in_s_size
 
+	default_scope {order(created_at: :desc)}
+	# validate :tags_can_not_be_lowercase
+	def uppercase_tags
+		split(",").map(&:upcase!)
+	end
+
+	# def tags_can_not_be_lowercase
+	# 	if all_tags_in_s.split(",").any?{|tag| tag.upcase != tag}
+	# 		errors.add(:tags, "Der var en fejl med dine mærker. Prøv igen.")
+	# 	end 
+	# end
+
 	def all_tags_in_s_size
 		tag_array = self.all_tags_in_s.split(",")
 		errors.add(:tags, "Max 5 mærker pr. værk") if tag_array.size > 5 
@@ -31,4 +45,5 @@ class Work < ApplicationRecord
 	def self.published_works
 		where(status: 1)
 	end
+
 end

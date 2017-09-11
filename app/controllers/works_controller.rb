@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-	
+	before_action :tags_uppercase, only: [:update, :create]
 	layout "simple_view", only: [:new, :edit, :show, :create]
 
 	def index
@@ -15,10 +15,10 @@ class WorksController < ApplicationController
 		@work = Work.friendly.find(params[:id])
 		@user = @work.user
 		old_tags = @work.all_tags_in_s
+		binding.pry
 		new_tags = params[:work][:all_tags_in_s].split(",")
 		if @work.update(work_params)
 			update_marks old_tags.split(","), new_tags, @work
-
 			if params[:status] == "Udgiv" 
 				@work.published!
 			else
@@ -42,7 +42,7 @@ class WorksController < ApplicationController
 		
 		if @work.save
 			@work.all_tags_in_s = params[:work][:all_tags_in_s]
-			array = params[:work][:all_tags_in_s].split(",")
+			array = @work.all_tags_in_s.split(",")
 			create_marks array, @work
 			@work.published! if params[:status] == "Udgiv" 
 
@@ -105,7 +105,20 @@ class WorksController < ApplicationController
 		new_array.delete_if {|a| old_array.include? a} 
 		create_marks new_array, obj
 	end
-	
+
+	def tags_uppercase
+		unless params[:work][:all_tags_in_s].nil?
+			array = params[:work][:all_tags_in_s].split(",")
+			array.map! do |tag|
+				tag.strip!
+				tag = tag.upcase
+			end
+			params[:work][:all_tags_in_s] = array.join(",")
+			binding.pry
+		end
+	end
+
+# PARAMS	
 	def work_params
 		params.require(:work).permit(:title, :body, :username, :all_tags_in_s)
 	end
