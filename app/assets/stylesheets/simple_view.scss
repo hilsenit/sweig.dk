@@ -5,8 +5,15 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: Roboto;
+}
+a {
+	font-family: Roboto;
+}
+
 .btn-secondary {
-	border-radius: 0px;
+	cursor: pointer;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	-o-border-radius: 0px;
@@ -248,6 +255,17 @@ textarea:focus, input:focus{
 	padding: 30px;
 }
 
+.modal-dialog {
+	margin-top: 10vh;
+	
+}
+.modal-content {
+	font-size: 1.2em;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+}
 
 .modal-header .nav-tabs {
 	border-bottom: none;

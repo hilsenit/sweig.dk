@@ -1,0 +1,25 @@
+<div class="modal fade" id="notCopying">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Vær venlig ikke at kopiere andres tekster fra Sweig.<br><small>(Du kan godt kopiere dine egne tekster)</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Vi håber at kunne lave et tidsskrift, hvor brugerne respekterer hinandens værker.<br><br>
+        Hvis du har lyst til at dele værket med andre, kan du kopiere sidens URL og sætte den ind på andre medier.
+      </div>
+      <div class="modal-footer">
+        <hr>
+          <div class="border-image mx-2">
+            <%= link_to "Mere info", info_path(), class: "btn btn-primary"%>
+          </div>
+          <div class="border-image mx-2">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Luk vindue</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

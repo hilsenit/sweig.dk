@@ -19,7 +19,7 @@ class StaticPagesController < ApplicationController
 	def kontakt_vindue; end
 
 	def nyeste 
-		@newest_works = Work.published.limit(24)
+		@newest_works = Work.published.order(created_at: :desc).limit(24)
 		
 	end
 
