@@ -46,7 +46,7 @@ body {
 	  padding: 20px;
 	  .footer-text {
 	  	cursor: pointer;
-	  	color: lighten(black, 80%);
+	  	color: lighten(black, 50%);
 	  	transition: color .6s linear;
 	  	-moz-transition: color .6s linear;
 	  	-o-transition: color .6s linear;
@@ -115,6 +115,9 @@ color: black;
 	color: white;
 }
 
+label {
+	font-family: "Libre Baskerville";
+}
 .label-info {
 	font-family: Roboto;
     display: inline-block;
@@ -332,6 +335,11 @@ color: black;
 
 .tekst-forside {
 	padding-top: 25px;
+	a {
+		font-family: 'Libre Baskerville';
+		text-decoration: underline;
+		cursor: hover;
+	}
 }
 
 .front-page-background-image {

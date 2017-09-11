@@ -65,7 +65,7 @@ class StaticPagesController < ApplicationController
 	end
 
 	def kontakt
-
+		binding.pry
 		KontaktMailer.kontakt(params[:email], params[:besked], params[:emne]).deliver
 
 		flash[:notice] = "Din besked '#{params[:emne]}' er blevet sendt"

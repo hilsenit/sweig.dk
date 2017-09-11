@@ -1,3 +1,32 @@
-<h1 class="text-center text-uppercase">
-	Kontakt
-</h1>
+<div class="row mt-4"></div>
+<div class="row">
+
+<div class="offset-md-2 col-md-8">
+<div class="lead text-center my-4">Skriv til os, hvis du har nogle spørgsmål.</div>
+<div class="small text-right">* skal udfyldes</div>
+	<%= form_for :kontakt, url: kontakt_path(), method: :post do |f| %>
+
+<div class="form-group">
+  <%= f.label :email, "Din e-mailadresse:*" %><br />
+  <%= f.email_field :email, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :emne, "Emne*" %><br />
+  <%= f.text_field :emne, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :besked, "Din besked*" %><br />
+  <%= f.text_area :besked, class: "form-control", rows: 8 %>
+</div>
+<div class="col-md-12 text-center">
+  <div class="border-image">
+    <%= f.submit "Send besked", class: "btn btn-primary" %>
+  </div>
+
+</div>
+</div><!--- col-md-6 end -->	
+
+	<% end %>
+
+</div>
+</div>

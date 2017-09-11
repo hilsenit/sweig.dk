@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 	get 'not_found' => 'application#not_found' 
-	get 'kontakt-vindue' => 'static_pages#kontakt_vindue'
+	get 'kontakt' => 'static_pages#kontakt_vindue'
+	post 'kontakt' => 'static_pages#kontakt'
+	
 	get 'fremtidsvision' => 'static_pages#fremtidsvision'
 	get 'info' => 'static_pages#info'
 	# NOT LOGGED IN MODAL
@@ -51,10 +53,7 @@ Rails.application.routes.draw do
 
 	end
 
-	get "soegefelt/resultat" => "static_pages#search", as: "search"
-
-	post "kontakt-os" => "static_pages#kontakt"	
-	
+	get "soegefelt/resultat" => "static_pages#search", as: "search"	
 	get "velkommen" => "static_pages#index", as: :forside
 	root "static_pages#redirect"
 
