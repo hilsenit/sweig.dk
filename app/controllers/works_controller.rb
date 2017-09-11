@@ -15,7 +15,6 @@ class WorksController < ApplicationController
 		@work = Work.friendly.find(params[:id])
 		@user = @work.user
 		old_tags = @work.all_tags_in_s
-		binding.pry
 		new_tags = params[:work][:all_tags_in_s].split(",")
 		if @work.update(work_params)
 			update_marks old_tags.split(","), new_tags, @work
@@ -114,7 +113,6 @@ class WorksController < ApplicationController
 				tag = tag.upcase
 			end
 			params[:work][:all_tags_in_s] = array.join(",")
-			binding.pry
 		end
 	end
 

@@ -19,7 +19,7 @@
 	<%= form_for [@user, @work] do |f| %>
 	<%= f.hidden_field :username, value: @user.username %>
 	<div class="col-lg-12 text-center bootstrap-tagsinput">
-		<div class="text-center tag-info">Mærker er automatisk med store bogstaver. Lær mere: <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Mærker er en måde, hvorpå du kan tildele dine værker en kategori. Maksimalt 5 mærker per værk og et værk må højest være 30 tegn langt.", id: "markInfo" %>
+		<div class="text-center tag-info">Skriv dine mærker. Lær mere: <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Mærker er en måde, hvorpå du kan tildele dine værker en kategori. Maksimalt 5 mærker per værk, og et værk må højest være 30 tegn langt. Mærker er automatisk med store bogstaver.", id: "markInfo" %>
 		</div>
 		<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv et mærke" %>
 	</div>

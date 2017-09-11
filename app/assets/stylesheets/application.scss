@@ -41,20 +41,21 @@ body {
 	  padding: 20px;
 }
 .footer {
+	background-color: white;
     position: fixed;
     bottom: 0;
     width: 100%;
 	height: auto;
-	border-top: 1px solid #424242;
 	flex-shrink: 0; /* Prevent Chrome, Opera, and Safari from letting these items shrink to smaller than their content's default minimum size. */
 	.row {
 		max-width: 1000px;
 		margin: 0 auto;
 	}	
 	  .footer-text {
+	  	letter-spacing: 3px;
 		background-color: white;
 	  	cursor: pointer;
-	  	color: lighten(black, 50%);
+	  	color: black;
 	  	transition: color .6s linear;
 	  	-moz-transition: color .6s linear;
 	  	-o-transition: color .6s linear;
