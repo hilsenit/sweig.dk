@@ -12,7 +12,7 @@
 					<small class="small-marks"><%= link_to tag, show_this_maerker_path(tag.parameterize, work.id) %></small>
 				<% end %>
 			<% end %>
-		<%= link_to user_work_path(work.user.id, work), class: "work-text" do %>
+		<%= link_to user_work_path(work.user.friendly_id, work.friendly_id), class: "work-text" do %>
 			<p class="lead">
 				<%= work.title %>
 			</p>

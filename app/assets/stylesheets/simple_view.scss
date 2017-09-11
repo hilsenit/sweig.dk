@@ -12,6 +12,15 @@ a {
 	font-family: Roboto;
 }
 
+.url {
+	text-decoration: underline;
+	cursor: pointer;
+
+}
+
+.show-url {
+	background-color: #fff6ff;
+}
 .btn-secondary {
 	cursor: pointer;
 	-webkit-border-radius: 0px;
