@@ -81,7 +81,11 @@ class UsersController < ApplicationController
 		work = Work.friendly.find(params[:work_id])
 		current_user.saved_works.each {|s_w| s_w.delete if s_w.work_id == work.id }
 		flash[:notice] = "'#{work.title}' er nu slettet fra dine gemte under SAMLING"
-		redirect_to user_work_path(user, work)
+		if params[:user_page].nil?
+			redirect_to user_work_path(user, work)
+		else 
+			redirect_to user_saved_works_path(current_user.friendly_id)
+		end
 	end
 
 	def follow 
