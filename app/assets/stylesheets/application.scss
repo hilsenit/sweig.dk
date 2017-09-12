@@ -25,6 +25,9 @@
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: Roboto;
 }
+ul, li {
+	font-family: 'Libre Baskerville';
+}
 a {
 	font-family: Roboto;
 }
@@ -36,6 +39,12 @@ body {
 	flex-direction: column;
 	height: 100vh;
 	padding-bottom: 40px;
+}
+.form-control {
+	border-radius: 0px!important;
+}
+.form-control:focus {
+	border-color: black!important;
 }
 .layout-container {
 	margin-bottom: 40px;

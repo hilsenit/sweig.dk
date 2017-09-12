@@ -165,7 +165,12 @@ p {
 	-o-border-radius: 2px;
 }
 
-
+.form-control {
+	border-radius: 0px!important;
+}
+.form-control:focus {
+	border-color: black!important;
+}
 .form-outer {
 	height: 100%;
 	position: relative;
@@ -244,7 +249,7 @@ textarea:focus, input:focus{
 }
 
 #NavbarToggle {
-	position: absolute;
+	position: fixed;
 	z-index: 99999;
 	right: 10px; 
 	font-size: 40px;
@@ -310,6 +315,7 @@ textarea:focus, input:focus{
 }
 
 .active-mit {
+	cursor: pointer;
 	text-decoration: underline;
 }
 .nav-tabs> li > .active{
@@ -331,12 +337,17 @@ textarea:focus, input:focus{
 		color: lighten(red, 20%);
 	}
 }
+.red-icon {
+	color: lighten(red, 20%);
+
+}
 .save-icon {
     margin-top: 2px!important;
 }
 span.divider {
     float: right;
     padding: 5px 10px;
+    font-size: 19px;
 }
 
 .notice-exit {
@@ -383,26 +394,20 @@ span.divider {
 	border: 1px solid black;
     margin: 10px;
 }
-
-.mit-sign {
+.show-work-navbar-btn {
+	padding-top: 6px;
 	font-family: Roboto;
     font-size: 1.3rem;
     letter-spacing: 2px;
     color: black;
+}
+.show-work-navbar-btn:not(:last-child) {
+	padding-right: 14px;
+}
+.mit-sign {
     &:hover {
     	text-decoration: none;
     }
-    &:after {
-    	cursor: pointer;
-    	font-family: 'FontAwesome';
-    	content: "\f107";
-    	text-align: center;
-    	display: block;
-    	height: 10px;
-    	margin-top: -11px;
-    	font-size: 14px;
-
-   	}
 }
 .min-alert p {
 	margin: 0;
@@ -422,15 +427,12 @@ span.divider {
 	padding-top: 20px;
 }
 .work-show-not-logged-in-text {
-	line-height: 40px;
+	margin-bottom: 0px;
 }
 .fa-bars {
 	font-size: 28px;
 	padding: 3px;
 	padding-top: 5px;
-	&:after {
-		content: ""
-	}
 }
 @media (max-width: 991px) { 
 
@@ -448,7 +450,7 @@ span.divider {
 	    margin-right: 13px;
 	}
 	.show-navbar {
-		height: 40px;
+		height: 42px;
 		.show-navbar-inner {
 		    margin-right: 60px;
 		}

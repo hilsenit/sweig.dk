@@ -5,31 +5,25 @@
 	<div class="show-navbar border-bottom">
 
 		<div class="row show-navbar-inner">
-			<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") unless is_current_user? %>
-			<span class="divider hidden-md-down float-left">|</span>
+			<% unless is_current_user? %>
+			<%= link_to "|" + @user.username, user_path(@user.id), class: "hidden-md-down show-work-navbar-btn" %>
+			<% end %>
+			<%= link_to "LÆS", nyeste_path(), class: "hidden-md-down show-work-navbar-btn" %>
+			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
 			<% if current_user %>
-			<%= link_to "MIT", "#", class: "mit-sign hidden-md-down" %>
-			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up" %>
+			<%= link_to "MIT", "#", class: "mit-sign hidden-md-down show-work-navbar-btn" %>
 
 			<% end %>
-			<%= content_tag :span, "|", class: "divider float-left hidden-md-down" if current_user %>
-
 			<!-- Hvis du er logget ind, og du ikke har gemt -->
 			<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
-			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon", title: "Gem dette værk" %>
-			<span class="divider hidden-md-down">|</span>
+			<%= link_to "GEM", user_work_current_user_save_path(@user, @work, current_user), class: "show-work-navbar-btn hidden-md-down float-right", data: {toggle: "tooltip"}, title: "Gem dette værk til din SAMLING" %>
 
 			<!-- Hvis du er logget ind, og du har gemt -->
 			<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
-			<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon", title: "Fjern dette værk fra dine gemte" %>
-			<span class="divider hidden-md-down">|</span>
-			<!-- hvis det er dit værk -->
-			<% elsif is_current_user?  %>
+			<%= link_to "GEMT", user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "hidden-md-down show-work-navbar-btn float-right green-icon", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
+	
 
-			<% else %>
-			<!-- Hvis du ikke er logget ind -->
-
-			<p class="d-inline-block center-block lead text-center work-show-not-logged-in-text"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
+			<p class="mb-0 show-work-navbar-btn"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
 
 			<% end %>
 			<% if notice %>
@@ -41,9 +35,28 @@
 
 		</div>
 	</div>
-
 	<div class="mit-close hide-it"></div>
 	<div class="mit-menu hide-it hiddden-md-down">
+		<div class="col-md-12">
+			<%= link_to "LÆS", nyeste_path(), class: "hidden-lg-up nav-link text-center modal-header-links" %>
+		</div>
+		<% unless is_current_user? %>
+		<div class="col-md-12">
+		<%= link_to "|" + @user.username, user_path(@user.id), class: "hidden-lg-up nav-link text-center modal-header-links" %>
+		</div>
+		<% end %>
+	<% if current_user %>
+		<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
+		<div class="col-md-12">
+			<%= link_to fa_icon("save", text: "GEM TIL DIN SAMLING"), user_work_current_user_save_path(@user, @work, current_user), class: "nav-link text-center modal-header-links hidden-lg-up", data: {toggle: "tooltip"}, title: "Gem dette værk til din SAMLING" %>
+		</div>
+
+		<!-- Hvis du er logget ind, og du har gemt -->
+		<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
+		<div class="col-md-12">
+		<%= link_to fa_icon("save", text: "SLET FRA DINE GEMTE"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "nav-link red-icon text-center modal-header-links hidden-lg-up", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
+		</div>
+		<% end %><!-- skal kun vises, hvis man er logget ind selvfølfelig -->
 		<div class="col-md-12">
 			<%= link_to "BIBLO", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
 		</div>
@@ -57,8 +70,8 @@
 		<div class="col-md-12 opret-wrapper">
 			<%= link_to "OPRET VÆRK", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
 		</div>
+	<% end %>
 	</div><!-- mit-menu -->
-
 
 	<div class="title">
 		<h2 class="show-title"><%= @work.title %></h2>
@@ -79,12 +92,16 @@
 			$(this).toggleClass('rotatedefault');
 			$(".show-navbar-inner").toggle();
 			$(".show-navbar").toggleClass('border-bottom');
+			$(".mit-menu, .mit-close").slideUp(300);
+			$(".mit-sign").toggleClass('active-mit');
 		});			
 		$(".mit-sign, .mit-close").click(function() {
 			$(".mit-menu, .mit-close").slideToggle(300);
-			$(".mit-sign").toggleClass('active-mit');
-
+			$(".mit-sign").removeClass('active-mit');
 		})
+		$('[data-toggle="tooltip"').tooltip({
+			attachment: 'bottom right'
+		});
 	});
 
 
@@ -99,6 +116,7 @@
 	$(".url").on("click", function() {
 		$(".show-url").slideToggle(300);
 	})
+	$
 
 </script>
 <% end %>
