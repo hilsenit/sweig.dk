@@ -17,7 +17,7 @@
 				<%= work.title %>
 			</p>
 			<span class="text-left">
-				<%= simple_format( truncate(work.body, length: 80) ) %>
+				<%= truncate(work.body, length: 80, escape: false) %>
 			</span>
 		<% end %><!-- user_work_path_link -->
 		</div><!-- works-show-box -->

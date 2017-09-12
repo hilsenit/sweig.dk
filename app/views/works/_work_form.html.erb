@@ -1,3 +1,6 @@
+<%= tinymce %>
+<%= tinymce_assets %>
+
 <div class="col-lg-12">
 	<% if @work.errors.any? %> 
 	<div class="alert-box secondary">
@@ -38,7 +41,7 @@
 
 	<div class="row body">
 		<div class="offset-md-1 col-md-10">
-			<%= f.text_area :body %>
+			<%= f.text_area :body, class: "tinymce" %>
 		</div>
 	</div>
 
