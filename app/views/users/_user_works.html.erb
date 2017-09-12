@@ -16,12 +16,11 @@
 			<p class="lead">
 				<%= work.title %>
 			</p>
-			<span class="text-left">
-				<%= truncate(work.body, length: 80, escape: false) %>
-			</span>
+			<div class="text-left">
+				<%= truncate(strip_tags(work.body.html_safe), length: 80)%>
+			</div>
 		<% end %><!-- user_work_path_link -->
 		</div><!-- works-show-box -->
 	</div><!-- col-xs-6 -->
 	<% end %><!-- works.each -->
 </div>
-

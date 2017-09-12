@@ -1,4 +1,4 @@
-<%= tinymce %>
+<%# tinymce %>
 <%= tinymce_assets %>
 
 <div class="col-lg-12">
@@ -55,6 +55,20 @@
 	$(document).ready(function() {
 		$(".body textarea").autosize();
 		$('[data-toggle="tooltip"]').tooltip();
-
+		tinyMCE.init({
+		    selector: '.tinymce',
+		    branding: false,
+		    menubar: false,
+		    elementpath: false,
+		    toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | fontsizeselect',
+		    setup : function(ed)
+		                {
+		                    ed.on('init', function() 
+		                    {
+		                        this.getDoc().body.style.fontSize = '12';
+		                        this.getDoc().body.style.fontFamily = 'Libre Baskeville';
+		                    });
+		                },
+		  });
 	});
 </script>

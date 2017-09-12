@@ -47,7 +47,7 @@
 			<h2 class="show-title"><%= @work.title %></h2>
 		</div>
 		<div class="body">
-			<div class="show-body"><%= simple_format( @work.body ) %></div>
+			<div class="show-body"><%= @work.body.html_safe %></div>
 		</div>
 
 	</div> 

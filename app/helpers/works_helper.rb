@@ -3,6 +3,10 @@ module WorksHelper
 	def original_url_helper
 	  url_for(:only_path => false)
 	end
+
+	def truncate_work_body_helper text
+		truncate(ActionController::Base.helpers.sanitize(text, tags: %w(p h1 h2 h3 h4 h5 h6 div)), length: 80, omission: "")
+	end		
 	
 	def work_options_icon_helper user, work, arrow_value
 	

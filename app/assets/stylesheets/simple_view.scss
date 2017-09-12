@@ -5,13 +5,24 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+body {
+	margin-bottom: 30px;
+	font-family: 'Libre Baskeville';
+}
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: Roboto;
 }
 a {
 	font-family: Roboto;
 }
+/* TINY MCE */
+.mce-panel, .mce-btn {
+	background-color: white!important;
+}
 
+#tinymce *{
+	font-family: 'Libre Baskeville'!important;
+}
 .url {
 	text-decoration: underline;
 	cursor: pointer;
