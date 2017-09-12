@@ -25,7 +25,7 @@ module ApplicationHelper
 
 	def is_current_user?
 		if user_signed_in?
-		current_user == @user
+		current_user.id == @user.id
 		end
 	end
 

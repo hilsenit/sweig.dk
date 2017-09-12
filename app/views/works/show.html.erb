@@ -5,9 +5,13 @@
 	<div class="show-navbar border-bottom">
 
 			<div class="row show-navbar-inner">
-				<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") %>
+				<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") unless is_current_user? %>
 				<span class="divider float-left">|</span>
-					<%= link_to "MIT", user_biblo_path(current_user), class: "mit-sign" if current_user %>
+				<% if current_user %>
+				<%= link_to "MIT", "#", class: "mit-sign" %>
+
+
+				<% end %>
 				<%= content_tag :span, "|", class: "divider float-left" if current_user %>
 
 				<!-- Hvis du er logget ind, og du ikke har gemt -->
@@ -37,10 +41,23 @@
 
 			</div>
 		</div>
-		<div class="social-share">
 
-		</div>	
+					<div class="mit-close hide-it"></div>
+				<div class="mit-menu hide-it hiddden-md-down">
+					<div class="col-md-12">
+						<%= link_to "BIBLO", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
+					</div>
+					<div class="col-md-12">
+						<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
+					</div>
+					<div class="col-md-12">
+						<%= link_to "DINE TEKSTER", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
+					</div>
 
+					<div class="col-md-12 opret-wrapper">
+						<%= link_to "OPRET VÆRK", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
+					</div>
+				</div><!-- mit-menu -->
 		
 
 		<div class="title">
@@ -63,6 +80,11 @@
 				$(".show-navbar-inner").toggle();
 				$(".show-navbar").toggleClass('border-bottom');
 			});			
+			$(".mit-sign, .mit-close").click(function() {
+				$(".mit-menu, .mit-close").slideToggle(300);
+				$(".mit-sign").toggleClass('active-mit');
+
+			})
 		});
 
 

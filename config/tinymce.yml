@@ -2,6 +2,6 @@ default:
   branding: false
   elementpath: false
   insert_toolbar: quickimage quicktable
-  toolbar: bold italic | alignleft aligncenter alignright alignjustify | fontsizeselect
+  toolbar: bold italic | alignleft aligncenter alignright alignjustify | fontsizeselect | indentation
   menu: 
     file: false

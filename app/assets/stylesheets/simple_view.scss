@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 a {
 	font-family: Roboto;
+	&:hover {
+		color: black;
+		text-decoration: underline!important;
+	}
 }
 /* TINY MCE */
 .mce-panel, .mce-btn {
@@ -305,6 +309,9 @@ textarea:focus, input:focus{
 	}
 }
 
+.active-mit {
+	text-decoration: underline;
+}
 .nav-tabs> li > .active{
     font-weight: 800;
     cursor: default;
@@ -335,10 +342,67 @@ span.divider {
 .notice-exit {
 	cursor: pointer;
 }
+.opret-vaerk {
+	border-color: transparent;
+	padding: .5em 1em;
+	background-image: url(image-path("knap-baggrund.png"));
+	color: white;
+    display: block;
+    text-align: center;
+    font-family: Roboto;
+    text-transform: uppercase;
+	&:hover {
+		color: white;
+		text-decoration: underline;
+	}		
+	
+}
+
+.mit-close {
+	background: transparent;
+	z-index: 99;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.mit-menu {
+	z-index: 999;
+	top: 34px;
+	position: absolute;
+	width: 30%;
+	min-width: 400px;
+	a {
+		background-color: white;
+	}
+}
+
+.modal-header-links {
+	border: 1px solid black;
+    margin: 10px;
+}
+
 .mit-sign {
-    font-size: 26px;
-    font-weight: 600;
+	font-family: Roboto;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
     color: black;
+    &:hover {
+    	text-decoration: none;
+    }
+    &:after {
+    	cursor: pointer;
+    	font-family: 'FontAwesome';
+    	content: "\f107";
+    	text-align: center;
+    	display: block;
+    	height: 10px;
+    	margin-top: -11px;
+    	font-size: 14px;
+
+   	}
 }
 .min-alert p {
 	margin: 0;
