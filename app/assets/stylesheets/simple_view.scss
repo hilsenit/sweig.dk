@@ -1,5 +1,5 @@
 
-@import "bootstrap";
+@import "min-bootstrap";
 @import "font-awesome";
 @import "search-placeholder";
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
@@ -424,15 +424,31 @@ span.divider {
 .work-show-not-logged-in-text {
 	line-height: 40px;
 }
+.fa-bars {
+	font-size: 28px;
+	padding: 3px;
+	padding-top: 5px;
+	&:after {
+		content: ""
+	}
+}
+@media (max-width: 991px) { 
+
+	.mit-sign:after {
+		display: none;
+	}
 
 
+
+
+}
 @media screen and (max-width: 500px) {
 	#NavbarToggle {
 	    font-size: 50px;
 	    margin-right: 13px;
 	}
 	.show-navbar {
-		height: 80px; 
+		height: 40px;
 		.show-navbar-inner {
 		    margin-right: 60px;
 		}

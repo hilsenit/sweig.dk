@@ -1,110 +1,110 @@
 
 <div class="col-lg-12 work-show-outer">
 
-			<%= fa_icon "angle-down", id: "NavbarToggle", class: "rotate180deg" %>
+	<%= fa_icon "angle-down", id: "NavbarToggle", class: "rotate180deg" %>
 	<div class="show-navbar border-bottom">
 
-			<div class="row show-navbar-inner">
-				<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") unless is_current_user? %>
-				<span class="divider float-left">|</span>
-				<% if current_user %>
-				<%= link_to "MIT", "#", class: "mit-sign" %>
+		<div class="row show-navbar-inner">
+			<%= link_to_user_helper(@user, "|#{@user.username.parameterize}", "float-left exit-icon") unless is_current_user? %>
+			<span class="divider hidden-md-down float-left">|</span>
+			<% if current_user %>
+			<%= link_to "MIT", "#", class: "mit-sign hidden-md-down" %>
+			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up" %>
 
+			<% end %>
+			<%= content_tag :span, "|", class: "divider float-left hidden-md-down" if current_user %>
 
-				<% end %>
-				<%= content_tag :span, "|", class: "divider float-left" if current_user %>
+			<!-- Hvis du er logget ind, og du ikke har gemt -->
+			<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
+			<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon", title: "Gem dette værk" %>
+			<span class="divider hidden-md-down">|</span>
 
-				<!-- Hvis du er logget ind, og du ikke har gemt -->
-				<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
-					<%= link_to (fa_icon "save"), user_work_current_user_save_path(@user, @work, current_user), class: "float-right social-icons save-icon", title: "Gem dette værk" %>
-					<span class="divider">|</span>
+			<!-- Hvis du er logget ind, og du har gemt -->
+			<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
+			<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon", title: "Fjern dette værk fra dine gemte" %>
+			<span class="divider hidden-md-down">|</span>
+			<!-- hvis det er dit værk -->
+			<% elsif is_current_user?  %>
 
-				<!-- Hvis du er logget ind, og du har gemt -->
-				<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
-					<%= link_to (fa_icon "save"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "float-right social-icons save-icon green-icon", title: "Fjern dette værk fra dine gemte" %>
-					<span class="divider">|</span>
-				<!-- hvis det er dit værk -->
-				<% elsif is_current_user?  %>
-					
-				<% else %>
-				<!-- Hvis du ikke er logget ind -->
+			<% else %>
+			<!-- Hvis du ikke er logget ind -->
 
-					<p class="d-inline-block center-block lead text-center work-show-not-logged-in-text"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
+			<p class="d-inline-block center-block lead text-center work-show-not-logged-in-text"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
 
-				<% end %>
-				<% if notice %>
-				<div class="min-alert text-center">
-						<p class="d-inline-block"><%= notice %></p>
-				</div>
-				<% end %>
-				
-
+			<% end %>
+			<% if notice %>
+			<div class="min-alert text-center">
+				<p class="d-inline-block"><%= notice %></p>
 			</div>
+			<% end %>
+
+
+		</div>
+	</div>
+
+	<div class="mit-close hide-it"></div>
+	<div class="mit-menu hide-it hiddden-md-down">
+		<div class="col-md-12">
+			<%= link_to "BIBLO", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
+		</div>
+		<div class="col-md-12">
+			<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
+		</div>
+		<div class="col-md-12">
+			<%= link_to "DINE TEKSTER", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
 		</div>
 
-					<div class="mit-close hide-it"></div>
-				<div class="mit-menu hide-it hiddden-md-down">
-					<div class="col-md-12">
-						<%= link_to "BIBLO", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
-					</div>
-					<div class="col-md-12">
-						<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
-					</div>
-					<div class="col-md-12">
-						<%= link_to "DINE TEKSTER", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
-					</div>
-
-					<div class="col-md-12 opret-wrapper">
-						<%= link_to "OPRET VÆRK", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
-					</div>
-				</div><!-- mit-menu -->
-		
-
-		<div class="title">
-			<h2 class="show-title"><%= @work.title %></h2>
+		<div class="col-md-12 opret-wrapper">
+			<%= link_to "OPRET VÆRK", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
 		</div>
-		<div class="body">
-			<div class="show-body"><%= @work.body.html_safe %></div>
-		</div>
-
-	</div> 
-
-	<%= render partial: "shared/not_copying_modal" %><!-- #notCopying -->
-	<script type="text/javascript">
+	</div><!-- mit-menu -->
 
 
-		$(document).ready(function(){
-			$("#NavbarToggle").click(function() {
-				$(this).toggleClass('rotate180deg');
-				$(this).toggleClass('rotatedefault');
-				$(".show-navbar-inner").toggle();
-				$(".show-navbar").toggleClass('border-bottom');
-			});			
-			$(".mit-sign, .mit-close").click(function() {
-				$(".mit-menu, .mit-close").slideToggle(300);
-				$(".mit-sign").toggleClass('active-mit');
+	<div class="title">
+		<h2 class="show-title"><%= @work.title %></h2>
+	</div>
+	<div class="body">
+		<div class="show-body"><%= @work.body.html_safe %></div>
+	</div>
 
-			})
-		});
+</div> 
+
+<%= render partial: "shared/not_copying_modal" %><!-- #notCopying -->
+<script type="text/javascript">
 
 
-	</script>
+	$(document).ready(function(){
+		$("#NavbarToggle").click(function() {
+			$(this).toggleClass('rotate180deg');
+			$(this).toggleClass('rotatedefault');
+			$(".show-navbar-inner").toggle();
+			$(".show-navbar").toggleClass('border-bottom');
+		});			
+		$(".mit-sign, .mit-close").click(function() {
+			$(".mit-menu, .mit-close").slideToggle(300);
+			$(".mit-sign").toggleClass('active-mit');
 
-	<% unless current_user && current_user.id == @user.id %>
-	<script type="text/javascript">
-		$('body').bind('copy paste cut',function(e) {
-			e.preventDefault();
-			$("#notCopying").modal("show");
-		});
-		$(".url").on("click", function() {
-			$(".show-url").slideToggle(300);
 		})
-
-	</script>
-	<% end %>
+	});
 
 
-	
+</script>
+
+<% unless current_user && current_user.id == @user.id %>
+<script type="text/javascript">
+	$('body').bind('copy paste cut',function(e) {
+		e.preventDefault();
+		$("#notCopying").modal("show");
+	});
+	$(".url").on("click", function() {
+		$(".show-url").slideToggle(300);
+	})
+
+</script>
+<% end %>
+
+
+
 
 
 
