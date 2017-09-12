@@ -1,36 +1,42 @@
 <div class="row mt-4"></div>
 
 <div class="col-md-6 offset-md-3 px-4">
-<div class="lead text-center my-4">Skriv, hvis du har nogle spørgsmål.</div>
-<div class="small text-right">* skal udfyldes</div>
-	<%= form_for :kontakt, url: kontakt_path(), method: :post do |f| %>
+  <div class="lead text-center my-4">Skriv, hvis du har nogle spørgsmål.</div>
+  <div class="small text-right">* skal udfyldes</div>
+  <%= form_for :kontakt, url: kontakt_path(), method: :post do |f| %>
+  <div class="text-center lead" id="Notices">
 
-<div class="form-group">
-  <% unless current_user %>
-    <%= f.label :email, "Din e-mailadresse:*" %><br />
-    <%= f.email_field :email, class: "form-control" %>
-  <% else %>
-  <p>
-  Svar sendes til: <%= current_user.email %>
-    <%= f.hidden_field :email, value: current_user.email %>
-  </p>
-  <% end %>
-</div>
-<div class="form-group">
-  <%= f.label :emne, "Emne*" %><br />
-  <%= f.text_field :emne, class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= f.label :besked, "Din besked*" %><br />
-  <%= f.text_area :besked, class: "form-control", rows: 8 %>
-</div>
-<div class="col-md-12 text-center">
-  <div class="border-image">
-    <%= f.submit "Send besked", class: "btn btn-primary" %>
   </div>
 
-	<% end %>
-</div>
+  <div class="form-group">
+    <% unless current_user %>
+    <%= f.label :email, "Din e-mailadresse:*" %><br />
+    <%= f.email_field :email, class: "form-control", oninvalid: "this.setCustomValidity('Vær venlig at indtaste en e-mailadresse med \"@\"')" %>
+    <% else %>
+    <p>
+      Svar sendes til: <%= current_user.email %>
+      <%= f.hidden_field :email, value: current_user.email %>
+    </p>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :emne, "Emne*" %><br />
+    <%= f.text_field :emne, class: "form-control", required: true, oninvalid: "this.setCustomValidity('Udfyld dit emne felt, før du sender')" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :besked, "Din besked*" %><br />
+    <%= f.text_area :besked, class: "form-control", rows: 8, required: true, oninvalid: "this.setCustomValidity('Udfyld din besked, før du sender.')" %>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <div class="border-image">
+      <%= f.submit "Send besked", class: "btn btn-primary" %>
+    </div>
+
+    <% end %>
+  </div>
 </div><!--- col-md-6 end -->  
 
 
