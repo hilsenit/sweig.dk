@@ -271,6 +271,9 @@ label {
 	-o-border-radius: 2px;
 }
 
+.mobil-menu-bil {
+	position: relative!important;
+}
 .lille-sweig-tilbage {
 	margin-top: -2px;
 	opacity: 0.3;
@@ -557,12 +560,17 @@ label {
     top: 0;
 }
 
+.mobil-menu-dropdown {
+	display: none;
+}
+.mobil-menu {
+	font-size: 2rem;
+}
 @media (max-width: 763px) {
-	.mobil-menu-dropdown {
-		display: none;
-	}
-	.mobil-menu {
-		font-size: 2rem;
+	.soege-felt {
+		border: 1px solid black;
+		min-width: 0px;
+		width: 100%;
 	}
 	.text-center-md {
 		text-align: center;

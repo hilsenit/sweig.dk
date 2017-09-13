@@ -1,15 +1,33 @@
 <div class="row mobil-menu hidden-lg-up">
-	<div class="col-8">
-		<%= link_to fa_icon("bars"), "#", id: "menuBar", class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
+	<div class="col-4">	
+		<%= link_to fa_icon("bars"), "#", id: "menuBar", class: "mit-sign show-work-navbar-btn" %>
 	</div>
-	<div class="col-4 text-center">
+	<div class="col-4 text-center">	
+		<%= link_to forside_path do %>
+			<%= image_tag "lille-sweig-tilbage", class: "mobil-menu-bil lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
+		<% end %>
+	</div>
+	<div class="col-4 text-right">
 		<%= link_to "LÆS", nyeste_path(), class: "#{if_active_helper( nyeste_path() )}" %>
 	</div>
 
 </div>
-<div class="mobil-menu-dropdown hidden-lg-up">
-	<%= render partial: "shared/user_menu" %>
-</div>
+<div class="row mobil-menu-dropdown hide-it hidden-lg-up">
+	<% if user_signed_in? %>
+	<%= render partial: "shared/user_menu" if current_user %>
+	<div class="col-md-12">
+		<%= link_to "LOG UD", destroy_user_session_path(), class: "nav-link text-center modal-header-links", method: :delete %> 
+	</div>
+	<% else %>
+	<div class="col-md-12">
+		<%= link_to "LOG IND", new_user_session_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_session_path())}" %> 
+	</div>
+	<div class="col-md-12">
+		<%= link_to "OPRET", new_user_registration_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_registration_path())}" %>
+	</div>
+	<% end %><!-- user_signed_in? -->
+</div><!-- mobil-menu-dropdown -->
+
 <div class="row frontpage-navbar-wrapper hidden-md-down ">
 	<%= link_to forside_path do %>
 	<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
