@@ -1,73 +1,99 @@
 <%# tinymce %>
 <%= tinymce_assets %>
 
-<div class="col-lg-12">
+<div class="col-lg-12 mt-4">
 	<% if @work.errors.any? %> 
-	<div class="alert-box secondary">
+	<div class="alert-box secondary pink">
 		<% @work.errors.each do |attr, msg| %>
-		<p class="text-center lead"><%= msg %></p>
+		<p class="py-1 text-center lead"><%= msg %></p>
 		<% end %>
 	</div>
 	<% end %>
 	<% unless flash[:errors].nil? %> 
-	<div class="alert-box secondary">
+	<div class="alert-box secondary pink">
 		<% flash[:errors].each do |attr, error| %>
-		<%= content_tag :p, error.first, class: "text-center lead" %>
+		<%= content_tag :p, error.first, class: "text-center lead py-1" %>
 		<% end %>
 	</div>
 	<% end %>
+</div>
 
+<%= form_for [@user, @work] do |f| %>
 
+<%= f.hidden_field :username, value: @user.username %>
+<div class="row pl-4 pt-4 hidden-md-up">
+	<div class="col-4">
+		<%= link_to fa_icon("bars"), "#",id: "menuBar", class: "pt-4 hidden-md-up" %>
+	</div>
+	<div class="col-8">
+		<div class="border-image float-right mr-4">
+			<%= f.submit "Udgiv", data: {toggle: "tooltip"}, title: "Udgiv dit værk, så kan alle se det.", name: "status", class: "btn btn-primary" %>
+		</div>
+	</div>
+
+</div>
+<div class="menu-show-work text-center hidden-sm-down col-lg-12">
+	<%= link_to fa_icon("angle-left") + " TILBAGE", :back,  class: "btn btn-secondary" %>
+	<%= link_to "DINE TEKSTER", user_my_works_path(@user.friendly_id),  class: "btn btn-secondary" %>
+	<%= f.submit "Gem som kladde", data: {toggle: "tooltip"}, title: "Hvis du gemmer som kladde, er det kun dig, der kan se dit værk.", class: "btn btn-secondary" %>
+	<div class="border-image">
+		<%= f.submit "Udgiv", data: {toggle: "tooltip"}, title: "Udgiv dit værk, så kan alle se det.", name: "status", class: "btn btn-primary" %>
+	</div>
+</div>
+<div class="mobile-menu-work hide-it hidden-md-up">
+	<div class="col-lg-12">
+		<%= link_to fa_icon("angle-left") + " TILBAGE", :back,  class: "text-center nav-link modal-header-links" %>
+	</div>
+	<div class="col-lg-12">
+		<%= link_to "DINE TEKSTER", user_my_works_path(@user.friendly_id),  class: "text-center nav-link modal-header-links" %>
+
+	</div>
+	<div class="col-lg-12">
+		<%= f.submit "GEM SOM KLADDE", data: {toggle: "tooltip"}, title: "Hvis du gemmer som kladde, er det kun dig, der kan se dit værk.", class: "nav-link modal-header-links" %>
+	</div>
 	
-	<%= form_for [@user, @work] do |f| %>
-	<%= f.hidden_field :username, value: @user.username %>
-	<div class="col-lg-12 text-center bootstrap-tagsinput">
-		<div class="text-center tag-info">Skriv dine mærker. Lær mere: <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Mærker er en måde, hvorpå du kan tildele dine værker en kategori. Maksimalt 5 mærker per værk, og et værk må højest være 30 tegn langt. Mærker er automatisk med store bogstaver.", id: "markInfo" %>
-		</div>
-		<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv et mærke" %>
-	</div>
-	<div class="form-save">
-		<span class="border-image">
-			<%= f.submit "Gem som kladde", class: "btn btn-primary" %>
-		</span>
-		<span class="border-image">		
-			<%= f.submit "Udgiv", name: "status", class: "btn btn-primary" %>
-		</span>
-	</div>
+</div><!-- mobile-menu-work -->
 
-	<div class="title">
-		<%= f.text_field :title %>
+<div class="title col-lg-12">
+	<%= f.text_field :title, placeholder: "Titel" %>
+</div>
+
+<div class="body col-lg-12">
+	<div class="offset-md-1 col-md-10">
+		<%= f.text_area :body, class: "tinymce" %>
 	</div>
-
-	<div class="row body">
-		<div class="offset-md-1 col-md-10">
-			<%= f.text_area :body, class: "tinymce" %>
-		</div>
+</div>
+<div class="col-lg-12 text-center bootstrap-tagsinput">
+	<div class="text-center tag-info">Skriv dine mærker. Lær mere: <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "Mærker er en måde, hvorpå du kan tildele dine værker en kategori. Maksimalt 5 mærker per værk, og et mærke må højest være 30 tegn langt. Mærker er automatisk med store bogstaver.", id: "markInfo" %>
 	</div>
+	<%= f.text_field :all_tags_in_s, value: f.object.all_tags_in_s, data: {role: "tagsinput"}, placeholder: "Skriv et mærke" %>
+</div>
 
-
-	<% end %>
+<% end %>
 
 </div>
 
 <script type="text/javascript">
 
 	$(document).ready(function() {
-		$(".body textarea").autosize();
+		$("#menuBar").on("click", function() {
+			$(".mobile-menu-work").slideToggle(300);
+		});
 		$('[data-toggle="tooltip"]').tooltip();
 		tinyMCE.init({
-		    selector: '.tinymce',
-		    branding: false,
-		    menubar: false,
-		    elementpath: false,
-		    toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | fontsizeselect ',
-		    setup : function(ed)
-		                {
-		                    ed.on('init', function() 
-		                    {
-		                        this.getDoc().body.style.fontFamily = 'Libre Baskeville';
-		                    });
-		                },
-		  });
+			selector: '.tinymce',
+			branding: false,
+			menubar: false,
+			max_width: 1100,
+			elementpath: false,
+			toolbar: 'bold italic | alignleft aligncenter alignright alignjustify | fontsizeselect ',
+			setup : function(ed)
+			{
+				ed.on('init', function() 
+				{
+					this.getDoc().body.style.fontFamily = 'Libre Baskeville';
+				});
+			},
+		});
 	});
 </script>

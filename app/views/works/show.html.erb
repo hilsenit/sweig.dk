@@ -82,7 +82,7 @@
 		<div class="col-md-12 opret-wrapper hidden-lg-up">
 			<% unless @work.all_tags_in_s.blank? %>
 				<% @work.all_tags_in_s.split(",").each do |tag| %>
-					<span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
+					<span class="maerke maerke-mobil"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
 				<% end %>
 			<% end %>
 		</div>

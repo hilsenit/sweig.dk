@@ -40,6 +40,9 @@ body {
 	height: 100vh;
 	padding-bottom: 40px;
 }
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	background-color: white!important;
+}
 
 .two-columns {
 	column-count: 2;
