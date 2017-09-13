@@ -35,7 +35,7 @@
 			<% end %>
 
 			<% if !notice && !current_user %>
-				<p class="mb-0 show-work-navbar-btn text-center"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
+				<p class="mb-0 ml-4 show-work-navbar-btn text-center"><u><%= link_to "Opret dig", new_user_registration_path()%></u> eller <u><%= link_to "log ind", new_user_session_path() %></u> <span class="hidden-sm-down"> for at gemme værker</span></p>
 			<% elsif notice %>
 				<div class="min-alert text-center">
 					<p class="d-inline-block"><%= notice %></p>
