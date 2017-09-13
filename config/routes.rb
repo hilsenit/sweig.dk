@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   	# DEVISE
 	devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
 	as :user do
-	  get 'log-ind-her', to: 'devise/sessions#new', as: :new_user_session
+	  get 'log-ind-her', to: 'sessions#new', as: :new_user_session
 	  post 'log-ind', to: 'devise/sessions#create', as: :user_session
 	  delete 'log-ud-her', to: 'devise/sessions#destroy', as: :destroy_user_session
 	end

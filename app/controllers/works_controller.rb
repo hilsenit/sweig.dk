@@ -9,6 +9,7 @@ class WorksController < ApplicationController
 	def edit
 		@user = User.friendly.find(params[:user_id])
 		@work = Work.friendly.find(params[:id])
+		@head_title = "Rediger '#{@work.title}'"
 	end
 
 	def update
@@ -30,6 +31,7 @@ class WorksController < ApplicationController
 	end
 	
 	def new
+		@head_title = "Nyt værk"
 		@user = User.friendly.find(params[:user_id])
 		@work = @user.works.build(user_id: @user.id)
 	end
@@ -56,9 +58,10 @@ class WorksController < ApplicationController
 
 	def show
 		begin		
-			@work = Work.friendly.find(params[:id])	
+			@work = Work.friendly.find(params[:id])	 
 			work_views 	
 			@user = @work.user
+			@head_title = "'#{@work.title}' af: #{@user.username}"
 		rescue
 			not_found
 		end
@@ -115,8 +118,7 @@ class WorksController < ApplicationController
 			params[:work][:all_tags_in_s] = array.join(",")
 		end
 	end
-
-# PARAMS	
+	
 	def work_params
 		params.require(:work).permit(:title, :body, :username, :all_tags_in_s)
 	end

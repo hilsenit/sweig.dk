@@ -40,6 +40,12 @@ body {
 	height: 100vh;
 	padding-bottom: 40px;
 }
+
+.two-columns {
+	column-count: 2;
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+}
 .form-control {
 	border-radius: 0px!important;
 }

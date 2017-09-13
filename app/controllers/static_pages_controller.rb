@@ -2,9 +2,11 @@ class StaticPagesController < ApplicationController
 	layout "countdown", only: [:redirect]
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
 	def index
+		@head_title = "Velkommen"
 	end
-	
+
 	def redirect
+		@head_title = "Velkommen"
 		if current_user
 			flash[:notice] = "Velkommen"
 			redirect_to user_biblo_path(current_user.friendly_id)
@@ -12,23 +14,33 @@ class StaticPagesController < ApplicationController
 	end
 
 	def laes
+		@head_title = "Læs og find værker"
 		@newest_works = Work.published.limit(8)
 	end
-	def fremtidsvision; end
-	def info; end
-	def kontakt_vindue; end
+	def fremtidsvision
+		@head_title = "Fremtidsvision"
+	end
+	def info
+		@head_title = "Information"
+	end
+	def kontakt_vindue
+		@head_title = "Kontakt os"
+	end
 
 	def nyeste 
+		@head_title = "Nyeste værker"
 		@newest_works = Work.published.limit(24)
 		
 	end
 
 	def alle_maerker 
+		@head_title = "Alle mærker"
 		@maerker = Mark.all
 	end
 
 	def show_maerke_works
 		@maerke = Mark.find(params[:maerker_id])
+		@head_title = "Mærke: #{@maerke.title}"
 		@works = @maerke.works
 		respond_to do |format|
 			format.js
@@ -38,6 +50,7 @@ class StaticPagesController < ApplicationController
 	def show_maerke_works_link
 		@maerker = Mark.all
 		@maerke = Mark.friendly.find(params[:maerker_id])
+		@head_title = "Visning af #{@maerke.title} værker"
 		@works = @maerke.works
 		render "alle_maerker"
 	end
@@ -52,18 +65,6 @@ class StaticPagesController < ApplicationController
 		end		
 	end
 		
-	def laes 
-
-		published_work = Work.where(status: 1)
-		@works = published_work.order(created_at: :desc).limit(12)
-		@users = User.order(created_at: :desc).limit(12)
-
-		respond_to do |format|
-			format.js
-			format.html
-		end
-	end
-
 	def kontakt
 		KontaktMailer.kontakt(params[:kontakt][:email], params[:kontakt][:besked], params[:kontakt][:emne]).deliver
 		flash[:notice] = "Din besked '#{params[:kontakt][:emne]}' er blevet sendt"

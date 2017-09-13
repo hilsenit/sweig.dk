@@ -12,7 +12,14 @@
 			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
 			<% if current_user %>
 			<%= link_to "MIT", "#", class: "mit-sign hidden-md-down show-work-navbar-btn" %>
-
+			<%= link_to "M", "#", data: {toggle: "tooltip"}, title: "Vis værkets mærker", class: "maerker-btn hidden-md-down show-work-navbar-btn" %>
+			<div class="maerker hidden-md-down hide-it">
+				<% unless @work.all_tags_in_s.blank? %>
+					<% @work.all_tags_in_s.split(",").each do |tag| %>
+						<span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
+					<% end %>
+				<% end %>
+			</div>
 			<% end %>
 			<!-- Hvis du er logget ind, og du ikke har gemt -->
 			<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
@@ -22,15 +29,17 @@
 			<% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, @work)  %>
 			<%= link_to "GEMT", user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "hidden-md-down show-work-navbar-btn float-right green-icon", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
 	
-
-			<p class="mb-0 show-work-navbar-btn"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
+			<% else %>
 
 			<% end %>
-			<% if notice %>
-			<div class="min-alert text-center">
-				<p class="d-inline-block"><%= notice %></p>
-			</div>
-			<% end %>
+
+			<% if !notice && !current_user %>
+				<p class="mb-0 show-work-navbar-btn text-center"><u><%= link_to "Opret dig", new_user_registration_path()%></u><span class="hidden-xs-down"> eller <u><%= link_to "log ind", new_user_session_path() %></u> for at gemme værker</span></p>
+			<% elsif notice %>
+				<div class="min-alert text-center">
+					<p class="d-inline-block"><%= notice %></p>
+				</div>
+			<% end %> 
 
 
 		</div>
@@ -58,17 +67,24 @@
 		</div>
 		<% end %><!-- skal kun vises, hvis man er logget ind selvfølfelig -->
 		<div class="col-md-12">
-			<%= link_to "BIBLO", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
+			<%= link_to "BIBLO", user_biblo_path(current_user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
 		</div>
 		<div class="col-md-12">
-			<%= link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}" %>
+			<%= link_to "SAMLING", user_saved_works_path(current_user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(current_user)}" %>
 		</div>
 		<div class="col-md-12">
-			<%= link_to "DINE TEKSTER", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
+			<%= link_to "DINE TEKSTER", user_my_works_path(current_user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(current_user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
 		</div>
 
 		<div class="col-md-12 opret-wrapper">
-			<%= link_to "OPRET VÆRK", new_user_work_path(@user), class: "opret-vaerk modal-header-links" %>
+			<%= link_to "OPRET VÆRK", new_user_work_path(current_user), class: "opret-vaerk modal-header-links" %>
+		</div>
+		<div class="col-md-12 opret-wrapper hidden-lg-up">
+			<% unless @work.all_tags_in_s.blank? %>
+				<% @work.all_tags_in_s.split(",").each do |tag| %>
+					<span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
+				<% end %>
+			<% end %>
 		</div>
 	<% end %>
 	</div><!-- mit-menu -->
@@ -87,6 +103,13 @@
 
 
 	$(document).ready(function(){
+		$(".maerker-btn").on("click", function() {
+			$(".maerker").toggle();
+			$(this).toggleClass('active-mit');
+			$(this).attr('data-original-title', function(index, attr) {
+				return attr == "Vis værkets mærker" ? "Fjern mærker" : "Vis værkets mærker" // Fed kode!
+			}).tooltip('show');
+		});
 		$("#NavbarToggle").click(function() {
 			$(this).toggleClass('rotate180deg');
 			$(this).toggleClass('rotatedefault');
@@ -98,9 +121,9 @@
 		$(".mit-sign, .mit-close").click(function() {
 			$(".mit-menu, .mit-close").slideToggle(300);
 			$(".mit-sign").removeClass('active-mit');
-		})
+		});
 		$('[data-toggle="tooltip"').tooltip({
-			attachment: 'bottom right'
+			trigger: "hover"
 		});
 	});
 
@@ -116,7 +139,6 @@
 	$(".url").on("click", function() {
 		$(".show-url").slideToggle(300);
 	})
-	$
 
 </script>
 <% end %>

@@ -31,11 +31,7 @@ module ApplicationHelper
 
 	def set_title_helper
 		default = "Sweig"
-		if @page_title
-			default + " | " + @page_title
-		else
-			default
-		end
+		@head_title ? default + " | " + @head_title : default
 	end
 
 	def alert_notice_helper

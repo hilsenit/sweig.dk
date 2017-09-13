@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, except: [:show]
 	def biblo
+		@head_title = "Biblo"
 		@user = User.friendly.find(params[:user_id])
 		unless @user.id == current_user.id 
 			redirect_to user_path(@user.friendly_id)
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
 	def show
 		begin 
 			@user = User.friendly.find(params[:id])
+			@head_title = @user.username
 			@published_works = @user.works.published_works
 			@saved_works = []
 			@user.saved_works.each do |saved_work|
@@ -25,26 +27,33 @@ class UsersController < ApplicationController
 	end
 
 	def my_works # Mine værker
+		@head_title = "Dine tekster"
 		@user = User.friendly.find(params[:user_id])
+		if @user.id == current_user.id 
 		@published_works = @user.works.published
 		@draft_works = @user.works.draft
-	end
-
-	def new
-		@user = User.new
-	end
-
-	def create
-		@user = User.new(user_params)
-		if @user.save
-			redirect_to user_path(@user.friendly_id), notice: "Din profil er nu blevet oprettet"
-		else
-			render "new", notice: "Det lykkedes desværre ikke."
+		else 
+			flash[:notice] = "Du kan ikke besøge andres brugerprofil."
+			redirect_to user_path(@user.friendly_id)
 		end
-		
+
 	end
 
-	def index 
+	def saved_works
+		@head_title = "Samling"
+		@user = User.friendly.find(params[:user_id])
+		if @user.id == current_user.id 
+			@saved_works = []
+			@user.saved_works.each do |saved_work|
+				@saved_works << Work.find(saved_work.work_id)
+			end		
+		else
+			flash[:notice] = "Du kan ikke besøge andres brugerprofil."
+			redirect_to user_path(@user.friendly_id)
+		end			
+	end
+
+	def index
 		if user_signed_in?
 			flash[:notice] = "Du er allerede logget ind"
 			redirect_to user_path(current_user.friendly_id)
@@ -126,13 +135,7 @@ class UsersController < ApplicationController
 		end		
 	end
 
-	def saved_works
-		@user = User.friendly.find(params[:user_id])
-		@saved_works = []
-		@user.saved_works.each do |saved_work|
-			@saved_works << Work.find(saved_work.work_id)
-		end		
-	end
+	
 
 	private
 
