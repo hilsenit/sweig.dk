@@ -12,14 +12,15 @@
 			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
 			<% if current_user %>
 			<%= link_to "MIT", "#", class: "mit-sign hidden-md-down show-work-navbar-btn" %>
-			<%= link_to "M", "#", data: {toggle: "tooltip"}, title: "Vis værkets mærker", class: "maerker-btn hidden-md-down show-work-navbar-btn" %>
-			<div class="maerker hidden-md-down hide-it">
-				<% unless @work.all_tags_in_s.blank? %>
-					<% @work.all_tags_in_s.split(",").each do |tag| %>
-						<span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
-					<% end %>
-				<% end %>
-			</div>
+			
+			<% unless @work.all_tags_in_s.blank? %>
+				<%= link_to "M", "#", data: {toggle: "tooltip"}, title: "Vis værkets mærker", class: "maerker-btn hidden-md-down show-work-navbar-btn" %>
+				<div class="maerker hidden-md-down hide-it">
+						<% @work.all_tags_in_s.split(",").each do |tag| %>
+							<span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
+						<% end %>
+				</div>
+			<% end %>
 			<% end %>
 			<!-- Hvis du er logget ind, og du ikke har gemt -->
 			<% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, @work) %>
@@ -79,7 +80,7 @@
 		<div class="col-md-12">
 			<%= link_to "OPRET VÆRK", new_user_work_path(current_user), class: "opret-vaerk modal-header-links" %>
 		</div>
-		<div class="col-md-12 opret-wrapper hidden-lg-up">
+		<div class="col-md-12 hidden-lg-up">
 			<% unless @work.all_tags_in_s.blank? %>
 				<% @work.all_tags_in_s.split(",").each do |tag| %>
 					<span class="maerke maerke-mobil"><%= link_to tag, show_this_maerker_path(tag.parameterize, @work.id) %></span>
