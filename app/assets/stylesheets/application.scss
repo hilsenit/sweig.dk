@@ -558,6 +558,12 @@ label {
 }
 
 @media (max-width: 763px) {
+	.mobil-menu-dropdown {
+		display: none;
+	}
+	.mobil-menu {
+		font-size: 2rem;
+	}
 	.text-center-md {
 		text-align: center;
 	}	
@@ -569,7 +575,18 @@ label {
 	.logo-background {
 		margin-top: 0;
 	}
-	
+	.footer-text {
+		padding: 10px;
+	}
+	.active-footer {
+		background-color: pink!important;
+		border-color: transparent!important;	
+		color: white!important;
+	}
+	.footer {
+		border-top: 1px solid black;
+		position: relative;
+	}	
 	.tekst-forside {
 		padding: 0 20px!important;
 	}

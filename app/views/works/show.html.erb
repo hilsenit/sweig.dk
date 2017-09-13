@@ -67,19 +67,7 @@
 		<%= link_to fa_icon("save", text: "SLET FRA DINE GEMTE"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "nav-link red-icon text-center modal-header-links hidden-lg-up", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
 		</div>
 		<% end %><!-- skal kun vises, hvis man er logget ind selvfølfelig -->
-		<div class="col-md-12">
-			<%= link_to "BIBLO", user_biblo_path(current_user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}" %>
-		</div>
-		<div class="col-md-12">
-			<%= link_to "SAMLING", user_saved_works_path(current_user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(current_user)}" %>
-		</div>
-		<div class="col-md-12">
-			<%= link_to "DINE TEKSTER", user_my_works_path(current_user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(current_user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}" %>
-		</div>
-
-		<div class="col-md-12">
-			<%= link_to "OPRET VÆRK", new_user_work_path(current_user), class: "opret-vaerk modal-header-links" %>
-		</div>
+		<%= render partial: "shared/user_menu" %>
 		<div class="col-md-12 hidden-lg-up">
 			<% unless @work.all_tags_in_s.blank? %>
 				<% @work.all_tags_in_s.split(",").each do |tag| %>

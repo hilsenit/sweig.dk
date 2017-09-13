@@ -1,4 +1,16 @@
-<div class="row frontpage-navbar-wrapper">
+<div class="row mobil-menu hidden-lg-up">
+	<div class="col-8">
+		<%= link_to fa_icon("bars"), "#", id: "menuBar", class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
+	</div>
+	<div class="col-4 text-center">
+		<%= link_to "LÆS", nyeste_path(), class: "#{if_active_helper( nyeste_path() )}" %>
+	</div>
+
+</div>
+<div class="mobil-menu-dropdown hidden-lg-up">
+	<%= render partial: "shared/user_menu" %>
+</div>
+<div class="row frontpage-navbar-wrapper hidden-md-down ">
 	<%= link_to forside_path do %>
 	<%= image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}" %>
 	<% end %>
@@ -22,3 +34,8 @@
 	
 </div>	
 
+<script type="text/javascript">
+	$("#menuBar").on("click", function() {
+		$(".mobil-menu-dropdown").slideToggle(300);
+	})
+</script>
