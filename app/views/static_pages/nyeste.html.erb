@@ -6,6 +6,7 @@
 	</div>
 
 	<div class="row search-results mb-4 mt-4">
+		<%= paginate @newest_works %>
 		<span class="newest-works-find">
 		<%= render partial: "users/user_works", 
 		locals: {works: @newest_works, extra_class: "", edit: nil} %>

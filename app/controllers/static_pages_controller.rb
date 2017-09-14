@@ -29,8 +29,7 @@ class StaticPagesController < ApplicationController
 
 	def nyeste 
 		@head_title = "Nyeste værker"
-		@newest_works = Work.published.limit(24)
-		
+		@newest_works = Work.published.page params[:page]
 	end
 
 	def alle_maerker 

@@ -44,6 +44,11 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	background-color: white!important;
 }
 
+.body div {
+    max-width: 1100px!important;
+    margin: 0 auto!important;
+}
+
 .two-columns {
 	column-count: 2;
 	-webkit-column-count: 2;
@@ -529,11 +534,38 @@ label {
 	color: black;
 	background: white;
 }
+
+.pagination {
+	margin: 0 auto;
+	text-align: center;
+	.active a {
+		background-color: #424242!important;
+		color: white!important;
+		border-color: black!important;
+	}
+	.page-item {
+		a {
+		border-color: black;
+		color: black; 
+		border-radius: 0px!important;
+		-webkit-border-radius: 0px!important;
+		-moz-border-radius: 0px!important;
+		-o-border-radius: 0px!important;
+		}
+	}
+}
+
+.search-results nav {
+	margin: 0 auto;
+}
 .search-result-wrapper, .works-show-wrapper {
 	margin-top: 25px;
 	padding: 5px 10px;
 	width: 100%;
 	.search-result, .works-show-box {
+		nav {
+			width: 100%;
+		}
 		background-color: darken(white, 2%);
 	    padding: 10px;
 	    p {

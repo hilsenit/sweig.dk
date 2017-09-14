@@ -139,7 +139,8 @@ p {
 	}
 }
 .bootstrap-tagsinput {
-	height: 115px;
+	min-height: 115px;
+	height: auto;
 	margin: 0 5%!important;
 	width: 90%;
 	float: left;
@@ -147,7 +148,7 @@ p {
 		font-family: 'Libre Baskeville';
 	}
 	input {
-		position: absolute;
+		position: relative;
 		bottom: 0;
 		left: 0;
 		text-transform: uppercase; 
@@ -225,16 +226,6 @@ p {
 
 .body {
 	margin-top: 6vh;
-	text-align: center;
-	textarea, .show-body {
-		margin: auto;
-	    width: 60%;
-	    height: 60vh!important;
-	    font-size: 1.2em;
-	    p {
-	    	text-align: left;
-	    }
-	}
 }
 
 .form-save {
@@ -437,6 +428,10 @@ span.divider {
     font-size: 1.3rem;
     letter-spacing: 2px;
     color: black;
+}
+
+.work-view {
+	word-break: break-all;
 }
 .show-work-navbar-btn:not(:last-child) {
 	padding-right: 14px;

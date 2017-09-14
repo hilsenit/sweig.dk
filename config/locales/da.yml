@@ -1,3 +1,10 @@
 # Additional translations at https://github.com/plataformatec/devise/wiki/I18n
 da:
+  views: 
+    pagination: 
+      first: "&laquo; Første"
+      last: "Sidste &raquo;"
+      previous: "&lsaquo; Forrige"
+      next: "Næste &rsaquo;"
+      truncate: "&hellip;"
 
