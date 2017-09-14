@@ -41,7 +41,7 @@ da:
       signed_up: "Velkommen til Sweig. Din bruger er aktiveret. Nu kan du logge ind."
       signed_up_but_inactive: "Det gik egentlig okay med dine indtastet værdier, men det ser ud til, at du ikke har aktiveret din bruger endnu."
       signed_up_but_locked: "Det lykkedes ikke at logge dig ind, da din bruger låst. Skriv til kontakt, hvis du har yderlige spørgsmål."
-      signed_up_but_unconfirmed: "En mail er blevet sendt til din email. Besøg den og tryk på aktiveringslinket, så kan du logge ind. Vi glææææder os!"
+      signed_up_but_unconfirmed: "En mail er blevet sendt til din email. Aktiver din bruger via den."
       update_needs_confirmation: "Du opdaterede din konto, men vi bliver nødt til at spørge om en email adresse for at gennemføre det."
       updated: "Din bruger er blevet opdateret."
     sessions:
