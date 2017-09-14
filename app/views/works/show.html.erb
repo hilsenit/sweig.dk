@@ -2,8 +2,10 @@
 
 	<%= fa_icon "angle-down", id: "NavbarToggle", class: "rotate180deg" %>
 	<div class="show-navbar border-bottom">
-
+		
+			<%= render partial: "works/flash_notice" if flash.present? || params[:notice] %>
 		<div class="row show-navbar-inner">
+
 			<% unless is_current_user? %>
 			<%= link_to "|" + @user.username, user_path(@user.id), class: "hidden-md-down show-work-navbar-btn" %>
 			<% end %>
@@ -32,16 +34,6 @@
 			<% else %>
 
 			<% end %>
-
-			<% if !notice && !current_user %>
-				<p class="mb-0 ml-4 show-work-navbar-btn text-center"><u><%= link_to "Opret dig", new_user_registration_path()%></u> eller <u><%= link_to "log ind", new_user_session_path() %></u> <span class="hidden-sm-down"> for at gemme værker</span></p>
-			<% elsif notice %>
-				<div class="min-alert text-center">
-					<p class="d-inline-block"><%= notice %></p>
-				</div>
-			<% end %> 
-
-
 		</div>
 	</div>
 	<div class="mit-close hide-it"></div>
@@ -66,6 +58,11 @@
 		<%= link_to fa_icon("save", text: "SLET FRA DINE GEMTE"), user_work_delete_current_user_save_path(@user, @work, current_user), method: :delete, class: "nav-link red-icon text-center modal-header-links hidden-lg-up", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
 		</div>
 		<% end %><!-- skal kun vises, hvis man er logget ind selvfølfelig -->
+		<% if is_current_user? %>
+			<div class="col-md-12">
+				<%= link_to fa_icon("pencil", text: " REDIGER", right: true), edit_user_work_path(@user.friendly_id, @work.friendly_id), class: "nav-link text-center modal-header-links" %>
+			</div>
+		<% end %>
 		<%= render partial: "shared/user_menu" %>
 		<div class="col-md-12 hidden-lg-up">
 			<% unless @work.all_tags_in_s.blank? %>
@@ -92,14 +89,16 @@
 
 
 	$(document).ready(function(){
-		$(".maerker-btn").on("click", function() {
+		$(".maerker-btn").on("click", function(e) {
+			e.preventDefault();
 			$(".maerker").toggle();
 			$(this).toggleClass('active-mit');
 			$(this).attr('data-original-title', function(index, attr) {
 				return attr == "Vis værkets mærker" ? "Fjern mærker" : "Vis værkets mærker" // Fed kode!
 			}).tooltip('show');
 		});
-		$("#NavbarToggle").click(function() {
+		$("#NavbarToggle").click(function(e) {
+			e.preventDefault();
 			$(this).toggleClass('rotate180deg');
 			$(this).toggleClass('rotatedefault');
 			$(".show-navbar-inner").toggle();
@@ -107,8 +106,11 @@
 			$(".mit-menu, .mit-close").slideUp(300);
 			$(".mit-sign").toggleClass('active-mit');
 		});			
-		$(".mit-sign, .mit-close").click(function() {
-			$(".mit-menu, .mit-close").slideToggle(300);
+		$(".mit-sign, .mit-close").click(function(e) {
+			e.preventDefault();
+			$el = $(".show-navbar");
+			var bottom = $el.position().top + $el.offset().top + $el.outerHeight();
+			$(".mit-menu, .mit-close").css("top", bottom).slideToggle(300);
 			$(".mit-sign").removeClass('active-mit');
 		});
 		$('[data-toggle="tooltip"').tooltip({

@@ -1,0 +1,8 @@
+<div class="text-center alert" id="Notices">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+  <% flash.each do |type, message| %>
+    <%= message %>
+    <br>
+  <% end %>
+  <%= params[:notice] %>
+</div>

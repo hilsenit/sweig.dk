@@ -225,7 +225,8 @@ p {
 }
 
 .body {
-	margin-top: 6vh;
+	margin: 3vh auto;
+    width: 90%;
 }
 
 .form-save {
@@ -242,10 +243,11 @@ textarea:focus, input:focus{
     border-bottom: 1px solid black;
 }
 .show-navbar {
+	z-index: 9999;
 	background-color: white;
     position: fixed;
 	overflow: hidden;
-	height: inherit;
+	height: auto;
     width: 100%;
 	.show-navbar-inner {
 		margin-right: 35px;
@@ -318,7 +320,10 @@ textarea:focus, input:focus{
 	-moz-border-radius: 0px;
 	-o-border-radius: 0px;
 }
-
+.close {
+	float: left;
+	opacity: 1;
+}
 .modal-header .nav-tabs {
 	border-bottom: none;
 	.close {
@@ -370,6 +375,15 @@ span.divider {
     font-size: 19px;
 }
 
+#Notices {
+	font-family: Roboto;
+	padding-top: 2px;
+	background: #fff6ff;
+	color: black;
+	padding-bottom: 0px;
+	padding-right: 50px;
+	margin-bottom: 0px;
+}
 .notice-exit {
 	cursor: pointer;
 }
@@ -397,7 +411,7 @@ span.divider {
 	top: 37px;
 	background: transparent;
 	z-index: 99;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -406,7 +420,7 @@ span.divider {
 .mit-menu {
 	z-index: 999;
 	top: 43px;
-	position: absolute;
+	position: fixed;
 	width: 30%;
 	min-width: 400px;
 	a {
@@ -476,9 +490,14 @@ span.divider {
 
 
 }
-
-@media screen and (min-width: 1300px) {
-
+@media screen and (max-width: 763px) {
+.alert {
+	overflow: hidden;
+    line-height: 40px;
+ }
+.close {
+	font-size: 43px;
+}
 }
 @media screen and (max-width: 500px) {
 	.mit-menu {
@@ -489,7 +508,6 @@ span.divider {
 	    margin-right: 13px;
 	}
 	.show-navbar {
-		height: 42px;
 		.show-navbar-inner {
 		    margin-right: 60px;
 		}

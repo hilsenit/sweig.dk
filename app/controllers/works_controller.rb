@@ -24,7 +24,7 @@ class WorksController < ApplicationController
 			else
 				@work.draft!
 			end
-			redirect_to user_my_works_path(@work.user_id), notice: "'#{@work.title}' er blevet gemt."
+			redirect_to user_work_path(@user, @work), notice: "'#{@work.title}' er blevet opdateret"
 		else
 			redirect_to edit_user_work_path(@user.id, @work.id), flash: {errors: @work.errors}
 		end
@@ -49,7 +49,7 @@ class WorksController < ApplicationController
 
 			generate_biblo_story_work_publish @user, @work # Application controller method
 
-			redirect_to user_my_works_path(@user), notice: "'#{@work.title}' er blevet gemt"
+			redirect_to user_work_path(@user, @work), notice: "'#{@work.title}' er blevet gemt"
 		else	
 			render 'new'
 		end
