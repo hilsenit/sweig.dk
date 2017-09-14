@@ -109,7 +109,7 @@
 		$(".mit-sign, .mit-close").click(function(e) {
 			e.preventDefault();
 			$el = $(".show-navbar");
-			var bottom = $el.position().top + $el.offset().top + $el.outerHeight();
+			var bottom = $el.position().top + $el.outerHeight();
 			$(".mit-menu, .mit-close").css("top", bottom).slideToggle(300);
 			$(".mit-sign").removeClass('active-mit');
 		});

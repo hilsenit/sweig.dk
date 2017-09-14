@@ -1,6 +1,0 @@
-<!-- brug til follow/unfollow -->
-<% if user.followers? current_user %>
-	<%= link_to "FOELG IKKE", unfollow_user_path(user), remote: true, class: "btn btn-secondary" %>	
-<% else %>
-	<%= link_to "FOELG", follow_user_path(user), remote: true, class: "btn btn-secondary" %>	
-<% end %>

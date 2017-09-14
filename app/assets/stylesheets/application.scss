@@ -598,7 +598,17 @@ label {
 .mobil-menu {
 	font-size: 2rem;
 }
+@media (max-width: 991px) { 
+
+	.text-center-md-down h4 {
+		text-align: center;
+	}
+
+
+
+}
 @media (max-width: 763px) {
+
 	.soege-felt {
 		border: 1px solid black;
 		min-width: 0px;
