@@ -1,67 +1,88 @@
 <div id="NotLoggedIn"></div>
 <div id="FollowersModal"></div>
 <span class="foelger-bar-render">
-<!-- TIL REMOTE FOLLOWERS PATH -->
-<% if is_current_user? %>
-<!-- Hvis det er ens egen profil -->
+	<!-- TIL REMOTE FOLLOWERS PATH -->
+	<% if is_current_user? %>
+	<!-- Hvis det er ens egen profil -->
 	<div class="row text-center">
 
 		<%= link_to followers_user_path(@user), remote: true, class: "col-md-4 text-right pt-3 text-center-md-down" do %>
-				<h4><%= @user.followers.count %> FØLGER DIG</h4>
+		<h4><%= @user.followers.count %> FØLGER DIG</h4>
 		<% end %>
 		<div class="col-md-4 text-center">
-				<%= image_tag "bruger-mini", width: 50 %>
+			<%= image_tag "bruger-mini", width: 50 %>
 		</div>
 		<%= link_to following_user_path(@user), remote: true, class: "col-md-4 text-left pt-3 text-center-md-down" do %>
-				<h4>DU FØLGER <%= @user.following.count %></h4>
+		<h4>DU FØLGER <%= @user.following.count %></h4>
 		<% end %>
 
 	</div>
 	
 
-<% elsif user_signed_in?  %>
-<!-- hvis det er en, der besøger siden -->
+	<% elsif user_signed_in?  %>
+	<!-- hvis det er en, der besøger siden -->
 	<div class="row text-center">
 		<div class="col-lg-12 text-center pb-4 ">
 			<div class="border-image">
 				<% if @user.followers? current_user %>
-					<%= link_to "FØLG IKKE", unfollow_user_path(@user), class: "btn btn-secondary" %>	
+				<%= link_to "FØLG IKKE", unfollow_user_path(@user), class: "btn btn-secondary" %>	
 				<% else %>
-					<%= link_to "FØLG", follow_user_path(@user), class: "btn btn-secondary" %>	
+				<%= link_to "FØLG", follow_user_path(@user), class: "btn btn-secondary" %>	
 				<% end %>
 			</div>
 		</div>
 		<%= link_to followers_user_path(@user), remote: true, class: "col-md-4 text-right pt-3 text-center-md-down" do %>
-				<h4><%= @user.followers.count %> FØLGER </h4>
+		<h4><%= @user.followers.count %> FØLGER </h4>
 		<% end %>
 		<div class="col-md-4 text-center h1">
 			<%= link_to_user_helper(user, "|" + user.username) %>		
 		</div>
 		<%= link_to following_user_path(@user), remote: true, class: "col-md-4 text-left pt-3 text-center-md-down" do %>
-				<h4>FØLGER <%= @user.following.count %></h4>
+		<h4>FØLGER <%= @user.following.count %></h4>
 		<% end %>
 		
 	</div>
 
-<% else %> 
+	<% else %> 
 
 	<div class="row text-center">
-		<%= link_to not_logged_in_path("Hvis du gerne vil have mulighed for at benytte dig af FØLGER, så log in eller opret dig."), remote: true, class: "col-md-4 text-right pt-3 text-center-md-down" do %>
-				<h4><%= @user.followers.count %> FØLGER </h4>
-		<% end %>
+		<div class="col-md-4 text-right pt-3 text-center-md-down" data-toggle="modal" data-target="#loggedInModal">
+			<h4 role="button"><%= @user.followers.count %> FØLGER</h4>
+		</div>
 		<div class="col-md-4 text-center h1">
 			<%= link_to_user_helper(user, "|" + user.username) %>		
 		</div>
-
-		<%= link_to not_logged_in_path("Hvis du gerne vil have mulighed for at benytte dig af FØLGER, så log in eller opret dig."), remote: true, class: "col-md-4 text-left pt-3 text-center-md-down" do %>
-			<h4>FØLGER <%= @user.following.count %></h4>
-		<% end %>
-		<div class="offset-md-4 col-md-4">
-			<div class="border-image">
-				<%= link_to "FØLG", not_logged_in_path("Hvis du gerne vil have mulighed for at benytte dig af FØLGER, så log in eller opret dig."), remote: true, class: " btn btn-primary" %>	
+		<div class="col-md-4 text-left pt-3 text-center-md-down" data-toggle="modal" data-target="#loggedInModal">
+			<h4 role="button">FØLGER <%= @user.following.count %></h4>
+		</div>
+		<div class="modal fade" id="loggedInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<h4 class="modal-title text-center forside-tekst-overskrift" id="myModalLabel">Her til og ikke længere</h4>
+					<div class="modal-body">
+						<div class="col-12">
+							<p> Hvis du gerne vil have mulighed for at benytte dig af FØLG, så log in eller opret dig.</p>
+						</div>
+					</div>
+					<div class="modal-footer text-center">
+						<div class="border-image d-inline-block "> 
+							<%= link_to "Log in", new_user_session_path(), class: "btn btn-primary" %>
+						</div>
+						<div class="border-image d-inline-block ">
+							<%= link_to "Opret dig", new_user_registration_path(), class: "btn btn-primary" %>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
+
 <!-- hvis det er en udefra, der ikke er logget ind -->
 <% end %>
 

@@ -296,7 +296,7 @@ label {
 	opacity: 0.3;
 	position: absolute;
 	transition: opacity .4s ease-in-out;
-	z-index: 99999;
+	z-index: 999;
 	-webkit-transition: opacity .4s ease-in-out;
 	-moz-transition: opacity .4s ease-in-out;
 	-o-transition: opacity .4s ease-in-out;
@@ -477,6 +477,10 @@ label {
 	font-family: Roboto;
 }
 
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
 .modal-body {
 	font-family: 'Libre Baskerville';
 }
@@ -627,22 +631,35 @@ label {
 	}
 }
 @media (max-width: 763px) {
+	body {
+		padding-bottom: 0px;
+	}
 	.layout-container {
 		height: auto!important;
 		min-height: 100vh!important;
 		margin-bottom: 40px!important; 
 	}
-	.frontpage-menu-wrapper .forside-tekst-overskrift {
-	    text-align: center;
-	    border: 1px solid black;
-	    margin-left: 10px;
-	    padding-left: 20px;
-	    padding-top: 2px;
-	    margin-bottom: 10px;
+	.frontpage-menu-wrapper {
+		border-bottom-color: transparent;
+		.forside-tekst-overskrift {
+			text-transform: uppercase;
+		    text-align: center;
+		    border: 1px solid black;
+		    margin-left: 10px;
+		    padding-left: 20px;
+		    padding-top: 2px;
+		    margin-bottom: 10px;
+		}
 	}
 	.tab-content {
-	    width: 70%;
+		width: 100%;
+	    padding: 20px 0px;
+	    min-height: 220px;
 	    margin: 0 auto;
+	    a {
+	    	font-family: Roboto;
+	    	text-transform: uppercase;
+	    }
 
 	}
 	.soege-felt {
@@ -680,6 +697,9 @@ label {
 		color: white!important;
 	}
 	.footer {
+		.footer-text:first-child {
+			margin-top: 9px;
+		}
 		border-top: 1px solid black;
 		position: relative;
 	}	

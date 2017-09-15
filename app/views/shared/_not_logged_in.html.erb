@@ -1,28 +1,2 @@
 
 <!-- Husk en div med id: "NotLoggedIn" i det vindue, som skal have funktionen -->
-<div class="modal fade" id="loggedInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title forside-tekst-overskrift" id="myModalLabel">Her til og ikke længere</h4>
-      </div>
-      <div class="modal-body">
-        <div class="col-xs-8">
-          <%= message.html_safe %> 
-        </div>
-      </div>
-      <div class="modal-footer">
-       <div class="border-image"> 
-         <%= link_to "Log in", new_user_session_path(), class: "btn btn-primary" %>
-       </div>
-       <div class="border-image">
-         <%= link_to "Opret dig", new_user_registration_path(), class: "btn btn-primary" %>
-       </div>
-     </div>
-   </div>
- </div>
-</div>
-</div>
