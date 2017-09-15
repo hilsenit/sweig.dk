@@ -627,6 +627,11 @@ label {
 	}
 }
 @media (max-width: 763px) {
+	.layout-container {
+		height: auto!important;
+		min-height: 100vh!important;
+		margin-bottom: 40px!important; 
+	}
 	.frontpage-menu-wrapper .forside-tekst-overskrift {
 	    text-align: center;
 	    border: 1px solid black;
