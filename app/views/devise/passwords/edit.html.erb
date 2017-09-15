@@ -1,24 +1,38 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="log-content opret-log-in-wrapper">
+  <h2 class="text-center">Skift din adgangskode</h2>
+  <div class="tab-content clearfix">
+    <div class="log-body-inner pb-4 log-in-body tab-pane fade in show active" id="signInField">
+      <div class="offset-md-4 col-md-4">
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+        <div class="form-group pt-4">
+          <%= f.label :password, "Nyt kodeord" %><br />
+          <% if @minimum_password_length %>
+          <em>(Kodeordet skal minimum være <%= @minimum_password_length %> tegn)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+        <div class="field">
+          <%= f.label :password_confirmation, "Bekræft dit nye kodeord" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
 
+        <div class="col-md-12 text-center">
+          <div class="border-image">
+            <%= f.submit "Skift mit kodeord" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <p class="text-center">
+      <%= link_to "Log ind", new_user_session_path(), class: "forside-tekst-overskrift text-uppercase" %><br />
+      <%= link_to "Opret dig", new_user_registration_path(), class: "forside-tekst-overskrift text-uppercase" %><br />
+    </p>
+  </div><!-- tab-content -->
+</div><!-- opret-log-in-wrapper -->
