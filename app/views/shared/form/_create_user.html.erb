@@ -15,7 +15,7 @@
 <div class="form-group">
   <%= f.label :password, "Kodeord:*" %>
   <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> minimum længde af kodeord)</em>
+  <em>(kodeordet skal minimum være <%= @minimum_password_length %> tegn)</em>
   <% end %><br />
   <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
 </div>

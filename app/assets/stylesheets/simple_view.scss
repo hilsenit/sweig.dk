@@ -502,6 +502,13 @@ span.divider {
 .close {
 	font-size: 43px;
 }
+
+.container {
+	padding-right: 0; 
+	padding-left: 0;
+	width: 100%;
+}
+
 }
 @media screen and (max-width: 500px) {
 	.mit-menu {
@@ -525,6 +532,5 @@ span.divider {
 	} 
 
 	.body .show-body {
-		width: 90%;
 	}
 }
