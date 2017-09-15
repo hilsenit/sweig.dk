@@ -1,6 +1,6 @@
 <%= javascript_include_tag "search_ajax" %>
 <div class="col-lg-12 main">
-	<% headline = params[:maerker_id].nil? ? "MAERKER" : @maerke.title %>
+	<% headline = params[:maerker_id].nil? ? "MÆRKER" : @maerke.title %>
 	<%= render partial: "shared/search_header", locals: {site: headline, autofocus: false} %>
 	<div class="row search-results-load hide-it">
 		<%= image_tag "sweig-logo-load", class: "loading-icon" %>

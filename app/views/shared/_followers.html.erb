@@ -6,25 +6,34 @@
         <button type="button" class="close" data-dismiss="modal"aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+      </div>
         <% if following %>
-          <h4 class="modal-title border-image" id="FollowersOverskrift">
-            <%= @user.username %> FOELGER <%= followers.length %>
+          <h4 class="modal-title text-center" id="FollowersOverskrift">
+            <%= @user.username %> FØLGER <%= followers.length %>
           </h4>
         <% else %>
-          <h4 class="modal-title border-image" id="FollowersOverskrift">
-            <%= followers.length %> FOELGER <%= @user.username %>
+          <h4 class="modal-title text-center" id="FollowersOverskrift">
+            <%= followers.length %> FØLGER <%= @user.username %>
           </h4>
         <% end %>
-      </div>
       <div class="modal-body p-4">
         <% followers.each do |follower| %>
-          <div class="row follower">
-            <h4 class="col-md-8">
+          <div class="row follower my-2">
+            <h4 class="col-md-8 ">
               <% if follower.id == current_user.id %>
-                <%= link_to "| #{follower.username} | #{follower.works.published_works.length} værker", user_biblo_path(current_user.friendly_id)  %>  
-                
+                <%= link_to user_biblo_path(current_user.friendly_id) do %>  
+                 <h5 class="">|<%= follower.username %> <small>(DIG)</small> </h5>
+                <% end %>
               <% else %>
-                <%= link_to "| #{follower.username} | #{follower.works.published_works.length} værker", user_path(follower.friendly_id)  %>  
+                <%= link_to user_path(follower.friendly_id) do %>  
+                  <h5 class="">|<%= follower.username %></h5>
+                  <% pub_size = follower.works.published_works.size %>
+                  <% if pub_size > 0 %>
+                    <h6 class="pt-2"><%= pub_size %> værker.</h6>  
+                  <% else %>
+                    <h6 class="pt-2"></h6>
+                  <% end %> 
+                <% end %>
               <% end %>
             </h4>
           </div>

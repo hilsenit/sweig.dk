@@ -30,6 +30,10 @@ ul, li {
 }
 a {
 	font-family: Roboto;
+	&:hover {
+		text-decoration: underline!important;
+
+	}
 }
 body {
 	display: flex;
@@ -151,7 +155,7 @@ color: black;
 	background-color: #fff6ff;
 }
 #FollowersOverskrift {
-	color: white;
+	
 }
 
 .follower {
@@ -488,7 +492,7 @@ label {
     text-transform: uppercase;
     color: black;
 }
-.opret-wrapper {
+
 	.opret-vaerk {
 		border-color: transparent;
 		padding: .5em 1em;
@@ -498,8 +502,12 @@ label {
 	    text-align: center;
 	    font-family: Roboto;
 	    text-transform: uppercase;
+	    &:hover {
+	    	text-decoration: underline;
+	    	color: white;
+	    }
 	}
-}
+
 .modal-header-links {
 	border: 1px solid black;
     margin: 10px;
@@ -557,9 +565,9 @@ label {
 	margin: 0 auto;
 	text-align: center;
 	.active a {
-		background-color: #424242!important;
+		background-color: grey!important;
 		color: white!important;
-		border-color: black!important;
+		border-color: transparent!important;
 	}
 	.page-item {
 		a {
@@ -623,9 +631,27 @@ label {
 .text-left-md-up {
 	text-align: left;
 }
-/* MEDIA QIERIESSS */
-@media (max-width: 991px) { 
+.tab-content a {
+	text-transform: uppercase;
+	font-family: Roboto;
+}
 
+/********************** MEDIA QIERIESSS ***************************/
+/********************** MEDIA QIERIESSS ***************************/
+/********************** MEDIA QIERIESSS ***************************/
+/********************** MEDIA QIERIESSS ***************************/
+
+@media (max-width: 991px) { 
+	
+	.followmobileleft {
+		margin-right: 0!important;
+		margin-left: 25px;
+	}
+	
+	.followmobileright {
+		margin-left: 0!important; 
+		margin-right: 25px;
+	}
 	.text-center-md-down h4 {
 		text-align: center;
 	}
@@ -633,6 +659,9 @@ label {
 @media (max-width: 763px) {
 	body {
 		padding-bottom: 0px;
+	}
+	.find-headline {
+	    font-size: 2.2em;
 	}
 	.layout-container {
 		height: auto!important;

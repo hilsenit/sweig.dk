@@ -1,18 +1,17 @@
 <div id="NotLoggedIn"></div>
-<div id="FollowersModal"></div>
 <span class="foelger-bar-render">
 	<!-- TIL REMOTE FOLLOWERS PATH -->
 	<% if is_current_user? %>
 	<!-- Hvis det er ens egen profil -->
 	<div class="row text-center">
 
-		<%= link_to followers_user_path(@user), remote: true, class: "col-md-4 text-right pt-3 text-center-md-down" do %>
+		<%= link_to followers_user_path(@user), remote: true, class: "hidden-sm-down col-md-4 text-right pt-3 text-center-md-down" do %>
 		<h4><%= @user.followers.count %> FØLGER DIG</h4>
 		<% end %>
 		<div class="col-md-4 text-center">
 			<%= image_tag "bruger-mini", width: 50 %>
 		</div>
-		<%= link_to following_user_path(@user), remote: true, class: "col-md-4 text-left pt-3 text-center-md-down" do %>
+		<%= link_to following_user_path(@user), remote: true, class: "hidden-sm-down col-md-4 text-left pt-3 text-center-md-down" do %>
 		<h4>DU FØLGER <%= @user.following.count %></h4>
 		<% end %>
 
@@ -22,7 +21,7 @@
 	<% elsif user_signed_in?  %>
 	<!-- hvis det er en, der besøger siden -->
 	<div class="row text-center">
-		<div class="col-lg-12 text-center pb-4 ">
+		<div class="col-lg-12 text-center pb-4">
 			<div class="border-image">
 				<% if @user.followers? current_user %>
 				<%= link_to "FØLG IKKE", unfollow_user_path(@user), class: "btn btn-secondary" %>	
@@ -31,13 +30,13 @@
 				<% end %>
 			</div>
 		</div>
-		<%= link_to followers_user_path(@user), remote: true, class: "col-md-4 text-right pt-3 text-center-md-down" do %>
+		<%= link_to followers_user_path(@user), remote: true, class: "hidden-sm-down col-md-4 text-right pt-3 text-center-md-down" do %>
 		<h4><%= @user.followers.count %> FØLGER </h4>
 		<% end %>
 		<div class="col-md-4 text-center h1">
 			<%= link_to_user_helper(user, "|" + user.username) %>		
 		</div>
-		<%= link_to following_user_path(@user), remote: true, class: "col-md-4 text-left pt-3 text-center-md-down" do %>
+		<%= link_to following_user_path(@user), remote: true, class: "hidden-sm-down col-md-4 text-left pt-3 text-center-md-down" do %>
 		<h4>FØLGER <%= @user.following.count %></h4>
 		<% end %>
 		

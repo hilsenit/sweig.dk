@@ -10,6 +10,9 @@ class StaticPagesController < ApplicationController
 		if current_user
 			flash[:notice] = "Velkommen"
 			redirect_to user_biblo_path(current_user.friendly_id)
+		else
+
+			
 		end 
 	end
 

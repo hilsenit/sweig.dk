@@ -2,7 +2,7 @@
 <div class="log-content opret-log-in-wrapper">
   <h2 class="text-center">Skift din adgangskode</h2>
   <div class="tab-content clearfix">
-    <div class="log-body-inner pb-4 log-in-body tab-pane fade in show active" id="signInField">
+    <div class="log-body-inner pb-4 tab-pane fade in show active" id="signInField">
       <div class="offset-md-4 col-md-4">
 
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -24,7 +24,7 @@
 
         <div class="col-md-12 text-center">
           <div class="border-image">
-            <%= f.submit "Skift mit kodeord" %>
+            <%= f.submit "Skift mit kodeord", class: "btn btn-primary" %>
           </div>
         </div>
         <% end %>
