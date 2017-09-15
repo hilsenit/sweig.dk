@@ -101,19 +101,15 @@ class UsersController < ApplicationController
 		@user = User.friendly.find(params[:id])
 		current_user.follow @user 
 		generate_biblo_follow current_user, @user
-		@message = "Du FØLGER nu #{@user.username.parameterize}" 
-		respond_to do |format| 
-			format.js { render 'users/js/follow' }
-		end
+		flash[:notice] = "Du FØLGER nu #{@user.username.parameterize}" 
+		redirect_to user_path(@user.friendly_id)
 	end
 
 	def unfollow 
 		@user = User.friendly.find(params[:id])
 		current_user.unfollow @user
-		@message = "Du FØLGER ikke længere #{@user.username.parameterize}" 
-		respond_to do |format| 
-			format.js { render 'users/js/unfollow' }
-		end
+		flash[:notice] = "Du FØLGER ikke længere #{@user.username.parameterize}" 
+		redirect_to user_path(@user.friendly_id)
 
 	end
 

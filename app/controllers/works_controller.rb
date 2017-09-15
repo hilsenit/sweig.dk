@@ -61,7 +61,7 @@ class WorksController < ApplicationController
 			@work = Work.friendly.find(params[:id])	 
 			work_views 	
 			@user = @work.user
-			@head_title = "'#{@work.title}' af: #{@user.username}"
+			@head_title = "'#{@work.title}' af #{@user.username}"
 		rescue
 			not_found
 		end

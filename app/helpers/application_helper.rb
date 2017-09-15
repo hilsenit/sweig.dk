@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def link_to_user_helper user, string, classes=""
-		if current_user != nil && current_user.id == user.id
+		if user_signed_in? && current_user.id == user.id
 			link_to string, user_biblo_path(user.friendly_id), class: classes 
 		else
 			link_to string, user_path(user.friendly_id), class: classes

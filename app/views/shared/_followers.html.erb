@@ -16,18 +16,19 @@
           </h4>
         <% end %>
       </div>
-      <div class="modal-body">
+      <div class="modal-body p-4">
         <% followers.each do |follower| %>
-          <% if current_user.id == follower.id %>
-            <%= link_to user_biblo_path(follower.id) do %>
-              <p class="lead"><%= follower.username %> / <%= fol = follower.works.published.length %> <%= fol > 1 ? "værker" : "værk" %></p>
-            <% end %>          
-          <% else %>
-            <%= link_to user_path(follower.id) do %>
-              <p class="lead"><%= follower.username %> / <%= fol = follower.works.published.length %> <%= fol > 1 ? "værker" : "værk" %></p>
-            <% end %>          
-          <% end %>
-        <% end%>
+          <div class="row follower">
+            <h4 class="col-md-8">
+              <% if follower.id == current_user.id %>
+                <%= link_to "| #{follower.username} | #{follower.works.length} værker", user_biblo_path(current_user.friendly_id)  %>  
+                
+              <% else %>
+                <%= link_to "| #{follower.username} | #{follower.works.length} værker", user_path(follower.friendly_id)  %>  
+              <% end %>
+            </h4>
+          </div>
+        <% end %>
       </div>
       <div class="modal-footer">
 

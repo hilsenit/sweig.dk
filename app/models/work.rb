@@ -26,12 +26,6 @@ class Work < ApplicationRecord
 		split(",").map(&:upcase!)
 	end
 
-	# def tags_can_not_be_lowercase
-	# 	if all_tags_in_s.split(",").any?{|tag| tag.upcase != tag}
-	# 		errors.add(:tags, "Der var en fejl med dine mærker. Prøv igen.")
-	# 	end 
-	# end
-
 	def all_tags_in_s_size
 		tag_array = self.all_tags_in_s.split(",")
 		errors.add(:tags, "Max 5 mærker pr. værk") if tag_array.size > 5 
