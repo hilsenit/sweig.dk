@@ -17,7 +17,7 @@
 				<%= work.title %>
 			</p>
 			<div class="text-left user-work-overview">
-				<%= truncate(strip_tags(work.body.html_safe), length: 80)%>
+				<%= truncate(strip_tags(simple_format(work.body.html_safe)), length: 80) %>
 			</div>
 		<% end %><!-- user_work_path_link -->
 		</div><!-- works-show-box -->
