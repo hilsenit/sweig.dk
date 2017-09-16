@@ -9,7 +9,7 @@
 		</p>
 	</div>
 <% else %>
-	<h2 class="mt-4 user-work-header black">Biblo <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "BIBLO er siden, hvor du bliver underrettet om dem du følgers udgivelser og andres aktiviteter, der vedrører dig." %></h2>
+	<h2 class="mt-4 user-work-header black">Biblo <%= fa_icon "info-circle", data: {toggle: "tooltip"}, title: "BIBLO er siden, hvor du bliver underrettet om dine følgers udgivelser og andres aktiviteter, der vedrører dig." %></h2>
 	<div class="biblo-wrapper">
 		<%= render partial: "stories", locals: {stories: @stories, stories_length: @stories_length} %>
 	</div>
