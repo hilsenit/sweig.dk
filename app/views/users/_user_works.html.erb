@@ -16,7 +16,7 @@
 			<p class="lead">
 				<%= work.title %>
 			</p>
-			<div class="text-left">
+			<div class="text-left user-work-overview">
 				<%= truncate(strip_tags(work.body.html_safe), length: 80)%>
 			</div>
 		<% end %><!-- user_work_path_link -->
