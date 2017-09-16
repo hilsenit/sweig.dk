@@ -10,9 +10,8 @@ class StaticPagesController < ApplicationController
 		if current_user
 			flash[:notice] = "Velkommen"
 			redirect_to user_biblo_path(current_user.friendly_id)
-		else
-
-			
+		elsif Time.new(2017, 9, 16, 15, 20) < Time.now
+			redirect_to forside_path()
 		end 
 	end
 
