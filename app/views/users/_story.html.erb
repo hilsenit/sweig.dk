@@ -11,6 +11,8 @@
 	Du har gemt <%= link_to story.work_title, user_work_path(story.t_other_friendly_id, story.work_friendly_id) %>. Skrevet af <%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %>
 <% elsif story.story_type == "work_saved" %>
 	<%= link_to story.t_other_username, user_path(story.t_other_friendly_id) %> har gemt dit værk: <%= link_to story.work_title, user_work_path(@user.slug, story.work_friendly_id) %>
+<% elsif story.story_type == "info" %>
+	<%= story.info %>
 <% end %>
 </p>
 <p class="small text-center">
