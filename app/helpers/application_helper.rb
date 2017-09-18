@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+	def strip_html_work_helper html_string 
+		truncate(strip_tags(html_string.gsub("<br />", " ").html_safe), length: 80)
+	end
+
 	def link_to_user_helper user, string, classes=""
 		if user_signed_in? && current_user.id == user.id
 			link_to string, user_biblo_path(user.friendly_id), class: classes 
