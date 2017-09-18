@@ -17,7 +17,7 @@
 					<%= work.title %>
 				</p>
 				<span class="text-left">
-					<%= truncate(strip_tags(work.body.html_safe), length: 80).gsub("\n", " ")%>
+					<%= truncate(strip_tags(work.body.html_safe), length: 80).gsub("\n", "<br>")%>
 				</span>
 			<% end %><!-- user_work_path_link -->
 			</div><!-- works-show-box -->
