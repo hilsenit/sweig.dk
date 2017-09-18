@@ -29,7 +29,7 @@
                   <h5 class="">|<%= follower.username %></h5>
                   <% pub_size = follower.works.published_works.size %>
                   <% if pub_size > 0 %>
-                    <h6 class="pt-2"><%= pub_size %> værker.</h6>  
+                    <h6 class="pt-2"><%= pub_size %> <%= pub_size == 1 ? "værk" : "værker" %></h6>  
                   <% else %>
                     <h6 class="pt-2"></h6>
                   <% end %> 
