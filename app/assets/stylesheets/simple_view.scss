@@ -304,6 +304,21 @@ textarea:focus, input:focus{
 .work-show-outer {
 	padding: 0;
 }
+.modal-title {
+	font-family: Roboto;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+.modal-body {
+	font-family: 'Libre Baskerville';
+}
+.modal-header-links, .search-dropdown-links {
+    text-transform: uppercase;
+    color: black;
+}
 
 .modal-body-inner {
 	padding: 30px;

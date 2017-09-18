@@ -4,34 +4,14 @@
 
 <div class="col-lg-12 main">
 	<% if @saved_works.any? %>
-	<h2 class="user-work-header black">Gemte værker</h2>
-	<div class="row user-work-wrapper">
-		<% @saved_works.each do |work| %>
-		<div class="col-xs-6 works-show-wrapper col-sm-4 col-md-3">
-			<div class="works-show-box">
-			<%= link_to (fa_icon "times"), user_work_delete_current_user_save_path(work.user, work, @user, user_page: "user_page"), method: :delete, class: "float-right", title: "Fjern dette værk fra dine gemte", data: {confirm: "Er du sikker på, at du vil slette '#{work.title}'"} %>
-
-				<h6>Skrevet af: <%= link_to "| #{work.user.username.parameterize}", user_path(work.user) %></h6>
-			<%= link_to user_work_path(work.user, work) do %>
-				<p class="lead">
-					<%= work.title %>
-				</p>
-				<span class="text-left">
-					<%= truncate(strip_tags(work.body.html_safe), length: 80).gsub("\n", "<br>")%>
-				</span>
-			<% end %><!-- user_work_path_link -->
-			</div><!-- works-show-box -->
-		</div><!-- col-xs-6 -->
-		<% end %><!-- works.each -->
-	</div>
-
-
+		<h2 class="user-work-header black">Gemte værker</h2>	
+		<%= render partial: "users/saved_works", locals: {works: @saved_works, extra_class: "user-work-wrapper"} %>
 	<% else %>
-	<h2 class="user-work-header">Gemte værker</h2>
-	<p class="py-4 text-center lead user-work-wrapper">Du har ikke gemt nogle værker endnu
-	<br>Brug <%= fa_icon "save" %> under læsning.<br>
-	( Dine gemte bliver vist offentligt )
-	</p>
-		<% end %><!-- !@saved_works.any? -->
+		<h2 class="user-work-header">Gemte værker</h2>
+		<p class="py-4 text-center lead user-work-wrapper">Du har ikke gemt nogle værker endnu
+		<br>Brug <%= fa_icon "save" %> under læsning.<br>
+		( Dine gemte bliver vist offentligt )
+		</p>
+	<% end %><!-- !@saved_works.any? -->
 </div>
 

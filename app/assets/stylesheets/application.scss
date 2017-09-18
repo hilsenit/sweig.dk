@@ -496,20 +496,20 @@ label {
     color: black;
 }
 
-	.opret-vaerk {
-		border-color: transparent;
-		padding: .5em 1em;
-		background-image: url(image-path("knap-baggrund.png"));
-		color: white;
-	    display: block;
-	    text-align: center;
-	    font-family: Roboto;
-	    text-transform: uppercase;
-	    &:hover {
-	    	text-decoration: underline;
-	    	color: white;
-	    }
-	}
+.opret-vaerk {
+	border-color: transparent;
+	padding: .5em 1em;
+	background-image: url(image-path("knap-baggrund.png"));
+	color: white;
+    display: block;
+    text-align: center;
+    font-family: Roboto;
+    text-transform: uppercase;
+    &:hover {
+    	text-decoration: underline;
+    	color: white;
+    }
+}
 
 .modal-header-links {
 	border: 1px solid black;

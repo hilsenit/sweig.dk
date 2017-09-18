@@ -12,6 +12,19 @@
   <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <%= csrf_meta_tags %>
+  <meta property="og:type"          content="website" />
+  <% if content_for?(:facebook_title) %>
+  <meta property="og:title"         content="<%= yield :facebook_title %>" />
+  <% else %>
+  <meta property="og:title"         content="Sweig" />
+  <% end %>
+  <% if content_for?(:facebook_description) %>
+  <meta property="og:description"   content="<%= yield :facebook_description %>" />
+  <% else %>
+  <meta property="og:description"   content="Sweig er et nyt, åbent tidskrift for litteratur. Læs mere." />
+  <% end %>
+  <meta property="og:image"         content="<%= image_url('logo-facebook') %>" />
+
 </head>
 
 <body>
