@@ -1,3 +1,6 @@
+<% content_for :facebook_title, @work.title %>
+<% content_for :facebook_description, truncate(strip_tags(@work.body.html_safe), length: 120).gsub("\n", " ") %>
+
 <div class="col-lg-12 work-show-outer">
 
 	<%= fa_icon "angle-down", id: "NavbarToggle", class: "rotate180deg" %>
