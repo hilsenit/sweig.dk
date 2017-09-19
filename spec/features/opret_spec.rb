@@ -20,7 +20,7 @@ RSpec.describe "CreateUser", type: :request do
 
 	it "should not be possible to have the same username with capital letters" do
 		visit new_user_registration_path()
-		user_created = create(:user)
+		user_created = create(:user) #Username has to be taken!
 		within("form") do
 			fill_in "user[username]", with: user.username.upcase!
 			fill_in "user[email]", with: "another@email.com"
