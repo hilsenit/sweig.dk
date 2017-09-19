@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "CreateUser", type: :request do 
+	let(:user) {build(:user)} # RSPEC helper method, defined before each call
 
 	it "should send email when creating user" do
 		visit new_user_registration_path()
-		user = build(:user)
 		within("form") do
 			fill_in "user[username]", with: user.username
 			fill_in "user[email]", with: user.email
@@ -21,7 +21,6 @@ RSpec.describe "CreateUser", type: :request do
 	it "should not be possible to have the same username with capital letters" do
 		visit new_user_registration_path()
 		user_created = create(:user)
-		user = build(:user)
 		within("form") do
 			fill_in "user[username]", with: user.username.upcase!
 			fill_in "user[email]", with: "another@email.com"

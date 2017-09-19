@@ -27,8 +27,8 @@ class User < ApplicationRecord
 
 	#Validation
 	validates_presence_of :username, :email, :password
-	validates_uniqueness_of :email
 	validates :username, uniqueness: {case_sensitive: false} 
+	validates_uniqueness_of :email
 
 
 	def biblo
