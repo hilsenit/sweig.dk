@@ -4,6 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
 		@head_title = "Opret dig her"		
 		super
 	end	
+	
 	private
 
 	def after_sign_up_path_for(resource)	

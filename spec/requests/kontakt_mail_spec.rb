@@ -28,6 +28,4 @@ RSpec.describe "KontaktMailSent", type: :request do
 		expect(last_user_email.subject).to include("subject baby")
 	end
 
-
-
 end

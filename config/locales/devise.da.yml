@@ -4,7 +4,6 @@ da:
     confirmations:
       confirmed: "Velkommen til Sweig. Nu kan du logge ind."
       send_instructions: "Vi har sendt dig en email, så du kan aktivere."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "Hvis din mail findes i vores vilde system, så vil du modtage en mail med instruktioner snart."
     failure:
       already_authenticated: "Du er allerede logget ind."
