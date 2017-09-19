@@ -67,7 +67,13 @@ class StaticPagesController < ApplicationController
 	end
 		
 	def kontakt
-		KontaktMailer.kontakt(params[:kontakt][:email], params[:kontakt][:besked], params[:kontakt][:emne]).deliver
+		params[:kontakt].each do |key, val| 
+			if val.empty?
+				redirect_to kontakt_path(), notice: "#{key.capitalize} er tom. Prøv igen."
+				return
+			end
+		end 
+		KontaktMailer.kontakt(params[:kontakt][:email], params[:kontakt][:emne], params[:kontakt][:besked]).deliver
 		flash[:notice] = "Din besked '#{params[:kontakt][:emne]}' er blevet sendt"
 		redirect_to kontakt_path()
 	end

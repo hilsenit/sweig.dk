@@ -6,7 +6,6 @@
 		<div class="log-body-inner log-in-body tab-pane fade in show active" id="signInField">
 	<h1 class="lead text-center">Har du glemt dit kodeord?</h1>
 			<div class="offset-lg-4 col-lg-4 offset-md-2 col-md-8 offset-sm-1 col-sm-10">
-
 				<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
 				<%= devise_error_messages! %>
 

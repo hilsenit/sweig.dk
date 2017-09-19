@@ -5,7 +5,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   # MAIL SAT OPTION! TIL HEROKU
-  config.action_mailer.default_url_options = { host: 'http://www.sweig.dk/' }
+  config.action_mailer.default_url_options = { host: 'https://www.sweig.dk/' }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
