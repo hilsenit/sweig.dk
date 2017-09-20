@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_session_social
 
-
+  def do_not_visit_others_profile profile_user
+    redirect_to user_path(profile_user.friendly_id), notice: "Du kan ikke besøge andres profil"
+    return
+  end
 
   def not_found 
     if current_user

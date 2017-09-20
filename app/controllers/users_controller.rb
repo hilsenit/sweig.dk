@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!, except: [:show]
+
 	def biblo
 		@head_title = "Biblo"
 		@user = User.friendly.find(params[:user_id])
-		unless @user.id == current_user.id 
-			redirect_to user_path(@user.friendly_id)
-		else
-			flash.now[:notice] = "Det du har prøvet at finde er enten slettet eller kladdet, desværre." if params[:not_found]
-			@stories = @user.stories.limit(10)
-			@stories_length = @user.stories.size
-		end
+		@stories = @user.stories.limit(10)
+		@stories_length = @user.stories.size
+		do_not_visit_others_profile @user unless @user.id == current_user.id
+		flash.now[:notice] = "Det du har prøvet at finde er enten slettet eller kladdet, desværre." if params[:not_found]
 	end
 
 	def show
@@ -29,28 +27,19 @@ class UsersController < ApplicationController
 	def my_works # Mine værker
 		@head_title = "Dine tekster"
 		@user = User.friendly.find(params[:user_id])
-		if @user.id == current_user.id 
 		@published_works = @user.works.published
 		@draft_works = @user.works.draft
-		else 
-			flash[:notice] = "Du kan ikke besøge andres brugerprofil."
-			redirect_to user_path(@user.friendly_id)
-		end
-
+		do_not_visit_others_profile @user unless @user.id == current_user.id
 	end
 
 	def saved_works
 		@head_title = "Samling"
 		@user = User.friendly.find(params[:user_id])
-		if @user.id == current_user.id 
-			@saved_works = []
-			@user.saved_works.each do |saved_work|
-				@saved_works << Work.find(saved_work.work_id)
-			end		
-		else
-			flash[:notice] = "Du kan ikke besøge andres brugerprofil."
-			redirect_to user_path(@user.friendly_id)
-		end			
+		@saved_works = []
+		@user.saved_works.each do |saved_work|
+			@saved_works << Work.find(saved_work.work_id)
+		end		
+		do_not_visit_others_profile @user unless @user.id == current_user.id
 	end
 
 	def index

@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+	before_action :authenticate_user!, except: [:show]
 	before_action :tags_uppercase, only: [:update, :create]
 	layout "simple_view", only: [:new, :edit, :show, :create]
 
@@ -10,6 +11,7 @@ class WorksController < ApplicationController
 		@user = User.friendly.find(params[:user_id])
 		@work = Work.friendly.find(params[:id])
 		@head_title = "Rediger '#{@work.title}'"
+		do_not_visit_others_profile @user unless @user.id == current_user.id
 	end
 
 	def update
@@ -34,6 +36,7 @@ class WorksController < ApplicationController
 		@head_title = "Nyt værk"
 		@user = User.friendly.find(params[:user_id])
 		@work = @user.works.build(user_id: @user.id)
+		do_not_visit_others_profile @user unless @user.id == current_user.id
 	end
 
 	def create
