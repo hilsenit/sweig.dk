@@ -10,10 +10,10 @@
 		<div class="row show-navbar-inner">
 
 			<% unless is_current_user? %>
-			<%= link_to "|" + @user.username, user_path(@user.id), class: "hidden-md-down show-work-navbar-btn" %>
+				<%= link_to "|" + @user.username, user_path(@user.id), class: "hidden-md-down show-work-navbar-btn" %>
 			<% end %>
-			<%= link_to "LÆS", nyeste_path(), class: "hidden-md-down show-work-navbar-btn" %>
-			<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
+				<%= link_to "LÆS", nyeste_path(), class: "hidden-md-down show-work-navbar-btn" %>
+				<%= link_to fa_icon("bars"), "#",class: "mit-sign hidden-lg-up show-work-navbar-btn" %>
 			<% if current_user %>
 				<%= link_to "MIT", "#", class: "mit-sign hidden-md-down show-work-navbar-btn" %>			
 			<% end %>
