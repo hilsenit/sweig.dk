@@ -35,9 +35,9 @@
 <div class="menu-show-work text-center hidden-sm-down col-lg-12">
 	<%= link_to fa_icon("angle-left") + " TILBAGE", :back,  class: "btn btn-secondary" %>
 	<%= link_to "DINE TEKSTER", user_my_works_path(@user.friendly_id),  class: "btn btn-secondary" %>
-	<%= f.submit "Gem som kladde", data: {toggle: "tooltip"}, title: "Hvis du gemmer som kladde, er det kun dig, der kan se dit værk.", class: "btn btn-secondary" %>
+	<%= f.submit "Gem som kladde", id: "saveAsDraft", data: {toggle: "tooltip"}, title: "Hvis du gemmer som kladde, er det kun dig, der kan se dit værk.", class: "btn btn-secondary" %>
 	<div class="border-image">
-		<%= f.submit "Udgiv", data: {toggle: "tooltip"}, title: "Udgiv dit værk, så kan alle se det.", name: "status", class: "btn btn-primary" %>
+		<%= f.submit "Udgiv", id: "saveAsPublic", data: {toggle: "tooltip"}, title: "Udgiv dit værk, så kan alle se det.", name: "status", class: "btn btn-primary" %>
 	</div>
 </div>
 <div class="mobile-menu-work hide-it hidden-md-up">

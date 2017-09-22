@@ -5,6 +5,8 @@ class StaticPagesController < ApplicationController
 		@head_title = "Velkommen"
 	end
 
+	def moede_raad;end
+	
 	def redirect
 		@head_title = "Velkommen"
 		if current_user

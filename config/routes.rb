@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	get 'not_found' => 'application#not_found' 
+	get 'moede-raad' => 'static_pages#moede-raad'
 	get 'kontakt' => 'static_pages#kontakt_vindue'
 	post 'kontakt' => 'static_pages#kontakt'
 	

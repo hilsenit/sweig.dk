@@ -52,7 +52,7 @@ class WorksController < ApplicationController
 
 			generate_biblo_story_work_publish @user, @work # Application controller method
 
-			redirect_to user_work_path(@user, @work), notice: "'#{@work.title}' er blevet gemt #{"som kladde" unless params[:status] == "Udgiv"}"
+			redirect_to user_work_path(@user, @work), notice: "'#{@work.title}' er blevet #{params[:status] == "Udgiv" ? "udgivet" : "gem som kladde"}"
 		else	
 			render 'new'
 		end

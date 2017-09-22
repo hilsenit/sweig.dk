@@ -5,7 +5,7 @@
 	<% if @published_works.any?  %>
 	<h2 class="mt-4 user-work-header black">Udgivet</h2>
 	<%= render partial: "user_works", 
-	locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper", edit: true} %>
+	locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper public", edit: true} %>
 	<% else  %>
 	<h2 class="mt-4 user-work-header">Udgivelser</h2>
 		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine udgivelser kan findes i søgefeltet af alle.
@@ -19,7 +19,7 @@
 	<% if @draft_works.any? %>
 		<h2 class="mt-4 user-work-header black">Kladder</h2>
 		<%= render partial: "user_works", 
-		locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper", edit: true} %>
+		locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper drafts", edit: true} %>
 	<% else  %>
 		<h2 class="mt-4 user-work-header">Kladder</h2>
 		<div class="pt-4 pb-3 text-center lead user-work-wrapper">Dine kladder kan kun findes af dig.
