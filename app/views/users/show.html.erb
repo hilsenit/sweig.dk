@@ -1,3 +1,7 @@
+<% content_for :facebook_title, "Sweig" + " | " + @user.username %>
+<% works_titles = @published_works.map {|w| w.title } %>
+<% content_for :facebook_description, "#{works_titles.empty? ? 'Se ' + @user.username + ' profil.' : 'Værker: ' + works_titles.join(", ") }" %>
+<% binding.pry %>
 <%= render partial: "follow_unfollow_username", locals: {user: @user} %> 
 <%= render partial: "foelger_bar", locals: {user: @user} %>
 </h1>

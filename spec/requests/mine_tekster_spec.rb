@@ -28,11 +28,12 @@ RSpec.describe "MineTeksterFunctionality" do
 	it "should move when pushing UDGIV/KLADDE" do
 		log_user_in user
 		visit user_my_works_path(user.friendly_id)
-		within(".drafts") { find(:css, '.udgiv:first-child', match: :first).click } 
+		within(".drafts") { find(:css, '.udgiv', match: :first).click } 
 		within(".public") { expect(page).to have_content(user.works.first.title) } 
 		# And back again
-
-
+		visit user_my_works_path(user.friendly_id) # No js
+		within(".public") { find(:css, '.kladde', match: :first).click }
+		within(".drafts") { expect(page).to have_content(user.works.first.title) }
 	end
 
 
