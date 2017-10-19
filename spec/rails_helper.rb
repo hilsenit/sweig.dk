@@ -36,6 +36,9 @@ RSpec.configure do |config|
   config.include(UserActions)
   config.include(MailerMacros)
   config.before(:each) { reset_emails }
+
+  # Se link: https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
+  include Warden::Test::Helpers
   # For JS
   # config.before(:all) { Capybara.current_driver = :selenium }
   # config.after(:all) { Capybara.use_default_driver }
