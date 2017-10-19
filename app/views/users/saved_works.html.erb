@@ -2,7 +2,7 @@
 <%= render partial: "user_navbar", locals: {user: @user} %>
 
 
-<div class="col-lg-12 main">
+<div class="col-lg-12 main saved-works-wrapper">
 	<% if @saved_works.any? %>
 		<h2 class="user-work-header black">Gemte værker</h2>	
 		<%= render partial: "users/saved_works", locals: {works: @saved_works, extra_class: "user-work-wrapper"} %>
