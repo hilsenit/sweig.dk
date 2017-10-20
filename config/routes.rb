@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-	get 'not_found' => 'application#not_found' 
+	get 'not_found' => 'application#not_found'
 	get 'moede-raad' => 'static_pages#moede-raad'
 	get 'kontakt' => 'static_pages#kontakt_vindue'
 	post 'kontakt' => 'static_pages#kontakt'
-	
+
 	get 'fremtidsvision' => 'static_pages#fremtidsvision'
 	get 'info' => 'static_pages#info'
 	# NOT LOGGED IN MODAL
 	get 'log-in-eller-opret-dig/:message' => 'shared#not_logged_in', as: :not_logged_in, message: /.*/
-				
+
 	get 'laes' => 'static_pages#laes'
 	get 'find/nyeste' => 'static_pages#nyeste', as: :nyeste
 	get 'find/alle-maerker' => 'static_pages#alle_maerker', as: :alle_maerker
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   	get 'admin/edit', as: "rediger_admin"
   	get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
   	#SPØRGSMÅL
-  	resources :questions, path: "afstemning", except: :index do 
+  	resources :questions, path: "afstemning", except: :index do
   		#STEMMER
 	  	get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
 	  	delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
@@ -36,15 +36,16 @@ Rails.application.routes.draw do
 	end
 
 	resources :users do
-		member do 
+		member do
 			get :followers, :following, :follow, :unfollow
 		end
 
 		get 'din-biblo' => 'users#biblo', as: :biblo
 		get 'din-biblo/:story_count' => 'stories#load_more', as: :load_stories
-		
+
 		get 'mine-tekster' => 'users#my_works', as: :my_works
 		get "gemte-vaerker" => "users#saved_works", as: "saved_works"
+                get 'skift-gemte-vaerkers-visning' => 'users#toggle_saved_works_publicity', as: :saved_works_publicity
 		resources :works do
 			get "work/:current_user" => "users#save_work_for_current_user", as: "current_user_save"
 			delete ":current_user" => "users#delete_saved_work", as: "delete_current_user_save"
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
 
 	end
 
-	get "soegefelt/resultat" => "static_pages#search", as: "search"	
+	get "soegefelt/resultat" => "static_pages#search", as: "search"
 	get "velkommen" => "static_pages#index", as: :forside
 	root "static_pages#redirect"
 
