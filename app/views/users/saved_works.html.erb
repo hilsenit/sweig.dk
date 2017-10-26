@@ -10,9 +10,9 @@
       </div>
       <div class="col-lg-2">
         <%# <h4 class="user-work-header"> Vis offentligt?  </h4> %>
-        <%= form_tag user_saved_works_publicity_path(), remote: :true do %>
-          <%= check_box_tag :toggle_publicity %>
-        <% end %>
+        <%# <%= form_tag user_saved_works_publicity_path(), remote: :true do %1> %>
+        <%#   <%= check_box_tag :toggle_publicity %1> %>
+        <%# <% end %1> %>
       </div>
     </div>
     <%= render partial: "users/saved_works", locals: {works: @saved_works, extra_class: "user-work-wrapper"} %>
