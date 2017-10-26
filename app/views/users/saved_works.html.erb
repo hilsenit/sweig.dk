@@ -9,7 +9,7 @@
         <h2 class="user-work-header black">Gemte værker</h2>	
       </div>
       <div class="col-lg-2">
-        <h4 class="user-work-header"> Vis offentligt?  </h4>
+        <%# <h4 class="user-work-header"> Vis offentligt?  </h4> %>
         <%= form_tag user_saved_works_publicity_path(), remote: :true do %>
           <%= check_box_tag :toggle_publicity %>
         <% end %>
