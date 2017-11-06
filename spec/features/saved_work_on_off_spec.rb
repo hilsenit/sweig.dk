@@ -25,7 +25,6 @@ before(:each) {
 
   scenario "turn privacy ON on your saved works and another user shouldn't be able to see them" do
     visit user_saved_works_path(user.friendly_id)
-    binding.pry
     find('[name="toggle_publicity"]').click
     logout(:user)
     login_as(:user, scope: another_user)
