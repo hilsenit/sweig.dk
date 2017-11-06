@@ -1,8 +1,11 @@
-<div class="text-center alert" id="Notices">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-  <% flash.each do |type, message| %>
-    <%= message %>
-    <br>
-  <% end %>
-  <%= params[:notice] %>
+<div class="text-center alert row" id="Notices">
+  <div class="offset-1 col-10">
+    <% flash.each do |type, message| %>
+      <%= message %>
+    <% end %>
+    <%= params[:notice] %>
+  </div>
+  <div class="col-1">
+    <a href="#" class="close float-right" data-dismiss="alert" aria-label="close">×</a>
+  </div>
 </div>
