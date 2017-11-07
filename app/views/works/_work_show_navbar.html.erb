@@ -8,27 +8,40 @@
     <% unless is_current_user? %>
       <%= link_to "|" + user.username, user_path(user.friendly_id), class: "hidden-md-down show-work-navbar-btn" %>
     <% end %>
-<div class="mit-menu hide-it hiddden-md-down"></div>
+    <div class="mit-menu hide-it hiddden-md-down"></div>
     <%= link_to "LÆS", nyeste_path(), class: "hidden-md-down show-work-navbar-btn" %>
+
+    <!-- GEM / GEMT -->
+    <% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, work) %>
+      <%= link_to "GEM",
+        user_work_current_user_save_path(user, work, current_user),
+        class: "show-work-navbar-btn hidden-md-down",
+        data: {toggle: "tooltip"}, title: "Gem dette værk til din SAMLING" 
+      %>
+    <!-- Hvis du er logget ind, og du har gemt -->
+  <% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, work)  %>
+    <%= link_to "GEMT",
+      user_work_delete_current_user_save_path(user, work, current_user),
+      method: :delete,
+      class: "hidden-md-down show-work-navbar-btn green-icon",
+      data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." 
+    %>
+<% end %>
+<!-- GEM / GEMT END -->
+<!-- MAERKER -->
     <% unless work.all_tags_in_s.blank? %>
-      <%= link_to "M", "#", data: {toggle: "tooltip"}, title: "Vis værkets mærker", class: "maerker-btn hidden-md-down show-work-navbar-btn" %>
+      <%= link_to "M", "#",
+        data: {toggle: "tooltip"},
+        title: "Vis værkets mærker",
+        class: "maerker-btn hidden-md-down show-work-navbar-btn" 
+      %>
       <div class="maerker hidden-md-down hide-it">
         <% work.all_tags_in_s.split(",").each do |tag| %>
           <span class="maerke"><%= link_to tag, show_this_maerker_path(tag.parameterize, work.id) %></span>
         <% end %>
       </div>
     <% end %>
-    <!-- Hvis du er logget ind, og du ikke har gemt -->
-    <% if user_signed_in? && !is_current_user? && !is_work_already_saved_helper?(current_user.saved_works, work) %>
-      <%= link_to "GEM", user_work_current_user_save_path(user, work, current_user), class: "show-work-navbar-btn hidden-md-down", data: {toggle: "tooltip"}, title: "Gem dette værk til din SAMLING" %>
-
-      <!-- Hvis du er logget ind, og du har gemt -->
-    <% elsif user_signed_in? && is_work_already_saved_helper?(current_user.saved_works, work)  %>
-      <%= link_to "GEMT", user_work_delete_current_user_save_path(user, work, current_user), method: :delete, class: "hidden-md-down show-work-navbar-btn green-icon", data: {toggle: "tooltip"},title: "Dette værk er gemt. Tryk for at fjerne det fra dine gemte." %>
-
-    <% else %>
-
-    <% end %>
+<!-- MAERKER END -->
   </div>
 </div>
 <div class="mit-close hide-it"></div>
