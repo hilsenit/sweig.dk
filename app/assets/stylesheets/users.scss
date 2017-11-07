@@ -60,6 +60,10 @@
   display: none;
 }
 @media (min-width: 768px) {
+.show-user-headline {
+  font-size: 24px;
+  font-size: 7vw;
+}
   .sidebar {
     position: fixed;
     bottom: 0;
@@ -116,14 +120,6 @@
 
 .main {
   padding: 20px;
-}
-@media (min-width: 768px) {
-
-  .main {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-
 }
 
 

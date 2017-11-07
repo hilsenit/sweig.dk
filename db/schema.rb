@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 20170906133513) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.string "address"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "img"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "foelgers", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -154,6 +166,7 @@ ActiveRecord::Schema.define(version: 20170906133513) do
 
   add_foreign_key "comments", "questions"
   add_foreign_key "comments", "users"
+  add_foreign_key "events", "users"
   add_foreign_key "saved_works", "works"
   add_foreign_key "votes", "questions"
   add_foreign_key "votes", "users"

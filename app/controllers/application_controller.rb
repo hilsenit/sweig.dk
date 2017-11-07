@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
     return
   end
 
-  def not_found 
+  def not_found
     if current_user
       redirect_to user_biblo_path(current_user.friendly_id, not_found: true)
-    else 
-      redirect_to velkommen_path(), notice: "Det du har prøvet at finde er enten slettet eller kladdet, desværre." 
+    else
+      redirect_to forside_path(), notice: "Det du har prøvet at finde er enten slettet eller kladdet, desværre."
     end
   end
 
@@ -30,23 +30,50 @@ class ApplicationController < ActionController::Base
 
   def generate_biblo_story_work_publish followed, work
     followed.followers.each do |user|
-      user.stories << Story.create(story_type: "work", t_other_friendly_id: followed.slug, t_other_username: followed.username, work_friendly_id: work.slug, work_title: work.title)
-    end 
+      user.stories << Story.create(
+        story_type: "work",
+        t_other_friendly_id: followed.slug,
+        t_other_username: followed.username,
+        work_friendly_id: work.slug,
+        work_title: work.title
+      )
+    end
   end
 
   def generate_biblo_follow action_user, t_other_user
-    action_user.stories << Story.create(story_type: "following", t_other_friendly_id: t_other_user.slug, t_other_username: t_other_user.username) # Du følger nu t_other_user.username
-    t_other_user.stories << Story.create(story_type: "followed", t_other_friendly_id: action_user.slug, t_other_username: action_user.username) # Se du følges nu af user.username
-    
+    action_user.stories << Story.create(# Du følger nu t_other_user.username
+      story_type: "following",
+      t_other_friendly_id: t_other_user.slug,
+      t_other_username: t_other_user.username
+    )
+
+    t_other_user.stories << Story.create(# Se du følges nu af user.username
+      story_type: "followed",
+      t_other_friendly_id: action_user.slug,
+      t_other_username: action_user.username
+    )
   end
 
   def generate_biblo_save action_user, t_other_user, work_friendly_id, work_title
-    action_user.stories << Story.create(story_type: "saved_work", t_other_friendly_id: t_other_user.slug, t_other_username: t_other_user.username, work_friendly_id: work_friendly_id, work_title: work_title) # Du har gemt det her værk
-    t_other_user.stories << Story.create(story_type: "work_saved", t_other_friendly_id: action_user.slug, t_other_username: action_user.username, work_friendly_id: work_friendly_id, work_title: work_title) # "BIIIB" har gemt dit værk "værktitle"
+    action_user.stories << Story.create(# Du har gemt det her værk
+      story_type: "saved_work",
+      t_other_friendly_id: t_other_user.slug,
+      t_other_username: t_other_user.username,
+      work_friendly_id: work_friendly_id,
+      work_title: work_title
+    )
+
+    t_other_user.stories << Story.create(# "BIIIB" har gemt dit værk "værktitle"
+      story_type: "work_saved",
+      t_other_friendly_id: action_user.slug,
+      t_other_username: action_user.username,
+      work_friendly_id: work_friendly_id,
+      work_title: work_title
+    )
   end
 
   def destroy_biblo_stories
-    
+
   end
 
   def configure_permitted_parameters
