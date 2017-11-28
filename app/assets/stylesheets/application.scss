@@ -658,6 +658,10 @@ label {
   }
 }
 @media (max-width: 763px) {
+[role="tablist"] {
+  display: flex;
+  justify-content: space-evenly;
+}
   body {
     padding-bottom: 0px;
   }
@@ -697,16 +701,14 @@ label {
   }
   .soege-felt {
     line-height: 30px;
-    border: 1px solid black;
     min-width: 0px;
     width: 100%;
     height: 70px;
   }
   .under-search-btn {
     display: block;
-    border: 1px solid black; 
     padding: 10px;
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .text-center-md, .text-center-md-down {
     text-align: center!important;

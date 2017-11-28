@@ -4,11 +4,11 @@
 	 <%= text_field_tag :search, params[:search], class: "d-inline-block soege-felt", id: "soegeFelt", autofocus: false, placeholder: "Søg.." %><%= fa_icon "info-circle", data: {toggle: "tooltip"},role: "button", title: "Søg i mærker, titler, tekster og brugere.", class: "hidden-sm-down" %>
 		
 	</div>
-	<div class="col-sm-6 col-12 text-right-md-up text-center-md-down nopadding">
+	<div class="col-6 text-right-md-up text-center-md-down nopadding">
 	<span class="small hidden-sm-down">eller: </span>
 	<%= link_to "se nyeste ", nyeste_path(), class: "under-search-btn #{'underline' if site == 'NYESTE'}" %> 		
 	</div>
-	<div class="col-sm-6 col-12 text-left-md-up text-center-md-down nopadding">
+	<div class="col-6 text-left-md-up text-center-md-down nopadding">
 		<span class="hidden-sm-down pl-1">/ </span> 
 		<%= link_to "mærker", alle_maerker_path(), class: "under-search-btn  #{'underline' if site == "MAERKER"}" %>
 	</div>
