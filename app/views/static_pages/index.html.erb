@@ -1,9 +1,16 @@
 <!-- navbar button -->
 <div class="row forside forside-bil-tekst-wrapper">
-  <div class="col-12 text-center new-update">
-    &#9829; NYE FUNKTIONER PÅ VEJ! JEG-KAN-LIDE & BEGIVENHEDER &#9829;
+  <% if cookies[:removed_update].nil? %>
+    <div class="col-12 text-center new-update">
+      &#9829; NYE FUNKTIONER PÅ VEJ! JEG-KAN-LIDE & BEGIVENHEDER &#9829;
+      <%= 
+        link_to (content_tag :span, "&times;".html_safe),
+          set_cookie_path(), remote: true,
+          method: :post, class: "float-right", id: "cookieSet" 
+        %>
+    </div>
+  <% end %> 
 
-  </div>
   <div class="col-md-6 forside-bil">	
 
     <%= image_tag "baggrund-til-sweig-logo-skarpt", class: "billeder active logo-background sweig-bil", id: "mainImage",role: "tabpanel" %>
@@ -32,10 +39,10 @@
         <p role="tabpanel" class="text-center-md tab-pane tekst-forside" id="hvordan">Under LÆS kan du både søge, se nyeste og bruge mærker til at finde værker. Hvert værk har sit eget læse-vindue.<br><%= link_to "Gå til læs", nyeste_path() %>
         <p role="tabpanel" class="text-center-md tab-pane tekst-forside" id="app">Hvis du ønsker at gemme værker, følge andre brugere eller selv at kunne udgive, skal du oprette en bruger. <br><%= link_to "Gå til opret", new_user_registration_path(), class: "active" %>
 
+        <% binding.pry %>
 
       </div>
     </div>
-
   </div><!-- col-md-6 -->
 </div><!-- row forside-bil-tekst-wrapper -->
 <script type="text/javascript">
@@ -45,5 +52,8 @@
       id = $(this).attr("id");
       $("." + id ).show().siblings().hide();
     });
+    $("#cookieSet").click(function() {
+      $(".new-update").hide();
+    })
   });		
 </script>
