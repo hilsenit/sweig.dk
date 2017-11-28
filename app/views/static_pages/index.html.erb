@@ -1,16 +1,5 @@
 <!-- navbar button -->
 <div class="row forside forside-bil-tekst-wrapper">
-  <% if cookies[:removed_update].nil? %>
-    <div class="col-12 text-center new-update">
-      &#9829; NYE FUNKTIONER PÅ VEJ! JEG-KAN-LIDE & BEGIVENHEDER &#9829;
-      <%= 
-        link_to (content_tag :span, "&times;".html_safe),
-          set_cookie_path(), remote: true,
-          method: :post, class: "float-right", id: "cookieSet" 
-        %>
-    </div>
-  <% end %> 
-
   <div class="col-md-6 forside-bil">	
 
     <%= image_tag "baggrund-til-sweig-logo-skarpt", class: "billeder active logo-background sweig-bil", id: "mainImage",role: "tabpanel" %>
