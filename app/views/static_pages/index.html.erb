@@ -2,7 +2,7 @@
 <div class="row forside forside-bil-tekst-wrapper">
   <% if cookies[:removed_update].nil? %>
     <div class="col-12 text-center new-update">
-      &#9829; GLÆDELIG JUL - DER KOMMER SNART NYT :) &#9829;
+      &#9829; GLÆDELIG JULETID - DER KOMMER SNART NYT :) &#9829;
       <%=
         link_to (content_tag :span, "&times;".html_safe),
           set_cookie_path(), remote: true,
