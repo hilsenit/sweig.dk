@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # COOKIE
-  post 'set-update-shown-cookie' => 'application#set_update_shown_cookie', as: :set_cookie
+  # post 'set-update-shown-cookie' => 'application#set_update_shown_cookie', as: :set_cookie
 
   get 'not_found' => 'application#not_found'
   get 'moede-raad' => 'static_pages#moede-raad'
