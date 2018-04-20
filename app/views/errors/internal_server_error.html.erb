@@ -1,2 +1,15 @@
-<h1>Errors#internal_server_error</h1>
-<p>Find me in app/views/errors/internal_server_error.html.erb</p>
+<div class="row error-page">
+  <div class="col-sm-6 col-xs-12 text-center">
+    <%= image_tag "normal-pig.jpg", class: "d-inline-block" %>
+  </div>
+  <div class="col-sm-6 col-xs-12 mt-4">
+    <h1 class="text-center-tab-d">Hov... Vent lige lidt</h1>
+    <p class="text-center-tab-d">Du har gjort noget, som du ikke skulle!</p>
+    
+    <div class="text-center-tab-d">
+      <div class="border-image d-inline-block ">
+        <%= link_to "Gå til tilfældigt værk", random_work_path(), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

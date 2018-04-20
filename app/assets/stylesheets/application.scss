@@ -1,27 +1,26 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
  *
  *= require questions
  *= require users
  *= require works
  *= require_self
  */
+
 @import "min-bootstrap";
 @import "font-awesome";
 @import "search-placeholder";
+@import "imports/mixins";
+@import "imports/mobile-specs";
+
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+.error-page {
+  @include flex;
+  @include align-items(center);
+  @include justify-content(center);
+}
 .new-update {
   letter-spacing: 4px;
   font-family: Roboto;
@@ -44,7 +43,7 @@ a {
   }
 }
 body {
-  display: flex;
+  @include flex;;
   flex-direction: column;
   padding-bottom: 40px;
 }
@@ -484,7 +483,7 @@ label {
 }
 
 .modal-footer {
-  display: flex;
+  @include flex;;
   justify-content: center;
 }
 .modal-body {
@@ -659,7 +658,7 @@ label {
 }
 @media (max-width: 763px) {
 [role="tablist"] {
-  display: flex;
+  @include flex;;
   justify-content: space-evenly;
 }
   body {

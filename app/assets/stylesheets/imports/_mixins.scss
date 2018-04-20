@@ -1,0 +1,140 @@
+$break-phone:        400px;
+$break-phone-wide:   480px;
+$break-phablet:      560px;
+$break-tablet-small: 640px;
+$break-tablet:       768px;
+$break-tablet-wide:  1024px;
+$break-desktop:      1248px;
+$break-desktop-wide: 1440px;
+
+@mixin flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-grow($int: 0) {
+	-webkit-box-flex: $int;
+	-webkit-flex-grow: $int;
+	-moz-flex-grow: $int;
+	-ms-flex-positive: $int;
+	flex-grow: $int;
+}
+
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+    -moz-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+}
+
+@mixin no-padding-left-right {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@mixin filter($effect) {
+  -webkit-filter: $effect;
+  filter: $effect;
+}
+
+/* https://github.com/mastastealth/sass-flex-mixin/blob/master/_flex.scss */
+@mixin flex-wrap($value: nowrap) {
+  // No Webkit Box fallback.
+  -webkit-flex-wrap: $value;
+  -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else { 
+    -ms-flex-wrap: $value; 
+  }
+  flex-wrap: $value;
+}
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;		
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+     -moz-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+}
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+/* COLUMN */
+@mixin column-count($count) {
+  -moz-column-count:$count;
+  -webkit-column-count:$count;
+  column-count: $count;
+}
+@mixin column-gap($gap) {
+  -moz-column-gap: $gap;
+  -webkit-column-gap: $gap;
+  column-gap: $gap;
+}
+@mixin column-width($width) {
+  -moz-column-width: $width;
+  -webkit-column-width: $width;
+  column-width: $width;
+}
+/* COLUMN END */
+
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+$breakpoints: (
+"phone":        400px,
+"phone-wide":   480px,
+"phablet":      560px,
+"tablet-small": 640px,
+"tablet":       768px,
+"tablet-wide":  1024px,
+"desktop":      1248px,
+"desktop-wide": 1440px
+);
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}

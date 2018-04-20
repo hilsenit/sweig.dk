@@ -1,0 +1,9 @@
+@import 'imports/mixins';
+
+.text-center-tab-d {
+  @media screen and (max-width: $break-tablet) {
+    text-align: center!important;
+  }
+}
+
+
