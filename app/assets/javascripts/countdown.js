@@ -1,8 +1,8 @@
 /*
 //= require rails-ujs
 //= require jquery
-//= require jquery.plugin.min
-//= require jquery.countdown
-//= require jquery.countdown-da
+//= require jquery/jquery.plugin.min
+//= require jquery/jquery.countdown
+//= require jquery/jquery.countdown-da
 
 */

@@ -51,13 +51,10 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-
-
   # DEVISE
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # FONTS
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-  config.assets.precompile += %w( .svg .eot .woff .ttf)
+  # config.assets.precompile += %w( .svg .eot .woff .ttf)
 
 end
