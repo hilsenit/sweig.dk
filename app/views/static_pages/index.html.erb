@@ -33,7 +33,16 @@
       </div>
     </div>
   </div><!-- col-md-6 -->
+
+  <div class="col-12 mt-4">
+    <h3 class="text-center">8 tilfældige</h3>
+    <div class="row">
+      <%= render partial: 'works/work', collection: @works %>
+    </div>
+  </div>
+
 </div><!-- row forside-bil-tekst-wrapper -->
+
 <script type="text/javascript">
   $(document).ready(function($) {
     $(".forside-tekst-overskrift a").click(function(e) {
