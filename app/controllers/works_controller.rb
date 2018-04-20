@@ -1,10 +1,15 @@
 class WorksController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :random_work]
   before_action :tags_uppercase, only: [:update, :create]
   layout "simple_view", only: [:new, :edit, :show, :create]
 
   def index
     redirect_to new_user_work_path()
+  end
+
+  def random_work
+    work = Work.published_works.sample
+    redirect_to user_work_path(work.user.friendly_id, work.friendly_id)
   end
 
   def edit

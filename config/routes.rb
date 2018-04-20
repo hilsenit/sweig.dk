@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # ERROR PAGES
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
+
+  get 'tilfaeldigt-vaerk' => "works#random_work", as: :random_work
+
   # COOKIE
   # post 'set-update-shown-cookie' => 'application#set_update_shown_cookie', as: :set_cookie
 
@@ -23,14 +29,17 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#show', as: "admin"
   get 'admin/edit', as: "rediger_admin"
   get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
+
   #SPØRGSMÅL
   resources :questions, path: "afstemning", except: :index do
+
     #STEMMER
     get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
     delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
     resources :comments
   end
   get "stem" => "questions#index"
+
   # DEVISE
   devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do
