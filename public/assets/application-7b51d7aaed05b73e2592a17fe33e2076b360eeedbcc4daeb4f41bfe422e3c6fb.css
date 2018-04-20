@@ -3984,19 +3984,19 @@
 .main {
   padding: 20px;
 }
-/* line 9, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
+/* line 1, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
 .works-show-box {
   border: 1px solid black;
 }
-/* line 11, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
+/* line 3, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
 .works-show-box .work-text {
   word-break: break-all;
 }
-/* line 13, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
+/* line 5, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
 .works-show-box .work-text:hover {
   color: black;
 }
-/* line 17, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
+/* line 9, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/works.scss */
 .works-show-box .lead {
   margin-top: 10px;
 }

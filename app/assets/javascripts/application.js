@@ -14,7 +14,7 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery/jquery.autosize
+//= require jquery.autosize
 //= require search_ajax
 // require_tree .
 

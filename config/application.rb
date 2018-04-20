@@ -8,6 +8,12 @@ module SweigApp
   class Application < Rails::Application
     config.load_defaults 5.1
 
+
+    # Just added
+    config.serve_static_assets = true
+    config.assets.compile = true
+
+
     config.exceptions_app = self.routes
 
     I18n.enforce_available_locales = false

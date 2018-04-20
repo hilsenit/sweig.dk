@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Just added
+  config.serve_static_assets = true
+  config.assets.compile = true
   # Settings specified here will take precedence over those in config/application.rb.
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -13,7 +16,7 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
-    config.action_controller.perform_caching = true
+    config.action_controller.perform_caching = false
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -21,7 +24,6 @@ Rails.application.configure do
     }
   else
     config.action_controller.perform_caching = false
-
     config.cache_store = :null_store
   end
 
@@ -53,8 +55,5 @@ Rails.application.configure do
 
   # DEVISE
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  # FONTS
-  # config.assets.precompile += %w( .svg .eot .woff .ttf)
 
 end

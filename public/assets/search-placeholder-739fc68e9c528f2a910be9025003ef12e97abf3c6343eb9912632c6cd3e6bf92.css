@@ -1,0 +1,51 @@
+/* line 1, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/search-placeholder.scss */
+.search-placeholder::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  text-transform: uppercase;
+  font-weight: 1000;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: black;
+}
+
+/* line 8, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/search-placeholder.scss */
+.search-placeholder:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  text-transform: uppercase;
+  font-weight: 1000;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: black;
+  opacity: 1;
+}
+
+/* line 16, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/search-placeholder.scss */
+.search-placeholder::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  text-transform: uppercase;
+  font-weight: 1000;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: black;
+  opacity: 1;
+}
+
+/* line 24, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/search-placeholder.scss */
+.search-placeholder:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  text-transform: uppercase;
+  font-weight: 1000;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: black;
+}
+
+/* line 31, /Users/bruger/Desktop/Sweig/sweig.dk/SweigApp/app/assets/stylesheets/search-placeholder.scss */
+.search-placeholder::-ms-input-placeholder {
+  /* Microsoft Edge */
+  text-transform: uppercase;
+  font-weight: 1000;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: black;
+}

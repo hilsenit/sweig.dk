@@ -18092,7 +18092,6 @@ $(document).ready(function($) {
 
 
 
-// require turbolinks
 // require_tree .
 
 ;
