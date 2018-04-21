@@ -11,6 +11,7 @@
 @import "search-placeholder";
 @import "imports/mixins";
 @import "imports/mobile-specs";
+@import "imports/paper";
 
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
@@ -21,10 +22,17 @@
   @include align-items(center);
   @include justify-content(center);
 }
-
+a:focus, a:hover {
+  color: black!important;
+}
 #mainImage {
   opacity: 0;
 }
+
+.frontpage-rotate {
+  // @include rotate(-37deg);
+}
+
 .new-update {
   letter-spacing: 4px;
   font-family: Roboto;
@@ -752,7 +760,7 @@ label {
     }
   }
   .container {
-    width: 100%;
+    width: 90%;
   }
 }
 
