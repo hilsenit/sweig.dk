@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 
 	def index
 		@head_title = "Velkommen"
-    @works = Work.published.order('random()').limit(8)
+    @works = Work.published.sample(8)
 	end
 
 	def moede_raad;end

@@ -21,6 +21,10 @@
   @include align-items(center);
   @include justify-content(center);
 }
+
+#mainImage {
+  opacity: 0;
+}
 .new-update {
   letter-spacing: 4px;
   font-family: Roboto;

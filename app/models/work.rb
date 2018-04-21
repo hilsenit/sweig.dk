@@ -5,6 +5,7 @@ class Work < ApplicationRecord
 
 	extend FriendlyId
 	friendly_id :title, use: :slugged
+
 	enum status: { draft: 0, published: 1}
 
 	belongs_to :user
@@ -13,7 +14,6 @@ class Work < ApplicationRecord
 
 	has_many :markings
 	has_many :marks, through: :markings
-
 
 	validates :title, presence: { message: "Overskrift mangler"}
 	validates :body, presence: { message: "Tekst mangler"}
@@ -28,7 +28,7 @@ class Work < ApplicationRecord
 
 	def all_tags_in_s_size
 		tag_array = self.all_tags_in_s.split(",")
-		errors.add(:tags, "Max 5 mærker pr. værk") if tag_array.size > 5 
+		errors.add(:tags, "Max 5 mærker pr. værk") if tag_array.size > 5
 		errors.add(:tags, "Mærker kan max være 30 tegn") if tag_array.any? {|t| t.size > 30}
 	end
 
