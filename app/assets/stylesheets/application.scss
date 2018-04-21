@@ -750,9 +750,6 @@ label {
     border-top: 1px solid black;
     position: relative;
   }	
-  .tekst-forside {
-    padding: 0 20px!important;
-  }
   .opret-log-in-wrapper {
     margin-top: 40px;
     .log-in-body {
@@ -761,6 +758,17 @@ label {
   }
   .container {
     width: 90%;
+  }
+  .tab-content {
+    padding: 0 30px;
+    min-height: 125px;
+    .text-forside {
+      margin-bottom: 0px!important;
+    }
+  }
+  .search-result-wrapper {
+    border-bottom: 2px dotted black;
+    padding-bottom: 20px;
   }
 }
 
