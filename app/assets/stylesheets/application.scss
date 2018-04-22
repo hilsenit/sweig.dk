@@ -21,6 +21,9 @@
   @include flex;
   @include align-items(center);
   @include justify-content(center);
+  .pig {
+    width: 100%;
+  }
 }
 a:focus, a:hover {
   color: black!important;
