@@ -23,6 +23,7 @@
   @include justify-content(center);
   .pig {
     width: 100%;
+    max-width: 336px;
   }
 }
 a:focus, a:hover {
