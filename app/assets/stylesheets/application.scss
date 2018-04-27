@@ -395,6 +395,9 @@ label {
   .forside-bil {
     min-height: 439px;
     text-align: center;
+    @media screen and (max-width: 763px) {
+      min-height: 0;
+    }
     img.active {
       display: inline-block;
     }
