@@ -54,9 +54,13 @@ gem 'pry-byebug'
 gem 'devise'
 gem 'devise-i18n'
 gem 'autosize-rails'
+
 # Oversættelse
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
+
 #Testing
 gem 'bootstrap-tagsinput-rails'
 gem 'tinymce-rails'
 gem 'kaminari'
+
+gem 'webpacker'
