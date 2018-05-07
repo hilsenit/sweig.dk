@@ -1,15 +1,19 @@
-$(document).ready(function($) {
-	$("#soegeFelt").on("keyup paste", function() {
-		$(".find-headline").text("SØG");
-		$(".underline").removeClass('underline');
-		$(".search-results-load").show();
-		$search_text = $(this).val();
-		$.ajax({
-			url: '/soegefelt/resultat',
-			type: 'GET',
-			data: {search: $search_text}
-		});	
-		$(".search-results-load").delay(800).fadeOut(300);
-	});
-});
+function resizeGridItem(item){
+   grid = document.getElementsByClassName("read-grid")[0];
+   rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+   rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+   rowSpan = Math.ceil((item.querySelector('.content').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+   item.style.gridRowEnd = "span "+rowSpan;
+}
+
+function resizeAllGridItems(){
+   allItems = document.getElementsByClassName("item");
+   for(x=0;x<allItems.length;x++){
+      resizeGridItem(allItems[x]);
+   }
+}
+
+window.onload = resizeAllGridItems();
+
+window.addEventListener("resize", resizeAllGridItems);
 

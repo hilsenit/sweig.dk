@@ -1,11 +1,28 @@
-<%= javascript_include_tag "search_ajax" %>
-<div class="col-lg-12 main">
-  <%= render partial: "shared/search_header", locals: {site: "SØG", autofocus: true} %>
-  <div class="row search-results-load hide-it">
-    <%= image_tag "sweig-logo-load", class: "loading-icon" %>
-  </div>
-  <div class="row search-results mb-4">
-    <!-- TIL SØGERESULTATERNE -->
-  </div>
+<div class="row">
+  <div class="col-6 text-center">Mosaik</div>
+  <div class="col-6 text-center">En af gangen</div>
 </div>
+<div class="read-grid">
+  <% @works.each do |work| %>
+    <div class="read-grid-work item blog">
+      <div class="content">
+        <h6 class="read-username"><%= link_to_user_helper work.user, "| #{work.user.username.parameterize}" %></h6>
+        <% unless work.all_tags_in_s.blank? %>
+          <% work.all_tags_in_s.split(",").each do |tag| %>
+            <small class="small-marks"><%= link_to tag, show_this_maerker_path(tag.parameterize, work.id) %></small>
+          <% end %>
+        <% end %>
+        <%= link_to user_work_path(work.user.friendly_id, work.friendly_id), class: "work-text" do %>
+        <p class="lead">
+          <%= work.title %>
+        </p>
+        <div class="text-left user-work-overview">
+          <%= strip_html_work_helper work.body %>
+        </div>
+        <% end %><!-- user_work_path_link -->
+      </div><!-- content -->
+    </div><!-- read-grid-work -->
+  <% end %>
+</div><!-- grid-read -->
 
+<%= javascript_include_tag "search_ajax" %>

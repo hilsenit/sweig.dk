@@ -20,8 +20,8 @@ class StaticPagesController < ApplicationController
 	end
 
 	def laes
-		@head_title = "Læs og find værker"
-		@newest_works = Work.published.limit(8)
+		@head_title = "Læs værker"
+		@works = Work.published
 	end
 
 	def fremtidsvision
