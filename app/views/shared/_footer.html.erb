@@ -4,7 +4,9 @@
 	<%= link_to "KONTAKT", kontakt_path(), class: "#{'active-footer' if current_page?(kontakt_path())} #{footer_size_helper} text-center footer-text col-sm-6" %>
 	<%= link_to "INFO", info_path(), class: "#{'active-footer' if current_page?(info_path())} #{footer_size_helper} text-center footer-text col-sm-6" %>
 	<% if current_user %>
-	<%= link_to (fa_icon "window-close", text: "SLET BRUGER", right: true), user_registration_path(), method: :delete, data: {confirm: "Er du sikker på, at du vil slette din bruger? Dette vil slette alle dine udgivelse, kladder, gemte, og din biblo. Altså... alt! Og du kan ikke få det igen."}, class: "col-md-3 text-center footer-text col-sm-6" %>
+		<%= link_to "LOG UD", destroy_user_session_path(), class: "col-md-3 text-center footer-text col-sm-6", method: :delete %> 
+    <%# DU SKAL BRUGE DEN HER SENERE %>
+	<%# <%= link_to (fa_icon "window-close", text: "SLET BRUGER", right: true), user_registration_path(), method: :delete, data: {confirm: "Er du sikker på, at du vil slette din bruger? Dette vil slette alle dine udgivelse, kladder, gemte, og din biblo. Altså... alt! Og du kan ikke få det igen."}, class: "col-md-3 text-center footer-text col-sm-6" %1> %>
 	<% end %>
 
 </div>

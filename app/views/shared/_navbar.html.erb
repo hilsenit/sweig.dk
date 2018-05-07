@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<%= link_to "LOG UD", destroy_user_session_path(), class: "nav-link text-center modal-header-links", method: :delete %> 
+      <%= link_to "SØG OG FIND", "#", class: "nav-link text-center modal-header-links" %>
 	</div>
 	<% else %>
 	<div class="col-md-12">
@@ -46,10 +46,10 @@
 	</div>
 	<div class="col-md-4 text-center">
 		<% if user_signed_in? %>
-		<%= link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}" %>
+     <%= link_to "SØG", "#", class: "" %>
 	</div>
 	<div class="col-md-4 text-center">
-		<%= link_to "LOG UD", destroy_user_session_path(), method: :delete %> 
+		<%= link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}" %>
 	</div>
 		<% else %>
 		<%= link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}" %> 
