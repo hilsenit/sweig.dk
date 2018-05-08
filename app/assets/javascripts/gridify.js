@@ -115,14 +115,25 @@ srcNode: '.item',             // grid items (class, node)
   document.querySelector('.read-grid').gridify(options);
 
   var one_row_btn = document.getElementById('oneRow');
-  one_row_btn.addEventListener('click', function() {
-    var width = window.innerWidth / 2;
-    var read_grid = document.querySelector('.read-grid');
-    read_grid.style.margin = "0 auto";
-    read_grid.style.width = width + "px";
-    options.width, options.max_width = width;
-    read_grid.gridify(options);
-  });
+  var a_number_of_rows_btn = document.getElementById('aNumberOfRows');
+
+  changeColumnsListener(window.innerWidth / 2, one_row_btn, true);
+  changeColumnsListener(250, a_number_of_rows_btn);
+
+  function changeColumnsListener(width, button, one_column=false) {
+    button.addEventListener('click', function() {
+      var column_width = width
+      var read_grid = document.querySelector('.read-grid');
+      if (one_column) {
+        read_grid.style.margin = "0 auto";
+        read_grid.style.width = column_width + "px";
+      } else {
+        read_grid.style.width = "100%";
+      }
+      options.width, options.max_width = column_width;
+      read_grid.gridify(options);
+    });
+  }
 
 };
 
