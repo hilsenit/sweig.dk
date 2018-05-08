@@ -1,0 +1,6 @@
+.row
+  = link_to "FREMTID", fremtidsvision_path(), class: "#{'active-footer' if current_page?(fremtidsvision_path())} #{footer_size_helper} text-center footer-text col-sm-6"
+  = link_to "KONTAKT", kontakt_path(), class: "#{'active-footer' if current_page?(kontakt_path())} #{footer_size_helper} text-center footer-text col-sm-6"
+  = link_to "INFO", info_path(), class: "#{'active-footer' if current_page?(info_path())} #{footer_size_helper} text-center footer-text col-sm-6"
+  - if current_user
+    = link_to "LOG UD", destroy_user_session_path(), class: "col-md-3 text-center footer-text col-sm-6", method: :delete

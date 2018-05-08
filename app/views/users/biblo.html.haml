@@ -1,0 +1,17 @@
+= render partial: "foelger_bar", locals: {user: @user}
+= render partial: "user_navbar", locals: {user: @user}
+%hr/
+- if @stories.empty?
+  %h2.mt-4.user-work-header Biblo
+  .row.user-work-wrapper.pt-4
+    %p.lead.offset-lg-2.col-lg-8.text-center
+      %strong BIBLO
+      er siden, hvor du bliver underrettet om dem du følgers udgivelser og andres aktiviteter, der vedrører dig.
+      %br/
+- else
+  %h2.mt-4.user-work-header.black
+    Biblo #{fa_icon "info-circle", data: {toggle: "tooltip"}, title: "BIBLO er siden, hvor du bliver underrettet om dine følgers udgivelser og andres aktiviteter, der vedrører dig."}
+  .biblo-wrapper
+    = render partial: "stories", locals: {stories: @stories, stories_length: @stories_length}
+:javascript
+  $('[data-toggle="tooltip"]').tooltip();

@@ -1,0 +1,15 @@
+.row
+  .image
+    = image_tag "baggrund-til-sweig-logo-skarpt", class: "sweig"
+    #countDown
+:javascript
+  $(document).ready(function() {
+  	var newYear = new Date(); 
+  	newYear = new Date(2017, 8, 16, 15, 35); 
+  	$('#countDown').countdown({until: newYear, timezone: +2}); 		
+  });
+  	function backgroundColorFlash() {
+  		var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});	
+  		$(".row").css("background-color", randomColor);
+  	}
+  	window.setInterval(backgroundColorFlash, 1000);

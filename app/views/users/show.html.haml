@@ -1,0 +1,25 @@
+- content_for :facebook_title, "Sweig" + " | " + @user.username
+- works_titles = @published_works.map {|w| w.title }
+- content_for :facebook_description, "#{works_titles.empty? ? 'Se ' + @user.username + ' profil.' : 'Værker: ' + works_titles.join(", ") }"
+= render partial: "foelger_bar", locals: {user: @user}
+.col-lg-12.main
+  - if @published_works.any?
+    %h2.mt-4.user-work-header.black Udgivet
+    = render partial: "user_works",                                                                              |
+      locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper", edit: nil} |
+  - else
+    %h2.mt-4.user-work-header Udgivelser
+    .pt-4.pb-3.text-center.lead.user-work-wrapper
+      = @user.username
+      har ikke udgivet noget.
+    / text-center lead
+  - if @saved_works.any?
+    %h2.mt-4.user-work-header.black Gemte værker
+    = render partial: "user_works",                                                                        |
+      locals: {works: @saved_works, arrow: "up", user: @user, extra_class: "user-work-wrapper", edit: nil} |
+  - else
+    %h2.mt-4.user-work-header Gemte værker
+    .pt-4.pb-3.text-center.lead.user-work-wrapper
+      = @user.username
+      har ikke gemt nogle værker.
+    / text-center lead

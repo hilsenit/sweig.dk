@@ -1,0 +1,15 @@
+- comments.each do |comment|
+  .col-lg-10.comment{:id => "#{comment.id}"}
+    = link_to "Slet kommentar", question_comment_path(comment.question_id, comment), class: "btn btn-secondary", method: :delete if current_user.admin?
+    %br/
+    = comment.text
+    .small
+      = link_to "|" + comment.user.username, user_path(comment.user)
+      - if current_user.comments.exists? comment.id
+        = link_to " / rediger", edit_question_comment_path(comment.question, comment), remote: true
+        = link_to "/ slet", question_comment_path(comment.question_id, comment),                |
+          method: :delete, data: {confirm: "Er du sikker på, at du vil slette din kommentar?" } |
+      \/ Oprettet for #{distance_of_time_in_words(Time.now, comment.created_at)} siden.
+    %hr/
+  / col-lg-10
+  .col-lg-2.small

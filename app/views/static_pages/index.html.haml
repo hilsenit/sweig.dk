@@ -1,0 +1,45 @@
+/ navbar button
+.row.forside.forside-bil-tekst-wrapper
+  .col-md-6.forside-bil
+    = image_tag "baggrund-til-sweig-logo-skarpt", class: "billeder active logo-background sweig-bil", id: "mainImage",role: "tabpanel"
+    = image_tag "bruger", class: "billeder hide-it logo-background app-bil", role: "tabpanel"
+    = image_tag "udgivelser", class: "billeder hide-it logo-background hvordan-bil", role: "tabpanel"
+  .col-md-6.mt-4
+    .row.mt-4.nav.nav-tabs{:role => "tablist"}
+      .forside-tekst-overskrift{:role => "presentation"}
+        %a#sweig-bil.active{"aria-controls" => "sweig", "data-toggle" => "tab", :href => "#sweig", :role => "tab"} Sweig
+      .forside-tekst-overskrift{:role => "presentation"}
+        %a#hvordan-bil{"aria-controls" => "hvordan", "data-toggle" => "tab", :href => "#hvordan", :role => "tab"} læs
+      .forside-tekst-overskrift{:role => "presentation"}
+        %a#app-bil{"aria-controls" => "app", "data-toggle" => "tab", :href => "#app", :role => "tab"} bruger
+    / frontpage-menu-wrapper
+    .row
+      .tab-content
+        %p#sweig.text-center-md.tab-pane.tekst-forside.active{:role => "tabpanel"} Sweig er et åbent tidsskrift for litteratur.
+        %p#hvordan.text-center-md.tab-pane.tekst-forside{:role => "tabpanel"}
+          Under LÆS kan du både søge, se nyeste og bruge mærker til at finde værker. Hvert værk har sit eget læse-vindue.
+          %br/
+          = link_to "Gå til læs", nyeste_path()
+        %p#app.text-center-md.tab-pane.tekst-forside{:role => "tabpanel"}
+          Hvis du ønsker at gemme værker, følge andre brugere eller selv at kunne udgive, skal du oprette en bruger.
+          %br/
+          = link_to "Gå til opret", new_user_registration_path(), class: "active"
+  / col-md-6
+  %hr/
+  .col-12.paper
+    %h3.text-center Otte tilfældige:
+    .row
+      = render partial: 'works/work', collection: @works
+/ row forside-bil-tekst-wrapper
+:javascript
+  $(document).ready(function($) {
+    $("#mainImage").animate({opacity: 1.0}, 1300);
+    $(".forside-tekst-overskrift a").click(function(e) {
+      e.preventDefault();
+      id = $(this).attr("id");
+      $("." + id ).show().siblings().hide();
+    });
+    $("#cookieSet").click(function() {
+      $(".new-update").hide();
+    })
+  });

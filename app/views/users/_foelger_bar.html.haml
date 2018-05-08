@@ -1,0 +1,45 @@
+#NotLoggedIn
+%span.foelger-bar-render
+  / TIL REMOTE FOLLOWERS PATH
+  .row.text-center
+    - if is_current_user?
+      / Hvis det er ens egen profil
+      = link_to followers_user_path(@user), remote: true, class: "hidden-sm-down col-4 text-center pt-3 " do
+        %h6
+          = @user.followers.count
+          FØLGER DIG
+      .col-4.text-center
+        = image_tag "bruger-mini", width: 50
+      = link_to following_user_path(@user), remote: true, class: "hidden-sm-down col-4 text-center pt-3" do
+        %h6
+          DU FØLGER #{@user.following.count}
+    - elsif user_signed_in?
+      / hvis der er en anden bruger, der besøger profilen
+      .col-lg-12.text-center
+      .col-md-12.text-center.h1.user-show-headline
+        = link_to_user_helper(user, "|" + user.username)
+      = link_to followers_user_path(@user), remote: true, class: "col-4 text-center pt-4 " do
+        %h6
+          FØLGES AF #{@user.followers.count}
+      .col-4
+        .border-image
+          - if @user.followers? current_user
+            = link_to "FØLG IKKE", unfollow_user_path(@user), class: "btn btn-secondary"
+          - else
+            = link_to "FØLG", follow_user_path(@user), class: "btn btn-secondary"
+      = link_to following_user_path(@user), remote: true, class: "col-4 text-center pt-4" do
+        %h6
+          FØLGER SELV #{@user.following.count}
+    - else
+      / ikke-logget-ind besøgende
+      .col-md-12.text-center.h1.user-show-headline
+        = link_to_user_helper(user, "|" + user.username)
+      .col-6.text-center.pt-3.text-center-md-down{"data-target" => "#loggedInModal", "data-toggle" => "modal"}
+        %h6{:role => "button"}
+          FØLGES AF #{@user.followers.count}
+      .col-6.text-center.pt-3.text-center-md-down{"data-target" => "#loggedInModal", "data-toggle" => "modal"}
+        %h6{:role => "button"}
+          FØLGER SELV #{@user.following.count}
+      = render partial: "shared/modals/not_logged_in.html.erb"
+      / hvis det er en udefra, der ikke er logget ind
+/ foelger-bar-render

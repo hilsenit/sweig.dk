@@ -1,0 +1,24 @@
+.search-result-wrapper
+  .search-results
+    - unless works.blank?
+      = render partial: "users/user_works", locals: {works: works, edit: nil, extra_class: nil}
+    - unless users.blank?
+      %h2.user-work-header.text-center.black.mt-4.pt-2= image_tag "bruger-mini"
+      .row
+        - users.each do |user|
+          .col-sm-6.col-md-4.col-lg-3.search-result-wrapper
+            - if current_user && current_user.id == user.id
+              = link_to user_biblo_path(user) do
+                .search-result
+                  %p.lead= user.username
+                  %p.text-muted
+                    = "værker(#{user.works.published.length})" unless user.works.published.empty?
+            - else
+              = link_to user_path(user) do
+                .search-result
+                  %p.lead= user.username
+                  %p.text-muted
+                    = "værker(#{user.works.published.length})" unless user.works.published.empty?
+    - if users.blank? && works.blank?
+      %p.text-center.lead.search-no-find
+        Intet var at finde under "#{params[:search]}"

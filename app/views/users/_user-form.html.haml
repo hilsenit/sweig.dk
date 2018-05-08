@@ -1,0 +1,6 @@
+= form_for :user do |f|
+  = f.label "Navn"
+  = f.text_field :name
+  = f.label "Email-adresse "
+  = f.text_field :email
+  = f.submit "Opret nu", class: "button primary"

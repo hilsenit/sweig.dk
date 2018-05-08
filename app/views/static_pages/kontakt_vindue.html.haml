@@ -1,0 +1,27 @@
+.pt-2
+.col-lg-6.offset-lg-3.col-md-8.offset-md-2.mt-4.px-4
+  .lead.text-center.my-4 Skriv, hvis du har nogle spørgsmål.
+  .small.text-right * skal udfyldes
+  = form_for :kontakt, url: kontakt_path(), method: :post, id: "kontakt" do |f|
+    .form-group
+      - unless current_user
+        = f.label :email, "Din e-mailadresse:*"
+        %br/
+        = f.email_field :email, class: "form-control", required: true, oninvalid: "this.setCustomValidity('Vær venlig at indtaste en e-mailadresse. Der mangler et \"@\"')", oninput: "setCustomValidity('')"
+      - else
+        %p
+          Svar sendes til: #{current_user.email}
+          \#{f.hidden_field :email, value: current_user.email}
+    .form-group
+      = f.label :emne, "Emne*"
+      %br/
+      = f.text_field :emne, class: "form-control", required: true, oninvalid: "this.setCustomValidity('Indtast et emne')", oninput: "setCustomValidity('')"
+    .form-group
+      = f.label :besked, "Din besked*"
+      %br/
+      = f.text_area :besked, class: "form-control", rows: 8, required: true, oninvalid: "this.setCustomValidity('Indtast en besked')", |
+        oninput: "setCustomValidity('')"                                                                                               |
+    .col-md-12.text-center
+      .border-image
+        = f.submit "Send besked", class: "btn btn-primary"
+/ - col-md-6 end

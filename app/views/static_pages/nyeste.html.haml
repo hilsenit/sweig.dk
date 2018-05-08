@@ -1,0 +1,12 @@
+= javascript_include_tag "search_ajax"
+= javascript_pack_tag "application"
+.col-lg-12.main
+  = render partial: "shared/search_header", locals: {site: "NYESTE", autofocus: false}
+  .row.search-results-load.hide-it
+    = image_tag "sweig-logo-load", class: "loading-icon"
+  .row.search-results.mb-4.mt-4
+    = paginate @newest_works
+    %span.newest-works-find
+      = render partial: "users/user_works",                        |
+        locals: {works: @newest_works, extra_class: "", edit: nil} |
+    %br/

@@ -1,0 +1,6 @@
+.row.biblo-inner-wrapper.pt-4
+  - stories.each do |story|
+    = render partial: "story", locals: {story: story}
+    / for ajax
+%div{:class => "text-center border-image load-more-button #{'d-none' if stories_length = 10}"}
+  = link_to "Indlæs flere", user_load_stories_path(@user.id, stories.size), remote: true, class: "d-inline-block btn btn-primary"

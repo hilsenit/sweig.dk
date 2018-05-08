@@ -1,0 +1,10 @@
+- works.each do |work|
+  .col-sm-6.col-md-4.col-lg-3.search-result-wrapper
+    %h6
+      Skrevet af: #{link_to "| #{work.user.username.parameterize}", user_biblo_path(work.user)}
+    = link_to user_work_path(work.user_id, work) do
+      .search-result
+        %p.lead= work.title
+        = content_tag :p, truncate(work.body, length: 30)
+        %span.small= ".ord(#{work.body.split(" ").length})"
+        %span.small= ".gemt(#{work_saved = work.saved_works.length}-#{work_saved > 1 ? "gange" : "gang"})" if work.saved_works.any?

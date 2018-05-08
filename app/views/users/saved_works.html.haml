@@ -1,0 +1,20 @@
+= render partial: "foelger_bar", locals: {user: @user}
+= render partial: "user_navbar", locals: {user: @user}
+.col-lg-12.main.saved-works-wrapper
+  - if @saved_works.any?
+    .row
+      .col-lg-10
+        %h2.user-work-header.black Gemte værker
+      .col-lg-2
+    = render partial: "users/saved_works", locals: {works: @saved_works, extra_class: "user-work-wrapper"}
+  - else
+    %h2.user-work-header Gemte værker
+    %p.py-4.text-center.lead.user-work-wrapper
+      Du har ikke gemt nogle værker endnu
+      = succeed "Brug" do
+        %br/
+      = fa_icon "save"
+      under læsning.
+      %br/
+      ( Dine gemte bliver vist offentligt )
+  / !@saved_works.any?

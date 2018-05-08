@@ -1,0 +1,5 @@
+.offset-lg-2.col-lg-8.mt-4
+  = link_to "Tilbage til oversigten", show_questions_path(), class: "btn btn-secondary"
+  %h1 Opret dit spørgsmål.
+  = render partial: "question_form", locals: {question: @question, button_text: "Opdater dit spørgsmål"}
+/ col-lg-8

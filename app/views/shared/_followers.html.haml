@@ -1,0 +1,36 @@
+/ Husk en div med id: "Followers" i det vindue, som skal have funktionen
+#Followers.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      - if following
+        %h4#FollowersOverskrift.modal-title.text-center
+          = @user.username
+          FØLGER #{followers.length}
+      - else
+        %h4#FollowersOverskrift.modal-title.text-center
+          = followers.length
+          FØLGER #{@user.username}
+      .modal-body.p-4
+        - followers.each do |follower|
+          .row.follower.my-2
+            %h4.col-md-8
+              - if follower.id == current_user.id
+                = link_to user_biblo_path(current_user.friendly_id) do
+                  %h5
+                    |#{follower.username}
+                    %small (DIG)
+              - else
+                = link_to user_path(follower.friendly_id) do
+                  %h5
+                    |#{follower.username}
+                  - pub_size = follower.works.published_works.size
+                  - if pub_size > 0
+                    %h6.pt-2
+                      = pub_size
+                      = pub_size == 1 ? "værk" : "værker"
+                  - else
+                    %h6.pt-2
+      .modal-footer

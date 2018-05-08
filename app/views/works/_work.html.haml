@@ -1,0 +1,12 @@
+.col-12.col-xs-6.col-md-4.col-lg-3.search-result-wrapper
+  %h6
+    Skrevet af: #{link_to "| #{work.user.username.parameterize}", user_path(work.user)}
+  - unless work.all_tags_in_s.empty?
+    - work.all_tags_in_s.split(",").each do |tag|
+      %small.small-marks= link_to tag, show_this_maerker_path(tag.parameterize, work.id)
+  = link_to user_work_path(work.user.friendly_id, work.friendly_id), class: "work-text" do
+    %p.lead
+      = work.title
+    .text-left.user-work-overview
+      = strip_html_work_helper work.body
+  / user_work_path_link

@@ -1,0 +1,20 @@
+:css
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
+%table{:style => "width: 100%; left: 0; height: 100%;"}
+  %tr{:style => "width: 100%; height: 50px;"}
+    %td{:colspan => "100%"}
+      = image_tag(attachments['email-haeder.png'].url, style: "width: 100%;")
+  %tr{:style => "width: 100%; height: 50px;"}
+    %td{:colspan => "100%"}
+      %h2{:style => "font-family: 'Roboto'; text-align: center; letter-spacing: 2px; color: #424242; text-transform: uppercase;"}
+        Velkommen til Sweig - #{@username}!
+      %h6{:style => "font-family: 'Roboto'; text-align: center; letter-spacing: 2px; color: #424242; text-transform: uppercase;"}
+        Din mail: #{@email} er blevet aktiveret
+      %hr/
+      %p{:style => "font-size: 16px; font-family: 'Roboto'; text-align: center; padding: 0px 80px; letter-spacing: 1px; color: black;"}
+        Du kan nu aktivere din bruger ved at trykke på den enorme knap underneden.
+  %tr{:style => "width: 50%; height: 20px"}
+    %td{:colspan => "30%", :style => "text-align: center; border: 10px solid #424242; font-size: 20px; text-transform: uppercase; font-family: Roboto"}= link_to 'AKTIVER MIN BRUGER', confirmation_url(@resource, confirmation_token: @token), style: "color: #424242; text-align: center; padding: 20px 20px; "
+  %tr{:style => "width: 100%; height: 50px;"}
+    %td{:colspan => "100%"}
+      = image_tag(attachments['email-haeder-omvendt.png'].url, style: "width: 100%;")

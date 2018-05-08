@@ -1,0 +1,7 @@
+#Notices.text-center.alert.row
+  .offset-1.col-10
+    - flash.each do |type, message|
+      = message
+    = params[:notice]
+  .col-1
+    %a.close.float-right{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} ×

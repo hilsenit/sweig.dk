@@ -1,0 +1,22 @@
+#notCopying.modal.fade
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      %h5.modal-title.text-center.px-2
+        Vær venlig ikke at kopiere andres tekster fra Sweig.
+        %br/
+      .modal-body
+        %p.text-center
+          %small (Du kan godt kopiere dine egne tekster)
+          %br/
+          Hvis du har lyst til at dele værket med andre, kan du kopiere sidens
+          %span.url URL
+          og sætte den ind på andre medier.
+        %p.show-url.hide-it= request.original_url
+      .modal-footer.text-center
+        .border-image.d-inline-block
+          = link_to "Mere info", info_path(), class: "btn btn-primary"
+        .border-image.d-inline-block
+          %button.btn.btn-primary{"data-dismiss" => "modal", :type => "button"} Luk vindue

@@ -1,4 +1,14 @@
 /* READ SITE */
+.active {
+  text-decoration: underline;
+}
+gray {
+  color: lighten(black, 60%);
+  &:hover {
+    color: black;
+  }
+
+}
 .read-grid {
   display: grid;
   grid-gap: 20px;

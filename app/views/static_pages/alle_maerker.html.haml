@@ -1,0 +1,17 @@
+= render partial: 'static_pages/laes/marks_works'
+.col-lg-12.main
+  - headline = params[:maerker_id].nil? ? "MÆRKER" : @maerke.title
+  .row.search-results.mb-4
+    .row
+      - @maerker.each do |m|
+        - next if count = m.works.count == 0
+        = link_to show_maerke_works_path(m.id, nil), remote: true, class: "label-info float-left #{'label-active' if params[:maerker_id] == m.slug}" do
+          %span.round-border-thin= m.works.count
+          = m.title
+  / search-result
+  .mt-4.maerker-result
+    = render partial: "users/user_works", locals: {works: @works, edit: nil, extra_class: nil} unless @works.blank?
+:javascript
+  $(".label-info").click(function() {
+  	$(this).addClass('label-active').siblings().removeClass('label-active');
+  });

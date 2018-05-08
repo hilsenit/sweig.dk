@@ -1,0 +1,31 @@
+= render partial: "foelger_bar", locals: {user: @user}
+= render partial: "user_navbar", locals: {user: @user}
+.col-lg-12.main
+  - if @published_works.any?
+    %h2.mt-4.user-work-header.black Udgivet
+    = render partial: "user_works",                                                                                      |
+      locals: {works: @published_works, arrow: "down", user: @user, extra_class: "user-work-wrapper public", edit: true} |
+  - else
+    %h2.mt-4.user-work-header Udgivelser
+    .pt-4.pb-3.text-center.lead.user-work-wrapper
+      Dine udgivelser kan findes i søgefeltet af alle.
+      - if @draft_works.any?
+        %p.text-center
+          Brug #{fa_icon("angle-up")} for at udgive en kladde.
+    / text-center lead
+  - if @draft_works.any?
+    %h2.mt-4.user-work-header.black Kladder
+    = render partial: "user_works",                                                                                |
+      locals: {works: @draft_works, arrow: "up", user: @user, extra_class: "user-work-wrapper drafts", edit: true} |
+  - else
+    %h2.mt-4.user-work-header Kladder
+    .pt-4.pb-3.text-center.lead.user-work-wrapper
+      Dine kladder kan kun findes af dig.
+      - if @published_works.any?
+        %br>/
+        Brug #{fa_icon("angle-down")} for at kladde et udgivet værk.
+    / text-center lead
+:javascript
+  $(document).ready(function(){
+  	$('[data-toggle="tooltip"]').tooltip();
+  });

@@ -1,0 +1,21 @@
+.log-content.opret-log-in-wrapper
+  - flash.each do |name, msg|
+    = content_tag :div, msg, id: "flash_#{name}", class: "text-center lead"
+  .tab-content.clearfix
+    #signInField.log-body-inner.log-in-body.tab-pane.fade.in.show.active
+      %h1.lead.text-center Har du glemt dit kodeord?
+      .offset-lg-4.col-lg-4.offset-md-2.col-md-8.offset-sm-1.col-sm-10
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .actions
+            .col-md-12.text-center
+              .border-image
+                = f.submit "Send mig en instruks", class: "btn btn-primary"
+        %hr/
+        %p.text-center
+          = link_to "Log ind", new_user_session_path(), class: "forside-tekst-overskrift text-uppercase"
+          %br/

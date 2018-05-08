@@ -1,0 +1,13 @@
+#NotLoggedIn
+.row
+  .offset-lg-1.col-lg-10.lead.text-center.my-4.stem-forklaring.without-border
+    %strong STEM
+    er siden, hvor du kan få indflydelse på Sweig.
+    = succeed "Her" do
+      %br/
+    %br/
+    Man har hver én stemme pr. spørgsmål.
+  /
+    <div class="offset-lg-2 col-lg-4 text-center">Flest stemmer</div>
+    <div class="col-lg-4 text-center">Sidst aktiv</div>
+= render partial: "show_questions", locals: {question: @questions}

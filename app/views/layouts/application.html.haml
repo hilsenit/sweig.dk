@@ -1,0 +1,34 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= set_title_helper
+    = favicon_link_tag "favicon.png"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    %link{:href => "https://fonts.googleapis.com/css?family=Roboto+Mono", :rel => "stylesheet"}/
+    = csrf_meta_tags
+    %meta{:content => "website", :property => "og:type"}/
+    - if content_for?(:facebook_title)
+      %meta{:content => "#{yield :facebook_title}", :property => "og:title"}/
+    - else
+      %meta{:content => "Sweig", :property => "og:title"}/
+    - if content_for?(:facebook_description)
+      %meta{:content => "#{yield :facebook_description}", :property => "og:description"}/
+    - else
+      %meta{:content => "Sweig er et nyt, åbent tidskrift for litteratur. Læs mere.", :property => "og:description"}/
+    %meta{:content => "#{image_url('logo-facebook')}", :property => "og:image"}/
+  %body
+    .layout-container.container.container-javascript-remote.notices
+      = render partial: "shared/navbar"
+      #Notices.text-center.lead
+        - flash.each do |type, message|
+          = message
+          %br/
+        = params[:notice]
+      = yield
+    / footer
+    .container.footer
+      = render partial: "shared/footer"

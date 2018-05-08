@@ -1,0 +1,5 @@
+- @stories.each do |story|
+  $(".biblo-inner-wrapper").append("#{j render partial: "users/story", locals: {story: story}}");
+$(".load-more-button").html("#{j link_to "Indlæs flere", user_load_stories_path(@user.id, @next_stories_size), remote: true, class: "d-inline-block btn btn-primary"}");
+- if @remove_button
+  $(".load-more-button").hide();

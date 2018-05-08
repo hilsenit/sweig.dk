@@ -1,0 +1,10 @@
+.container-fluid.hidden-md-down
+  .row.user-links-container
+    .col-md-3
+      = link_to "Biblo", user_biblo_path(@user.friendly_id), class: "nav-link text-center modal-header-links #{if_active_link_helper user_biblo_path(current_user.friendly_id)}"
+    .col-md-3
+      = link_to "SAMLING", user_saved_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_saved_works_path(@user)}"
+    .col-md-3
+      = link_to "Mine tekster", user_my_works_path(@user), class: "nav-link text-center modal-header-links #{if_active_link_helper user_my_works_path(@user)} #{"active-link" if current_page?(user_path(current_user.friendly_id))}"
+    .col-md-3.opret-wrapper
+      = link_to "Opret værk", new_user_work_path(@user), class: "opret-vaerk modal-header-links"

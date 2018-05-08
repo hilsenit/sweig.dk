@@ -1,0 +1,10 @@
+.row.error-page
+  .col-sm-6.col-xs-12.text-center
+    = image_tag "normal-pig.jpg", class: "d-inline-block pig"
+  .col-sm-6.col-xs-12.mt-4
+    %h1.text-center-tab-d 404
+    %h2.text-center-tab-d Hov... Vent lige lidt
+    %p.text-center-tab-d Den side, som du leder efter, er ikke mulig at finde.
+    .text-center-tab-d
+      .border-image.d-inline-block
+        = link_to "Gå til tilfældigt værk", random_work_path(), class: "btn btn-primary"

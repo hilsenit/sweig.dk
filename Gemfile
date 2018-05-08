@@ -63,4 +63,6 @@ gem 'bootstrap-tagsinput-rails'
 gem 'tinymce-rails'
 gem 'kaminari'
 
+gem "haml-rails", "~> 1.0"
+
 gem 'webpacker'

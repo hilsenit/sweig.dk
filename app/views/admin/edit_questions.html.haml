@@ -1,0 +1,12 @@
+.row.mt-4
+  %h1 Opret/rediger dine spørgsmål
+  .col-lg-12.my-4
+  = link_to "Opret nyt spørgsmål", new_question_path(), class: "btn btn-secondary"
+  .col-lg-12.my-4
+  - @questions.each do |question|
+    .col-md-12
+      %h2= question.headline
+      %p= truncate(question.text, :length => 130, :omission => "..." , :escape => false)
+      = link_to "Slet", question_path(question), method: :delete, data: {confirm: "Er du sikker på, at du vil slette?"}, class: "btn btn-warning"
+      = link_to "Rediger", edit_question_path(question), confirm: "Er du sikker på, at du vil slette" , class: "btn btn-secondary"
+      %hr/

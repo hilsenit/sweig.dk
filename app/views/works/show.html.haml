@@ -1,0 +1,52 @@
+- content_for :facebook_title, @work.title + " | " + @user.username
+- content_for :facebook_description, strip_html_work_helper(@work.body, 120)
+.col-lg-12.work-show-outer
+  = render partial: "work_show_navbar", locals: {work: @work, user: @user}
+  .container.work-view
+    .title
+      %h2.show-title= @work.title
+    .body
+      .show-body= @work.body.html_safe
+= render partial: "shared/not_copying_modal"
+/ #notCopying
+:javascript
+  $(document).ready(function(){
+    $(".maerker-btn").on("click", function(e) {
+    e.preventDefault();
+    $(".maerker").toggle();
+    $(this).toggleClass('active-mit');
+    $(this).attr('data-original-title', function(index, attr) {
+    return attr == "Vis værkets mærker" ? "Fjern mærker" : "Vis værkets mærker" // Fed kode!
+  }).tooltip('show');
+  });
+    $("#NavbarToggle, .mit-close").click(function(e) {
+    e.preventDefault();
+    $(this).toggleClass('rotate180deg');
+    $(this).toggleClass('rotatedefault');
+    $(".show-navbar-inner").toggle();
+    $(".show-navbar").toggleClass('border-bottom');
+    $(".mit-sign").toggleClass('active-mit');
+    $notices = $("#Notices");
+    $navbar = $(".show-navbar");
+      if ($notices.outerHeight() > 10) {
+        var nav_height = $notices.outerHeight() + 10;
+      } else {
+        var nav_height = 30;
+      }
+    $(".mit-menu, .mit-close").css("top", nav_height).slideToggle(400);
+    $(".mit-sign").removeClass('active-mit');
+  });			
+
+    $('[data-toggle="tooltip"').tooltip({
+    trigger: "hover"
+  });
+  });
+- unless current_user && current_user.id == @user.id
+  :javascript
+    $('body').bind('copy paste cut',function(e) {
+      e.preventDefault();
+      $("#notCopying").modal("show");
+    });
+      $(".url").on("click", function() {
+      $(".show-url").slideToggle(300);
+    })

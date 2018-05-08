@@ -1,2 +1,0 @@
-$(".comment-wrapper").html("<%= escape_javascript( render partial: 'comment', locals: {comments: @comments} ) %><%= escape_javascript(content_tag :div, (link_to "Tilføj kommentar", new_question_comment_path(@question.id), remote: true, class: "btn btn-secondary"), class: "new-comment col-lg-12") %>");
-
