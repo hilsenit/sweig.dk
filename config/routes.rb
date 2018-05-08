@@ -30,16 +30,6 @@ Rails.application.routes.draw do
   get 'admin/edit', as: "rediger_admin"
   get 'admin/vis-spoergsmål' => 'admin#edit_questions', as: :show_questions
 
-  #SPØRGSMÅL
-  resources :questions, path: "afstemning", except: :index do
-
-    #STEMMER
-    get 'stem-spoergsmaal/:vote_value' => 'votes#vote', as: :vote
-    delete 'fjern-stemme/:vote_id' => 'votes#destroy', as: :delete_vote
-    resources :comments
-  end
-  get "stem" => "questions#index"
-
   # DEVISE
   devise_for :users, skip: 'session', controllers: { registrations: 'registrations', sessions: 'sessions' }
   as :user do

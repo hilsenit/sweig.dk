@@ -1,7 +1,0 @@
-- @questions.each do |question|
-  - if current_user
-    = link_to question_path(question), class: "row" do
-      = render partial: "each_question", locals: {question: question,current_user: current_user}
-  - else
-    = link_to not_logged_in_path("Hvis du gerne vil se spørgsmålets afstemning og kommentarer, skal du enten logge ind eller oprette dig.<br> Det er smertefrit og fedt."), remote: true, class: "questions-other row" do
-      = render partial: "each_question", locals: {question: question, current_user: current_user}

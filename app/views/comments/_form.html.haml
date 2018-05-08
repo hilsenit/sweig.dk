@@ -1,6 +1,0 @@
-= form_for [question, comment], remote: true  do |f|
-  = f.hidden_field :user_id, value: current_user.id
-  = f.label :text, form_headline
-  %span#messageCounter.small
-  = f.text_area :text, class: "form-control", id: "messageField", autofocus: true
-  = f.submit "Gem", class: "btn btn-secondary"
