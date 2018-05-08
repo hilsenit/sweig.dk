@@ -113,5 +113,16 @@ srcNode: '.item',             // grid items (class, node)
          transition: 'opacity 0.5s ease' // support transition for CSS3, default: all 0.5s ease
   }
   document.querySelector('.read-grid').gridify(options);
+
+  var one_row_btn = document.getElementById('oneRow');
+  one_row_btn.addEventListener('click', function() {
+    var width = window.innerWidth / 2;
+    var read_grid = document.querySelector('.read-grid');
+    read_grid.style.margin = "0 auto";
+    read_grid.style.width = width + "px";
+    options.width, options.max_width = width;
+    read_grid.gridify(options);
+  });
+
 };
 
