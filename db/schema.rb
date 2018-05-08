@@ -10,39 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906133513) do
+ActiveRecord::Schema.define(version: 20180508162110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "biblos", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_biblos_on_user_id"
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text "text"
-    t.bigint "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["question_id"], name: "index_comments_on_question_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.string "address"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "img"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_events_on_user_id"
-  end
 
   create_table "foelgers", force: :cascade do |t|
     t.integer "follower_id"
@@ -82,14 +53,6 @@ ActiveRecord::Schema.define(version: 20170906133513) do
     t.string "slug"
     t.index ["slug"], name: "index_marks_on_slug", unique: true
     t.index ["title"], name: "index_marks_on_title", unique: true
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "headline"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "vote_count", default: 0
   end
 
   create_table "saved_works", force: :cascade do |t|
@@ -138,16 +101,6 @@ ActiveRecord::Schema.define(version: 20170906133513) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "votes", force: :cascade do |t|
-    t.bigint "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "vote_num"
-    t.bigint "user_id"
-    t.index ["question_id"], name: "index_votes_on_question_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
-  end
-
   create_table "works", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -164,10 +117,5 @@ ActiveRecord::Schema.define(version: 20170906133513) do
     t.index ["slug"], name: "index_works_on_slug", unique: true
   end
 
-  add_foreign_key "comments", "questions"
-  add_foreign_key "comments", "users"
-  add_foreign_key "events", "users"
   add_foreign_key "saved_works", "works"
-  add_foreign_key "votes", "questions"
-  add_foreign_key "votes", "users"
 end
