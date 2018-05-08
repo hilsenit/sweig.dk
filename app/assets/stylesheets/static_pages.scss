@@ -7,15 +7,14 @@ gray {
   &:hover {
     color: black;
   }
-
 }
 .read-grid {
   margin-bottom: 100px;
   .item {
     visibility: hidden;
     border: 1px solid black;
-    opacity: 0.03;
-    padding: 0 10px 0 10px; 
+    opacity: 0.05;
+    padding: 10px 10px 10px 10px; 
     &:hover {
       opacity: 1;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -28,5 +27,10 @@ gray {
   .read-username {
     line-height: 20px;
   }
-  
 }
+.read-bottom {
+  overflow: hidden;
+  height: 300px;
+
+}
+

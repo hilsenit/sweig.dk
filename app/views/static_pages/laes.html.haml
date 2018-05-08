@@ -1,7 +1,7 @@
 = javascript_include_tag "gridify"
 
 = render partial: 'static_pages/laes/marks_works'
-.read-grid.mb-4.pb-4
+.read-grid
   - @works.each do |work|
     .read-grid-work.item.blog
       %h6.read-username= link_to_user_helper work.user, "| #{work.user.username.parameterize}"
@@ -15,4 +15,5 @@
           = strip_html_work_helper work.body, 160
 
 
+.read-bottom 
 

@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
 
 	def laes
 		@head_title = "Læs værker"
-		@works = Work.published
+		@works = Work.published.includes(:marks, :user)
 	end
 
 	def fremtidsvision
