@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { WorksService } from './works.services';
+import worksTemplate from './works.html';
 import { Work } from './work';
 
 @Component({
   selector: 'works-show',
-  template: `<div *ngFor="let work of works">{{work.title}}</div>`,
+  template: worksTemplate,
   providers: [WorksService]
 
 })
