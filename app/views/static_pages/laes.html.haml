@@ -1,6 +1,9 @@
 = javascript_include_tag "gridify"
 
-= render partial: 'static_pages/laes/marks_works_rows'
+<works-show>Loading...</works-show>
+
+= javascript_pack_tag 'works_show'
+
 .read-grid
   - @works.each do |work|
     .read-grid-work.item.blog

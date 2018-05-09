@@ -36,8 +36,10 @@
       = link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}"
   - else
     .col-md-4.text-center
-      = link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}"
+      = link_to "SØG", "#", class: ""
     .col-md-4.text-center
+      = link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}"
+      %span.small &
       = link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( new_user_registration_path())}"
 
 :javascript
