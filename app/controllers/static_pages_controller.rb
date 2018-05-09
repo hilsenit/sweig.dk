@@ -21,7 +21,11 @@ class StaticPagesController < ApplicationController
 
 	def laes
 		@head_title = "Læs værker"
-		@works = Work.published.includes(:marks, :user)
+		@works = Work.published.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json { render json: @works }
+    end
 	end
 
 	def fremtidsvision

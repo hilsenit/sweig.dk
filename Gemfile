@@ -66,3 +66,4 @@ gem 'kaminari'
 gem "haml-rails", "~> 1.0"
 
 gem 'webpacker'
+gem 'angular_rails_csrf' # Oh my fucking god - if only i knew

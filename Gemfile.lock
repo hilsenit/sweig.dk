@@ -49,6 +49,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
+    angular_rails_csrf (3.1.0)
+      railties (>= 3, < 6)
     arel (8.0.0)
     autoprefixer-rails (7.1.1.1)
       execjs
@@ -307,6 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular_rails_csrf
   autosize-rails
   bootstrap!
   bootstrap-tagsinput-rails
