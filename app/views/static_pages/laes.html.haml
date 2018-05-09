@@ -4,17 +4,17 @@
 
 = javascript_pack_tag 'works_show'
 
-.read-grid
-  - @works.each do |work|
-    .read-grid-work.item.blog
-      %h6.read-username= link_to_user_helper work.user, "| #{work.user.username.parameterize}"
-      - unless work.all_tags_in_s.blank?
-        - work.all_tags_in_s.split(",").each do |tag|
-          %small.small-marks= link_to tag, show_this_maerker_path(tag.parameterize, work.id)
-      = link_to user_work_path(work.user.friendly_id, work.friendly_id), class: "work-text" do
-        %p.lead
-          = work.title
-        .text-left.user-work-overview
-          = strip_html_work_helper work.body, 160
+-# .read-grid
+-#   - @works.each do |work|
+-#     .read-grid-work.item.blog
+-#       %h6.read-username= link_to_user_helper work.user, "| #{work.user.username.parameterize}"
+-#       - unless work.all_tags_in_s.blank?
+-#         - work.all_tags_in_s.split(",").each do |tag|
+-#           %small.small-marks= link_to tag, show_this_maerker_path(tag.parameterize, work.id)
+-#       = link_to user_work_path(work.user.friendly_id, work.friendly_id), class: "work-text" do
+-#         %p.lead
+-#           = work.title
+-#         .text-left.user-work-overview
+-#           = strip_html_work_helper work.body, 160
 
 

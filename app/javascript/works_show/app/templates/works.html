@@ -1,7 +1,9 @@
-<div *ngFor="let work of works" class="read-grid-work item blog" style="visibility: visible">
-  <h6 class="read-username"><a class="" href="/users/pejacako">| {{work.username}}</a></h6>
-  <a class="work-text" href="/users/pejacako/works/da">
-    <p class="lead">{{work.title}}</p>
-    <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>
-  </a>
+<div class="read-grid">
+  <div *ngFor="let work of works" class="read-grid-work item blog" style="visibility: visible">
+    <h6 class="read-username"><a class="" href="/users/pejacako">| {{work.username}}</a></h6>
+    <a class="work-text" href="/users/pejacako/works/da">
+      <p class="lead">{{work.title}}</p>
+      <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>
+    </a>
+  </div>
 </div>
