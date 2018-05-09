@@ -20,6 +20,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/http@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-6.0.0.tgz#f409e35cd2f4990b43a37beab915ffdcd9c7c992"
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/platform-browser-dynamic@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-6.0.0.tgz#66a34b65136446cb3ec39362fd6d2dbb5482ba70"
@@ -5954,6 +5960,10 @@ webpack@^3.11.0:
     watchpack "^1.4.0"
     webpack-sources "^1.0.1"
     yargs "^8.0.2"
+
+webpacker@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/webpacker/-/webpacker-0.0.3.tgz#e90398e037cd4935c85b903bb7e71188cacf486f"
 
 websocket-driver@>=0.5.1:
   version "0.7.0"
