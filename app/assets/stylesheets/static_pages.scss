@@ -13,7 +13,18 @@ gray {
 }
 .read-grid {
   margin-bottom: 100px;
-  .item {
+  
+  .read-username {
+    line-height: 20px;
+  }
+}
+.read-bottom {
+  overflow: hidden;
+  height: 300px;
+
+}
+
+.item {
     visibility: hidden;
     border: 1px solid black;
     opacity: 1;
@@ -26,13 +37,3 @@ gray {
     }}
     
   }
-  .read-username {
-    line-height: 20px;
-  }
-}
-.read-bottom {
-  overflow: hidden;
-  height: 300px;
-
-}
-
