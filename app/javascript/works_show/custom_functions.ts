@@ -7,8 +7,10 @@ export class CustomFunctions {
     return truncated_string;
   }
 
-  gridify(options: any, node_loaded) {
-    var self = node_loaded,
+
+
+  gridify(options: any, node_selector) {
+    var self = node_selector,
         options = options || {},
         indexOfSmallest = function (a) {
             var lowest = 0;
@@ -23,15 +25,13 @@ export class CustomFunctions {
             }
             return highest;
         },
-        attachEvent = function(node, event, cb)
-        {
+        attachEvent = function(node, event, cb) {
             if (node.attachEvent)
                 node.attachEvent('on'+event, cb);
             else if (node.addEventListener)
                 node.addEventListener(event, cb);
         },
-        detachEvent = function(node, event, cb)
-        {
+        detachEvent = function(node, event, cb) {
             if(node.detachEvent) {
                 node.detachEvent('on'+event, cb);
             }
@@ -39,8 +39,7 @@ export class CustomFunctions {
                 node.removeEventListener(event, render);
             }
         },
-        render = function()
-        {
+        render = function() {
             self.style.position = 'relative';
             var items = self.querySelectorAll(options.srcNode),
                 transition = (options.transition || 'all 0.5s ease'),
@@ -50,18 +49,15 @@ export class CustomFunctions {
                 column_count = Math.max(Math.floor(width/(item_width + item_margin)),1),
                 left = column_count == 1 ? item_margin/2 : (width % (item_width + item_margin)) / 2,
                 columns = [];
-            if (options.max_width)
-            {
+            if (options.max_width) {
                 column_count = Math.ceil(width/(item_width + item_margin));
                 item_width = (width - column_count * item_margin - item_margin)/column_count;
                 left = item_margin/2;
             }
-            for (var i = 0; i < column_count; i++)
-            {
+            for (var i = 0; i < column_count; i++) {
                 columns.push(0);
             }
-            for (var i= 0, length = items.length; i < length; i++)
-            {
+            for (var i= 0, length = items.length; i < length; i++) {
                 var idx = indexOfSmallest(columns);
                 items[i].setAttribute('style', 'width: ' + item_width + 'px; ' +
                     'position: absolute; ' +
@@ -74,16 +70,16 @@ export class CustomFunctions {
                 columns[idx] += items[i].clientHeight + item_margin;
             }
             self.style.height = highestColumn(columns)+'px';
+            console.log(self.style.height + "huraaay");
         };
-    if (options.resizable)
-    {
+    render();
+    if (options.resizable) {
         attachEvent(window, 'resize', render);
         attachEvent(self, 'DOMNodeRemoved', function(){
             detachEvent(window, 'resize', render);
         });
     }
   };
-
 }
 
 
