@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { WorksService } from './works.services';
 import { CustomFunctions } from '../custom_functions';
+import { Gridify } from '../gridify';
 import worksHTML from './templates/works.html';
 import { Work } from './work';
 
@@ -8,7 +9,7 @@ import { Work } from './work';
 @Component({
   selector: 'works-show',
   template: worksHTML,
-  providers: [WorksService, CustomFunctions]
+  providers: [WorksService, CustomFunctions, Gridify]
 
 })
 export class AppComponent implements OnInit {
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private service: WorksService,
-    private custFuncs: CustomFunctions
+    private custFuncs: CustomFunctions,
+    private gridify: Gridify
   ) { } 
 
   ngOnInit() {
@@ -24,13 +26,10 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    
     var first_run = true;
     if (first_run) {
-      let options = 
-        { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'opacity 0.5s ease' };
-      let node_loaded = document.querySelector('.read-grid');
-      this.custFuncs.gridify(options, node_loaded);
+      let selector = document.querySelector('.read-grid');
+      this.gridify.createGrid(selector);
       first_run = false;
     }
 
