@@ -62,7 +62,6 @@ export class Gridify {
                   columns[idx] += items[i].clientHeight + item_margin;
               }
               self.style.height = highestColumn(columns)+'px';
-              console.log(self.style.height + "huraaay");
           };
       if (options.resizable) {
           attachEvent(window, 'resize', render);

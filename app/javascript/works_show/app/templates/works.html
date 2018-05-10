@@ -1,7 +1,7 @@
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">
-    <h6 class="read-username" ><a class="" (mouseenter)="highlightWorks(work.user_id)" href="#">| {{work.username}}</a></h6>
+    <h6 class="read-username" ><a class="" (mouseover)="highlightWorks(work.user_id)" (mouseout)="stopHighlightFunction()" href="#">| {{work.username}}</a></h6>
     <a class="work-text" href="/users/pejacako/works/da">
       <p class="lead">{{work.title}}</p>
       <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>
