@@ -1,5 +1,5 @@
 export class Gridify {
-  options: any = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'opacity 0.5s ease' };
+  options: any = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'all 0.5s ease' };
 
   createGrid(selector) {
       var self = selector,
@@ -46,7 +46,7 @@ export class Gridify {
                   item_width = (width - column_count * item_margin - item_margin)/column_count;
                   left = item_margin/2;
               }
-              for (var i = 0; i < column_count; i++) {
+              for (var i = 0; i < column_count; i++) { // WHAT DOES THIS DO! 
                   columns.push(0);
               }
               for (var i= 0, length = items.length; i < length; i++) {
@@ -61,14 +61,16 @@ export class Gridify {
 
                   columns[idx] += items[i].clientHeight + item_margin;
               }
-              self.style.height = highestColumn(columns)+'px';
+              // I've added the bottom margin (300) 
+              self.style.height = (highestColumn(columns) + 300)+'px';
+              console.log("Gridify rendered");
           };
+      render();
       if (options.resizable) {
           attachEvent(window, 'resize', render);
           attachEvent(self, 'DOMNodeRemoved', function(){
               detachEvent(window, 'resize', render);
           });
       }
-      render();
     };
 }

@@ -7,30 +7,11 @@
 .active {
   text-decoration: underline;
 }
-gray {
-  color: lighten(black, 60%);
-  &:hover {
-    color: black;
-  }
-}
-.read-grid {
-  margin-bottom: 100px;
-  
-  .read-username {
-    line-height: 20px;
-  }
-}
-.read-bottom {
-  overflow: hidden;
-  height: 300px;
-
-}
 
 .item {
-  @include transition(opacity .6s linear);
-  visibility: hidden;
-  border: 1px solid black;
-  opacity: 1;
+  @include transition(opacity .6s linear); // to .high-opacity
+  background-color: grey;
+  visibility: visible;
   padding: 10px 10px 10px 10px; 
   &:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -38,6 +19,9 @@ gray {
   a {&:hover {
     text-decoration: none!important;
   }}
+  h6 {
+    font-size: 0.9em;
+  }
   
 }
 

@@ -14,6 +14,7 @@ import { Work } from './work';
 
 export class AppComponent implements OnInit {
   works: Work[];
+  numOfTimes: number = 1;
 
   constructor(
     private service: WorksService,
@@ -26,12 +27,12 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
-    var run = true;
     var selector = document.querySelector('.read-grid');
-    if (selector && run) {
+    if (selector != null && this.numOfTimes == 4) { // Rendered 10 times if i don't do this
       this.gridify.createGrid(selector);
-      run = false;
+      console.log(this.numOfTimes);
     }
+    this.numOfTimes += 1;
   }
 
   highlightWorks(user_id) {

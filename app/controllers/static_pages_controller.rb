@@ -23,7 +23,6 @@ class StaticPagesController < ApplicationController
 		@head_title = "Læs værker"
 		@works = Work.published.includes(:user)
     json_works = @works.to_json
-    @works.first.inspect
     respond_to do |format|
       format.html
       format.json { render json: json_works }
