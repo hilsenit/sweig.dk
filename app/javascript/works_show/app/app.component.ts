@@ -10,8 +10,8 @@ import { Work } from './work';
   selector: 'works-show',
   template: worksHTML,
   providers: [WorksService, CustomFunctions, Gridify]
-
 })
+
 export class AppComponent implements OnInit {
   works: Work[];
 
@@ -25,14 +25,32 @@ export class AppComponent implements OnInit {
     this.service.getWorks().subscribe(works => this.works = works);
   }
 
-  ngAfterViewChecked() {
-    var first_run = true;
-    if (first_run) {
-      let selector = document.querySelector('.read-grid');
+  ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
+    var run = true;
+    var selector = document.querySelector('.read-grid');
+    if (selector && run) {
       this.gridify.createGrid(selector);
-      first_run = false;
+      run = false;
     }
+  }
 
+  highlightWorks(user_id) {
+    var not_users_works = document.querySelectorAll(`.item:not(.user-id-${String(user_id)})`);
+    Array.from(not_users_works).forEach(function(work) {
+      work.classList.add('high-opacity');
+    });
+  }
+
+  checkHighlight(work_id) {
+    var this_work = document.querySelector(`.work-id-${work_id}`); 
+    if (this_work.classList.contains('high-opacity')) {
+      let works = document.querySelectorAll('.item');
+      Array.from(works).forEach(function(work) {
+        work.classList.remove('high-opacity');
+      });
+    } else {
+      return;
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 export class Gridify {
-  options: any  = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'opacity 0.5s ease' };
+  options: any = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'opacity 0.5s ease' };
 
   createGrid(selector) {
       var self = selector,
@@ -64,12 +64,12 @@ export class Gridify {
               self.style.height = highestColumn(columns)+'px';
               console.log(self.style.height + "huraaay");
           };
-      render();
       if (options.resizable) {
           attachEvent(window, 'resize', render);
           attachEvent(self, 'DOMNodeRemoved', function(){
               detachEvent(window, 'resize', render);
           });
       }
+      render();
     };
 }

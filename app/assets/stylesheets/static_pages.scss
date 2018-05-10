@@ -1,3 +1,5 @@
+@import 'imports/mixins';
+
 /* READ SITE */
 #oneRow, #aNumberOfRows {
   cursor: pointer;
@@ -25,15 +27,20 @@ gray {
 }
 
 .item {
-    visibility: hidden;
-    border: 1px solid black;
-    opacity: 1;
-    padding: 10px 10px 10px 10px; 
-    &:hover {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-    a {&:hover {
-      text-decoration: none!important;
-    }}
-    
+  @include transition(opacity .6s linear);
+  visibility: hidden;
+  border: 1px solid black;
+  opacity: 1;
+  padding: 10px 10px 10px 10px; 
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+  a {&:hover {
+    text-decoration: none!important;
+  }}
+  
+}
+
+.high-opacity {
+  opacity: 0.2!important;
+}
