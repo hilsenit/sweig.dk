@@ -13,9 +13,7 @@ import { Work } from './work';
 })
 
 export class AppComponent implements OnInit {
-
   works: Work[];
-  klar: boolean = true;
 
   constructor(
     private service: WorksService,

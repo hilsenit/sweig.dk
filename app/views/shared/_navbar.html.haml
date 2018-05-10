@@ -1,48 +1,48 @@
-#FollowersModal
-.row.mobil-menu.hidden-lg-up
-  .col-4
-    = link_to fa_icon("bars"), "#", id: "menuBar", class: "mit-sign show-work-navbar-btn"
-  .col-4.text-center
-    = link_to forside_path do
-      = image_tag "lille-sweig-tilbage", class: "mobil-menu-bil lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}"
-  .col-4.text-right
-    = link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}"
-.row.mobil-menu-dropdown.hide-it.hidden-lg-up
-  - if user_signed_in?
-    = render partial: "shared/user_menu" if current_user
-    .row
-      .col-6.pr-0.float-left
-        = link_to "DU FØLGER", following_user_path(current_user), remote: true, class: "nav-link text-center modal-header-links followmobileleft"
-      .col-6.pl-0.float-left
-        = link_to "FØLGER DIG", followers_user_path(current_user), remote: true, class: "nav-link text-center modal-header-links followmobileright"
-    .col-md-12
-      = link_to "SØG OG FIND", "#", class: "nav-link text-center modal-header-links"
-  - else
-    .col-md-12
-      = link_to "LOG IND", new_user_session_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_session_path())}"
-    .col-md-12
-      = link_to "OPRET", new_user_registration_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_registration_path())}"
-  / user_signed_in?
-/ mobil-menu-dropdown
-.row.frontpage-navbar-wrapper.hidden-md-down
-  = link_to forside_path do
-    = image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}"
-    .col-md-4.text-center
-      = link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}"
-  - if user_signed_in?
-    .col-md-4.text-center
-      = link_to "SØG", "#", class: ""
-    .col-md-4.text-center
-      = link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}"
-  - else
-    .col-md-4.text-center
-      = link_to "SØG", "#", class: ""
-    .col-md-4.text-center
-      = link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}"
-      %span.small &
-      = link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( new_user_registration_path())}"
+-# #FollowersModal
+-# .row.mobil-menu.hidden-lg-up
+-#   .col-4
+-#     = link_to fa_icon("bars"), "#", id: "menuBar", class: "mit-sign show-work-navbar-btn"
+-#   .col-4.text-center
+-#     = link_to forside_path do
+-#       = image_tag "lille-sweig-tilbage", class: "mobil-menu-bil lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}"
+-#   .col-4.text-right
+-#     = link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}"
+-# .row.mobil-menu-dropdown.hide-it.hidden-lg-up
+-#   - if user_signed_in?
+-#     = render partial: "shared/user_menu" if current_user
+-#     .row
+-#       .col-6.pr-0.float-left
+-#         = link_to "DU FØLGER", following_user_path(current_user), remote: true, class: "nav-link text-center modal-header-links followmobileleft"
+-#       .col-6.pl-0.float-left
+-#         = link_to "FØLGER DIG", followers_user_path(current_user), remote: true, class: "nav-link text-center modal-header-links followmobileright"
+-#     .col-md-12
+-#       = link_to "SØG OG FIND", "#", class: "nav-link text-center modal-header-links"
+-#   - else
+-#     .col-md-12
+-#       = link_to "LOG IND", new_user_session_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_session_path())}"
+-#     .col-md-12
+-#       = link_to "OPRET", new_user_registration_path(), class: "nav-link text-center modal-header-links #{if_active_helper( new_user_registration_path())}"
+-#   / user_signed_in?
+-# / mobil-menu-dropdown
+-# .row.frontpage-navbar-wrapper.hidden-md-down
+-#   = link_to forside_path do
+-#     = image_tag "lille-sweig-tilbage", class: "lille-sweig-tilbage #{"d-none" if current_page?("/velkommen")}"
+-#     .col-md-4.text-center
+-#       = link_to "LÆS", laes_path(), class: "#{if_active_helper( laes_path() )}"
+-#   - if user_signed_in?
+-#     .col-md-4.text-center
+-#       = link_to "SØG", "#", class: ""
+-#     .col-md-4.text-center
+-#       = link_to "|" + current_user.username, user_biblo_path(current_user.friendly_id), class: "text-uppercase #{if_active_helper( user_biblo_path(current_user.friendly_id))}"
+-#   - else
+-#     .col-md-4.text-center
+-#       = link_to "SØG", "#", class: ""
+-#     .col-md-4.text-center
+-#       = link_to "LOG IND", new_user_session_path(), class: "#{if_active_helper( new_user_session_path())}"
+-#       %span.small &
+-#       = link_to "OPRET", new_user_registration_path(), class: "#{if_active_helper( new_user_registration_path())}"
 
-:javascript
-  $("#menuBar").on("click", function() {
-  	$(".mobil-menu-dropdown").slideToggle(300);
-  })
+-# :javascript
+-#   $("#menuBar").on("click", function() {
+-#   	$(".mobil-menu-dropdown").slideToggle(300);
+-#   })
