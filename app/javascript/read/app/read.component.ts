@@ -14,6 +14,7 @@ import { Work } from './work';
 
 export class ReadComponent implements OnInit {
   works: Work[];
+  selected_work: Work = null;
   numOfTimes: number = 1;
   text_id: number;
 
@@ -36,8 +37,8 @@ export class ReadComponent implements OnInit {
     this.numOfTimes += 1;
   }
 
-  showText(work_id) {
-    this.text_id = work_id;
+  showText(work) {
+    this.selected_work = work;
   }
 
   highlightWorks(user_id) {

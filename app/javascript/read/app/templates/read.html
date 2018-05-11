@@ -1,10 +1,10 @@
-<navbar></navbar>
-<text [text_id]="text_id"></text>
+<navbar [text_is_open]="custFuncs.returnBooleanValue(selected_work)" (close_text)="selected_work = $event"></navbar>
+<text [work]="selected_work"></text>
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">
     <h6 class="libre" ><a class="" (mouseover)="highlightWorks(work.user_id)" href="#">| {{work.username}}</a></h6>
-    <span class="work-text cursor-p" (click)="showText(work.id)">
+    <span class="work-text cursor-p" (click)="showText(work)">
       <h5 style="">{{work.title}}</h5>
       <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>
     </span>

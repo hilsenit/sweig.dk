@@ -10,6 +10,10 @@ export class CustomFunctions {
   sleep(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+  returnBooleanValue(input: any) {
+    return Boolean(input)
+  }
 }
 
 
