@@ -15,6 +15,7 @@ import { Work } from './work';
 export class ReadComponent implements OnInit {
   works: Work[];
   numOfTimes: number = 1;
+  text_id: number;
 
   constructor(
     private service: WorksService,
@@ -33,6 +34,10 @@ export class ReadComponent implements OnInit {
       console.log(this.numOfTimes);
     }
     this.numOfTimes += 1;
+  }
+
+  showText(work_id) {
+    this.text_id = work_id;
   }
 
   highlightWorks(user_id) {

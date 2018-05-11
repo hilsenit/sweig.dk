@@ -16,4 +16,8 @@ export class WorksService {
   getWorks(): Observable<Work[]> {
     return this.http.get("/laes.json").pipe(map(this.extractData));
   } 
+
+  getOneWork(work_id): Observable<Work> {
+    return this.http.get("/laes-en-text.json?work_id=${work_id}").pipe(map(this.extractData));
+  }
 }

@@ -1,6 +1,6 @@
 export class Text {
-  id: number;
-  title: string;
-  text: string;
-  marks: string;
+  id: Number;
+  title: String;
+  text: String;
+  marks: String;
 }
