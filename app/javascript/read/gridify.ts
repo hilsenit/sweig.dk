@@ -55,7 +55,7 @@ export class Gridify {
                       'position: absolute; ' +
                       'visibility: visible; ' + // ADDED THIS
                       'margin: ' + item_margin/2 + 'px; ' +
-                      'top: ' + (columns[idx] + item_margin/2) +'px; ' +
+                      'top: ' + (columns[idx] + item_margin/2 + 30) +'px; ' +
                       'left: ' + ((item_width + item_margin) * idx + left) + 'px; ' +
                       'transition: ' + transition);
 
@@ -63,6 +63,7 @@ export class Gridify {
               }
               // I've added the bottom margin (300) 
               self.style.height = (highestColumn(columns) + 300)+'px';
+              self.style.paddingTop = 30 + 'px';
               console.log("Gridify rendered");
           };
       render();

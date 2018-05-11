@@ -8,17 +8,40 @@
   text-decoration: underline;
 }
 
+nav {
+  position: fixed;
+  height: 30px; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  .nav-image {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.read-grid {
+  padding-top: 30px;
+}
+
 .item {
   @include transition(opacity .6s linear); // to .high-opacity
-  background-color: grey;
   visibility: visible;
   padding: 10px 10px 10px 10px; 
+  box-sizing: border-box;
+  border: 1px solid black;
   &:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   a {&:hover {
     text-decoration: none!important;
   }}
+  h5 {
+    word-break: break-all; // For firefox
+    word-break: break-word;
+  }
   h6 {
     font-size: 0.9em;
   }

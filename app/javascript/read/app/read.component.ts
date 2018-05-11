@@ -2,21 +2,19 @@ import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { WorksService } from './works.services';
 import { CustomFunctions } from '../custom_functions';
 import { Gridify } from '../gridify';
-import ImageNavbar from '../images/navbar.jpg';
-import worksHTML from './templates/works.html';
+import readHTML from './templates/read.html';
 import { Work } from './work';
 
 
 @Component({
-  selector: 'works-show',
-  template: worksHTML,
+  selector: 'read',
+  template: readHTML,
   providers: [WorksService, CustomFunctions, Gridify]
 })
 
 export class ReadComponent implements OnInit {
   works: Work[];
   numOfTimes: number = 1;
-  image_path: string = ImageNavbar;
 
   constructor(
     private service: WorksService,
