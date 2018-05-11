@@ -14,6 +14,7 @@ export class NavbarComponent {
   image_path: string = ImageNavbar;
 
   closeText() {
+    document.querySelector('body').style.overflow = "scroll";
     this.close_text_emi.emit(null); 
   }
 }

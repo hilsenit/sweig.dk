@@ -37,23 +37,30 @@ $navbar_height: 30px;
   transform: rotate(-45deg);
 }
 .modal-text-view {
-  position: absolute;
-  left: 0;
-  top: $navbar_height;
-  width: 100%;
-  background-color: white;
-  z-index: 999;
-  .text-wrapper {
-    min-height: 100%;
-    min-height: 100vh;
-    max-width: 960px;
-    width: 80%;
-    margin: 0 auto;
-    .text-title {
-      margin: 50px 0 20px 0;
-    }
-    .text-body {
+  @include flex;
+  @include flex-direction(column);
+  height: -moz-calc(100% - 30px);
+  height: -webkit-calc(100% - 30px);
+  height: calc(100% - 30px);
 
+  background-color: white;
+  top: $navbar_height;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+
+  .text-wrapper {
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    .text-body {
+      margin: 0 auto;
+      max-width: 960px;
+    }
+    .text-title {
+      margin: 50px auto 30px auto;
     }
   }
 }

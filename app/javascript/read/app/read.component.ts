@@ -16,7 +16,6 @@ export class ReadComponent implements OnInit {
   works: Work[];
   selected_work: Work = null;
   numOfTimes: number = 1;
-  text_id: number;
 
   constructor(
     private service: WorksService,
@@ -38,6 +37,7 @@ export class ReadComponent implements OnInit {
   }
 
   showText(work) {
+    document.querySelector('body').style.overflow = "hidden";
     this.selected_work = work;
   }
 
