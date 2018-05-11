@@ -3,17 +3,18 @@
 
 $navbar_height: 30px;
 
-/* READ SITE */
+.display-n {
+  display: none; 
+}
 #oneRow, #aNumberOfRows {
   cursor: pointer;
 }
+
 .active {
   text-decoration: underline;
 }
 
 .close-text-icon {
-  right: $navbar_height;
-  top: $navbar_height;
   width: $navbar_height;
   height: $navbar_height;
   background-color: transparent;
@@ -31,11 +32,12 @@ $navbar_height: 30px;
   background-color: white;
 }
 .close-text-icon:before {
-  transform: rotate(45deg);
+  @include rotate(45deg);
 }
 .close-text-icon:after {
-  transform: rotate(-45deg);
+  @include rotate(-45deg);
 }
+
 .modal-text-view {
   @include flex;
   @include flex-direction(column);
@@ -58,11 +60,15 @@ $navbar_height: 30px;
     .text-body {
       margin: 0 auto;
       max-width: 960px;
+      padding-bottom: 100px;
     }
     .text-title {
       margin: 50px auto 30px auto;
     }
   }
+}
+.center-navbar {
+  @include justify-content(center!important);
 }
 nav {
   position: fixed;
@@ -74,12 +80,16 @@ nav {
   z-index: 9999;
   .nav-image {
     @include flex;
-    @include justify-content(center);
+    @include justify-content(space-between);
     @include align-items(center);
-    display: inline-block;
     height: 100%;
     width: 100%;
     max-width: 100%;
+    .username {
+      color: white;
+      font-size: 21px;
+      padding-right: 9px;
+    }
   }
 }
 .read-grid {
