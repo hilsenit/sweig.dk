@@ -1,4 +1,4 @@
-<navbar [text_is_open]="custFuncs.returnBooleanValue(selected_work)" (close_text)="selected_work = $event"></navbar>
+<navbar [text_is_open]="custFuncs.returnBooleanValue(selected_work)" (close_text_emi)="selected_work = $event"></navbar>
 <text [work]="selected_work"></text>
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 

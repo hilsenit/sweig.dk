@@ -10,11 +10,10 @@ import ImageNavbar from '../images/navbar.jpg';
 
 export class NavbarComponent {
   @Input() text_is_open: boolean = false;
-  @Output() close_text = new EventEmitter();
+  @Output() close_text_emi = new EventEmitter(); // Doing 'emi', so you can see it in the parent template view
   image_path: string = ImageNavbar;
 
   closeText() {
-    this.close_text.emit(null);
-    console.log("close text");
+    this.close_text_emi.emit(null); 
   }
 }
