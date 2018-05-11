@@ -1,3 +1,4 @@
+<nav [ngStyle]="{'background-image': 'url(' + image_path + ')'}"></nav>
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">
