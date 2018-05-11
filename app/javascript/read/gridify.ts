@@ -1,5 +1,5 @@
 export class Gridify {
-  options: any = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'all 0.5s ease' };
+  options: any = { srcNode: '.item', margin: '20px', width: '250px', max_width: '250px', resizable: true, transition: 'opacity 0.5s ease' };
 
   createGrid(selector) {
       var self = selector,

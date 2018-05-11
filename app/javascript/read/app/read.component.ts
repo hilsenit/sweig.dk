@@ -30,7 +30,7 @@ export class ReadComponent implements OnInit {
   }
 
   ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
-    if (this.numOfTimes == 4) { // Rendered 10 times if i don't do this
+    if (this.numOfTimes == 4 && !this.selected_work) { // Rendered 10 times if i don't do this - and it is rendered in the background when work is shown
       this.setGrid();
     }
     this.numOfTimes += 1;
@@ -44,6 +44,15 @@ export class ReadComponent implements OnInit {
   showText(work) {
     document.querySelector('body').style.overflow = "hidden";
     this.selected_work = work;
+  }
+
+  closeText(scroll_up = false) {
+    var body = document.querySelector('body');
+    body.style.overflow = "auto";
+    if (scroll_up )  {
+      window.scrollTo(0, 0);
+    }
+    this.selected_work = null;
   }
 
   notUsersWork(user_id, remove = false, username = '') { 

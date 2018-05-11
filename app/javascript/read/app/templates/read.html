@@ -1,9 +1,10 @@
 <navbar [selected_work]="selected_work" 
         [user_choosen]="user_choosen" 
-        (close_text_emi)="selected_work = $event"
+        (close_text_emi)="closeText($event)"
         (close_user_emi)="showAllWorks($event)"
+        (show_users_works)="notUsersWork($event.user_id, true, $event.username)"
 ></navbar>
-<text [work]="selected_work" [top_position]="top_position"></text>
+<text [work]="selected_work"></text>
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">

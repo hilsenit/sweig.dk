@@ -10,41 +10,33 @@ $navbar_height: 30px;
   cursor: pointer;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .active {
   text-decoration: underline;
 }
 
+.close-icon {
+  padding-left: 8px;
+  height: 24px;
+}
+.close-user { /* Should be underneath the close button for when a work i shown */ 
+  z-index: 99;
+}
 .close-text-icon {
-  width: $navbar_height;
-  height: $navbar_height;
-  background-color: transparent;
+  z-index: 999;  
   opacity: 1;
 }
 .close-text-icon:hover {
   opacity: 0.8;
 }
-.close-text-icon:before, .close-text-icon:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: $navbar_height;
-  width: 2px;
-  background-color: white;
-}
-.close-text-icon:before {
-  @include rotate(45deg);
-}
-.close-text-icon:after {
-  @include rotate(-45deg);
-}
 
 .modal-text-view {
   @include flex;
   @include flex-direction(column);
-  height: -moz-calc(100% - 30px);
-  height: -webkit-calc(100% - 30px);
-  height: calc(100% - 30px);
-
+  height: 100%;
   background-color: white;
   top: $navbar_height;
   left: 0;
@@ -59,17 +51,17 @@ $navbar_height: 30px;
     margin: 0 auto;
     .text-body {
       margin: 0 auto;
+      padding: 0 10px; 
       max-width: 960px;
       padding-bottom: 100px;
     }
     .text-title {
       margin: 50px auto 30px auto;
+      word-break: break-word;
     }
   }
 }
-.center-navbar {
-  @include justify-content(center!important);
-}
+
 nav {
   position: fixed;
   height: $navbar_height; 
@@ -86,9 +78,9 @@ nav {
     width: 100%;
     max-width: 100%;
     .username {
-      color: white;
+      color: #f3f3f3;
       font-size: 21px;
-      padding-right: 9px;
+      padding: 0 19px;
     }
   }
 }
