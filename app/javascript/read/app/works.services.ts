@@ -21,6 +21,11 @@ export class WorksService {
     return this.http.get(url).pipe(map(this.extractData));
   } 
 
+  moreWorks(works_already_loadet: number) {
+    
+    
+  }
+
   worksToLoad(grid_width, window_height) {
     let columns = grid_width > MAX_WIDTH_OF_GRID ? 5 : Math.ceil(grid_width / COLUMN_WIDTH);
     console.log("Columns: " + columns);

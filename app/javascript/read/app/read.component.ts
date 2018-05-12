@@ -17,6 +17,7 @@ export class ReadComponent implements OnInit {
   works: Work[];
   selected_work: Work = null;
   user_choosen: User = null;
+  count_works_loadet: number;
   numOfTimes: number = 1;
 
   constructor(
@@ -28,8 +29,8 @@ export class ReadComponent implements OnInit {
   ngOnInit() {
     // How many works should be loaded? Based on the size of the window
     let read_grid = document.querySelector('.read-grid');
-    let number_of_works = this.service.worksToLoad(read_grid.clientWidth, window.outerHeight)
-    this.service.getWorks(number_of_works).subscribe(works => this.works = works);
+    this.count_works_loadet = this.service.worksToLoad(read_grid.clientWidth, window.outerHeight)
+    this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
   }
 
   ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
