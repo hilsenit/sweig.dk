@@ -2,13 +2,13 @@
         [user_choosen]="user_choosen" 
         (close_text_emi)="closeText($event)"
         (close_user_emi)="showAllWorks($event)"
-        (show_users_works)="notUsersWork($event.user_id, true, $event.username)"
+        (show_users_works)="manipNotUsersWork($event.user_id, true, $event.username)"
 ></navbar>
 <text [work]="selected_work"></text>
 <div class="read-grid">
   <div *ngFor="let work of works" (mouseenter)="checkHighlight(work.id)" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">
-    <h6 class="libre"><a class="" (mouseover)="notUsersWork(work.user_id)" (click)="notUsersWork(work.user_id, true, work.username)" href="#">| {{work.username}}</a></h6>
+    <h6 class="libre"><a class="" (mouseover)="manipNotUsersWork(work.user_id)" (click)="manipNotUsersWork(work.user_id, true, work.username)" href="#">| {{work.username}}</a></h6>
     <span class="work-text cursor-p" (click)="showText(work)">
       <h5 style="">{{work.title}}</h5>
       <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>

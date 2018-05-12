@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
 	layout "countdown", only: [:redirect]
 	before_action :is_user_signed_in?, only: [:log_in, :oprettelse]
+  DEFAULT_WORKS_COUNT = 25
 
 	def index
 		@head_title = "Velkommen"
@@ -20,8 +21,9 @@ class StaticPagesController < ApplicationController
 	end
 
 	def laes
+    show_count = params[:works_count] ? params[:works_count].to_i : DEFAULT_WORKS_COUNT
 		@head_title = "Læs værker"
-		@works = Work.published.includes(:user)
+		@works = Work.published.includes(:user).limit(show_count)
     json_works = @works.to_json
     respond_to do |format|
       format.html

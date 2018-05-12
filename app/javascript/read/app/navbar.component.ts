@@ -16,13 +16,13 @@ import CloseIcon from '../images/cancel.png';
       <img class="close-icon" [src]="close_icon"/>
     </div>
     <div *ngIf="selected_work" (click)="selectUser()" class="text-center username cursor-p">{{selected_work.username}}</div>
-    <div *ngIf="selected_work" hidden-ballademager></div>
+    <div *ngIf="selected_work" class="hidden-ballademager"></div>
     <!-- user selected -->
     <div *ngIf="user_choosen && !selected_work" class="close-user cursor-p" (click)="closeUser()">
       <img class="close-icon" [src]="close_icon"/>
     </div>
     <div *ngIf="user_choosen && !selected_work" class="text-center username">{{user_choosen.name}}</div>
-    <div *ngIf="user_choosen && !selected_work" hidden-ballademager></div>
+    <div *ngIf="user_choosen && !selected_work" class="hidden-ballademager"></div>
   </div> </nav>`
 })
 

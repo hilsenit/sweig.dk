@@ -26,7 +26,10 @@ export class ReadComponent implements OnInit {
   ) { } 
 
   ngOnInit() {
-    this.service.getWorks().subscribe(works => this.works = works);
+    // How many works should be loaded? Based on the size of the window
+    let read_grid = document.querySelector('.read-grid');
+    let number_of_works = this.service.worksToLoad(read_grid.clientWidth, window.outerHeight)
+    this.service.getWorks(number_of_works).subscribe(works => this.works = works);
   }
 
   ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
@@ -55,7 +58,7 @@ export class ReadComponent implements OnInit {
     this.selected_work = null;
   }
 
-  notUsersWork(user_id, remove = false, username = '') { 
+  manipNotUsersWork(user_id, remove = false, username = '') { 
     var added_class = remove ? 'display-n' : 'high-opacity' 
     var not_users_works = document.querySelectorAll(`.item:not(.user-id-${String(user_id)})`);
     Array.from(not_users_works).forEach(function(work) {

@@ -62,7 +62,7 @@ export class Gridify {
                   columns[idx] += items[i].clientHeight + item_margin;
               }
               // I've added the bottom margin (300) 
-              self.style.height = (highestColumn(columns) + 300)+'px';
+              self.style.height = (highestColumn(columns) + 50)+'px';
               self.style.paddingTop = 30 + 'px';
               console.log("Gridify rendered");
           };
