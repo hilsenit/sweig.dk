@@ -92,8 +92,11 @@ nav {
   }
 }
 .read-grid {
+  @include transition(opacity .3s linear);
+  opacity: 1;
   padding-top: $navbar_height;
 }
+
 
 .item {
   @include transition(opacity .6s linear); // to .high-opacity
@@ -122,6 +125,10 @@ nav {
     }
   }
   
+}
+
+.hide-w-opacity {
+  opacity: 0!important;
 }
 
 .high-opacity {

@@ -22,6 +22,7 @@ export class ReadComponent implements OnInit {
   count_works_loadet: number;
   numOfTimes: number = 1;
   load_new_works: boolean = true;
+  remove_works: boolean = false;
   @ViewChild("read_grid") read_grid: ElementRef;
   @ViewChildren("work_item") DOM_works: QueryList<any>;
 
@@ -55,12 +56,14 @@ export class ReadComponent implements OnInit {
 
   ngOnInit() {
     // How many works should be loaded? Based on the size of the window
-    this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
-    this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
   }
 
   ngAfterViewChecked() {
-  if (!this.grid_runned) { this.setGrid(); } //Or else it would be runned multiple times
+  if (!this.grid_runned) { 
+    this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
+    this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
+    this.setGrid(); 
+  } //Or else it would be runned multiple times
   }
 
   showText(work) {
@@ -77,15 +80,17 @@ export class ReadComponent implements OnInit {
 
   userWorks(user_id, username) {
     if (this.user_choosen) { return }
+    this.remove_works = true;
     this.old_works = this.works; // Save for showAllWorks
     this.user_choosen = {name: username, id: user_id};
     this.service.getUsersWorks(user_id).subscribe(
-      works => this.works = works,
+      works => {
+        this.works = works;
+        this.remove_works = false;
+      },
       error => console.log(error),
-      () => {
-       this.setGrid();
-      }
-    );
+      () => { this.setGrid(); }
+    )
   }
 
   fadeOutNotUsersWorks(user_id) {
@@ -106,5 +111,4 @@ export class ReadComponent implements OnInit {
     )
     this.user_choosen = null;
   }
-
 }
