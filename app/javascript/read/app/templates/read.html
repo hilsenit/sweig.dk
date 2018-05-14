@@ -5,7 +5,7 @@
         (show_users_works)="userWorks($event.user_id, $event.username)"
 ></navbar>
 <text [work]="selected_work"></text>
-<div #read_grid class="read-grid">
+<div #read_grid class="read-grid" >
   <div #work_item *ngFor="let work of works" 
     class="user-id-{{work.user_id}} work-id-{{work.id}} read-grid-work item blog">
     <h6 class="libre">

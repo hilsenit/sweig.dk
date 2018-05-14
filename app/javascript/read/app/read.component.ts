@@ -35,7 +35,10 @@ export class ReadComponent implements OnInit {
     const verticalOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const window_height = window.outerHeight;
     var grid_height = this.read_grid.nativeElement.clientHeight;
-    if ((verticalOffset + window_height) > grid_height && this.load_new_works) { 
+
+    // Shouldn't load new works when a user is choosen or a work is shown
+    let user_or_work_opened = (this.selected_work && this.user_choosen)
+    if ((verticalOffset + window_height) > grid_height && this.load_new_works && !user_or_work_opened) { 
       console.log("TRYING TO LOAD NEW WORKS");
       this.load_new_works = false;
       this.service.moreWorks(this.works.length).subscribe(
@@ -56,11 +59,9 @@ export class ReadComponent implements OnInit {
     this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
   }
 
-  ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
-    if (!this.grid_runned) { this.setGrid(); }
-    this.grid_runned = true;
+  ngAfterViewChecked() {
+  if (!this.grid_runned) { this.setGrid(); } //Or else it would be runned multiple times
   }
-
 
   showText(work) {
     document.querySelector('body').style.overflow = "hidden";
@@ -70,14 +71,13 @@ export class ReadComponent implements OnInit {
   closeText(scroll_up = false) {
     var body = document.querySelector('body');
     body.style.overflow = "auto";
-    if (scroll_up )  {
-      window.scrollTo(0, 0);
-    }
+    if (scroll_up )  { window.scrollTo(0, 0); }
     this.selected_work = null;
   }
 
   userWorks(user_id, username) {
-    this.old_works = this.works;
+    if (this.user_choosen) { return }
+    this.old_works = this.works; // Save for showAllWorks
     this.user_choosen = {name: username, id: user_id};
     this.service.getUsersWorks(user_id).subscribe(
       works => this.works = works,
@@ -93,18 +93,18 @@ export class ReadComponent implements OnInit {
   }
 
   setGrid() {
-    this.DOM_works.changes.subscribe( // IT'S WORKING!
-      () => { 
-        this.gridify.createGrid(this.read_grid.nativeElement);
-      }
-    )
+    this.DOM_works.changes.subscribe( () => { 
+      this.gridify.createGrid(this.read_grid.nativeElement);
+    })
+    this.grid_runned = true; 
   }
 
-  showAllWorks(event) {
+  showAllWorks(event) { // After userWorks
     this.works = this.old_works;
     this.DOM_works.changes.subscribe(
       () => { this.setGrid() }
     )
+    this.user_choosen = null;
   }
 
 }

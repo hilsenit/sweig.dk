@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Work } from './work';
 import { map } from 'rxjs/operators';
+
 const COLUMN_WIDTH: number = 250;
 const MAX_WIDTH_OF_GRID: number = 1250;
 const ITEM_CA_HEIGHT: number = 200;
@@ -29,7 +30,6 @@ export class WorksService {
   getUsersWorks(user_id: number) {
     let url = `/get_user_works.json?user_id=${user_id}`;
     return this.http.get(url).pipe(map(this.extractData));
-
   }
 
   worksToLoad(grid_width, window_height) {
