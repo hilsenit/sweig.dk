@@ -31,6 +31,14 @@ class StaticPagesController < ApplicationController
     end
 	end
 
+  def get_users
+    user_id = params[:user_id].to_i || return
+    user_works = User.find(user_id).works.published
+    respond_to do |format|
+      format.json { render json: user_works }
+    end
+  end
+
 	def fremtidsvision
 		@head_title = "Fremtidsvision"
 	end

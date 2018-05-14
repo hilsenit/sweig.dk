@@ -22,15 +22,18 @@ export class WorksService {
   } 
 
   moreWorks(works_already_loadet: number) {
-    
-    
+    console.log("Already loadet:" + works_already_loadet);  
+  }
+
+  getUsersWorks(user_id: number) {
+    let url = `/get_user_works.json?user_id=${user_id}`;
+    return this.http.get(url).pipe(map(this.extractData));
+
   }
 
   worksToLoad(grid_width, window_height) {
     let columns = grid_width > MAX_WIDTH_OF_GRID ? 5 : Math.ceil(grid_width / COLUMN_WIDTH);
-    console.log("Columns: " + columns);
     let rows = Math.floor(window_height / ITEM_CA_HEIGHT);
-    console.log("Rows: " + rows);
     let number_of_works = columns * rows ;
     return  number_of_works;
   }

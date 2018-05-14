@@ -14,6 +14,10 @@ $navbar_height: 30px;
   width: 100%;
 }
 
+.visibility_h {
+  visibility: hidden!important;
+}
+
 .hidden-ballademager {
   width: $navbar_height;
 }

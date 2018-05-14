@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, HostListener, ViewChild, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { WorksService } from './works.services';
 import { CustomFunctions } from '../custom_functions';
 import { Gridify } from '../gridify';
@@ -15,10 +15,13 @@ import { User } from './user';
 
 export class ReadComponent implements OnInit {
   works: Work[];
+  old_works: Work[];
   selected_work: Work = null;
   user_choosen: User = null;
   count_works_loadet: number;
   numOfTimes: number = 1;
+  @ViewChild("read_grid") read_grid: ElementRef;
+  @ViewChildren("work_item") DOM_works: QueryList<any>;
 
   constructor(
     private service: WorksService,
@@ -26,10 +29,18 @@ export class ReadComponent implements OnInit {
     private gridify: Gridify
   ) { } 
 
+  @HostListener("window:scroll", []) onWindowScroll() {
+    const verticalOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const window_height = window.outerHeight;
+    var grid_height = this.read_grid.nativeElement.clientHeight;
+    if ((verticalOffset + window_height) > grid_height) {
+      this.service.moreWorks(this.works.length);
+    }
+  }
+
   ngOnInit() {
     // How many works should be loaded? Based on the size of the window
-    let read_grid = document.querySelector('.read-grid');
-    this.count_works_loadet = this.service.worksToLoad(read_grid.clientWidth, window.outerHeight)
+    this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
     this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
   }
 
@@ -40,10 +51,6 @@ export class ReadComponent implements OnInit {
     this.numOfTimes += 1;
   }
 
-  setGrid() {
-    var selector = document.querySelector('.read-grid');
-    this.gridify.createGrid(selector);
-  }
 
   showText(work) {
     document.querySelector('body').style.overflow = "hidden";
@@ -59,36 +66,51 @@ export class ReadComponent implements OnInit {
     this.selected_work = null;
   }
 
-  manipNotUsersWork(user_id, remove = false, username = '') { 
-    var added_class = remove ? 'display-n' : 'high-opacity' 
-    var not_users_works = document.querySelectorAll(`.item:not(.user-id-${String(user_id)})`);
-    Array.from(not_users_works).forEach(function(work) {
-      work.classList.add(added_class);
+  userWorks(user_id, username) {
+    this.fadeOutNotUsersWorks(user_id); //debugger;
+    // this.remove_works = true;
+    this.old_works = this.works;
+    this.user_choosen = {name: username, id: user_id};
+    this.service.getUsersWorks(user_id).subscribe(
+      works => this.works = works,
+      error => console.log(error),
+      () => {
+       let works = this.works;
+       this.DOM_works.changes.subscribe( // IT'S WORKING!
+         () => { this.setGrid() }
+       )
+      }
+    );
+  }
+
+  fadeOutNotUsersWorks(user_id) {
+    var dom_works = this.DOM_works;
+    dom_works.forEach(work => {
+      var dom_work = work.nativeElement;
+      if (!dom_work.classList.contains(`user-id-${user_id}`)) {
+        dom_work.classList.add('high-opacity');
+        dom_work.addEventListener('mouseenter', function() {
+          dom_works.forEach( new_work => {
+            new_work.nativeElement.classList.remove('high-opacity');
+          })
+        });
+      }
     });
-    if (remove) {
-      this.setGrid();
-      this.user_choosen = {name: username, id: user_id};
-    }
+
+  }
+
+  setGrid() {
+    let read_grid = document.querySelector('.read-grid');
+    this.gridify.createGrid(read_grid);
   }
 
   showAllWorks(event) {
-    var works = document.querySelectorAll('.item');
-    Array.from(works).forEach(function(work) {
-      work.classList.remove('display-n', 'high-opacity');
-    });
-    this.setGrid();
+    this.works = this.old_works;
+    this.DOM_works.changes.subscribe(
+      () => { this.setGrid() }
+    )
   }
 
   checkHighlight(work_id) {
-    var this_work = document.querySelector(`.work-id-${work_id}`); 
-    if (this_work.classList.contains('high-opacity')) {
-      let works = document.querySelectorAll('.item');
-      Array.from(works).forEach(function(work) {
-        work.classList.remove('high-opacity');
-      });
-    } else {
-      return;
-    }
   }
-
 }

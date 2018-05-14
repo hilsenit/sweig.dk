@@ -53,7 +53,7 @@ export class Gridify {
                   var idx = indexOfSmallest(columns);
                   items[i].setAttribute('style', 'width: ' + item_width + 'px; ' +
                       'position: absolute; ' +
-                      'visibility: visible; ' + // ADDED THIS
+                      // 'visibility: visible; ' + // ADDED THIS
                       'margin: ' + item_margin/2 + 'px; ' +
                       'top: ' + (columns[idx] + item_margin/2 + 30) +'px; ' +
                       'left: ' + ((item_width + item_margin) * idx + left) + 'px; ' +
