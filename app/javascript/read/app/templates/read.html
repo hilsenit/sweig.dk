@@ -2,7 +2,7 @@
         [user_choosen]="user_choosen" 
         (close_text_emi)="closeText($event)"
         (close_user_emi)="showAllWorks($event)"
-        (show_users_works)="manipNotUsersWork($event.user_id, true, $event.username)"
+        (show_users_works)="userWorks($event.user_id, $event.username)"
 ></navbar>
 <text [work]="selected_work"></text>
 <div #read_grid class="read-grid">

@@ -45,7 +45,7 @@ export class ReadComponent implements OnInit {
             this.count_works_loadet += 1;
           })
           this.load_new_works = true;
-        }
+          }
       );
     }
   }
