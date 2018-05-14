@@ -24,9 +24,6 @@ export class CustomFunctions {
         });
       }
     });
-
-
-
   }
 
   returnBooleanValue(input: any) {

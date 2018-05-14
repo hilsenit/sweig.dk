@@ -18,6 +18,7 @@ export class ReadComponent implements OnInit {
   old_works: Work[];
   selected_work: Work = null;
   user_choosen: User = null;
+  grid_runned: boolean = false;
   count_works_loadet: number;
   numOfTimes: number = 1;
   @ViewChild("read_grid") read_grid: ElementRef;
@@ -45,10 +46,8 @@ export class ReadComponent implements OnInit {
   }
 
   ngAfterViewChecked() { // It's run multiple times - i don't know how to fix it yet
-    if (this.numOfTimes == 4 && !this.selected_work) { // Rendered 10 times if i don't do this - and it is rendered in the background when work is shown
-      this.setGrid();
-    }
-    this.numOfTimes += 1;
+    if (!this.grid_runned) { this.setGrid(); }
+    this.grid_runned = true;
   }
 
 
@@ -76,32 +75,19 @@ export class ReadComponent implements OnInit {
       error => console.log(error),
       () => {
        let works = this.works;
-       this.DOM_works.changes.subscribe( // IT'S WORKING!
-         () => { this.setGrid() }
-       )
+       this.setGrid();
       }
     );
   }
 
   fadeOutNotUsersWorks(user_id) {
-    var dom_works = this.DOM_works;
-    dom_works.forEach(work => {
-      var dom_work = work.nativeElement;
-      if (!dom_work.classList.contains(`user-id-${user_id}`)) {
-        dom_work.classList.add('high-opacity');
-        dom_work.addEventListener('mouseenter', function() {
-          dom_works.forEach( new_work => {
-            new_work.nativeElement.classList.remove('high-opacity');
-          })
-        });
-      }
-    });
-
+    this.custFuncs.addAndRemoveClassToQueryList(this.DOM_works, 'mouseenter', 'high-opacity', user_id, 'user-id-')
   }
 
   setGrid() {
-    let read_grid = document.querySelector('.read-grid');
-    this.gridify.createGrid(read_grid);
+    this.DOM_works.changes.subscribe( // IT'S WORKING!
+      () => { this.gridify.createGrid(this.read_grid.nativeElement) }
+    )
   }
 
   showAllWorks(event) {
@@ -111,6 +97,4 @@ export class ReadComponent implements OnInit {
     )
   }
 
-  checkHighlight(work_id) {
-  }
 }
