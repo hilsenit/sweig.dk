@@ -97,6 +97,15 @@ nav {
   padding-top: $navbar_height;
 }
 
+.search-field {
+  margin-top: $navbar_height;
+  outline: none;
+  font-size: 2rem;
+  width: 100%;
+  border: 2px solid transparent;
+  border-bottom: 2px solid black;
+  padding: 20px 0;
+}
 
 .item {
   @include transition(opacity .6s linear); // to .high-opacity

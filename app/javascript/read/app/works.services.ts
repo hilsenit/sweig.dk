@@ -32,6 +32,11 @@ export class WorksService {
     return this.http.get(url).pipe(map(this.extractData));
   }
 
+  getSearchResult(search_string: string) {
+    let url = `/get_search_results.json?search_string=${search_string}`;
+    return this.http.get(url).pipe(map(this.extractData));
+  }
+
   worksToLoad(grid_width, window_height) {
     let columns = grid_width > MAX_WIDTH_OF_GRID ? 5 : Math.ceil(grid_width / COLUMN_WIDTH);
     let rows = Math.floor(window_height / ITEM_CA_HEIGHT);

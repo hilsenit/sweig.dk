@@ -20,6 +20,18 @@ class StaticPagesController < ApplicationController
 		end
 	end
 
+  def get_search_results
+    if params[:search_string].nil?
+      return
+    else
+      works = Work.published.search(params[:search_string])
+      json_works = works.to_json
+      respond_to do |format|
+        format.json { render json: json_works }
+      end
+    end
+  end
+
 	def laes
     show_count = params[:works_count] ? params[:works_count].to_i : DEFAULT_WORKS_COUNT
 		@head_title = "Læs værker"

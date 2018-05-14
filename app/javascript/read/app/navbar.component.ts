@@ -14,7 +14,7 @@ import CloseIcon from '../images/cancel.png';
 export class NavbarComponent {
   @Input() selected_work: Work = null;
   @Input() user_choosen: User = null;
-  @Output() close_user_emi = new EventEmitter();; // Doing 'emi', so you can see it in the parent template view
+  @Output() close_user_emi = new EventEmitter(); // Doing 'emi', so you can see it in the parent template view
   @Output() close_text_emi = new EventEmitter();
   @Output() show_users_works = new EventEmitter();
   navbar_image_url: string = NavbarBackground;

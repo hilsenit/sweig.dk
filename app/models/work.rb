@@ -33,7 +33,7 @@ class Work < ApplicationRecord
 	end
 
 	def self.search(searched_for)
-		where("title ILIKE ? OR body ILIKE ? OR all_tags_in_s ILIKE ?", "%#{searched_for}%", "%#{searched_for}%", "%#{searched_for}%")
+		where("title ILIKE ? OR body ILIKE ? OR username ILIKE ?", "%#{searched_for}%", "%#{searched_for}%", "%#{searched_for}%")
 	end
 
 	def self.published_works

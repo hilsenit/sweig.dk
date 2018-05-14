@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'tilfaeldigt-vaerk' => "works#random_work", as: :random_work
 
   get 'get_user_works' => "static_pages#get_users"
+  get 'get_search_results' => "static_pages#get_search_results"
 
   # COOKIE
   # post 'set-update-shown-cookie' => 'application#set_update_shown_cookie', as: :set_cookie

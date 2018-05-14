@@ -59,11 +59,22 @@ export class ReadComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-  if (!this.grid_runned) { 
-    this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
-    this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
-    this.setGrid(); 
-  } //Or else it would be runned multiple times
+    if (!this.grid_runned) { 
+      this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
+      this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
+      this.setGrid(); 
+    } //Or else it would be runned multiple times
+  }
+
+  showSearchResult(search_string: string) {
+    if (search_string != "") {
+      this.old_works = this.works;
+      this.service.getSearchResult(search_string).subscribe(works => 
+        { this.works = works }
+      )
+    } else {
+      this.works = this.old_works;
+    }
   }
 
   showText(work) {

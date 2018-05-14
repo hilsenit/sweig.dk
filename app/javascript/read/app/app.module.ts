@@ -4,10 +4,11 @@ import { HttpModule } from '@angular/http';
 import { ReadComponent } from './read.component';
 import { NavbarComponent } from './navbar.component';
 import { TextComponent } from './text.component';
+import { SearchComponent } from './search.component';
 
 @NgModule({
   declarations: [
-    ReadComponent, NavbarComponent, TextComponent
+    ReadComponent, NavbarComponent, TextComponent, SearchComponent
   ],
   imports: [
     HttpModule,
