@@ -21,6 +21,7 @@ export class ReadComponent implements OnInit {
   grid_runned: boolean = false;
   count_works_loadet: number;
   numOfTimes: number = 1;
+  load_new_works: boolean = true;
   @ViewChild("read_grid") read_grid: ElementRef;
   @ViewChildren("work_item") DOM_works: QueryList<any>;
 
@@ -34,8 +35,18 @@ export class ReadComponent implements OnInit {
     const verticalOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     const window_height = window.outerHeight;
     var grid_height = this.read_grid.nativeElement.clientHeight;
-    if ((verticalOffset + window_height) > grid_height) {
-      this.service.moreWorks(this.works.length);
+    if ((verticalOffset + window_height) > grid_height && this.load_new_works) { 
+      console.log("TRYING TO LOAD NEW WORKS");
+      this.load_new_works = false;
+      this.service.moreWorks(this.works.length).subscribe(
+        new_works => {
+          new_works.forEach(w => { 
+            this.works.push(w);
+            this.count_works_loadet += 1;
+          })
+          this.load_new_works = true;
+        }
+      );
     }
   }
 
@@ -66,15 +77,12 @@ export class ReadComponent implements OnInit {
   }
 
   userWorks(user_id, username) {
-    this.fadeOutNotUsersWorks(user_id); //debugger;
-    // this.remove_works = true;
     this.old_works = this.works;
     this.user_choosen = {name: username, id: user_id};
     this.service.getUsersWorks(user_id).subscribe(
       works => this.works = works,
       error => console.log(error),
       () => {
-       let works = this.works;
        this.setGrid();
       }
     );
@@ -86,7 +94,9 @@ export class ReadComponent implements OnInit {
 
   setGrid() {
     this.DOM_works.changes.subscribe( // IT'S WORKING!
-      () => { this.gridify.createGrid(this.read_grid.nativeElement) }
+      () => { 
+        this.gridify.createGrid(this.read_grid.nativeElement);
+      }
     )
   }
 

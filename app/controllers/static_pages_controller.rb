@@ -23,7 +23,12 @@ class StaticPagesController < ApplicationController
 	def laes
     show_count = params[:works_count] ? params[:works_count].to_i : DEFAULT_WORKS_COUNT
 		@head_title = "Læs værker"
-		@works = Work.published.includes(:user).limit(show_count)
+    if params[:already_loadet].nil?
+      @works = Work.published.includes(:user).limit(show_count)
+    else
+      offset_num = params[:already_loadet].to_i
+      @works = Work.published.offset(offset_num).includes(:user).limit(5)
+    end
     json_works = @works.to_json
     respond_to do |format|
       format.html

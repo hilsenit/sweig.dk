@@ -22,7 +22,8 @@ export class WorksService {
   } 
 
   moreWorks(works_already_loadet: number) {
-    console.log("Already loadet:" + works_already_loadet);  
+    let url = `laes.json?already_loadet=${works_already_loadet}`;
+    return this.http.get(url).pipe(map(this.extractData));
   }
 
   getUsersWorks(user_id: number) {
