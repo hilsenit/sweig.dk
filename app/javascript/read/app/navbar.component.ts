@@ -18,7 +18,7 @@ import CloseIcon from '../images/cancel.png';
       })),
       state('notloading',   style({
         backgroundColor: '#cfd8dc',
-        transform: 'scale(1.1)'
+        transform: 'scale(1.0)'
       })),
       transition('notloading => loading', animate('100ms ease-in')),
       transition('loading => notloading', animate('100ms ease-out'))

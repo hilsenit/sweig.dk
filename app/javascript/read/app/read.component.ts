@@ -70,6 +70,7 @@ export class ReadComponent implements OnInit {
 
   toggleSearchField(show_or_hide) {
     this.show_search_field = show_or_hide;
+    debugger;
     if (this.old_works) { this.works = this.old_works } //If a search has been made
   }
 
