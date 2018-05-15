@@ -18,7 +18,7 @@ export class ReadComponent implements OnInit {
   old_works: Work[];
   selected_work: Work = null;
   loading_state: string = 'notloading';
-  show_search_field_emi: boolean = false;
+  show_search_field: boolean = false;
   user_choosen: User = null;
   grid_runned: boolean = false;
   count_works_loadet: number;
@@ -66,6 +66,11 @@ export class ReadComponent implements OnInit {
       this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
       this.setGrid(); 
     } //Or else it would be runned multiple times
+  }
+
+  toggleSearchField(show_or_hide) {
+    this.show_search_field = show_or_hide;
+    if (this.old_works) { this.works = this.old_works } //If a search has been made
   }
 
   showSearchResult(search_string: string) {

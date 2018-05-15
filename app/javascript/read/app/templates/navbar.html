@@ -2,7 +2,7 @@
 <div #navbar_inner [@loadingAnimation]="state" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
   <!-- default -->
   <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>
-  <div *ngIf="!selected_work && !user_choosen" class="search-icon" (click)="showSearchField()"></div>
+  <div *ngIf="!selected_work && !user_choosen" (click)="showSearchField()" [class.active-search-icon]="show_search_field" class="search-icon"></div>
   <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>
   <!-- work show -->
   <div *ngIf="selected_work" class="cursor-p" (click)="closeText()">

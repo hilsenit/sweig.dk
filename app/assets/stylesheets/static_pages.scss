@@ -88,8 +88,13 @@ nav {
     height: 100%;
     width: 100%;
     max-width: 100%;
+    .active-search-icon {
+      background-color: white!important;
+    }
     .search-icon {
+      @include transition(background-color .3s linear);
       @include border-radius(100%);
+      background-color: transparent;
       border: 3px solid white;
       cursor: pointer;
       height: $icon_height;
