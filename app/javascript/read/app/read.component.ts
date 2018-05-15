@@ -77,6 +77,7 @@ export class ReadComponent implements OnInit {
   toggleSearchField(show) {
     this.show_search_field = show;
     if (!show) { // When removed show all works
+      this.search_str = ''; // Kunne man lave noget, så den her blev gemt?
       this.getWorksAndGrid();
     }
   }
