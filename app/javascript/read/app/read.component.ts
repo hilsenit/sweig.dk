@@ -63,15 +63,20 @@ export class ReadComponent implements OnInit {
   ngAfterViewChecked() {
     if (!this.grid_runned) { 
       this.count_works_loadet = this.service.worksToLoad(this.read_grid.nativeElement.clientWidth, window.outerHeight)
-      this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
-      this.setGrid(); 
+      this.getWorksAndGrid();
     } //Or else it would be runned multiple times
   }
 
-  toggleSearchField(show_or_hide) {
-    this.show_search_field = show_or_hide;
-    debugger;
-    if (this.old_works) { this.works = this.old_works } //If a search has been made
+  getWorksAndGrid() {
+    this.service.getWorks(this.count_works_loadet).subscribe(works => this.works = works);
+    this.setGrid(); 
+  }
+
+  toggleSearchField(show) {
+    this.show_search_field = show;
+    if (!show) { // When removed
+      this.getWorksAndGrid();
+    }
   }
 
   showSearchResult(search_string: string) {
@@ -79,8 +84,11 @@ export class ReadComponent implements OnInit {
     this.loading_state = 'loading'; 
     this.old_works = this.works;
     this.service.getSearchResult(search_string).subscribe(works => {
-      this.works = works;
-      this.loading_state = 'notloading';
+        this.works = works;
+      }, 
+      (e) => console.log(e),
+      () => { 
+        this.loading_state = 'notloading';
       }
     )
     } else { // If search string is empty

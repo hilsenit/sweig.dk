@@ -1,5 +1,5 @@
 <nav> 
-<div #navbar_inner [@loadingAnimation]="state" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
+  <div #navbar_inner [@loadingAnimation]="{value: state, left: loading_left_pos}" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
 
   <!-- default -->
   <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>

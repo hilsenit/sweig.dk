@@ -13,15 +13,12 @@ import CloseIcon from '../images/cancel.png';
   animations: [
     trigger('loadingAnimation', [
       state('loading', style({
-        backgroundColor: '#eee',
-        transform: 'scale(1)'
-      })),
+        backgroundPositionX: "{{loading_left_pos}}"
+      }), {loading_left_pos: "100%"}),
       state('notloading',   style({
-        backgroundColor: '#cfd8dc',
-        transform: 'scale(1.0)'
-      })),
-      transition('notloading => loading', animate('100ms ease-in')),
-      transition('loading => notloading', animate('100ms ease-out'))
+        backgroundPositionX: "{{loading_left_pos}}"
+        }), {loading_left_pos: "100%"}),
+      transition('notloading => loading', animate('1000ms ease-in'))
     ])
   ]
 })
@@ -36,12 +33,19 @@ export class NavbarComponent implements OnChanges {
   @Output() show_search_field_emi = new EventEmitter();
   @Output() close_text_emi = new EventEmitter();
   @Output() show_users_works = new EventEmitter();
+  loading_left_pos: string = '';
   state: string = 'notloading';
   navbar_image_url: string = NavbarBackground;
   close_icon: string = CloseIcon;
 
   ngOnChanges() {
-    this.state = this.loading_input; // For animation
+    if (this.loading_input == 'loading') {
+      let only_num = this.loading_left_pos.replace("%", "");
+      let new_number = Number(only_num) + 100;
+      this.loading_left_pos = new_number + '%';
+      debugger;
+      this.state = this.loading_input; // For animation
+    }
   }
 
   showSearchField() {
