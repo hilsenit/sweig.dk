@@ -1,5 +1,5 @@
 <nav> 
-<div [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
+<div #navbar_inner [@loadingAnimation]="state" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
   <!-- work show -->
   <div *ngIf="selected_work" class="cursor-p" (click)="closeText()">
     <img class="close-icon" [src]="close_icon"/>

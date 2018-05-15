@@ -17,6 +17,7 @@ export class ReadComponent implements OnInit {
   works: Work[];
   old_works: Work[];
   selected_work: Work = null;
+  loading_state: string = 'notloading';
   user_choosen: User = null;
   grid_runned: boolean = false;
   count_works_loadet: number;
@@ -68,11 +69,14 @@ export class ReadComponent implements OnInit {
 
   showSearchResult(search_string: string) {
     if (search_string != "") {
-      this.old_works = this.works;
-      this.service.getSearchResult(search_string).subscribe(works => 
-        { this.works = works }
-      )
-    } else {
+    this.loading_state = 'loading'; 
+    this.old_works = this.works;
+    this.service.getSearchResult(search_string).subscribe(works => {
+      this.works = works;
+      this.loading_state = 'notloading';
+      }
+    )
+    } else { // If search string is empty
       this.works = this.old_works;
     }
   }

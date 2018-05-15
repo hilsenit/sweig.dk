@@ -1,5 +1,6 @@
 declare function require(path: string);
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Work } from './work';
 import { User } from './user';
 import NavbarHTML from './templates/navbar.html';
@@ -8,17 +9,39 @@ import CloseIcon from '../images/cancel.png';
 
 @Component({
   selector: 'navbar',
-  template: NavbarHTML
+  template: NavbarHTML, 
+  animations: [
+    trigger('loadingAnimation', [
+      state('loading', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('notloading',   style({
+        backgroundColor: '#cfd8dc',
+        transform: 'scale(1.1)'
+      })),
+      transition('notloading => loading', animate('100ms ease-in')),
+      transition('loading => notloading', animate('100ms ease-out'))
+    ])
+  ]
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnChanges {
+  @ViewChild('navbar_inner') navbar_inner: ElementRef;
   @Input() selected_work: Work = null;
   @Input() user_choosen: User = null;
+  @Input() loading_input: string = '';
   @Output() close_user_emi = new EventEmitter(); // Doing 'emi', so you can see it in the parent template view
   @Output() close_text_emi = new EventEmitter();
   @Output() show_users_works = new EventEmitter();
+  state: string = 'notloading';
   navbar_image_url: string = NavbarBackground;
   close_icon: string = CloseIcon;
+
+  ngOnChanges() {
+    this.state = this.loading_input; 
+    debugger;
+  }
 
   closeText() {
     this.close_text_emi.emit(null); 
