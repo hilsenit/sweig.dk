@@ -1,11 +1,14 @@
 <navbar [selected_work]="selected_work" 
         [user_choosen]="user_choosen" 
+        [show_search_field]="show_search_field"
         [loading_input]="loading_state"
         (close_text_emi)="closeText($event)"
+        (show_search_field_emi)="show_search_field = $event"
         (close_user_emi)="showAllWorks($event)"
         (show_users_works)="userWorks($event.user_id, $event.username)"
 ></navbar>
-<search (search_string_emi)="showSearchResult($event)"
+<search *ngIf="show_search_field" 
+        (search_string_emi)="showSearchResult($event)"
 ></search>
 <text [work]="selected_work"></text>
 <div #read_grid class="read-grid" *ngIf="!remove_works">

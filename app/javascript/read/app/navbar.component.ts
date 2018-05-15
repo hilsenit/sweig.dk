@@ -31,7 +31,9 @@ export class NavbarComponent implements OnChanges {
   @Input() selected_work: Work = null;
   @Input() user_choosen: User = null;
   @Input() loading_input: string = '';
+  @Input() show_search_field: boolean = false;
   @Output() close_user_emi = new EventEmitter(); // Doing 'emi', so you can see it in the parent template view
+  @Output() show_search_field_emi = new EventEmitter();
   @Output() close_text_emi = new EventEmitter();
   @Output() show_users_works = new EventEmitter();
   state: string = 'notloading';
@@ -39,8 +41,12 @@ export class NavbarComponent implements OnChanges {
   close_icon: string = CloseIcon;
 
   ngOnChanges() {
-    this.state = this.loading_input; 
-    debugger;
+    this.state = this.loading_input; // For animation
+  }
+
+  showSearchField() {
+    let show_or_hide = this.show_search_field ? false : true;
+    this.show_search_field_emi.emit(show_or_hide);
   }
 
   closeText() {

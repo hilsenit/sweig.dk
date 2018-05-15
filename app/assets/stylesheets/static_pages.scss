@@ -2,6 +2,7 @@
 @import 'imports/defaults';
 
 $navbar_height: 30px;
+$icon_height: $navbar_height - 8px;
 
 .display-n {
   display: none; 
@@ -9,6 +10,8 @@ $navbar_height: 30px;
 #oneRow, #aNumberOfRows {
   cursor: pointer;
 }
+
+
 
 .full-width {
   width: 100%;
@@ -77,6 +80,7 @@ nav {
   width: 100%;
   text-align: center;
   z-index: 9999;
+  
   .nav-image {
     @include flex;
     @include justify-content(space-between);
@@ -84,6 +88,25 @@ nav {
     height: 100%;
     width: 100%;
     max-width: 100%;
+    .search-icon {
+      @include border-radius(100%);
+      border: 3px solid white;
+      cursor: pointer;
+      height: $icon_height;
+      width: $icon_height;
+      &:after {
+        @include rotate(-45deg);
+        content: ' ';
+        background-color: white;
+        display: block;
+        height: 10px;
+        position: relative;
+        top: 12px;
+        left: 16px;
+        width: 4px;
+      }
+
+    }
     .username {
       color: #f3f3f3;
       font-size: 21px;

@@ -1,5 +1,9 @@
 <nav> 
 <div #navbar_inner [@loadingAnimation]="state" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
+  <!-- default -->
+  <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>
+  <div *ngIf="!selected_work && !user_choosen" class="search-icon" (click)="showSearchField()"></div>
+  <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>
   <!-- work show -->
   <div *ngIf="selected_work" class="cursor-p" (click)="closeText()">
     <img class="close-icon" [src]="close_icon"/>

@@ -18,6 +18,7 @@ export class ReadComponent implements OnInit {
   old_works: Work[];
   selected_work: Work = null;
   loading_state: string = 'notloading';
+  show_search_field_emi: boolean = false;
   user_choosen: User = null;
   grid_runned: boolean = false;
   count_works_loadet: number;
