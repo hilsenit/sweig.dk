@@ -17,11 +17,13 @@ export class ReadComponent implements OnInit {
   works: Work[];
   old_works: Work[];
   selected_work: Work = null;
-  loading_state: string = 'notloading';
+  loading: boolean = false;
   show_search_field: boolean = false;
   user_choosen: User = null;
   grid_runned: boolean = false;
   count_works_loadet: number;
+  search_str: string = '';
+  search_empty: boolean = false;
   numOfTimes: number = 1;
   load_new_works: boolean = true;
   remove_works: boolean = false;
@@ -74,25 +76,30 @@ export class ReadComponent implements OnInit {
 
   toggleSearchField(show) {
     this.show_search_field = show;
-    if (!show) { // When removed
+    if (!show) { // When removed show all works
       this.getWorksAndGrid();
     }
   }
 
   showSearchResult(search_string: string) {
+    this.search_str = search_string;
     if (search_string != "") {
-    this.loading_state = 'loading'; 
-    this.old_works = this.works;
+    this.loading = true;
     this.service.getSearchResult(search_string).subscribe(works => {
-        this.works = works;
+        if (works.length < 1) {
+          this.search_empty = true;
+        } else {
+          this.works = works;
+          this.search_empty = false;
+        }
       }, 
       (e) => console.log(e),
-      () => { 
-        this.loading_state = 'notloading';
-      }
+      () => { this.loading = false; }
     )
-    } else { // If search string is empty
-      this.works = this.old_works;
+      window.scrollTo(0, 0); 
+    } else { // If search string is empty show all
+      this.search_empty = false;
+      this.getWorksAndGrid();
     }
   }
 

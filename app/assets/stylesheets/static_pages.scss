@@ -11,8 +11,6 @@ $icon_height: $navbar_height - 8px;
   cursor: pointer;
 }
 
-
-
 .full-width {
   width: 100%;
 }
@@ -22,7 +20,7 @@ $icon_height: $navbar_height - 8px;
 }
 
 .hidden-ballademager {
-  width: $navbar_height;
+  min-width: $navbar_height;
 }
 .active {
   text-decoration: underline;
@@ -119,20 +117,35 @@ nav {
     }
   }
 }
+.navbar-height {
+  overflow: hidden;
+  height: $navbar_height;
+}
 .read-grid {
   @include transition(opacity .3s linear);
   opacity: 1;
-  padding-top: $navbar_height;
 }
 
 .search-field {
-  margin-top: $navbar_height;
-  outline: none;
-  font-size: 2rem;
-  width: 100%;
   border: 2px solid transparent;
   border-bottom: 2px solid black;
-  padding: 20px 0;
+  z-index: 999;
+  background-color: white;
+  left: 0;
+  position: fixed;
+  top: $navbar_height;
+  width: 100%;
+  .search-result-text {
+    
+  }
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    text-align: center;
+    height: $navbar_height;
+  }
+
 }
 
 .item {
@@ -172,3 +185,16 @@ nav {
   opacity: 0.2!important;
 }
 
+.navbar-animation {
+  animation: move_to_right 5s ease-in-out infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move_to_right {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 100%;
+  }
+}
