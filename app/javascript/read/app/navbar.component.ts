@@ -1,5 +1,6 @@
 declare function require(path: string);
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { AnimationService } from './animation.service';
 import { Work } from './work';
 import { User } from './user';
 import NavbarHTML from './templates/navbar.html';
@@ -8,7 +9,9 @@ import CloseIcon from '../images/cancel.png';
 
 @Component({
   selector: 'navbar',
-  template: NavbarHTML, 
+  template: NavbarHTML,
+  providers: [AnimationService]
+ 
 })
 
 export class NavbarComponent implements OnChanges {
@@ -26,14 +29,14 @@ export class NavbarComponent implements OnChanges {
   navbar_image_url: string = NavbarBackground;
   close_icon: string = CloseIcon;
 
+  constructor(private _animation: AnimationService){}
+
   ngOnChanges() {
     var inner_navbar = this.navbar_inner.nativeElement;
     if(this.loading && !inner_navbar.classList.contains('nav-image-move')) {
-      inner_navbar.classList.add('nav-image-move');
+      this._animation.transitionMoveEffect(inner_navbar, /* animation_go */ true);
     } else if (!this.loading) {
-      let position = window.getComputedStyle(inner_navbar).backgroundPositionX;
-      inner_navbar.style.backgroundPositionX = position;
-      inner_navbar.classList.remove('nav-image-move');
+      this._animation.transitionMoveEffect(inner_navbar, /* animation_go */ false);
     }
   }
 

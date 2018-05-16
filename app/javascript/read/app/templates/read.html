@@ -11,6 +11,7 @@
 ></navbar>
 
 <search *ngIf="show_search_field" 
+        [loading]="loading"
         (remove_search_field_emi)="toggleSearchField($event)"
         (search_string_emi)="showSearchResult($event)"
 ></search>
@@ -25,7 +26,8 @@
       <a class="" (mouseover)="fadeOutNotUsersWorks(work.user_id)" (click)="userWorks(work.user_id, work.username)" href="#">| {{work.username}}</a>
     </h6>
     <span class="work-text cursor-p" (click)="showText(work)">
-      <h5 style="">{{work.title}}</h5>
+      <!-- should it show text and titles based on a search regex? -->
+      <h5 [innerHTML]="work.title"></h5>
       <div class="text-left user-work-overview" [innerHTML]="custFuncs.truncateHTMLText(work.body)"></div>
     </span>
   </div>
