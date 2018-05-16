@@ -1,6 +1,7 @@
 <nav> 
-  <div #navbar_inner [class.navbar-animation]="loading" [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
-    <div *ngIf="!selected_work && !user_choosen" class="username hidden-ballademager" [innerHTML]="getContentIfSearchEmpty()"> </div>
+  <div #navbar_inner [ngStyle]="{'background-image': 'url(' + navbar_image_url + ')'}" class="nav-image">
+    <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager" > </div>
+    <div *ngIf="!selected_work && !user_choosen && getContentIfSearchEmpty()" class="search-str-and-empty" [innerHTML]="getContentIfSearchEmpty()"></div>
     <div *ngIf="!selected_work && !user_choosen" (click)="showSearchField()" [class.active-search-icon]="show_search_field" class="search-icon"></div>
     <div *ngIf="!selected_work && !user_choosen" class="hidden-ballademager"></div>
 

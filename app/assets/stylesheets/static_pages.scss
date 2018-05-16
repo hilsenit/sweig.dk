@@ -7,6 +7,12 @@ $icon_height: $navbar_height - 8px;
 .display-n {
   display: none; 
 }
+
+.search-str-and-empty {
+  @extend .username;
+  left: 0;
+  position: absolute;
+}
 #oneRow, #aNumberOfRows {
   cursor: pointer;
 }
@@ -78,17 +84,24 @@ nav {
   width: 100%;
   text-align: center;
   z-index: 9999;
-  
+
   .nav-image {
     @include flex;
     @include justify-content(space-between);
     @include align-items(center);
+    @include transition(background-position-x 10s linear);
     height: 100%;
     width: 100%;
     max-width: 100%;
+    background-position-x: 0;
+
+    &.nav-image-move {
+      background-position-x: 100px!important;
+    }
     .active-search-icon {
       background-color: white!important;
     }
+
     .search-icon {
       @include transition(background-color .3s linear);
       @include border-radius(100%);
@@ -185,9 +198,12 @@ nav {
   opacity: 0.2!important;
 }
 
-.navbar-animation {
-  animation: move_to_right 5s ease-in-out infinite;
-  animation-fill-mode: forwards;
+.inner-navbar {
+
+
+  &.mover-inner-navbar {
+
+  }
 }
 
 @keyframes move_to_right {

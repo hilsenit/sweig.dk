@@ -4,7 +4,7 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
   selector: 'search',
   template: `
     <div class="search-field">
-      <input #input (keydown.enter)="searchString(input.value)" (keydown.esc)="removeSearch()" type="text" class="text-center"> {{input.focus()}}
+      <input #input (keydown.enter)="searchString(input.value)" (keydown.esc)="removeSearch()" type="text" placeholder="Søg nu for pokker" class="text-center"> {{input.focus()}}
     </div>
     `
     

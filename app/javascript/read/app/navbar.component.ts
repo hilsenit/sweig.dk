@@ -11,7 +11,7 @@ import CloseIcon from '../images/cancel.png';
   template: NavbarHTML, 
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnChanges {
   @ViewChild('navbar_inner') navbar_inner: ElementRef;
   @Input() selected_work: Work = null;
   @Input() user_choosen: User = null;
@@ -23,10 +23,19 @@ export class NavbarComponent {
   @Output() show_search_field_emi = new EventEmitter();
   @Output() close_text_emi = new EventEmitter();
   @Output() show_users_works = new EventEmitter();
-  loading_left_pos: string = '';
-  state: string = 'notloading';  
   navbar_image_url: string = NavbarBackground;
   close_icon: string = CloseIcon;
+
+  ngOnChanges() {
+    var inner_navbar = this.navbar_inner.nativeElement;
+    if(this.loading && !inner_navbar.classList.contains('nav-image-move')) {
+      inner_navbar.classList.add('nav-image-move');
+    } else if (!this.loading) {
+      let position = window.getComputedStyle(inner_navbar).backgroundPositionX;
+      inner_navbar.style.backgroundPositionX = position;
+      inner_navbar.classList.remove('nav-image-move');
+    }
+  }
 
   showSearchField() {
     let show_or_hide = this.show_search_field ? false : true;
@@ -34,16 +43,16 @@ export class NavbarComponent {
   }
 
   getContentIfSearchEmpty() {
-    if(this.show_search_field) {
+    if(this.show_search_field && !this.loading) {
       if(!this.search_empty && this.search_str != '') {
         var content = `${this.search_str}:`;
       } 
       if (this.search_empty){
-        var content = 'Intet at finde';
+        var content = `Intet at finde under '${this.search_str}'`;
       }
       return content;
     }
-    
+    return false;
   }
 
   closeText() {
